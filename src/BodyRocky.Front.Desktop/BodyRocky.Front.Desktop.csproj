@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BodyRocky.Client\BodyRocky.Client.csproj" />
       <ProjectReference Include="..\BodyRocky.Core\BodyRocky.Core.csproj" />
     </ItemGroup>
 
