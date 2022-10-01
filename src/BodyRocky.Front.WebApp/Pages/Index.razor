@@ -1,5 +1,6 @@
 ﻿@page "/"
-@using BodyRocky.Core.Contracts.Responses.ProductResponses
+@using BodyRocky.Core.Contracts.Responses.CustomerResponses
+@inject IBodyRockyApi BodyRockyClient
 
 <PageTitle>Index</PageTitle>
 
@@ -11,30 +12,24 @@
 
 Welcome to your new app.
 
-@if (_myProduct is not null)
+@if (_allCustomers is not null)
 {
-    <p>@_myProduct.ProductId.ToString()</p>
-    <p>@_myProduct.ProductName</p>
+    <ul>
+        @foreach (var customer in _allCustomers)
+        {
+            <li>@customer.FirstName @customer.LastName</li>
+        }
+    </ul>
 }
-
-<SurveyPrompt Title="How is Blazor working for you?"/>
-
 
 @code {
 
-    private ProductResponse? _myProduct;
+    private CustomerResponse[]? _allCustomers;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        _myProduct = new ProductResponse
-        {
-            ProductId = Guid.NewGuid(),
-            ProductDescription = "Une description",
-            ProductName = "NomDeProduit",
-            ProductPrice = 100m,
-            ProductURL = "/products/1",
-            IsFeatured = false
-        };
+        var response = await BodyRockyClient.GetCustomersAsync();
+        _allCustomers = response.Customers.ToArray();
     }
 
 }
