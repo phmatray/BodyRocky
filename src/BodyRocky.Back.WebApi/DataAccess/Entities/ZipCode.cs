@@ -2,9 +2,9 @@
 
 public class ZipCode
 {
-    public Guid ZipCodeID { get; init; } = default!;
-    public int Code { get; init; } = default!;
-    public string Commune { get; init; } = default!;
+    public Guid ZipCodeID { get; set; } = default!;
+    public int Code { get; set; } = default!;
+    public string Commune { get; set; } = default!;
     
     public bool ValidateEntity()
     {

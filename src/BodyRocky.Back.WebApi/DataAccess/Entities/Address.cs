@@ -2,10 +2,10 @@
 
 public class Address
 {
-    public Guid AddressID { get; init; } = default!;
-    public DateTime AddressFromDate { get; init; } = default!;
-    public DateTime AddressToDate { get; init; } = default!;
-    public string Street { get; init; } = default!;
+    public Guid AddressID { get; set; } = default!;
+    public DateTime AddressFromDate { get; set; } = default!;
+    public DateTime AddressToDate { get; set; } = default!;
+    public string Street { get; set; } = default!;
 
     public bool ValidateEntity()
     {

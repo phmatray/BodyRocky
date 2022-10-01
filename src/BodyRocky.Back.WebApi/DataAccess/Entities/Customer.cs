@@ -2,13 +2,13 @@
 
 public class Customer
 {
-    public Guid CustomerID { get; init; } = default!;
-    public string FirstName { get; init; } = default!;
-    public string LastName { get; init; } = default!;
-    public DateTime BirthDate { get; init; }
-    public string Password { get; init; } = default!;
-    public string PhoneNumber { get; init; } = default!;
-    public string EmailAddress { get; init; } = default!;
+    public Guid CustomerID { get; set; } = default!;
+    public string FirstName { get; set; } = default!;
+    public string LastName { get; set; } = default!;
+    public DateTime BirthDate { get; set; }
+    public string Password { get; set; } = default!;
+    public string PhoneNumber { get; set; } = default!;
+    public string EmailAddress { get; set; } = default!;
 
     public bool ValidateEntity()
     {

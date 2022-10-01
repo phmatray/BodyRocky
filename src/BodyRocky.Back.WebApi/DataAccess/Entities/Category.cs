@@ -2,9 +2,9 @@
 
 public class Category
 {
-    public Guid CategoryID { get; init; } = default!;
-    public string CategoryName { get; init; } = default!;
-    public bool IsFeatured { get; init; } = default!;
+    public Guid CategoryID { get; set; } = default!;
+    public string CategoryName { get; set; } = default!;
+    public bool IsFeatured { get; set; } = default!;
     public bool ValidateEntity()
     {
         return true;

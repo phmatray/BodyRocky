@@ -2,11 +2,11 @@
 
 public class Order
 {
-    public Guid OrderID { get; init; } = default!;
-    public string BillingName { get; init; } = default!;
-    public string Reference { get; init; } = default!;
-    public string DeliveryName { get; init; } = default!;
-    public DateTime PurchaseDate { get; init; } = default!;
+    public Guid OrderID { get; set; } = default!;
+    public string BillingName { get; set; } = default!;
+    public string Reference { get; set; } = default!;
+    public string DeliveryName { get; set; } = default!;
+    public DateTime PurchaseDate { get; set; } = default!;
     public bool ValidateEntity()
     {
         return true;

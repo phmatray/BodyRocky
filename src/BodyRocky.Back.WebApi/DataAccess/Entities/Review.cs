@@ -2,9 +2,9 @@
 
 public class Review
 {
-    public Guid ReviewID { get; init; } = default!;
-    public int ReviewRating { get; init; } = default!;
-    public string ReviewText { get; init; } = default!;
+    public Guid ReviewID { get; set; } = default!;
+    public int ReviewRating { get; set; } = default!;
+    public string ReviewText { get; set; } = default!;
     
     public bool ValidateEntity()
     {

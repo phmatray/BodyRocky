@@ -2,8 +2,8 @@
 
 public class Basket
 {
-    public Guid BasketID { get; init; } = default!;
-    public DateTime BasketDateAdded { get; init; } = default!;
+    public Guid BasketID { get; set; } = default!;
+    public DateTime BasketDateAdded { get; set; } = default!;
     
     public bool ValidateEntity()
     {

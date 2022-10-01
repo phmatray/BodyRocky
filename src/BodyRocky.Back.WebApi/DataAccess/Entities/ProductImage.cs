@@ -2,9 +2,9 @@
 
 public class ProductImage
 {
-    public Guid ProductImageID { get; init; } = default!;
-    public string Image { get; init; } = default!;
-    public bool IsFeatured { get; init; } = default!;
+    public Guid ProductImageID { get; set; } = default!;
+    public string Image { get; set; } = default!;
+    public bool IsFeatured { get; set; } = default!;
     
     public bool ValidateEntity()
     {
