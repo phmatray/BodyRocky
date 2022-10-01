@@ -1,9 +1,9 @@
 ﻿using BodyRocky.Back.WebApi.DataAccess.Repositories;
-using BodyRocky.Back.WebApi.Endpoints.Baksets;
+using BodyRocky.Back.WebApi.Endpoints.Baskets.GetAll;
 using BodyRocky.Core.Contracts.Responses.BasketResponses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.WebApi.Endpoints.Baskets.GetAll;
+namespace BodyRocky.Back.WebApi.Endpoints.Baksets.GetAll;
 
 public class GetAllBasketsEndpoint
 : EndpointWithoutRequest<GetAllBasketsResponse, GetAllBasketsMapper>

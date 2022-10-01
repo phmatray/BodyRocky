@@ -2,9 +2,11 @@ using BodyRocky.Back.WebApi.DataAccess;
 using BodyRocky.Back.WebApi.DataAccess.Repositories;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+var connectionString = config.GetConnectionString("SqlServer");
 
 builder.Services.AddFastEndpoints();
 builder.Services.AddSwaggerDoc();
@@ -13,7 +15,11 @@ builder.Services.AddSwaggerDoc();
 // builder.Services.AddSingleton<IDbConnectionFactory>(_ =>
 //     new SqliteConnectionFactory(config.GetValue<string>("Database:ConnectionString")));
 // builder.Services.AddSingleton<DatabaseInitializer>();
-builder.Services.AddDbContext<BodyRockyDbContext>();
+
+// https://blog.jetbrains.com/dotnet/2019/03/05/connecting-microsoft-sql-server-linux-docker-container-rider/
+builder.Services.AddDbContext<BodyRockyDbContext>(
+    options => options.UseSqlServer(connectionString));
+
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<BasketRepository>();
 

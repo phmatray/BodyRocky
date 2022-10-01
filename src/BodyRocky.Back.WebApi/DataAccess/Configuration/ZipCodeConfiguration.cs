@@ -11,8 +11,8 @@ public class ZipCodeConfiguration : IEntityTypeConfiguration<ZipCode>
         ArgumentNullException.ThrowIfNull(builder);
 
         builder
-            .Property(zipcode => zipcode.Code)
-            .IsRequired();
+            .ToTable("ZipCode")
+            .HasKey(code => code.Code);
 
         builder
             .Property(zipcode => zipcode.Commune)

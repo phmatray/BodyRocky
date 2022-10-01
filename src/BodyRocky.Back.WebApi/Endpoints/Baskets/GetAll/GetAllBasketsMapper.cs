@@ -2,7 +2,7 @@
 using BodyRocky.Core.Contracts.Responses.BasketResponses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.WebApi.Endpoints.Baksets;
+namespace BodyRocky.Back.WebApi.Endpoints.Baskets.GetAll;
 
 public class GetAllBasketsMapper 
     : ResponseMapper<GetAllBasketsResponse, List<Basket>>
