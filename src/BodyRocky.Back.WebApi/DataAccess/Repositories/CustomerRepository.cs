@@ -40,10 +40,11 @@ public sealed class CustomerRepository : IDisposable
         }
     }
 
-    public async Task UpdateAsync(Customer customer)
+    public async Task<Customer> UpdateAsync(Customer customer)
     {
         _context.Entry(customer).State = EntityState.Modified;
         await _context.SaveChangesAsync();
+        return customer;
     }
 
     public void Dispose()

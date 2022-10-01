@@ -6,7 +6,7 @@ using FastEndpoints;
 namespace BodyRocky.Back.WebApi.Endpoints.Customers.GetCustomer;
 
 public class GetCustomerEndpoint
-    : Endpoint<GetCustomerRequest, CustomerResponse, GetCustomerMapper>
+    : Endpoint<GetCustomerRequest, CustomerResponse, CustomerMapper>
 {
     private readonly CustomerRepository _repository;
 

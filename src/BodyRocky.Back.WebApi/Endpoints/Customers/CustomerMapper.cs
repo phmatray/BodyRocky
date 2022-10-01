@@ -2,9 +2,9 @@
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.WebApi.Endpoints.Customers.GetCustomer;
+namespace BodyRocky.Back.WebApi.Endpoints.Customers;
 
-public class GetCustomerMapper
+public class CustomerMapper
     : ResponseMapper<CustomerResponse, Customer>
 {
     public override CustomerResponse FromEntity(Customer customer)
