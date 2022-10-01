@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.AddressResponses.BrandResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses.BrandResponses;
 
 public class BrandResponse
 {

@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.AddressResponses.ProductImageResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses.ProductImageResponses;
 
 public class ProductImageResponse
 {

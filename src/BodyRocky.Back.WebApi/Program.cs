@@ -1,3 +1,5 @@
+using BodyRocky.Back.WebApi.DataAccess;
+using BodyRocky.Back.WebApi.DataAccess.Repositories;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 
@@ -11,8 +13,12 @@ builder.Services.AddSwaggerDoc();
 // builder.Services.AddSingleton<IDbConnectionFactory>(_ =>
 //     new SqliteConnectionFactory(config.GetValue<string>("Database:ConnectionString")));
 // builder.Services.AddSingleton<DatabaseInitializer>();
+builder.Services.AddDbContext<BodyRockyDbContext>();
+builder.Services.AddScoped<AddressRepository>();
+builder.Services.AddScoped<BasketRepository>();
+
+
 // builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
-// builder.Services.AddSingleton<ICustomerService, CustomerService>();
 
 var app = builder.Build();
 

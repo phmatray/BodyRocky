@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.AddressResponses.ProductResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses.ProductResponses;
 
 public class GetAllProductsResponse
 {

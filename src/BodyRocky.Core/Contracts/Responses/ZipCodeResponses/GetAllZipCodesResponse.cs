@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.AddressResponses.ZipCodeResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses.ZipCodeResponses;
 
 public class GetAllZipCodesResponse
 {

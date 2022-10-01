@@ -1,0 +1,24 @@
+﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace BodyRocky.Back.WebApi.DataAccess.Configuration;
+
+public class ReviewConfiguration : IEntityTypeConfiguration<Review>
+{
+    public void Configure(EntityTypeBuilder<Review> builder)
+    {
+        ArgumentNullException.ThrowIfNull(builder);
+
+        builder
+            .ToTable("Review")
+            .HasKey(review => review.ReviewID);
+
+        builder
+            .Property(review => review.ReviewRating)
+            .IsRequired();
+
+        builder
+            .Property(review => review.ReviewText);
+    }
+}
