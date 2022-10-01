@@ -1,4 +1,5 @@
-﻿using BodyRocky.Back.WebApi.DataAccess.Repositories;
+﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
+using BodyRocky.Back.WebApi.DataAccess.Repositories;
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using FastEndpoints;
 
@@ -22,8 +23,8 @@ public class GetAllCustomersEndpoint
 
     public override async Task HandleAsync(CancellationToken ct)
     {
-        var customers = await _repository.GetAllAsync();
-        var response = Map.FromEntity(customers);
+        List<Customer> customers = await _repository.GetAllAsync();
+        GetAllCustomersResponse response = Map.FromEntity(customers);
         await SendOkAsync(response, ct);
     }
 }

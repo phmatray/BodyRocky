@@ -1,6 +1,5 @@
 ﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
 using BodyRocky.Back.WebApi.DataAccess.Repositories;
-using BodyRocky.Back.WebApi.Endpoints.Customers.GetCustomer;
 using BodyRocky.Core.Contracts.Requests.CustomerRequests;
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using FastEndpoints;
@@ -41,12 +40,9 @@ public class UpdateCustomerEndpoint
         existingCustomer.PhoneNumber = req.PhoneNumber;
         existingCustomer.EmailAddress = req.EmailAddress;
         
-        // in order to pass all the information to the response, we need to add the previous password
-        // customer.Password = existingCustomer.Password;
-        
         await _repository.UpdateAsync(existingCustomer);
         
-        var response = Map.FromEntity(existingCustomer);
+        CustomerResponse response = Map.FromEntity(existingCustomer);
         
         await SendOkAsync(response, ct);
     }

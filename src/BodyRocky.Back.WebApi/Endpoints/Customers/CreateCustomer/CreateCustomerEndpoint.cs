@@ -30,7 +30,7 @@ public class CreateCustomerEndpoint
         Customer customer = Map.ToEntity(req);
         customer = await _repository.InsertAsync(customer);
 
-        var response = Map.FromEntity(customer);
+        CustomerResponse response = Map.FromEntity(customer);
 
         await SendCreatedAtAsync<GetCustomerEndpoint>(
             "vaitefouderch",
