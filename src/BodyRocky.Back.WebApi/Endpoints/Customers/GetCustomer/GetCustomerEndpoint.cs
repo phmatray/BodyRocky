@@ -3,14 +3,14 @@ using BodyRocky.Core.Contracts.Requests.CustomerRequests;
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.WebApi.Endpoints.Customers.GetOne;
+namespace BodyRocky.Back.WebApi.Endpoints.Customers.GetCustomer;
 
-public class GetOneCustomerEndpoint
-    : Endpoint<GetCustomerRequest, CustomerResponse, GetOneCustomerMapper>
+public class GetCustomerEndpoint
+    : Endpoint<GetCustomerRequest, CustomerResponse, GetCustomerMapper>
 {
     private readonly CustomerRepository _repository;
 
-    public GetOneCustomerEndpoint(CustomerRepository repository)
+    public GetCustomerEndpoint(CustomerRepository repository)
     {
         _repository = repository;
     }
@@ -25,8 +25,6 @@ public class GetOneCustomerEndpoint
         GetCustomerRequest req,
         CancellationToken ct)
     {
-        var guid = new Guid(req.CustomerID);
-
         bool isIdGuid = Guid.TryParse(req.CustomerID, out Guid customerId);
 
         if (!isIdGuid)

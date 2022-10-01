@@ -2,5 +2,5 @@
 
 public class DeleteCustomerRequest
 {
-    public Guid CustomerID { get; init; } 
+    public string CustomerID { get; init; } 
 }

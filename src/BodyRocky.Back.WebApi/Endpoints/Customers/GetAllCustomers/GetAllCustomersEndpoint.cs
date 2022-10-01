@@ -2,7 +2,7 @@
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.WebApi.Endpoints.Customers.GetAll;
+namespace BodyRocky.Back.WebApi.Endpoints.Customers.GetAllCustomers;
 
 public class GetAllCustomersEndpoint
     : EndpointWithoutRequest<GetAllCustomersResponse, GetAllCustomersMapper>

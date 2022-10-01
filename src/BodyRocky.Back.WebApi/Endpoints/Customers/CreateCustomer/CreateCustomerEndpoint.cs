@@ -1,6 +1,6 @@
 ﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
 using BodyRocky.Back.WebApi.DataAccess.Repositories;
-using BodyRocky.Back.WebApi.Endpoints.Customers.GetOne;
+using BodyRocky.Back.WebApi.Endpoints.Customers.GetCustomer;
 using BodyRocky.Core.Contracts.Requests.CustomerRequests;
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using FastEndpoints;
@@ -32,7 +32,7 @@ public class CreateCustomerEndpoint
 
         var response = Map.FromEntity(customer);
 
-        await SendCreatedAtAsync<GetOneCustomerEndpoint>(
+        await SendCreatedAtAsync<GetCustomerEndpoint>(
             "vaitefouderch",
             response,
             Http.GET,
