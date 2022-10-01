@@ -22,17 +22,22 @@ public sealed class CustomerRepository : IDisposable
         return await _context.Customers.FindAsync(customerID);
     }
 
-    public async Task InsertAsync(Customer customer)
+    public async Task<Customer> InsertAsync(Customer customer)
     {
-        await _context.Customers.AddAsync(customer);
+        var entityEntry = await _context.Customers.AddAsync(customer);
+        var newCustomer = entityEntry.Entity;
         await _context.SaveChangesAsync();
+        return newCustomer;
     }
 
     public async Task DeleteAsync(Guid customerID)
     {
         var customer = await _context.Customers.FindAsync(customerID);
-        _context.Remove(customer);
-        await _context.SaveChangesAsync();
+        if (customer is not null)
+        {
+            _context.Remove(customer);
+            await _context.SaveChangesAsync();
+        }
     }
 
     public async Task UpdateAsync(Customer customer)

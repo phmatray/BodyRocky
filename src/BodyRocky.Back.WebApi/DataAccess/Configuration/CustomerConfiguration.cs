@@ -23,7 +23,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
             .IsRequired();
         
         builder
-            .Property(customer => customer.BirthDame)
+            .Property(customer => customer.BirthDate)
             .IsRequired();
         
         builder

@@ -7,11 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Domain" />
-      <Folder Include="Validation" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Remove="Contracts\Data\BasketStatusDTO.cs" />
       <Compile Remove="Contracts\Requests\CategoryRequests\UpdateCategoryRequest\**" />
       <Compile Remove="Contracts\Responses\BasketResponses.cs" />

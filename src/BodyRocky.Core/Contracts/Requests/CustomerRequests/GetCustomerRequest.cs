@@ -2,5 +2,5 @@
 
 public class GetCustomerRequest
 {
-    public Guid CustomerID { get; init; } 
+    public string CustomerID { get; init; } 
 }

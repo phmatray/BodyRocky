@@ -22,6 +22,7 @@ builder.Services.AddDbContext<BodyRockyDbContext>(
 
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<BasketRepository>();
+builder.Services.AddScoped<CustomerRepository>();
 
 
 // builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
@@ -29,6 +30,7 @@ builder.Services.AddScoped<BasketRepository>();
 var app = builder.Build();
 
 // app.UseMiddleware<ValidationExceptionMiddleware>();
+app.UseAuthorization();
 app.UseFastEndpoints(x =>
 {
     // x.ErrorResponseBuilder = (failures, _) =>
