@@ -1,12 +1,13 @@
 ﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
 using BodyRocky.Back.WebApi.DataAccess.Repositories;
+using BodyRocky.Core.Contracts.Requests.CustomerRequests;
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using FastEndpoints;
 
 namespace BodyRocky.Back.WebApi.Endpoints.Customers.GetAllCustomers;
 
 public class GetAllCustomersEndpoint
-    : EndpointWithoutRequest<GetAllCustomersResponse, GetAllCustomersMapper>
+    : Endpoint<GetAllCustomersRequest, GetAllCustomersResponse, GetAllCustomersMapper>
 {
     private readonly CustomerRepository _repository;
 
@@ -21,9 +22,9 @@ public class GetAllCustomersEndpoint
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(CancellationToken ct)
+    public override async Task HandleAsync(GetAllCustomersRequest req, CancellationToken ct)
     {
-        List<Customer> customers = await _repository.GetAllAsync();
+        List<Customer> customers = await _repository.GetAllAsync(req.Skip, req.Take);
         GetAllCustomersResponse response = Map.FromEntity(customers);
         await SendOkAsync(response, ct);
     }

@@ -12,9 +12,12 @@ public sealed class CustomerRepository : IDisposable
         _context = context;
     }
 
-    public async Task<List<Customer>> GetAllAsync()
+    public async Task<List<Customer>> GetAllAsync(int skip, int take)
     {
-        return await _context.Customers.ToListAsync();
+        return await _context.Customers
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync();
     }
 
     public async Task<Customer?> GetByIdAsync(Guid customerID)
