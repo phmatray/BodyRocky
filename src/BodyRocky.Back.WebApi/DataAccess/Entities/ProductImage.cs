@@ -6,6 +6,10 @@ public class ProductImage
     public string Image { get; set; } = default!;
     public bool IsFeatured { get; set; } = default!;
     
+    // relation product
+    public Guid ProductId { get; set; }
+    public Product Product { get; set; } = default!;
+    
     public bool ValidateEntity()
     {
         return true;

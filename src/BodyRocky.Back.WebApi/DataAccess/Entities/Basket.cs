@@ -5,6 +5,13 @@ public class Basket
     public Guid BasketID { get; set; } = default!;
     public DateTime BasketDateAdded { get; set; } = default!;
     
+    // relation products
+    public IList<BasketProduct> BasketProducts { get; set; }
+    
+    // relation basket status
+    public int BasketStatusCode { get; set; }
+    public BasketStatus BasketStatus { get; set; } = default!;
+
     public bool ValidateEntity()
     {
         return true;

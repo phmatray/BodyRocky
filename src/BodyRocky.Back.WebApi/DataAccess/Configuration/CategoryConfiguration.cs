@@ -15,6 +15,9 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
             .HasKey(category => category.CategoryID);
 
         builder
+            .HasMany(category => category.SubCategories);
+        
+        builder
             .Property(category => category.CategoryName)
             .IsRequired();
 

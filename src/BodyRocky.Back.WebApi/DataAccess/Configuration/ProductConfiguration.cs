@@ -15,6 +15,16 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasKey(product => product.ProductId);
 
         builder
+            .HasOne(product => product.Brand)
+            .WithMany(brand => brand.Products)
+            .HasForeignKey(product => product.BrandId);
+
+        builder
+            .HasMany(product => product.ProductImages)
+            .WithOne(image => image.Product)
+            .HasForeignKey(image => image.ProductId);
+ 
+        builder
             .Property(product => product.ProductName)
             .IsRequired();
         

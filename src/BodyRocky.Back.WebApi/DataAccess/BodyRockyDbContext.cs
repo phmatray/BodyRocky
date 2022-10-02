@@ -24,17 +24,11 @@ public sealed class BodyRockyDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        var fakerCustomer = new Faker<Customer>()
-            .RuleFor(m => m.CustomerID, f => f.Random.Guid())
-            .RuleFor(m => m.FirstName, f => f.Person.FirstName)
-            .RuleFor(m => m.LastName, f => f.Person.LastName)
-            .RuleFor(m => m.BirthDate, f => f.Date.Past(18))
-            .RuleFor(m => m.Password, f => f.Random.Hash())
-            .RuleFor(m => m.PhoneNumber, f => f.Person.Phone)
-            .RuleFor(m => m.EmailAddress, f => f.Person.Email);
+        modelBuilder
+            .ApplyConfigurationsFromAssembly(typeof(BodyRockyDbContext).Assembly);
 
         modelBuilder
             .Entity<Customer>()
-            .HasData(fakerCustomer.Generate(1000));
+            .HasData(DataFakers.FakerCustomer.Generate(100));
     }
 }

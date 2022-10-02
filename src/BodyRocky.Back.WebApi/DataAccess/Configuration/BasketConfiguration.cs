@@ -17,5 +17,10 @@ public class BasketConfiguration : IEntityTypeConfiguration<Basket>
         builder
             .Property(basket => basket.BasketDateAdded)
             .IsRequired();
+
+        builder
+            .HasOne(basket => basket.BasketStatus)
+            .WithMany(status => status.Baskets)
+            .HasForeignKey(basket => basket.BasketStatusCode);
     }
 }

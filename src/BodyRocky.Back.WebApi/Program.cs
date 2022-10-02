@@ -21,6 +21,7 @@ builder.Services.AddDbContext<BodyRockyDbContext>(
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<BasketRepository>();
 builder.Services.AddScoped<CustomerRepository>();
+builder.Services.AddScoped<BrandRepository>();
 
 builder.Services.AddCors(options =>
 {

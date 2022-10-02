@@ -9,6 +9,19 @@ public class Product
     public string ProductURL { get; set; } = default!;
     public bool IsFeatured { get; set; } = default!;
     
+    // relation brand
+    public Guid BrandId { get; set; } = default!;
+    public Brand Brand { get; set; } = default!;
+    
+    // relation product images
+    public IList<ProductImage> ProductImages { get; set; }
+    
+    // relation categories
+    public IList<ProductCategory> ProductCategories { get; set; }
+    
+    // relation baskets
+    public IList<BasketProduct> BasketProducts { get; set; }
+    
     public bool ValidateEntity()
     {
         return true;
