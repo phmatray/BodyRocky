@@ -14,4 +14,10 @@ public static class DataFakers
             .RuleFor(m => m.Password, f => f.Random.Hash())
             .RuleFor(m => m.PhoneNumber, f => f.Person.Phone)
             .RuleFor(m => m.EmailAddress, f => f.Person.Email);
+
+    public static Faker<Category> FakerCategory
+        => new Faker<Category>()
+            .RuleFor(m => m.CategoryID, f => f.Random.Guid())
+            .RuleFor(m => m.CategoryName, f => f.Commerce.Categories(1).ToString())
+            .RuleFor(m => m.IsFeatured, f => f.Random.Bool());
 }

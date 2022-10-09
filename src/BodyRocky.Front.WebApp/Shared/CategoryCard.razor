@@ -1,0 +1,23 @@
+﻿<div class="group relative">
+  <div class="aspect-w-1 aspect-h-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
+    <img src="@ImageUrl" alt="@ImageDescription" class="object-cover object-center">
+  </div>
+  <a href="#" class="mt-4 block font-medium text-gray-900">
+    <span class="absolute inset-0 z-10" aria-hidden="true"></span>
+    @Name
+  </a>
+  <p aria-hidden="true" class="mt-1">Shop now</p>
+</div>
+
+@code {
+
+  [Parameter]
+  public string? ImageUrl { get; set; }
+
+  [Parameter]
+  public string? ImageDescription { get; set; }
+  
+  [Parameter]
+  public string? Name { get; set; }
+  
+}

@@ -44,6 +44,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         
         builder
             .Property(product => product.ProductPrice)
+            .HasColumnType("decimal(18,4)")
             .IsRequired();
         
         builder

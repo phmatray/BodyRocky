@@ -10,9 +10,11 @@ public class Category
     public IList<ProductCategory> ProductCategories { get; set; }
     
     // relation children categories
+    public Guid ParentCategoryID { get; set; } = default!;
+    public Category ParentCategory { get; set; } = default!;
     public IList<Category> SubCategories { get; set; }
 
-        public bool ValidateEntity()
+    public bool ValidateEntity()
     {
         return true;
     }

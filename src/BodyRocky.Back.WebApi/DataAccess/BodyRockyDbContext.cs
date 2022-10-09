@@ -30,5 +30,9 @@ public sealed class BodyRockyDbContext : DbContext
         modelBuilder
             .Entity<Customer>()
             .HasData(DataFakers.FakerCustomer.Generate(100));
+
+        modelBuilder
+            .Entity<Category>()
+            .HasData(DataFakers.FakerCategory.Generate(3));
     }
 }

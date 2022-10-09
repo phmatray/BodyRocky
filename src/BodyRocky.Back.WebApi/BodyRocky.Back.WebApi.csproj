@@ -21,8 +21,4 @@
       <ProjectReference Include="..\BodyRocky.Core\BodyRocky.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Summaries" />
-    </ItemGroup>
-
 </Project>

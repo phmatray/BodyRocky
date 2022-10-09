@@ -22,6 +22,7 @@ builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<BasketRepository>();
 builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<BrandRepository>();
+builder.Services.AddScoped<CategoryRepository>();
 
 builder.Services.AddCors(options =>
 {
