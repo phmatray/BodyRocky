@@ -29,5 +29,20 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder
             .Property(order => order.PurchaseDate)
             .IsRequired();
+
+        builder
+            .HasOne(order => order.Address)
+            .WithMany(address => address.Orders)
+            .HasForeignKey(order => order.AddressId);
+
+        builder
+            .HasOne(order => order.OrderStatus)
+            .WithMany(orderStatus => orderStatus.Orders)
+            .HasForeignKey(order => order.OrderStatusCode);
+        
+        builder
+            .HasMany(order => order.OrderedProducts)
+            .WithOne(orderedProduct => orderedProduct.Order)
+            .HasForeignKey(order => order.OrderedProductId);
     }
 }

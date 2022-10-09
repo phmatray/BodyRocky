@@ -6,7 +6,7 @@ public class Brand
     public string BrandName { get; set; } = default!;
     public string BrandLogo { get; set; } = default!;
 
-    // relations
+    // relation products
     public IList<Product> Products { get; set; }
 
     public bool ValidateEntity()

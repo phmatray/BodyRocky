@@ -37,5 +37,25 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder
             .Property(customer => customer.EmailAddress)
             .IsRequired();
+
+        builder
+            .HasMany(customer => customer.Addresses)
+            .WithOne(address => address.Customer)
+            .HasForeignKey(customer => customer.AddressID);
+        
+        builder
+            .HasMany(customer => customer.Baskets)
+            .WithOne(basket => basket.Customer)
+            .HasForeignKey(customer => customer.BasketID);
+        
+        builder
+            .HasMany(customer => customer.Reviews)
+            .WithOne(review => review.Customer)
+            .HasForeignKey(customer => customer.ReviewID);
+        
+        builder
+            .HasMany(customer => customer.Orders)
+            .WithOne(order => order.Customer)
+            .HasForeignKey(customer => customer.OrderID);
     }
 }

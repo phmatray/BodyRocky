@@ -11,6 +11,10 @@ public class Basket
     // relation basket status
     public int BasketStatusCode { get; set; }
     public BasketStatus BasketStatus { get; set; } = default!;
+    
+    // relation customer
+    public Guid CustomerId { get; set; }
+    public Customer Customer { get; set; } = default!;
 
     public bool ValidateEntity()
     {

@@ -16,12 +16,17 @@ public class Product
     // relation product images
     public IList<ProductImage> ProductImages { get; set; }
     
+    // relation reviews
+    public IList<Review> Reviews { get; set; }
     // relation categories
     public IList<ProductCategory> ProductCategories { get; set; }
     
     // relation baskets
     public IList<BasketProduct> BasketProducts { get; set; }
     
+    // relation orderedProducts
+    public IList<OrderedProduct> OrderedProducts { get; set; }
+
     public bool ValidateEntity()
     {
         return true;

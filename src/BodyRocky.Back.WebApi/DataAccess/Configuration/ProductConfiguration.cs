@@ -22,7 +22,17 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder
             .HasMany(product => product.ProductImages)
             .WithOne(image => image.Product)
-            .HasForeignKey(image => image.ProductId);
+            .HasForeignKey(product => product.ProductImageID);
+
+        builder
+            .HasMany(product => product.Reviews)
+            .WithOne(review => review.Product)
+            .HasForeignKey(product => product.ReviewID);
+        
+        builder
+            .HasMany(product => product.OrderedProducts)
+            .WithOne(orderedProduct => orderedProduct.Product)
+            .HasForeignKey(product => product.OrderedProductId);
  
         builder
             .Property(product => product.ProductName)

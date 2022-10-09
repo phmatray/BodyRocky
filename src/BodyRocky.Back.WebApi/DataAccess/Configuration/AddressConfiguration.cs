@@ -26,5 +26,10 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
             .Property(address => address.Street)
             .HasMaxLength(400)
             .IsRequired();
+
+        builder
+            .HasOne(address => address.ZipCode)
+            .WithMany(zipcode => zipcode.Addresses)
+            .HasForeignKey(address => address.ZipCodeID);
     }
 }
