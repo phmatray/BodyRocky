@@ -21,6 +21,12 @@ public class ProductImageConfiguration : IEntityTypeConfiguration<ProductImage>
         builder
             .Property(productImage => productImage.IsFeatured)
             .IsRequired();
+
+        builder
+            .HasOne(productImage => productImage.Product)
+            .WithMany(product => product.ProductImages)
+            .HasForeignKey(productImage => productImage.ProductId)
+            .OnDelete(DeleteBehavior.ClientCascade);
     }
     
 }

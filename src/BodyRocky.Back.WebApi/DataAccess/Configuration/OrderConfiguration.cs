@@ -31,9 +31,15 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
             .IsRequired();
 
         builder
-            .HasOne(order => order.Address)
-            .WithMany(address => address.Orders)
-            .HasForeignKey(order => order.AddressId);
+            .HasOne(order => order.BillingAddress)
+            .WithMany(address => address.BilledOrders)
+            .HasForeignKey(order => order.BillingAddressId);
+
+        builder
+            .HasOne(order => order.DeliveryAddress)
+            .WithMany(address => address.DeliveredOrders)
+            .HasForeignKey(order => order.DeliveryAddressId)
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder
             .HasOne(order => order.OrderStatus)
@@ -41,8 +47,8 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
             .HasForeignKey(order => order.OrderStatusCode);
         
         builder
-            .HasMany(order => order.OrderedProducts)
-            .WithOne(orderedProduct => orderedProduct.Order)
-            .HasForeignKey(order => order.OrderedProductId);
+            .HasOne(order => order.Customer)
+            .WithMany(customer => customer.Orders)
+            .HasForeignKey(order => order.CustomerId);
     }
 }

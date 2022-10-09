@@ -12,11 +12,12 @@ public class Address
     public Customer Customer { get; set; } = default!;
     
     // relation zipCode
-    public int ZipCodeID { get; set; }
+    public Guid ZipCodeID { get; set; }
     public ZipCode ZipCode { get; set; } = default!;
     
     // relation orders
-    public IList<Order> Orders { get; set; }
+    public IList<Order> BilledOrders { get; set; }
+    public IList<Order> DeliveredOrders { get; set; }
     
     public bool ValidateEntity()
     {

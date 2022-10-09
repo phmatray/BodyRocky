@@ -31,5 +31,11 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
             .HasOne(address => address.ZipCode)
             .WithMany(zipcode => zipcode.Addresses)
             .HasForeignKey(address => address.ZipCodeID);
+        
+        builder
+            .HasOne(address => address.Customer)
+            .WithMany(customer => customer.Addresses)
+            .HasForeignKey(address => address.CustomerId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

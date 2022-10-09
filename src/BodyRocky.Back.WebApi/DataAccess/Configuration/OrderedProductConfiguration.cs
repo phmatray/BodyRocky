@@ -35,5 +35,15 @@ public class OrderedProductConfiguration : IEntityTypeConfiguration<OrderedProdu
             .HasOne(op => op.Product)
             .WithMany(product => product.OrderedProducts)
             .HasForeignKey(op => op.ProductId);
+        
+        builder
+            .HasOne(op => op.Order)
+            .WithMany(order => order.OrderedProducts)
+            .HasForeignKey(op => op.OrderId);
+        
+        builder
+            .HasOne(op => op.Product)
+            .WithMany(product => product.OrderedProducts)
+            .HasForeignKey(op => op.ProductId);
     }
 }

@@ -13,8 +13,10 @@ public class Order
     public Customer Customer { get; set; } = default!;
     
     // relation address
-    public Guid AddressId { get; set; } = default!;
-    public Address Address { get; set; } = default!;
+    public Guid BillingAddressId { get; set; } = default!;
+    public Address BillingAddress { get; set; } = default!;
+    public Guid DeliveryAddressId { get; set; } = default!;
+    public Address DeliveryAddress { get; set; } = default!;
     
     
     // relation order status
