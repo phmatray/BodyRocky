@@ -20,4 +20,11 @@ public static class DataFakers
             .RuleFor(m => m.CategoryID, f => f.Random.Guid())
             .RuleFor(m => m.CategoryName, f => f.Commerce.Categories(1).ToString())
             .RuleFor(m => m.IsFeatured, f => f.Random.Bool());
+
+    public static Faker<Address> FakerAddress
+        => new Faker<Address>()
+            .RuleFor(m => m.AddressID, f => f.Random.Guid())
+            .RuleFor(m => m.AddressFromDate, f => f.Date.Past(1))
+            .RuleFor(m => m.AddressToDate, f => f.Date.Future(1))
+            .RuleFor(m => m.Street, f => f.Address.StreetAddress());
 }
