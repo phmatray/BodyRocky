@@ -22,7 +22,7 @@ public sealed class ZipCodeRepository : IDisposable
         return await _context.ZipCodes.ToListAsync();
     }
 
-    public async Task<ZipCode?> GetByIdAsync(Guid zipCodeID)
+    public async Task<ZipCode?> GetByIDAsync(Guid zipCodeID)
     {
         return await _context.ZipCodes.FindAsync(zipCodeID);
     }

@@ -8,16 +8,18 @@ public class ProductCategoryConfiguration : IEntityTypeConfiguration<ProductCate
 {
     public void Configure(EntityTypeBuilder<ProductCategory> builder)
     {
-        builder.HasKey(pc => new { pc.ProductId, pc.CategoryId });
+        builder
+            .ToTable("ProductCategories")
+            .HasKey(pc => new { pc.ProductID, pc.CategoryID });
         
         builder
             .HasOne(pc => pc.Product)
             .WithMany(p => p.ProductCategories)
-            .HasForeignKey(pc => pc.ProductId);
+            .HasForeignKey(pc => pc.ProductID);
 
         builder
             .HasOne(pc => pc.Category)
             .WithMany(c => c.ProductCategories)
-            .HasForeignKey(pc => pc.CategoryId);
+            .HasForeignKey(pc => pc.CategoryID);
     }
 }

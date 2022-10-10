@@ -35,7 +35,7 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder
             .HasOne(address => address.Customer)
             .WithMany(customer => customer.Addresses)
-            .HasForeignKey(address => address.CustomerId)
+            .HasForeignKey(address => address.CustomerID)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

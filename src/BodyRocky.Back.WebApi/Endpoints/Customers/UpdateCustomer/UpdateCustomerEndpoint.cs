@@ -26,7 +26,7 @@ public class UpdateCustomerEndpoint
         UpdateCustomerRequest req,
         CancellationToken ct)
     {
-        Customer? existingCustomer = await _repository.GetByIdAsync(req.CustomerID);
+        Customer? existingCustomer = await _repository.GetByIDAsync(req.CustomerID);
 
         if (existingCustomer is null)
         {

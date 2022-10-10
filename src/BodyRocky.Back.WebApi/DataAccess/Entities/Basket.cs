@@ -13,7 +13,7 @@ public class Basket
     public BasketStatus BasketStatus { get; set; } = default!;
     
     // relation customer
-    public Guid CustomerId { get; set; }
+    public Guid CustomerID { get; set; }
     public Customer Customer { get; set; } = default!;
 
     public bool ValidateEntity()

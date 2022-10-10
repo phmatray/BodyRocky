@@ -22,7 +22,7 @@ public sealed class OrderRepository : IDisposable
         return await _context.Orders.ToListAsync();
     }
 
-    public async Task<Order?> GetByIdAsync(Guid orderID)
+    public async Task<Order?> GetByIDAsync(Guid orderID)
     {
         return await _context.Orders.FindAsync(orderID);
     }

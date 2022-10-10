@@ -11,7 +11,7 @@ public interface IBodyRockyApi
     [Get("/customers")]
     Task<GetAllCustomersResponse> GetCustomersAsync();
     
-    [Get("/customers/{request.CustomerId}")]
+    [Get("/customers/{request.CustomerID}")]
     Task<CustomerResponse> GetCustomerAsync(GetCustomerRequest request);
     
     [Post("/customers")]
@@ -20,7 +20,7 @@ public interface IBodyRockyApi
     [Put("/customers")]
     Task<CustomerResponse> UpdateCustomerAsync([Body] UpdateCustomerRequest request);
     
-    [Delete("/customers/{request.CustomerId}")]
+    [Delete("/customers/{request.CustomerID}")]
     Task DeleteCustomerAsync(DeleteCustomerRequest request);
 
     #endregion

@@ -9,13 +9,13 @@ public class Order
     public DateTime PurchaseDate { get; set; } = default!;
     
     // relation customer
-    public Guid CustomerId { get; set; }
+    public Guid CustomerID { get; set; }
     public Customer Customer { get; set; } = default!;
     
     // relation address
-    public Guid BillingAddressId { get; set; } = default!;
+    public Guid BillingAddressID { get; set; } = default!;
     public Address BillingAddress { get; set; } = default!;
-    public Guid DeliveryAddressId { get; set; } = default!;
+    public Guid DeliveryAddressID { get; set; } = default!;
     public Address DeliveryAddress { get; set; } = default!;
     
     

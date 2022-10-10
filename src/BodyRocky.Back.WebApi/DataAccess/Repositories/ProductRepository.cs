@@ -31,7 +31,7 @@ public sealed class ProductRepository : IDisposable
             .ToListAsync();
     }
 
-    public async Task<Product?> GetByIdAsync(Guid productID)
+    public async Task<Product?> GetByIDAsync(Guid productID)
     {
         return await _context.Products.FindAsync(productID);
     }

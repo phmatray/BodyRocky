@@ -1,5 +1,4 @@
 ﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
-using Bogus;
 using Microsoft.EntityFrameworkCore;
 
 namespace BodyRocky.Back.WebApi.DataAccess;
@@ -12,7 +11,7 @@ public sealed class BodyRockyDbContext : DbContext
     }
     
     public DbSet<Customer> Customers { get; set; }
-    public DbSet<Address> Adresses { get; set; }
+    public DbSet<Address> Addresses { get; set; }
     public DbSet<Basket> Baskets { get; set; }
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -27,16 +26,11 @@ public sealed class BodyRockyDbContext : DbContext
         modelBuilder
             .ApplyConfigurationsFromAssembly(typeof(BodyRockyDbContext).Assembly);
 
-        modelBuilder
-            .Entity<Customer>()
-            .HasData(DataFakers.FakerCustomer.Generate(100));
-
-        modelBuilder
-            .Entity<Category>()
-            .HasData(DataFakers.FakerCategory.Generate(3));
-        
-        modelBuilder
-            .Entity<Address>()
-            .HasData(DataFakers.FakerAddress.Generate(100));
+        FakeData.Init();
+        modelBuilder.Entity<Brand>().HasData(FakeData.Brands!);
+        modelBuilder.Entity<Category>().HasData(FakeData.Categories!);
+        modelBuilder.Entity<Customer>().HasData(FakeData.Customers!);
+        modelBuilder.Entity<ZipCode>().HasData(FakeData.ZipCodes!);
+        // modelBuilder.Entity<Address>().HasData(FakeData.Addresses!);
     }
 }

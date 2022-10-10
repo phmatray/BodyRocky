@@ -25,7 +25,7 @@ public sealed class CustomerRepository : IDisposable
             .ToListAsync();
     }
 
-    public async Task<Customer?> GetByIdAsync(Guid customerID)
+    public async Task<Customer?> GetByIDAsync(Guid customerID)
     {
         return await _context.Customers.FindAsync(customerID);
     }

@@ -8,7 +8,7 @@ public class Address
     public string Street { get; set; } = default!;
     
     // relation customer
-    public Guid CustomerId { get; set; }
+    public Guid CustomerID { get; set; }
     public Customer Customer { get; set; } = default!;
     
     // relation zipCode

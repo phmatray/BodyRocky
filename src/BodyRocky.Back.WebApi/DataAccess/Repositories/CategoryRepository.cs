@@ -30,7 +30,7 @@ public sealed class CategoryRepository : IDisposable
             .ToListAsync();
     }
 
-    public async Task<Category?> GetByIdAsync(Guid categoryID)
+    public async Task<Category?> GetByIDAsync(Guid categoryID)
     {
         return await _context.Categories.FindAsync(categoryID);
     }

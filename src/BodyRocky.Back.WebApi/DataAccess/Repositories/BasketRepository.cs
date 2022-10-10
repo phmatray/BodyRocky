@@ -22,7 +22,7 @@ public sealed class BasketRepository : IDisposable
         return await _context.Baskets.ToListAsync();
     }
     
-    public async Task<Basket?> GetByIdAsync(Guid basketID)
+    public async Task<Basket?> GetByIDAsync(Guid basketID)
     {
         return await _context.Baskets.FindAsync(basketID);
     }

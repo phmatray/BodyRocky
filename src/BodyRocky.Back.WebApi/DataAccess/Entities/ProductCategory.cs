@@ -2,9 +2,9 @@
 
 public class ProductCategory
 {
-    public Guid ProductId { get; set; }
+    public Guid ProductID { get; set; }
     public Product Product { get; set; }
     
-    public Guid CategoryId { get; set; }
+    public Guid CategoryID { get; set; }
     public Category Category { get; set; }
 }

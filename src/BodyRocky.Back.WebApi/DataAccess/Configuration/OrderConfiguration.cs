@@ -33,12 +33,12 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder
             .HasOne(order => order.BillingAddress)
             .WithMany(address => address.BilledOrders)
-            .HasForeignKey(order => order.BillingAddressId);
+            .HasForeignKey(order => order.BillingAddressID);
 
         builder
             .HasOne(order => order.DeliveryAddress)
             .WithMany(address => address.DeliveredOrders)
-            .HasForeignKey(order => order.DeliveryAddressId)
+            .HasForeignKey(order => order.DeliveryAddressID)
             .OnDelete(DeleteBehavior.NoAction);
 
         builder
@@ -49,6 +49,6 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder
             .HasOne(order => order.Customer)
             .WithMany(customer => customer.Orders)
-            .HasForeignKey(order => order.CustomerId);
+            .HasForeignKey(order => order.CustomerID);
     }
 }

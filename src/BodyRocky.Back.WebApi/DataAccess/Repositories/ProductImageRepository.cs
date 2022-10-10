@@ -22,7 +22,7 @@ public sealed class ProductImageRepository : IDisposable
         return await _context.ProductImages.ToListAsync();
     }
 
-    public async Task<ProductImage?> GetByIdAsync(Guid productImageID)
+    public async Task<ProductImage?> GetByIDAsync(Guid productImageID)
     {
         return await _context.ProductImages.FindAsync(productImageID);
     }

@@ -16,7 +16,7 @@ public class DeleteCustomerEndpoint
 
     public override void Configure()
     {
-        Delete("/customers/{CustomerId}");
+        Delete("/customers/{CustomerID}");
         AllowAnonymous();
     }
 
@@ -24,14 +24,14 @@ public class DeleteCustomerEndpoint
         DeleteCustomerRequest req,
         CancellationToken ct)
     {
-        bool isIdGuid = Guid.TryParse(req.CustomerID, out Guid customerId);
+        bool isIDGuid = Guid.TryParse(req.CustomerID, out Guid customerID);
 
-        if (!isIdGuid)
+        if (!isIDGuid)
         {
-            throw new Exception("customerId is not a valid GUID");
+            throw new Exception("customerID is not a valid GUID");
         }
         
-        await _repository.DeleteAsync(customerId);
+        await _repository.DeleteAsync(customerID);
         await SendOkAsync(ct);
     }
 }

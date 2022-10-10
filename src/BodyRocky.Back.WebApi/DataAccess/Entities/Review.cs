@@ -7,11 +7,11 @@ public class Review
     public string ReviewText { get; set; } = default!;
     
     // relation product
-    public Guid ProductId { get; set; }
+    public Guid ProductID { get; set; }
     public Product Product { get; set; } = default!;
     
     // relation customer
-    public Guid CustomerId { get; set; }
+    public Guid CustomerID { get; set; }
     public Customer Customer { get; set; } = default!;
     public bool ValidateEntity()
     {

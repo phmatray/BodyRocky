@@ -17,7 +17,7 @@ public class GetCustomerEndpoint
 
     public override void Configure()
     {
-        Get("/customers/{CustomerId}");
+        Get("/customers/{customerID}");
         AllowAnonymous();
     }
 
@@ -25,14 +25,14 @@ public class GetCustomerEndpoint
         GetCustomerRequest req,
         CancellationToken ct)
     {
-        bool isIdGuid = Guid.TryParse(req.CustomerID, out Guid customerId);
+        bool isIDGuid = Guid.TryParse(req.CustomerID, out Guid customerID);
 
-        if (!isIdGuid)
+        if (!isIDGuid)
         {
-            throw new Exception("customerId is not a valid GUID");
+            throw new Exception("customerID is not a valid GUID");
         }
         
-        var customers = await _repository.GetByIdAsync(customerId);
+        var customers = await _repository.GetByIDAsync(customerID);
 
         if (customers is null)
         {

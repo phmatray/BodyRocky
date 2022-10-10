@@ -24,11 +24,11 @@ public class ReviewConfiguration : IEntityTypeConfiguration<Review>
         builder
             .HasOne(review => review.Product)
             .WithMany(product => product.Reviews)
-            .HasForeignKey(review => review.ProductId);
+            .HasForeignKey(review => review.ProductID);
         
         builder
             .HasOne(review => review.Customer)
             .WithMany(customer => customer.Reviews)
-            .HasForeignKey(review => review.CustomerId);
+            .HasForeignKey(review => review.CustomerID);
     }
 }

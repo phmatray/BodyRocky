@@ -18,7 +18,7 @@ public class GetAllProductsEndpoint
         {
             new Product
             {
-                ProductId = Guid.NewGuid(),
+                ProductID = Guid.NewGuid(),
                 ProductDescription = "Une description",
                 ProductName = "NomDeProduit",
                 ProductPrice = 100m,

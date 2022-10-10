@@ -12,7 +12,7 @@ public class OrderedProductConfiguration : IEntityTypeConfiguration<OrderedProdu
 
         builder
             .ToTable("OrderedProduct")
-            .HasKey(op => op.OrderedProductId);
+            .HasKey(op => op.OrderedProductID);
 
         builder
             .Property(op => op.OrderedProductName)
@@ -34,16 +34,16 @@ public class OrderedProductConfiguration : IEntityTypeConfiguration<OrderedProdu
         builder
             .HasOne(op => op.Product)
             .WithMany(product => product.OrderedProducts)
-            .HasForeignKey(op => op.ProductId);
+            .HasForeignKey(op => op.ProductID);
         
         builder
             .HasOne(op => op.Order)
             .WithMany(order => order.OrderedProducts)
-            .HasForeignKey(op => op.OrderId);
+            .HasForeignKey(op => op.OrderID);
         
         builder
             .HasOne(op => op.Product)
             .WithMany(product => product.OrderedProducts)
-            .HasForeignKey(op => op.ProductId);
+            .HasForeignKey(op => op.ProductID);
     }
 }

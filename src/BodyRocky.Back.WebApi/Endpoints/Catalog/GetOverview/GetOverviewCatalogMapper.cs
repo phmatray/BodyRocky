@@ -14,7 +14,7 @@ public class GetOverviewCatalogMapper
             .FeaturedProducts
             .Select(p => new ProductResponse
             {
-                ProductId = p.ProductId,
+                ProductID = p.ProductID,
                 ProductName = p.ProductName,
                 ProductDescription = p.ProductDescription,
                 ProductPrice = p.ProductPrice,

@@ -22,7 +22,7 @@ public sealed class BrandRepository : IDisposable
         return await _context.Brands.ToListAsync();
     }
 
-    public async Task<Brand?> GetByIdAsync(Guid brandID)
+    public async Task<Brand?> GetByIDAsync(Guid brandID)
     {
         return await _context.Brands.FindAsync(brandID);
     }
@@ -35,7 +35,7 @@ public sealed class BrandRepository : IDisposable
     
     public async Task DeleteAsync(Guid brandID)
     {
-        var brand = await _context.Adresses.FindAsync(brandID);
+        var brand = await _context.Addresses.FindAsync(brandID);
         _context.Remove(brand);
         await _context.SaveChangesAsync();
     }

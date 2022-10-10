@@ -12,12 +12,12 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 
         builder
             .ToTable("Product")
-            .HasKey(product => product.ProductId);
+            .HasKey(product => product.ProductID);
 
         builder
             .HasOne(product => product.Brand)
             .WithMany(brand => brand.Products)
-            .HasForeignKey(product => product.BrandId)
+            .HasForeignKey(product => product.BrandID)
             .OnDelete(DeleteBehavior.ClientCascade);
  
         builder

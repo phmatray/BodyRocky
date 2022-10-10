@@ -7,7 +7,7 @@ public class ProductImage
     public bool IsFeatured { get; set; } = default!;
     
     // relation product
-    public Guid ProductId { get; set; }
+    public Guid ProductID { get; set; }
     public Product Product { get; set; } = default!;
     
     public bool ValidateEntity()

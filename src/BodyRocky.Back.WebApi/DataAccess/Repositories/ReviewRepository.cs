@@ -22,7 +22,7 @@ public sealed class ReviewRepository : IDisposable
         return await _context.Reviews.ToListAsync();
     }
 
-    public async Task<Review?> GetByIdAsync(Guid reviewID)
+    public async Task<Review?> GetByIDAsync(Guid reviewID)
     {
         return await _context.Reviews.FindAsync(reviewID);
     }

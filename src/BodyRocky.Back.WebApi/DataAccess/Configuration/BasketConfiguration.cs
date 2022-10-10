@@ -27,7 +27,7 @@ public class BasketConfiguration : IEntityTypeConfiguration<Basket>
         builder
             .HasOne(basket => basket.Customer)
             .WithMany(customer => customer.Baskets)
-            .HasForeignKey(basket => basket.CustomerId)
+            .HasForeignKey(basket => basket.CustomerID)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }
