@@ -10,12 +10,14 @@ public static class FakeData
     private static Faker<Customer>? _fakeCustomer;
     private static Faker<ZipCode>? _fakeZipCode;
     private static Faker<Address>? _fakeAddress;
+    private static Faker<Product>? _fakeProduct;
 
     public static List<Brand>? Brands;
     public static List<Category>? Categories;
     public static List<Customer>? Customers;
     public static List<ZipCode>? ZipCodes;
     public static List<Address>? Addresses;
+    public static List<Product>? Products;
 
     public static void Init()
     {
@@ -34,7 +36,6 @@ public static class FakeData
                 brandIds.Add(guid);
                 return guid;
             })
-            .RuleFor(m => m.BrandID, f => f.Random.Guid())
             .RuleFor(m => m.BrandName, f => f.Company.CompanyName())
             .RuleFor(m => m.BrandLogo, f => f.Image.PicsumUrl());
         
@@ -136,6 +137,35 @@ public static class FakeData
             });
         
         Addresses = _fakeAddress.Generate(numToSeed);
+        
+        #endregion
+        
+        #region Products
+        
+        List<Guid> productIds = new();
+
+        _fakeProduct = new Faker<Product>()
+            .StrictMode(false)
+            .UseSeed(5555)
+            .RuleFor(m => m.ProductID, f =>
+            {
+                Guid guid = f.Random.Guid();
+                productIds.Add(guid);
+                return guid;
+            })
+            .RuleFor(m => m.ProductName, f => f.Commerce.ProductName())
+            .RuleFor(m => m.ProductDescription, f => f.Commerce.ProductDescription())
+            .RuleFor(m => m.ProductPrice, f => f.Random.Decimal(0, 100))
+            .RuleFor(m => m.ProductURL, f => f.Image.PicsumUrl())
+            .RuleFor(m => m.IsFeatured, f => f.Random.Bool())
+            .RuleFor(m => m.BrandID, f =>
+            {
+                Guid random = f.PickRandom(brandIds);
+                brandIds.Remove(random);
+                return random;
+            });
+        
+        Products = _fakeProduct.Generate(numToSeed);
         
         #endregion
     }

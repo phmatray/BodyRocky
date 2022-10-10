@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BodyRocky.Back.WebApi.Migrations
 {
     [DbContext(typeof(BodyRockyDbContext))]
-    [Migration("20221010190722_InitialMigration")]
+    [Migration("20221010191841_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -675,7 +675,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d1b897fc-7777-027f-b858-964806e03621"),
-                            BirthDate = new DateTime(2016, 6, 21, 5, 37, 3, 646, DateTimeKind.Local).AddTicks(6506),
+                            BirthDate = new DateTime(2016, 6, 21, 5, 48, 22, 829, DateTimeKind.Local).AddTicks(7985),
                             EmailAddress = "Mable.Rolfson58@yahoo.com",
                             FirstName = "Mable",
                             LastName = "Rolfson",
@@ -685,7 +685,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("24a86f6c-5977-f46f-67dd-dddba5a9a732"),
-                            BirthDate = new DateTime(2010, 9, 5, 1, 46, 25, 718, DateTimeKind.Local).AddTicks(5163),
+                            BirthDate = new DateTime(2010, 9, 5, 1, 57, 44, 901, DateTimeKind.Local).AddTicks(6607),
                             EmailAddress = "Glenda.Miller55@hotmail.com",
                             FirstName = "Glenda",
                             LastName = "Miller",
@@ -695,7 +695,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("17577a5e-f5e7-ef5f-e697-f2ace5c8e0c2"),
-                            BirthDate = new DateTime(2010, 2, 14, 19, 22, 50, 717, DateTimeKind.Local).AddTicks(4554),
+                            BirthDate = new DateTime(2010, 2, 14, 19, 34, 9, 900, DateTimeKind.Local).AddTicks(5942),
                             EmailAddress = "Archie.Hahn@gmail.com",
                             FirstName = "Archie",
                             LastName = "Hahn",
@@ -705,7 +705,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("ef5a7cad-8ea0-9b3c-e6a8-909589729ae3"),
-                            BirthDate = new DateTime(2015, 8, 9, 23, 20, 34, 429, DateTimeKind.Local).AddTicks(9940),
+                            BirthDate = new DateTime(2015, 8, 9, 23, 31, 53, 613, DateTimeKind.Local).AddTicks(1379),
                             EmailAddress = "Duane_Moore37@hotmail.com",
                             FirstName = "Duane",
                             LastName = "Moore",
@@ -715,7 +715,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("a20d864f-6e74-3fdf-6542-3bc4a7cc8183"),
-                            BirthDate = new DateTime(2022, 4, 16, 20, 58, 52, 304, DateTimeKind.Local).AddTicks(4925),
+                            BirthDate = new DateTime(2022, 4, 16, 21, 10, 11, 487, DateTimeKind.Local).AddTicks(6118),
                             EmailAddress = "Wesley1@gmail.com",
                             FirstName = "Wesley",
                             LastName = "Heidenreich",
@@ -725,7 +725,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e5d8d983-cc47-c0ad-a4e4-3223e8c09803"),
-                            BirthDate = new DateTime(2016, 10, 11, 17, 37, 33, 781, DateTimeKind.Local).AddTicks(4344),
+                            BirthDate = new DateTime(2016, 10, 11, 17, 48, 52, 964, DateTimeKind.Local).AddTicks(5469),
                             EmailAddress = "Mable_Conn@yahoo.com",
                             FirstName = "Mable",
                             LastName = "Conn",
@@ -735,7 +735,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("8e09c622-cfa5-b448-898b-fcdeeaed3264"),
-                            BirthDate = new DateTime(2005, 12, 26, 19, 34, 10, 564, DateTimeKind.Local).AddTicks(8136),
+                            BirthDate = new DateTime(2005, 12, 26, 19, 45, 29, 747, DateTimeKind.Local).AddTicks(9273),
                             EmailAddress = "Molly47@hotmail.com",
                             FirstName = "Molly",
                             LastName = "Connelly",
@@ -745,7 +745,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f517f468-6424-0fe9-b705-96e2bddd731f"),
-                            BirthDate = new DateTime(2012, 4, 14, 10, 58, 46, 941, DateTimeKind.Local).AddTicks(7076),
+                            BirthDate = new DateTime(2012, 4, 14, 11, 10, 6, 124, DateTimeKind.Local).AddTicks(8157),
                             EmailAddress = "Micheal1@hotmail.com",
                             FirstName = "Micheal",
                             LastName = "Fay",
@@ -755,7 +755,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d7eee062-cbfe-cb53-056f-5ba3e656b6a2"),
-                            BirthDate = new DateTime(2007, 1, 21, 14, 30, 21, 856, DateTimeKind.Local).AddTicks(5589),
+                            BirthDate = new DateTime(2007, 1, 21, 14, 41, 41, 39, DateTimeKind.Local).AddTicks(6734),
                             EmailAddress = "Glen.Carter@gmail.com",
                             FirstName = "Glen",
                             LastName = "Carter",
@@ -765,7 +765,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("09cf3630-e958-88ab-34f5-562947070a64"),
-                            BirthDate = new DateTime(2011, 3, 29, 5, 30, 57, 695, DateTimeKind.Local).AddTicks(2550),
+                            BirthDate = new DateTime(2011, 3, 29, 5, 42, 16, 878, DateTimeKind.Local).AddTicks(3708),
                             EmailAddress = "Miranda_Kautzer@yahoo.com",
                             FirstName = "Miranda",
                             LastName = "Kautzer",
@@ -775,7 +775,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("370d7448-f7f8-fe75-2c48-ac7cd88f0347"),
-                            BirthDate = new DateTime(2016, 12, 22, 10, 57, 24, 494, DateTimeKind.Local).AddTicks(1547),
+                            BirthDate = new DateTime(2016, 12, 22, 11, 8, 43, 677, DateTimeKind.Local).AddTicks(2621),
                             EmailAddress = "Olive97@hotmail.com",
                             FirstName = "Olive",
                             LastName = "Hickle",
@@ -785,7 +785,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("16b4c4a0-2f35-237d-681b-bd453093a236"),
-                            BirthDate = new DateTime(2005, 6, 8, 10, 43, 9, 299, DateTimeKind.Local).AddTicks(8856),
+                            BirthDate = new DateTime(2005, 6, 8, 10, 54, 28, 482, DateTimeKind.Local).AddTicks(9864),
                             EmailAddress = "Harold.Bogan@gmail.com",
                             FirstName = "Harold",
                             LastName = "Bogan",
@@ -795,7 +795,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("4c3865c2-4fa0-2030-ee84-adc09a2380c0"),
-                            BirthDate = new DateTime(2009, 10, 14, 18, 47, 1, 1, DateTimeKind.Local).AddTicks(6521),
+                            BirthDate = new DateTime(2009, 10, 14, 18, 58, 20, 184, DateTimeKind.Local).AddTicks(7526),
                             EmailAddress = "Monica_Toy9@yahoo.com",
                             FirstName = "Monica",
                             LastName = "Toy",
@@ -805,7 +805,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("6569e4a5-16d0-f2e7-efd6-d481c804b5da"),
-                            BirthDate = new DateTime(2006, 3, 13, 4, 25, 50, 613, DateTimeKind.Local).AddTicks(4085),
+                            BirthDate = new DateTime(2006, 3, 13, 4, 37, 9, 796, DateTimeKind.Local).AddTicks(5125),
                             EmailAddress = "Jacob.Zboncak27@gmail.com",
                             FirstName = "Jacob",
                             LastName = "Zboncak",
@@ -815,7 +815,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f6bd4214-fcae-251e-1c0e-19ff98cd05d9"),
-                            BirthDate = new DateTime(2012, 6, 6, 1, 55, 8, 455, DateTimeKind.Local).AddTicks(3709),
+                            BirthDate = new DateTime(2012, 6, 6, 2, 6, 27, 638, DateTimeKind.Local).AddTicks(4661),
                             EmailAddress = "Nina.Kshlerin@yahoo.com",
                             FirstName = "Nina",
                             LastName = "Kshlerin",
@@ -825,7 +825,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("9a2731a6-8052-7fba-e7d5-859847ce1ba1"),
-                            BirthDate = new DateTime(2007, 3, 1, 8, 23, 5, 538, DateTimeKind.Local).AddTicks(548),
+                            BirthDate = new DateTime(2007, 3, 1, 8, 34, 24, 721, DateTimeKind.Local).AddTicks(1540),
                             EmailAddress = "Beverly95@yahoo.com",
                             FirstName = "Beverly",
                             LastName = "Pfeffer",
@@ -835,7 +835,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("639e22a8-ebb5-9b66-f18f-64bce6951b54"),
-                            BirthDate = new DateTime(2005, 6, 14, 12, 11, 54, 597, DateTimeKind.Local).AddTicks(4870),
+                            BirthDate = new DateTime(2005, 6, 14, 12, 23, 13, 780, DateTimeKind.Local).AddTicks(5849),
                             EmailAddress = "Ebony35@gmail.com",
                             FirstName = "Ebony",
                             LastName = "White",
@@ -845,7 +845,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("64bb2e44-3584-aec1-ee15-f67e8b1fe2d8"),
-                            BirthDate = new DateTime(2014, 8, 12, 19, 27, 15, 297, DateTimeKind.Local).AddTicks(9877),
+                            BirthDate = new DateTime(2014, 8, 12, 19, 38, 34, 481, DateTimeKind.Local).AddTicks(811),
                             EmailAddress = "Vanessa.Lindgren4@yahoo.com",
                             FirstName = "Vanessa",
                             LastName = "Lindgren",
@@ -855,7 +855,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("23390a56-c1d1-1d60-1c75-2fa24374999a"),
-                            BirthDate = new DateTime(2013, 9, 25, 5, 50, 23, 221, DateTimeKind.Local).AddTicks(569),
+                            BirthDate = new DateTime(2013, 9, 25, 6, 1, 42, 404, DateTimeKind.Local).AddTicks(1461),
                             EmailAddress = "Annie_Feil@hotmail.com",
                             FirstName = "Annie",
                             LastName = "Feil",
@@ -865,7 +865,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("771b2a2f-d9a0-2f46-b75e-94585589f127"),
-                            BirthDate = new DateTime(2013, 7, 2, 6, 58, 8, 215, DateTimeKind.Local).AddTicks(9831),
+                            BirthDate = new DateTime(2013, 7, 2, 7, 9, 27, 399, DateTimeKind.Local).AddTicks(799),
                             EmailAddress = "Owen.Kutch81@gmail.com",
                             FirstName = "Owen",
                             LastName = "Kutch",
@@ -875,7 +875,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("9f9b9048-2e80-a16c-f77a-e0a6fe86ef5e"),
-                            BirthDate = new DateTime(2005, 12, 10, 8, 47, 11, 416, DateTimeKind.Local).AddTicks(4301),
+                            BirthDate = new DateTime(2005, 12, 10, 8, 58, 30, 599, DateTimeKind.Local).AddTicks(5145),
                             EmailAddress = "Alfredo_Conroy@gmail.com",
                             FirstName = "Alfredo",
                             LastName = "Conroy",
@@ -885,7 +885,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("09a1ceff-6067-cfcc-eeee-51e27ad836cf"),
-                            BirthDate = new DateTime(2018, 7, 2, 15, 8, 38, 477, DateTimeKind.Local).AddTicks(6934),
+                            BirthDate = new DateTime(2018, 7, 2, 15, 19, 57, 660, DateTimeKind.Local).AddTicks(7810),
                             EmailAddress = "Laurence40@yahoo.com",
                             FirstName = "Laurence",
                             LastName = "Orn",
@@ -895,7 +895,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d94b91d5-6c77-2434-c3df-919814170af1"),
-                            BirthDate = new DateTime(2009, 6, 8, 15, 30, 7, 207, DateTimeKind.Local).AddTicks(8242),
+                            BirthDate = new DateTime(2009, 6, 8, 15, 41, 26, 390, DateTimeKind.Local).AddTicks(9068),
                             EmailAddress = "Regina_Schinner@yahoo.com",
                             FirstName = "Regina",
                             LastName = "Schinner",
@@ -905,7 +905,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("c4919c93-3b57-f555-d360-0930100173c3"),
-                            BirthDate = new DateTime(2016, 8, 31, 0, 45, 12, 988, DateTimeKind.Local).AddTicks(4826),
+                            BirthDate = new DateTime(2016, 8, 31, 0, 56, 32, 171, DateTimeKind.Local).AddTicks(5613),
                             EmailAddress = "Bethany24@gmail.com",
                             FirstName = "Bethany",
                             LastName = "Hills",
@@ -915,7 +915,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("241fdd79-d370-d294-5ba2-4214bf51b015"),
-                            BirthDate = new DateTime(2006, 3, 19, 21, 48, 39, 522, DateTimeKind.Local).AddTicks(6624),
+                            BirthDate = new DateTime(2006, 3, 19, 21, 59, 58, 705, DateTimeKind.Local).AddTicks(7352),
                             EmailAddress = "Clay_Abshire@yahoo.com",
                             FirstName = "Clay",
                             LastName = "Abshire",
@@ -925,7 +925,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d3a3a7af-ddc4-4ae6-f3f6-ce0e100862f8"),
-                            BirthDate = new DateTime(2022, 6, 12, 6, 44, 46, 486, DateTimeKind.Local).AddTicks(6403),
+                            BirthDate = new DateTime(2022, 6, 12, 6, 56, 5, 669, DateTimeKind.Local).AddTicks(7204),
                             EmailAddress = "Christian_Paucek38@yahoo.com",
                             FirstName = "Christian",
                             LastName = "Paucek",
@@ -935,7 +935,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("64b4e5c0-6541-cdce-487f-d0cf5e41bcdd"),
-                            BirthDate = new DateTime(2019, 3, 4, 9, 40, 41, 962, DateTimeKind.Local).AddTicks(5221),
+                            BirthDate = new DateTime(2019, 3, 4, 9, 52, 1, 145, DateTimeKind.Local).AddTicks(5969),
                             EmailAddress = "Gregory.Gibson@yahoo.com",
                             FirstName = "Gregory",
                             LastName = "Gibson",
@@ -945,7 +945,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0a135eb3-695a-2cd4-c170-213222bcdd0e"),
-                            BirthDate = new DateTime(2016, 8, 22, 19, 28, 20, 814, DateTimeKind.Local).AddTicks(2180),
+                            BirthDate = new DateTime(2016, 8, 22, 19, 39, 39, 997, DateTimeKind.Local).AddTicks(2948),
                             EmailAddress = "Santos.Mosciski@yahoo.com",
                             FirstName = "Santos",
                             LastName = "Mosciski",
@@ -955,7 +955,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("3c5d782e-c346-d1a4-ea87-956078911a78"),
-                            BirthDate = new DateTime(2011, 3, 16, 5, 0, 44, 902, DateTimeKind.Local).AddTicks(7827),
+                            BirthDate = new DateTime(2011, 3, 16, 5, 12, 4, 85, DateTimeKind.Local).AddTicks(8635),
                             EmailAddress = "Becky42@yahoo.com",
                             FirstName = "Becky",
                             LastName = "Jenkins",
@@ -965,7 +965,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0efd67fc-9c2a-914b-66c4-f73f17803c80"),
-                            BirthDate = new DateTime(2005, 9, 22, 11, 51, 11, 878, DateTimeKind.Local).AddTicks(7356),
+                            BirthDate = new DateTime(2005, 9, 22, 12, 2, 31, 61, DateTimeKind.Local).AddTicks(8142),
                             EmailAddress = "Kim.Ruecker83@hotmail.com",
                             FirstName = "Kim",
                             LastName = "Ruecker",
@@ -975,7 +975,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0e006fa9-de45-528c-0bae-9dd6207620e7"),
-                            BirthDate = new DateTime(2008, 1, 30, 17, 9, 12, 922, DateTimeKind.Local).AddTicks(6232),
+                            BirthDate = new DateTime(2008, 1, 30, 17, 20, 32, 105, DateTimeKind.Local).AddTicks(7002),
                             EmailAddress = "Joyce.Breitenberg@yahoo.com",
                             FirstName = "Joyce",
                             LastName = "Breitenberg",
@@ -985,7 +985,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("5cfc8e08-5314-1ffe-852b-cf7695022774"),
-                            BirthDate = new DateTime(2013, 2, 27, 22, 25, 1, 397, DateTimeKind.Local).AddTicks(8003),
+                            BirthDate = new DateTime(2013, 2, 27, 22, 36, 20, 580, DateTimeKind.Local).AddTicks(8839),
                             EmailAddress = "Teri_Gleichner72@gmail.com",
                             FirstName = "Teri",
                             LastName = "Gleichner",
@@ -995,7 +995,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("4ff0a3f7-1b7e-b61c-4dc4-04965e1306c6"),
-                            BirthDate = new DateTime(2013, 6, 6, 15, 40, 37, 18, DateTimeKind.Local).AddTicks(6466),
+                            BirthDate = new DateTime(2013, 6, 6, 15, 51, 56, 201, DateTimeKind.Local).AddTicks(7187),
                             EmailAddress = "Lloyd_Murphy@yahoo.com",
                             FirstName = "Lloyd",
                             LastName = "Murphy",
@@ -1005,7 +1005,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("54515b47-693f-f4da-e89f-9862d69a44ab"),
-                            BirthDate = new DateTime(2011, 3, 1, 16, 4, 36, 825, DateTimeKind.Local).AddTicks(7604),
+                            BirthDate = new DateTime(2011, 3, 1, 16, 15, 56, 8, DateTimeKind.Local).AddTicks(8336),
                             EmailAddress = "Marcia_Blick47@yahoo.com",
                             FirstName = "Marcia",
                             LastName = "Blick",
@@ -1015,7 +1015,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("5c2b4042-627b-9bd8-71c2-8a4b10ba2dc3"),
-                            BirthDate = new DateTime(2022, 10, 5, 0, 8, 43, 152, DateTimeKind.Local).AddTicks(1890),
+                            BirthDate = new DateTime(2022, 10, 5, 0, 20, 2, 335, DateTimeKind.Local).AddTicks(2846),
                             EmailAddress = "Moses_Orn98@yahoo.com",
                             FirstName = "Moses",
                             LastName = "Orn",
@@ -1025,7 +1025,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e4d782a2-c14b-bfc5-cee8-432a323314b8"),
-                            BirthDate = new DateTime(2011, 2, 1, 16, 4, 38, 577, DateTimeKind.Local).AddTicks(2043),
+                            BirthDate = new DateTime(2011, 2, 1, 16, 15, 57, 760, DateTimeKind.Local).AddTicks(2837),
                             EmailAddress = "Myrtle.Tremblay@yahoo.com",
                             FirstName = "Myrtle",
                             LastName = "Tremblay",
@@ -1035,7 +1035,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f6d2645c-d118-86e3-b4d6-dead790666a7"),
-                            BirthDate = new DateTime(2020, 3, 6, 18, 10, 49, 913, DateTimeKind.Local).AddTicks(8525),
+                            BirthDate = new DateTime(2020, 3, 6, 18, 22, 9, 96, DateTimeKind.Local).AddTicks(9224),
                             EmailAddress = "Otis42@yahoo.com",
                             FirstName = "Otis",
                             LastName = "Carter",
@@ -1045,7 +1045,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e9bfd8b1-5a52-3800-6862-2b734d40cd00"),
-                            BirthDate = new DateTime(2014, 8, 23, 15, 21, 7, 402, DateTimeKind.Local).AddTicks(3502),
+                            BirthDate = new DateTime(2014, 8, 23, 15, 32, 26, 585, DateTimeKind.Local).AddTicks(4210),
                             EmailAddress = "Kate_Wiegand@gmail.com",
                             FirstName = "Kate",
                             LastName = "Wiegand",
@@ -1055,7 +1055,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("bbe74b8f-4d35-5124-de8a-c572b6c207fe"),
-                            BirthDate = new DateTime(2016, 11, 6, 14, 59, 21, 331, DateTimeKind.Local).AddTicks(741),
+                            BirthDate = new DateTime(2016, 11, 6, 15, 10, 40, 514, DateTimeKind.Local).AddTicks(1316),
                             EmailAddress = "Stacy_Effertz@hotmail.com",
                             FirstName = "Stacy",
                             LastName = "Effertz",
@@ -1065,7 +1065,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("547a3a2a-9746-f1f7-0dc1-9f411376967d"),
-                            BirthDate = new DateTime(2007, 9, 18, 3, 49, 7, 541, DateTimeKind.Local).AddTicks(4927),
+                            BirthDate = new DateTime(2007, 9, 18, 4, 0, 26, 724, DateTimeKind.Local).AddTicks(5454),
                             EmailAddress = "Jeannie.Erdman98@yahoo.com",
                             FirstName = "Jeannie",
                             LastName = "Erdman",
@@ -1204,6 +1204,408 @@ namespace BodyRocky.Back.WebApi.Migrations
                     b.HasIndex("BrandID");
 
                     b.ToTable("Product", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ProductID = new Guid("5a7ec381-7fe2-acea-e21f-5c1649fca189"),
+                            BrandID = new Guid("bb2b43b4-bdc4-6ac7-c2ee-9c850c9c4d75"),
+                            IsFeatured = false,
+                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            ProductName = "Tasty Wooden Car",
+                            ProductPrice = 91.274773232301100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=752"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("7dcc32a6-9135-8d56-5a12-05ac8fdbe918"),
+                            BrandID = new Guid("7834298a-c5eb-188f-c4b8-7b2e59525a8c"),
+                            IsFeatured = true,
+                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            ProductName = "Small Steel Shirt",
+                            ProductPrice = 70.295350239749700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=813"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("0de12714-7dd7-b007-baf0-b4afb26d7650"),
+                            BrandID = new Guid("9cb19bf8-afde-ddc7-db50-e2ad897154d2"),
+                            IsFeatured = false,
+                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            ProductName = "Handmade Wooden Bike",
+                            ProductPrice = 15.758120601884100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=889"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("9be586f7-4338-c32d-2d13-680eb049b5dc"),
+                            BrandID = new Guid("e39c64d3-fd29-e24f-16a6-8e0134a19954"),
+                            IsFeatured = false,
+                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
+                            ProductName = "Licensed Concrete Towels",
+                            ProductPrice = 99.497796920825600m,
+                            ProductURL = "https://picsum.photos/640/480/?image=918"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("90fc49db-ce26-20c2-2da2-1550986b7777"),
+                            BrandID = new Guid("9ff33aaf-690f-bbc1-2c6f-ce2c728d04a5"),
+                            IsFeatured = true,
+                            ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            ProductName = "Small Soft Tuna",
+                            ProductPrice = 47.668922155941300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=977"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a12cdf19-5b03-bd17-207a-c0ef479d9c5f"),
+                            BrandID = new Guid("0ff7bd5d-7afb-72a0-d8aa-f62c8441cdf7"),
+                            IsFeatured = false,
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Rustic Soft Bacon",
+                            ProductPrice = 69.409277462125400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=121"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("36db7add-c7b7-7366-a87d-7747a1201cd2"),
+                            BrandID = new Guid("0506fb2f-86b6-b93c-348f-d4f2697be09a"),
+                            IsFeatured = true,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Ergonomic Plastic Bacon",
+                            ProductPrice = 33.834000459794900m,
+                            ProductURL = "https://picsum.photos/640/480/?image=575"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("bb4d2353-9387-b44b-9a8d-c4887fe10659"),
+                            BrandID = new Guid("0680f4bc-ea50-98f6-7504-6a63414cdf42"),
+                            IsFeatured = true,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Small Granite Towels",
+                            ProductPrice = 7.5096863356929700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=747"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("db820e2c-2735-54f3-4bb5-e29379aaec15"),
+                            BrandID = new Guid("5b1fd012-2199-dab9-e58b-92bd68d0fa17"),
+                            IsFeatured = false,
+                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
+                            ProductName = "Handcrafted Concrete Fish",
+                            ProductPrice = 87.607566820274800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=37"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("5e09d651-6441-feff-661c-8f7811707e73"),
+                            BrandID = new Guid("3bc6573e-7be9-adf6-82f4-32bcb4b0f1b2"),
+                            IsFeatured = false,
+                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+                            ProductName = "Incredible Rubber Shoes",
+                            ProductPrice = 22.209727727905700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=916"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("6298315f-a8a8-97d4-bbd8-895f1d9512e6"),
+                            BrandID = new Guid("7c04d23b-019f-8a60-3710-6edd8e2bd064"),
+                            IsFeatured = true,
+                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            ProductName = "Intelligent Concrete Ball",
+                            ProductPrice = 89.520610631220300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=935"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("ec7b3944-8856-dfaa-f6a0-fe10cb9c55bd"),
+                            BrandID = new Guid("0136a8be-afc5-e0cc-f28b-6c79d99c9320"),
+                            IsFeatured = true,
+                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
+                            ProductName = "Tasty Soft Keyboard",
+                            ProductPrice = 56.527720697469900m,
+                            ProductURL = "https://picsum.photos/640/480/?image=748"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("1b13565c-8345-ec4e-2cd7-1e6f2de84132"),
+                            BrandID = new Guid("102c15a0-6464-7616-6d88-01236ecd42b5"),
+                            IsFeatured = false,
+                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
+                            ProductName = "Incredible Cotton Chips",
+                            ProductPrice = 7.9470227509490300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=1025"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("23146f8e-cbb6-24db-e476-8fff758f9973"),
+                            BrandID = new Guid("cc4236f3-8909-7940-c61f-66e5915e05ad"),
+                            IsFeatured = false,
+                            ProductDescription = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+                            ProductName = "Generic Frozen Shirt",
+                            ProductPrice = 19.54252115429500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=906"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("3c0a8ab6-d7b6-5a6e-3bfa-8cd56e2b3560"),
+                            BrandID = new Guid("89acfb10-c061-8721-53b1-d060c8aa0ce0"),
+                            IsFeatured = false,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Incredible Fresh Pants",
+                            ProductPrice = 6.9035452357044200m,
+                            ProductURL = "https://picsum.photos/640/480/?image=809"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("832bf510-261d-a99b-dfb5-6c2cc19e6d0c"),
+                            BrandID = new Guid("cec876ad-01dd-e278-c9a2-a9307cb760db"),
+                            IsFeatured = false,
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Handmade Soft Fish",
+                            ProductPrice = 14.977932122991400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=752"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("84f783dd-d95a-7406-cc6b-2bc0aceb3d15"),
+                            BrandID = new Guid("cbae5d6d-972f-22f0-58bf-b9d0ee21d8ed"),
+                            IsFeatured = true,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Unbranded Frozen Sausages",
+                            ProductPrice = 58.316251569574800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=973"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("24ad7f8b-437e-4d9b-f005-a5992e164e06"),
+                            BrandID = new Guid("c75e8db1-a293-6c21-daa0-4d8d3f9bc259"),
+                            IsFeatured = true,
+                            ProductDescription = "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+                            ProductName = "Gorgeous Concrete Sausages",
+                            ProductPrice = 66.958027503899300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=167"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("201baef7-4ccd-d467-e49a-f8db2be1f689"),
+                            BrandID = new Guid("8d3443d6-7c48-9e89-a8bb-e145421d90c2"),
+                            IsFeatured = false,
+                            ProductDescription = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+                            ProductName = "Intelligent Steel Pizza",
+                            ProductPrice = 56.449809929565400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=356"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("c609ef94-48a8-dee9-1f90-2ccf277b7fa4"),
+                            BrandID = new Guid("0bf3561a-9991-29d4-ce39-8263dd0de6f4"),
+                            IsFeatured = true,
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Ergonomic Soft Ball",
+                            ProductPrice = 47.714508999006100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=408"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("9587d601-b9dd-54d8-c7d4-8bde42a12b9b"),
+                            BrandID = new Guid("9dee3a3f-f243-4328-71f1-e8ffc3e39632"),
+                            IsFeatured = true,
+                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            ProductName = "Refined Soft Car",
+                            ProductPrice = 26.211186743439700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=66"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("74082b5e-52ee-2029-143c-c4d2c1540165"),
+                            BrandID = new Guid("4700fa3f-5a0e-779f-9a1d-3561e7579c43"),
+                            IsFeatured = false,
+                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            ProductName = "Intelligent Granite Soap",
+                            ProductPrice = 87.955784047001900m,
+                            ProductURL = "https://picsum.photos/640/480/?image=132"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("04e319a4-40b7-da17-7433-37b2b1636675"),
+                            BrandID = new Guid("0bd7df94-02a8-b034-5c45-1dfb54b1f529"),
+                            IsFeatured = false,
+                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            ProductName = "Awesome Fresh Bike",
+                            ProductPrice = 55.440436143167500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=307"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("dce25618-0f1f-bd63-c90b-cfd46f2469d3"),
+                            BrandID = new Guid("801abe43-31c6-11d5-ac49-5c10586c790b"),
+                            IsFeatured = false,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Ergonomic Wooden Table",
+                            ProductPrice = 94.013108170597400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=346"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("84a89272-5ad6-4b20-3e86-ec605d3bbb64"),
+                            BrandID = new Guid("cec3aa34-f966-56f0-4664-0aaf516dc3be"),
+                            IsFeatured = true,
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Rustic Metal Hat",
+                            ProductPrice = 48.107952786659800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=506"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("f2e2f601-4cfa-c93f-a28d-6a8d66dee66e"),
+                            BrandID = new Guid("41c09f22-e462-eec2-b236-046951f599dd"),
+                            IsFeatured = false,
+                            ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            ProductName = "Rustic Wooden Chips",
+                            ProductPrice = 39.078262093979100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=958"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a3bdf92f-0d66-e0c1-8b22-83e0772d50f1"),
+                            BrandID = new Guid("490c6622-bbea-0234-2100-e37d6a9bb082"),
+                            IsFeatured = false,
+                            ProductDescription = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+                            ProductName = "Handcrafted Plastic Keyboard",
+                            ProductPrice = 78.844258970974100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=804"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("0fba7993-1dfb-f84d-7ff9-c3018f9c6294"),
+                            BrandID = new Guid("e3e45b65-eda4-a53a-66d0-9b1f8ed98efc"),
+                            IsFeatured = false,
+                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            ProductName = "Sleek Rubber Soap",
+                            ProductPrice = 93.439952793270300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=898"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("15a2a433-a74a-0118-fbcc-0fed52b2e56e"),
+                            BrandID = new Guid("959badbe-7bad-57b5-cd3c-f92f276eebd5"),
+                            IsFeatured = true,
+                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+                            ProductName = "Intelligent Plastic Car",
+                            ProductPrice = 43.849628159706300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=779"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("470229c1-b92c-8d96-82fd-dc577b38add8"),
+                            BrandID = new Guid("c7b3305f-9bdb-472c-95c4-51184dd2aa8d"),
+                            IsFeatured = false,
+                            ProductDescription = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+                            ProductName = "Unbranded Wooden Ball",
+                            ProductPrice = 63.62331568432200m,
+                            ProductURL = "https://picsum.photos/640/480/?image=161"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("cf6e93a4-78a4-e352-41f7-5421a4d0d542"),
+                            BrandID = new Guid("3bf480d3-cb4e-a040-56e8-a8186acdfd9b"),
+                            IsFeatured = true,
+                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            ProductName = "Practical Rubber Gloves",
+                            ProductPrice = 91.227636761603700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=100"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a89c88dd-9e4a-4b1d-e7e8-a2984ac6e809"),
+                            BrandID = new Guid("c2bba114-d677-a87e-9248-5a20bead30a8"),
+                            IsFeatured = false,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Refined Rubber Shoes",
+                            ProductPrice = 33.854745530455700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=309"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("0a8dc3ec-ec0a-1644-a0d2-f11cdcaa99a2"),
+                            BrandID = new Guid("4d70da6f-141a-62ce-cc33-9a5596935366"),
+                            IsFeatured = false,
+                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            ProductName = "Generic Wooden Bacon",
+                            ProductPrice = 93.218626730711500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=515"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("ddaa6099-6e78-51b8-548a-bb87111341fa"),
+                            BrandID = new Guid("68fbb9a4-cd27-aa9f-7ae6-4281bda59a71"),
+                            IsFeatured = false,
+                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
+                            ProductName = "Unbranded Soft Chicken",
+                            ProductPrice = 97.784135722454700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=665"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("dca9725f-7852-b0e3-cb1f-70aa42679d32"),
+                            BrandID = new Guid("b2c36398-f822-2f8c-9e02-bd1e16f7c55a"),
+                            IsFeatured = false,
+                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+                            ProductName = "Awesome Rubber Gloves",
+                            ProductPrice = 23.267161065371300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=745"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a1173ec7-7e44-cd99-33aa-7d05c5dcfedc"),
+                            BrandID = new Guid("93a16dfd-ab85-04b9-fd40-0ecea27f8448"),
+                            IsFeatured = false,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Unbranded Soft Salad",
+                            ProductPrice = 23.57375189828400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=709"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("345ec5ef-db05-4d11-e0e1-151360416b4c"),
+                            BrandID = new Guid("33734837-1227-5085-ded5-1b373c300fe9"),
+                            IsFeatured = true,
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Refined Soft Salad",
+                            ProductPrice = 47.683690929638100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=559"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("e4aaeaa1-a055-3024-86db-b17f2065c858"),
+                            BrandID = new Guid("4c9ea98f-1208-8361-8f5f-ccf4b179ff89"),
+                            IsFeatured = false,
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Ergonomic Fresh Keyboard",
+                            ProductPrice = 9.2919680798854500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=269"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("006b6f9f-201f-5753-5921-921a302cf840"),
+                            BrandID = new Guid("3d77c624-9356-3068-8f30-0bb85651729c"),
+                            IsFeatured = false,
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Handmade Soft Towels",
+                            ProductPrice = 12.984628236379800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=533"
+                        },
+                        new
+                        {
+                            ProductID = new Guid("b9ff1eda-8872-b676-6e44-45e634231065"),
+                            BrandID = new Guid("963e205d-c089-03f5-23c8-ab1b097901d5"),
+                            IsFeatured = false,
+                            ProductDescription = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+                            ProductName = "Ergonomic Steel Sausages",
+                            ProductPrice = 42.445562147742900m,
+                            ProductURL = "https://picsum.photos/640/480/?image=362"
+                        });
                 });
 
             modelBuilder.Entity("BodyRocky.Back.WebApi.DataAccess.Entities.ProductCategory", b =>
