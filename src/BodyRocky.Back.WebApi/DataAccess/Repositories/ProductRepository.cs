@@ -11,6 +11,11 @@ public sealed class ProductRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Products.CountAsync();
+    }
 
     public async Task<List<Entities.Product>> GetAllAsync()
     {

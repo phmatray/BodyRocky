@@ -11,6 +11,11 @@ public sealed class CategoryRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Categories.CountAsync();
+    }
 
     public async Task<List<Category>> GetAllAsync()
     {

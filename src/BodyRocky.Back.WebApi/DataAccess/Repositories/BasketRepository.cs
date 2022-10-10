@@ -11,6 +11,11 @@ public sealed class BasketRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Baskets.CountAsync();
+    }
 
     public async Task<List<Basket>> GetAllAsync()
     {

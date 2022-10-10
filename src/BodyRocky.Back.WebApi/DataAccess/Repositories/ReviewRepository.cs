@@ -11,6 +11,11 @@ public sealed class ReviewRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Reviews.CountAsync();
+    }
 
     public async Task<List<Review>> GetAllAsync()
     {

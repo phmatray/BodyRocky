@@ -11,6 +11,11 @@ public sealed class AddressRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Adresses.CountAsync();
+    }
 
     public async Task<List<Address>> GetAllAsync()
     {

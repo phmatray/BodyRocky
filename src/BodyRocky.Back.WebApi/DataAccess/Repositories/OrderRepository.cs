@@ -11,6 +11,11 @@ public sealed class OrderRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Orders.CountAsync();
+    }
 
     public async Task<List<Order>> GetAllAsync()
     {

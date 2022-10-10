@@ -11,6 +11,11 @@ public sealed class BrandRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Brands.CountAsync();
+    }
 
     public async Task<List<Brand>> GetAllAsync()
     {

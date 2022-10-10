@@ -11,6 +11,11 @@ public sealed class CustomerRepository : IDisposable
     {
         _context = context;
     }
+    
+    public async Task<int> CountAsync()
+    {
+        return await _context.Customers.CountAsync();
+    }
 
     public async Task<List<Customer>> GetAllAsync(int skip, int take)
     {
