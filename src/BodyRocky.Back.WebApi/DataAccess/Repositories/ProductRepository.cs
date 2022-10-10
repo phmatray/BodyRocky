@@ -17,9 +17,18 @@ public sealed class ProductRepository : IDisposable
         return await _context.Products.CountAsync();
     }
 
-    public async Task<List<Entities.Product>> GetAllAsync()
+    public async Task<List<Product>> GetAllAsync()
     {
         return await _context.Products.ToListAsync();
+    }
+    
+    public async Task<List<Product>> GetTop5FeaturedAsync()
+    {
+        return await _context.Products
+            .Where(p => p.IsFeatured)
+            .OrderBy(p => p.ProductName)
+            .Take(5)
+            .ToListAsync();
     }
 
     public async Task<Product?> GetByIdAsync(Guid productID)

@@ -22,6 +22,14 @@ public sealed class CategoryRepository : IDisposable
         return await _context.Categories.ToListAsync();
     }
 
+    public async Task<List<Category>> GetTop5FeaturedAsync()
+    {
+        return await _context.Categories
+            .Where(x => x.IsFeatured)
+            .Take(5)
+            .ToListAsync();
+    }
+
     public async Task<Category?> GetByIdAsync(Guid categoryID)
     {
         return await _context.Categories.FindAsync(categoryID);

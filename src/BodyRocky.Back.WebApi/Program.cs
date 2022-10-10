@@ -1,5 +1,6 @@
 using BodyRocky.Back.WebApi.DataAccess;
 using BodyRocky.Back.WebApi.DataAccess.Repositories;
+using BodyRocky.Back.WebApi.Services;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.EntityFrameworkCore;
@@ -18,11 +19,23 @@ builder.Services.AddSwaggerDoc();
 builder.Services.AddDbContext<BodyRockyDbContext>(
     options => options.UseSqlServer(connectionString));
 
+// repositories
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<BasketRepository>();
-builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<BrandRepository>();
 builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<CustomerRepository>();
+builder.Services.AddScoped<OrderRepository>();
+builder.Services.AddScoped<ProductImageRepository>();
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ReviewRepository>();
+builder.Services.AddScoped<ZipCodeRepository>();
+
+// business services
+builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<BasketService>();
+builder.Services.AddScoped<CatalogService>();
+builder.Services.AddScoped<OrderService>();
 
 builder.Services.AddCors(options =>
 {
