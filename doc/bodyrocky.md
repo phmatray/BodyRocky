@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
 direction BT
 class Address {
@@ -98,21 +99,22 @@ class ZipCode {
    uniqueidentifier ZipCodeID
 }
 
-Address  -->  Customer : CustomerId:CustomerID
-Address  -->  ZipCode : ZipCodeID
-Basket  -->  BasketStatus : BasketStatusCode:Code
-Basket  -->  Customer : CustomerId:CustomerID
-BasketProduct  -->  Basket : BasketId:BasketID
+Address "0..*" --> "1..1" Customer : CustomerID
+Address "0..*" --> "1..1" ZipCode : ZipCodeID
+Basket  -->  BasketStatus : Code
+Basket  -->  Customer : CustomerID
+BasketProduct  -->  Basket : BasketID
 BasketProduct  -->  Product : ProductId
-Order  -->  Address : BillingAddressId:AddressID
-Order  -->  Address : DeliveryAddressId:AddressID
-Order  -->  Customer : CustomerId:CustomerID
-Order  -->  OrderStatus : OrderStatusCode:Code
-OrderedProduct  -->  Order : OrderId:OrderID
+Order "0..*" --> "1..1"  Address : AddressID
+Order "0..*" --> "1..1"  Address : AddressID
+Order  -->  Customer : CustomerID
+Order "0..*" --> "1..1" OrderStatus : Code
+OrderedProduct  -->  Order : OrderID
 OrderedProduct  -->  Product : ProductId
-Product  -->  Brand : BrandId:BrandID
-ProductCategory  -->  Category : CategoryId:CategoryID
-ProductCategory  -->  Product : ProductId
+Product "1..1" --> "0..*"  Brand : BrandID
+ProductCategory "1..1" --> Category : CategoryID
+ProductCategory "1..1" -->  Product : ProductId
 ProductImage  -->  Product : ProductId
-Review  -->  Customer : CustomerId:CustomerID
+Review "0..*" --> "1..1"  Customer : CustomerID
 Review  -->  Product : ProductId
+```
