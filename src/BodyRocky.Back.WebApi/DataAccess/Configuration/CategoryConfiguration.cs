@@ -21,10 +21,5 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
         builder
             .Property(category => category.IsFeatured)
             .IsRequired();
-
-        builder
-            .HasMany(category => category.SubCategories)
-            .WithOne(category => category.ParentCategory)
-            .HasForeignKey(category => category.ParentCategoryID);
     }
 }

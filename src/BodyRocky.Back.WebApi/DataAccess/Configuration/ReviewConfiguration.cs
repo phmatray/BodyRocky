@@ -20,5 +20,15 @@ public class ReviewConfiguration : IEntityTypeConfiguration<Review>
 
         builder
             .Property(review => review.ReviewText);
+        
+        builder
+            .HasOne(review => review.Product)
+            .WithMany(product => product.Reviews)
+            .HasForeignKey(review => review.ProductId);
+        
+        builder
+            .HasOne(review => review.Customer)
+            .WithMany(customer => customer.Reviews)
+            .HasForeignKey(review => review.CustomerId);
     }
 }

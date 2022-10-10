@@ -12,10 +12,23 @@ public class ZipCodeConfiguration : IEntityTypeConfiguration<ZipCode>
 
         builder
             .ToTable("ZipCode")
-            .HasKey(code => code.Code);
+            .HasKey(code => code.ZipCodeID);
+
+        builder
+            .Property(zipcode => zipcode.Code)
+            .IsRequired();
 
         builder
             .Property(zipcode => zipcode.Commune)
             .IsRequired();
+        
+        // make code and commune unique
+        builder
+            .HasIndex(zipcode => new
+            {
+                zipcode.Code,
+                zipcode.Commune
+            })
+            .IsUnique();
     }
 }
