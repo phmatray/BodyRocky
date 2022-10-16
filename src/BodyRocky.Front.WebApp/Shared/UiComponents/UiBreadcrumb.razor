@@ -1,0 +1,23 @@
+<PageTitle>
+  @PageTitle - BodyRocky
+</PageTitle>
+
+<div class="container py-4 flex items-center gap-3">
+  <NavLink href="@Routes.HOME_ROUTE" class="text-primary text-base">
+    <i class="fa-solid fa-house"></i>
+  </NavLink>
+  @if (PageTitle is not null)
+  {
+    <span class="text-sm text-gray-400">
+      <i class="fa-solid fa-chevron-right"></i>
+    </span>
+    <p class="text-gray-600 font-medium">@PageTitle</p>
+  }
+</div>
+
+@code {
+  
+  [Parameter]
+  public string? PageTitle { get; set; }
+
+}

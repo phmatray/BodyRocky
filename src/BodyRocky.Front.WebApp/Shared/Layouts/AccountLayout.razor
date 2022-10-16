@@ -1,0 +1,21 @@
+﻿@inherits LayoutComponentBase
+@layout MainLayout
+
+<!-- breadcrumb -->
+<UiBreadcrumb PageTitle="Mon compte"/>
+<!-- ./breadcrumb -->
+
+<div class="container grid grid-cols-12 items-start gap-6 pt-4 pb-16">
+
+  <!-- sidebar -->
+  <UiAccountSidebar/>
+  <!-- ./sidebar -->
+
+  <!-- content -->
+  @Body
+  <!-- ./content -->
+
+</div>
+
+@code{
+}

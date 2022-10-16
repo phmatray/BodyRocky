@@ -1,0 +1,191 @@
+@page "/shop"
+
+<!-- breadcrumb -->
+<UiBreadcrumb PageTitle="Shop" />
+<!-- ./breadcrumb -->
+
+<!-- shop wrapper -->
+<div class="container grid grid-cols-4 gap-6 pt-4 pb-16 items-start">
+  <!-- sidebar -->
+  <div class="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden">
+    <div class="divide-y divide-gray-200 space-y-5">
+      <div>
+        <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Categories</h3>
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-1" name="cat-1"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-1">Bedroom</label>
+            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+          </div>
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-2" name="cat-2"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-2">Sofa</label>
+            <div class="ml-auto text-gray-600 text-sm">(9)</div>
+          </div>
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-3" name="cat-3"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-3">Office</label>
+            <div class="ml-auto text-gray-600 text-sm">(21)</div>
+          </div>
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-4" name="cat-4"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-4">Outdoor</label>
+            <div class="ml-auto text-gray-600 text-sm">(10)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">
+          Marques
+        </h3>
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-1" name="brand-1"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-1">Cooking Color</label>
+            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+          </div>
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-2" name="brand-2"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-2">Magniflex</label>
+            <div class="ml-auto text-gray-600 text-sm">(9)</div>
+          </div>
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-3" name="brand-3"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-3">Ashley</label>
+            <div class="ml-auto text-gray-600 text-sm">(21)</div>
+          </div>
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-4" name="brand-4"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-4">M&D</label>
+            <div class="ml-auto text-gray-600 text-sm">(10)</div>
+          </div>
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-5" name="brand-5"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-5">Olympic</label>
+            <div class="ml-auto text-gray-600 text-sm">(10)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Price</h3>
+        <div class="mt-4 flex items-center">
+          <input class="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm" id="min" name="min"
+                 placeholder="min"
+                 type="text">
+          <span class="mx-3 text-gray-500">-</span>
+          <input class="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm" id="max" name="max"
+                 placeholder="max"
+                 type="text">
+        </div>
+      </div>
+
+      @* <div class="pt-4"> *@
+      @*   <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">size</h3> *@
+      @*   <div class="flex items-center gap-2"> *@
+      @*     <div class="size-selector"> *@
+      @*       <input class="hidden" id="size-xs" name="size" type="radio"> *@
+      @*       <label class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600" *@
+      @*              for="size-xs">XS</label> *@
+      @*     </div> *@
+      @*     <div class="size-selector"> *@
+      @*       <input class="hidden" id="size-sm" name="size" type="radio"> *@
+      @*       <label class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600" *@
+      @*              for="size-sm">S</label> *@
+      @*     </div> *@
+      @*     <div class="size-selector"> *@
+      @*       <input class="hidden" id="size-m" name="size" type="radio"> *@
+      @*       <label class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600" *@
+      @*              for="size-m">M</label> *@
+      @*     </div> *@
+      @*     <div class="size-selector"> *@
+      @*       <input class="hidden" id="size-l" name="size" type="radio"> *@
+      @*       <label class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600" *@
+      @*              for="size-l">L</label> *@
+      @*     </div> *@
+      @*     <div class="size-selector"> *@
+      @*       <input class="hidden" id="size-xl" name="size" type="radio"> *@
+      @*       <label class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600" *@
+      @*              for="size-xl">XL</label> *@
+      @*     </div> *@
+      @*   </div> *@
+      @* </div> *@
+      @* *@
+      @* <div class="pt-4"> *@
+      @*   <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Color</h3> *@
+      @*   <div class="flex items-center gap-2"> *@
+      @*     <div class="color-selector"> *@
+      @*       <input class="hidden" id="red" name="color" type="radio"> *@
+      @*       <label class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block" *@
+      @*              for="red" *@
+      @*              style="background-color: #fc3d57;"></label> *@
+      @*     </div> *@
+      @*     <div class="color-selector"> *@
+      @*       <input class="hidden" id="black" name="color" type="radio"> *@
+      @*       <label class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block" *@
+      @*              for="black" *@
+      @*              style="background-color: #000;"></label> *@
+      @*     </div> *@
+      @*     <div class="color-selector"> *@
+      @*       <input class="hidden" id="white" name="color" type="radio"> *@
+      @*       <label class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block" *@
+      @*              for="white" *@
+      @*              style="background-color: #fff;"></label> *@
+      @*     </div> *@
+      @* *@
+      @*   </div> *@
+      @* </div> *@
+
+    </div>
+  </div>
+  <!-- ./sidebar -->
+
+  <!-- products -->
+  <div class="col-span-3">
+    <div class="flex items-center mb-4">
+      <select class="w-44 text-sm text-gray-600 py-3 px-4 border-gray-300 shadow-sm rounded focus:ring-primary focus:border-primary" id="sort"
+              name="sort">
+        <option value="">Default sorting</option>
+        <option value="price-low-to-high">Price low to high</option>
+        <option value="price-high-to-low">Price high to low</option>
+        <option value="latest">Latest product</option>
+      </select>
+
+      <div class="flex gap-2 ml-auto">
+        <div
+            class="border border-primary w-10 h-9 flex items-center justify-center text-white bg-primary rounded cursor-pointer">
+          <i class="fa-solid fa-grip-vertical"></i>
+        </div>
+        <div
+            class="border border-gray-300 w-10 h-9 flex items-center justify-center text-gray-600 rounded cursor-pointer">
+          <i class="fa-solid fa-list"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+      <UiProductCard/>
+      <UiProductCard/>
+      <UiProductCard/>
+      <UiProductCard/>
+      <UiProductCard/>
+      <UiProductCard/>
+    </div>
+  </div>
+  <!-- ./products -->
+</div>
+<!-- ./shop wrapper -->
+
+@code {
+
+}

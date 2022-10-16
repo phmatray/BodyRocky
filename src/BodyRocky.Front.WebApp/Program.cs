@@ -1,14 +1,18 @@
+using BodyRocky.Front.WebApp;
+using BodyRocky.Front.WebApp.Shared;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using BodyRocky.Front.WebApp;
 using Refit;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
-var services = builder.Services;
+IServiceCollection services = builder.Services;
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new(builder.HostEnvironment.BaseAddress)
+});
 
 services.AddOidcAuthentication(options =>
 {
@@ -17,8 +21,10 @@ services.AddOidcAuthentication(options =>
     builder.Configuration.Bind("Local", options.ProviderOptions);
 });
 
+services.AddScoped<Routes>();
+
 services
     .AddRefitClient<IBodyRockyApi>()
-    .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://localhost:7180"));
+    .ConfigureHttpClient(c => c.BaseAddress = new("https://localhost:7180"));
 
 await builder.Build().RunAsync();

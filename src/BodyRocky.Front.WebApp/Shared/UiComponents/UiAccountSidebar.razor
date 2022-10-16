@@ -1,0 +1,89 @@
+<div class="col-span-3">
+  <div class="px-4 py-3 shadow flex items-center gap-4">
+    <div class="flex-shrink-0">
+      <img alt="profile" class="rounded-full w-14 h-14 border border-gray-200 p-1 object-cover"
+           src="../assets/images/avatar.png">
+    </div>
+    <div class="flex-grow">
+      <p class="text-gray-600">Bonjour,</p>
+      <h4 class="text-gray-800 font-medium">John Doe</h4>
+    </div>
+  </div>
+
+  <div class="mt-6 bg-white shadow rounded p-4 divide-y divide-gray-200 space-y-4 text-gray-600">
+    <div class="space-y-1 pl-8">
+      <a class="relative text-primary block font-medium transition" href="#">
+        <span class="absolute -left-8 top-0 text-base">
+          <i class="fa-regular fa-address-card"></i>
+        </span>
+        Gérer mon profil
+      </a>
+      <NavLink 
+        class="relative hover:text-primary block transition"
+        href="@Routes.PROFILE_ROUTE">
+        Informations personnelles
+      </NavLink>
+      <NavLink
+        class="relative hover:text-primary block transition"
+        href="@Routes.ACCOUNT_ROUTE">
+        Gérer mes adresses
+      </NavLink>
+      <a class="relative hover:text-primary block transition" href="#">
+        Changez votre mot de passe
+      </a>
+    </div>
+
+    <div class="space-y-1 pl-8 pt-4">
+      <a class="relative hover:text-primary block font-medium transition" href="#">
+        <span class="absolute -left-8 top-0 text-base">
+          <i class="fa-solid fa-box-archive"></i>
+        </span>
+        Historique de commande
+      </a>
+      <a class="relative hover:text-primary block transition" href="#">
+        Mes retours
+      </a>
+      <a class="relative hover:text-primary block transition" href="#">
+        Mes annulations
+      </a>
+      <a class="relative hover:text-primary block transition" href="#">
+        Mes reviews de produits
+      </a>
+    </div>
+
+    <div class="space-y-1 pl-8 pt-4">
+      <a class="relative hover:text-primary block font-medium transition" href="#">
+        <span class="absolute -left-8 top-0 text-base">
+          <i class="fa-regular fa-credit-card"></i>
+        </span>
+        Moyens de paiement
+      </a>
+      <a class="relative hover:text-primary block transition" href="#">
+        voucher
+      </a>
+    </div>
+
+    <div class="space-y-1 pl-8 pt-4">
+      <a class="relative hover:text-primary block font-medium transition" href="#">
+        <span class="absolute -left-8 top-0 text-base">
+          <i class="fa-regular fa-heart"></i>
+        </span>
+        Ma liste de souhaits
+      </a>
+    </div>
+
+    <div class="space-y-1 pl-8 pt-4">
+      <a class="relative hover:text-primary block font-medium transition" href="#">
+        <span class="absolute -left-8 top-0 text-base">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </span>
+        Déconnexion
+      </a>
+    </div>
+
+  </div>
+</div>
+
+@code {
+  
+}
