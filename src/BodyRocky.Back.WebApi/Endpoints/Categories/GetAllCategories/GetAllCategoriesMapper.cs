@@ -14,6 +14,8 @@ public class GetAllCategoriesMapper
             {
                 CategoryID = category.CategoryID,
                 CategoryName = category.CategoryName,
+                CategoryImage = category.CategoryImage,
+                CategoryIcon = category.CategoryIcon,
                 IsFeatured = category.IsFeatured,
             })
             .ToList();

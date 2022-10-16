@@ -5,9 +5,11 @@ namespace BodyRocky.Core.Contracts.Responses.CatalogResponses;
 
 public class GetOverviewCatalogResponse
 {
+    public List<CategoryResponse> FeaturedCategories { get; init; } = new();
+
     public List<ProductResponse> FeaturedProducts { get; init; } = new();
     
-    public List<CategoryResponse> FeaturedCategories { get; init; } = new();
+    public List<ProductResponse> RecommendedProducts { get; set; } = new();
     
     public int TotalProducts { get; init; }
     

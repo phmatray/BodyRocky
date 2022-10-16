@@ -45,21 +45,25 @@ public static class FakeData
         
         #region Categories
 
-        List<Guid> categoryIds = new();
+        // List<Guid> categoryIds = new();
         
-        _fakeCategory = new Faker<Category>()
-            .StrictMode(false)
-            .UseSeed(2222)
-            .RuleFor(m => m.CategoryID, f =>
-            {
-                Guid guid = f.Random.Guid();
-                categoryIds.Add(guid);
-                return guid;
-            })
-            .RuleFor(m => m.CategoryName, f => f.Commerce.Categories(1).First())
-            .RuleFor(m => m.IsFeatured, f => f.Random.Bool());
+        // _fakeCategory = new Faker<Category>()
+        //     .StrictMode(false)
+        //     .UseSeed(2222)
+        //     .RuleFor(m => m.CategoryID, f =>
+        //     {
+        //         Guid guid = f.Random.Guid();
+        //         categoryIds.Add(guid);
+        //         return guid;
+        //     })
+        //     .RuleFor(m => m.CategoryName, f => f.Commerce.Categories(1).First())
+        //     .RuleFor(m => m.CategoryImage, f => f.Image.PicsumUrl())
+        //     .RuleFor(m => m.CategoryIcon, f => f.Random.Word())
+        //     .RuleFor(m => m.IsFeatured, true);
+
+        // Categories = _fakeCategory.Generate(6);
         
-        Categories = _fakeCategory.Generate(numToSeed);
+        Categories = GetPredefinedCategories();
         
         #endregion
         
@@ -168,5 +172,66 @@ public static class FakeData
         Products = _fakeProduct.Generate(numToSeed);
         
         #endregion
+    }
+
+    private static List<Category> GetPredefinedCategories()
+    {
+        List<Category> categories = new();
+        
+        categories.Add(new()
+        {
+            CategoryID = Guid.NewGuid(),
+            CategoryName = "Cardio-training",
+            CategoryImage = "https://picsum.photos/200/300",
+            CategoryIcon = "fas fa-heartbeat",
+            IsFeatured = true
+        });
+        
+        categories.Add(new()
+        {
+            CategoryID = Guid.NewGuid(),
+            CategoryName = "Musculation",
+            CategoryImage = "https://picsum.photos/200/300",
+            CategoryIcon = "fas fa-dumbbell",
+            IsFeatured = true
+        });
+        
+        categories.Add(new()
+        {
+            CategoryID = Guid.NewGuid(),
+            CategoryName = "Jeux et loisirs",
+            CategoryImage = "https://picsum.photos/200/300",
+            CategoryIcon = "fas fa-gamepad",
+            IsFeatured = true
+        });
+        
+        categories.Add(new()
+        {
+            CategoryID = Guid.NewGuid(),
+            CategoryName = "Fitness",
+            CategoryImage = "https://picsum.photos/200/300",
+            CategoryIcon = "fas fa-running",
+            IsFeatured = true
+        });
+        
+        categories.Add(new()
+        {
+            CategoryID = Guid.NewGuid(),
+            CategoryName = "Yoga et bien-être",
+            CategoryImage = "https://picsum.photos/200/300",
+            CategoryIcon = "fas fa-heart",
+            IsFeatured = true
+        });
+        
+        categories.Add(new()
+        {
+            CategoryID = Guid.NewGuid(),
+            CategoryName = "Nutrition",
+            CategoryImage = "https://picsum.photos/200/300",
+            CategoryIcon = "fas fa-utensils",
+            IsFeatured = true
+        });
+
+        return categories;
     }
 }

@@ -1,0 +1,26 @@
+@using BodyRocky.Core.Contracts.Responses.CategoryResponses
+<div class="relative rounded-sm overflow-hidden group">
+  @if (Data is not null)
+  {
+    <img src="@Data.CategoryImage" alt="@Data.CategoryName" class="w-full">
+    <NavLink href="@Routes.SHOP_ROUTE"
+             class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+      @Data.CategoryName
+    </NavLink>
+  }
+  else
+  {
+    <img src="/images/placeholder.png" alt="Placeholder" class="w-full">
+    <NavLink href="@Routes.SHOP_ROUTE"
+             class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+      CATEGORIE
+    </NavLink>
+  }
+</div>
+
+@code {
+  
+  [Parameter]
+  public CategoryResponse? Data { get; set; }
+  
+}

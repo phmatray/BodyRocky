@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@inherits FluxorLayout
+@inject LayoutDispatcher LayoutDispatcher
 
 <UiHeader/>
 <UiNavbar/>
@@ -7,4 +8,10 @@
 <UiCopyright/>
 
 @code{
+
+  protected override void OnInitialized()
+  {
+    LayoutDispatcher.LoadCategories();
+  }
+  
 }

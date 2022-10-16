@@ -1,4 +1,8 @@
 @page "/shop"
+@using BodyRocky.Core.Contracts.Responses.ProductResponses
+@using BodyRocky.Core.Contracts.Responses.CategoryResponses
+@inherits FluxorComponent
+@inject IState<LayoutState> LayoutState
 
 <!-- breadcrumb -->
 <UiBreadcrumb PageTitle="Shop" />
@@ -12,30 +16,20 @@
       <div>
         <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Categories</h3>
         <div class="space-y-2">
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-1" name="cat-1"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-1">Bedroom</label>
-            <div class="ml-auto text-gray-600 text-sm">(15)</div>
-          </div>
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-2" name="cat-2"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-2">Sofa</label>
-            <div class="ml-auto text-gray-600 text-sm">(9)</div>
-          </div>
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-3" name="cat-3"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-3">Office</label>
-            <div class="ml-auto text-gray-600 text-sm">(21)</div>
-          </div>
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-4" name="cat-4"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="cat-4">Outdoor</label>
-            <div class="ml-auto text-gray-600 text-sm">(10)</div>
-          </div>
+          @if (LayoutState?.Value.Categories != null)
+          {
+            foreach (CategoryResponse category in LayoutState.Value.Categories)
+            {
+              <div class="flex items-center">
+                <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-1" name="cat-1"
+                       type="checkbox">
+                <label class="text-gray-600 ml-3 cusror-pointer" for="cat-1">
+                  @category.CategoryName
+                </label>
+                <div class="ml-auto text-gray-600 text-sm">(15)</div>
+              </div>
+            }
+          }
         </div>
       </div>
 
@@ -174,12 +168,12 @@
     </div>
 
     <div class="grid grid-cols-3 gap-6">
-      <UiProductCard/>
-      <UiProductCard/>
-      <UiProductCard/>
-      <UiProductCard/>
-      <UiProductCard/>
-      <UiProductCard/>
+      <UiProductCard Data="_sampleProduct"/>
+      <UiProductCard Data="_sampleProduct"/>
+      <UiProductCard Data="_sampleProduct"/>
+      <UiProductCard Data="_sampleProduct"/>
+      <UiProductCard Data="_sampleProduct"/>
+      <UiProductCard Data="_sampleProduct"/>
     </div>
   </div>
   <!-- ./products -->
@@ -187,5 +181,15 @@
 <!-- ./shop wrapper -->
 
 @code {
+
+  private readonly ProductResponse _sampleProduct = new()
+  {
+    ProductID = Guid.NewGuid(),
+    ProductName = "Sample Product",
+    ProductDescription = "Sample Product Description",
+    ProductPrice = 100,
+    ProductURL = "https://www.google.com",
+    IsFeatured = false
+  };
 
 }

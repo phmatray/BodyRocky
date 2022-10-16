@@ -22,14 +22,18 @@ public class CatalogService
     
     public async Task<CatalogOverview> GetOverviewAsync()
     {
-        List<Category> featuredCategories = await _categoryRepository.GetTop5FeaturedAsync();
-        List<Product> featuredProducts = await _productRepository.GetTop5FeaturedAsync();
-        
+        List<Category> featuredCategories = await _categoryRepository.GetTop6FeaturedAsync();
+        List<Product> featuredProducts = await _productRepository.GetTop4FeaturedAsync();
+        List<Product> recommendedProducts = await _productRepository.GetTop8RecommendedAsync();
+
         int totalProducts = await _productRepository.CountAsync();
         int totalCategories = await _categoryRepository.CountAsync();
         int totalBrands = await _brandRepository.CountAsync();
 
-        return new CatalogOverview(featuredCategories, featuredProducts)
+        return new CatalogOverview(
+            featuredCategories,
+            featuredProducts,
+            recommendedProducts)
         {
             TotalProducts = totalProducts,
             TotalCategories = totalCategories,

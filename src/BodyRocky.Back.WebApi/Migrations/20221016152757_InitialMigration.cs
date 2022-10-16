@@ -41,6 +41,8 @@ namespace BodyRocky.Back.WebApi.Migrations
                 {
                     CategoryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryIcon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsFeatured = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -382,56 +384,22 @@ namespace BodyRocky.Back.WebApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Category",
-                columns: new[] { "CategoryID", "CategoryName", "IsFeatured" },
+                columns: new[] { "CategoryID", "CategoryIcon", "CategoryImage", "CategoryName", "IsFeatured" },
                 values: new object[,]
                 {
-                    { new Guid("107b1d54-894d-b487-b7cd-ff20a1087b2d"), "Electronics", true },
-                    { new Guid("1e225722-e924-3a4e-7ee5-2af9771c990e"), "Health", false }
+                    { new Guid("09683532-3346-4f2e-8998-414895ee2810"), "fas fa-utensils", "https://picsum.photos/200/300", "Nutrition", true },
+                    { new Guid("50b89a6e-e798-4ddd-a719-d953c1d49b9c"), "fas fa-heart", "https://picsum.photos/200/300", "Yoga et bien-être", true }
                 });
 
             migrationBuilder.InsertData(
                 table: "Category",
-                columns: new[] { "CategoryID", "CategoryName", "IsFeatured" },
+                columns: new[] { "CategoryID", "CategoryIcon", "CategoryImage", "CategoryName", "IsFeatured" },
                 values: new object[,]
                 {
-                    { new Guid("2042419c-7ae7-0328-e5b8-b8f620b3b8cd"), "Outdoors", true },
-                    { new Guid("238674be-fab4-1c6b-2de9-135becededd1"), "Electronics", false },
-                    { new Guid("30c0ee79-af5c-3564-1526-973cd26b126a"), "Outdoors", true },
-                    { new Guid("332922dd-7992-2d1a-c24a-c8bc17a7917b"), "Outdoors", false },
-                    { new Guid("3353298b-77b3-edef-f40a-e4c8b64d3956"), "Automotive", false },
-                    { new Guid("34bbd47c-7b0e-5479-377b-c43249f62232"), "Movies", false },
-                    { new Guid("3623a294-9514-0149-1875-07385312f151"), "Clothing", false },
-                    { new Guid("38c0f330-9fab-e148-8661-4f5d6ea01b1e"), "Electronics", false },
-                    { new Guid("573527a9-7863-1b1e-4b30-89873882259f"), "Music", true },
-                    { new Guid("5ebd2218-f057-06ee-c3a2-2acb948696cc"), "Health", true },
-                    { new Guid("5f7cc18e-ab58-85e6-f4c5-9d697ca49041"), "Tools", false },
-                    { new Guid("605eaaa3-435c-ad64-40a5-2d557da2b201"), "Industrial", true },
-                    { new Guid("63492f1a-2cda-c746-06c7-e847b0a823a2"), "Jewelery", true },
-                    { new Guid("6daf60aa-a215-70a2-0e75-6a29d86fedcd"), "Movies", true },
-                    { new Guid("6db3378e-66ea-86af-1e7e-0b686dba1b36"), "Books", false },
-                    { new Guid("7904d0b5-601c-164b-d25d-8f44a8378c04"), "Health", true },
-                    { new Guid("7c065e9c-549d-713d-f0c1-b69e75522609"), "Grocery", false },
-                    { new Guid("87b97f39-d66a-72ff-8a17-57a906bdf3b1"), "Toys", false },
-                    { new Guid("8c6d5dbc-015b-1b14-8d4a-250c1e087105"), "Tools", true },
-                    { new Guid("9af882f8-6e0a-4589-0ec5-1e3df003d022"), "Music", false },
-                    { new Guid("a4c4fc33-74f9-1564-2a1f-83e669736785"), "Shoes", true },
-                    { new Guid("a8b81e4b-d1cb-b9f1-fab1-1265acfc96ae"), "Books", true },
-                    { new Guid("a90aae69-82fb-3693-88f0-a184aada119a"), "Beauty", false },
-                    { new Guid("ae4e73c1-26fb-3d2e-1603-d3c143126c6a"), "Music", true },
-                    { new Guid("aea9efc8-ffd1-296a-7e31-0c94d1ce0c89"), "Clothing", false },
-                    { new Guid("aee6db0c-8d0f-f3a4-6967-4d3d1402f4b5"), "Movies", false },
-                    { new Guid("b5e7d5f8-d2ed-19d0-5bff-e192c1408394"), "Beauty", true },
-                    { new Guid("b823ad19-4f72-b449-4d7d-f84e3700f225"), "Sports", true },
-                    { new Guid("bb206c51-e6bf-dec3-7ac9-b3e652faf523"), "Electronics", true },
-                    { new Guid("ce0f9d61-017a-875e-feaf-07a6272d15d6"), "Tools", true },
-                    { new Guid("d38ca003-f886-7640-8520-e31f097668aa"), "Automotive", false },
-                    { new Guid("d4370200-a196-636c-e5a8-c7b425fd3146"), "Sports", true },
-                    { new Guid("dbd714ea-bf56-7ff6-ea31-a8674c5a6ff0"), "Music", false },
-                    { new Guid("dc3f7fdf-a91f-3038-e4b8-6404695f1edc"), "Toys", true },
-                    { new Guid("dd60c742-3a70-0c91-6b8f-44bb797b3680"), "Movies", false },
-                    { new Guid("e2c2fe3b-b288-97fa-9eb7-fe5e838586c6"), "Electronics", false },
-                    { new Guid("e4b90dfe-1b63-1502-4739-454e9847ecd9"), "Books", true },
-                    { new Guid("ea99ec9f-52b8-3814-8016-e5b225e111f6"), "Baby", false }
+                    { new Guid("54efda68-a4bf-44b1-81a2-e2cee41b52c2"), "fas fa-gamepad", "https://picsum.photos/200/300", "Jeux et loisirs", true },
+                    { new Guid("593e1831-d5d6-4b19-9c24-996006b5f22f"), "fas fa-running", "https://picsum.photos/200/300", "Fitness", true },
+                    { new Guid("7e3a05a1-85d8-4480-bdd7-7e093e9b1014"), "fas fa-heartbeat", "https://picsum.photos/200/300", "Cardio-training", true },
+                    { new Guid("cf0c2839-aa0d-4b2e-8c89-8c4a635f8a65"), "fas fa-dumbbell", "https://picsum.photos/200/300", "Musculation", true }
                 });
 
             migrationBuilder.InsertData(
@@ -439,10 +407,44 @@ namespace BodyRocky.Back.WebApi.Migrations
                 columns: new[] { "CustomerID", "BirthDate", "EmailAddress", "FirstName", "LastName", "Password", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { new Guid("09a1ceff-6067-cfcc-eeee-51e27ad836cf"), new DateTime(2018, 7, 2, 15, 19, 57, 660, DateTimeKind.Local).AddTicks(7810), "Laurence40@yahoo.com", "Laurence", "Orn", "6bb86560998d073a1b9ba1d5b931af91266d6ddd", "(236) 432-2476 x6727" },
-                    { new Guid("09cf3630-e958-88ab-34f5-562947070a64"), new DateTime(2011, 3, 29, 5, 42, 16, 878, DateTimeKind.Local).AddTicks(3708), "Miranda_Kautzer@yahoo.com", "Miranda", "Kautzer", "61e9b6a8243268b0a562447f3add7326a534cdab", "773.504.2410 x607" },
-                    { new Guid("0a135eb3-695a-2cd4-c170-213222bcdd0e"), new DateTime(2016, 8, 22, 19, 39, 39, 997, DateTimeKind.Local).AddTicks(2948), "Santos.Mosciski@yahoo.com", "Santos", "Mosciski", "8a399cd1fd098f0a8c0228ba23c7d86461fdfb41", "749-945-8869" },
-                    { new Guid("0e006fa9-de45-528c-0bae-9dd6207620e7"), new DateTime(2008, 1, 30, 17, 20, 32, 105, DateTimeKind.Local).AddTicks(7002), "Joyce.Breitenberg@yahoo.com", "Joyce", "Breitenberg", "c9ec82fae34791da1559cdb081ddb3797e0ce2e5", "318-923-3924" }
+                    { new Guid("09a1ceff-6067-cfcc-eeee-51e27ad836cf"), new DateTime(2018, 7, 8, 11, 29, 13, 258, DateTimeKind.Local).AddTicks(9444), "Laurence40@yahoo.com", "Laurence", "Orn", "6bb86560998d073a1b9ba1d5b931af91266d6ddd", "(236) 432-2476 x6727" },
+                    { new Guid("09cf3630-e958-88ab-34f5-562947070a64"), new DateTime(2011, 4, 4, 1, 51, 32, 476, DateTimeKind.Local).AddTicks(4735), "Miranda_Kautzer@yahoo.com", "Miranda", "Kautzer", "61e9b6a8243268b0a562447f3add7326a534cdab", "773.504.2410 x607" },
+                    { new Guid("0a135eb3-695a-2cd4-c170-213222bcdd0e"), new DateTime(2016, 8, 28, 15, 48, 55, 595, DateTimeKind.Local).AddTicks(4978), "Santos.Mosciski@yahoo.com", "Santos", "Mosciski", "8a399cd1fd098f0a8c0228ba23c7d86461fdfb41", "749-945-8869" },
+                    { new Guid("0e006fa9-de45-528c-0bae-9dd6207620e7"), new DateTime(2008, 2, 5, 13, 29, 47, 703, DateTimeKind.Local).AddTicks(9108), "Joyce.Breitenberg@yahoo.com", "Joyce", "Breitenberg", "c9ec82fae34791da1559cdb081ddb3797e0ce2e5", "318-923-3924" },
+                    { new Guid("0efd67fc-9c2a-914b-66c4-f73f17803c80"), new DateTime(2005, 9, 28, 8, 11, 46, 660, DateTimeKind.Local).AddTicks(155), "Kim.Ruecker83@hotmail.com", "Kim", "Ruecker", "c04c18d317124d158a699d63a058af9378dd65b2", "(316) 420-1209 x9740" },
+                    { new Guid("16b4c4a0-2f35-237d-681b-bd453093a236"), new DateTime(2005, 6, 14, 7, 3, 44, 81, DateTimeKind.Local).AddTicks(1043), "Harold.Bogan@gmail.com", "Harold", "Bogan", "2aa937f9a85d813e69f69c15af86c16802d692cb", "(613) 923-3761 x211" },
+                    { new Guid("17577a5e-f5e7-ef5f-e697-f2ace5c8e0c2"), new DateTime(2010, 2, 20, 15, 43, 25, 498, DateTimeKind.Local).AddTicks(6758), "Archie.Hahn@gmail.com", "Archie", "Hahn", "957157e78391aaa4af9916108bbfcbd03b6c7ea0", "813-979-0238 x51606" },
+                    { new Guid("23390a56-c1d1-1d60-1c75-2fa24374999a"), new DateTime(2013, 10, 1, 2, 10, 58, 2, DateTimeKind.Local).AddTicks(3040), "Annie_Feil@hotmail.com", "Annie", "Feil", "64299fd04c627ec243ade12519e1f9a9ffd1ddb5", "1-715-969-4911 x17592" },
+                    { new Guid("241fdd79-d370-d294-5ba2-4214bf51b015"), new DateTime(2006, 3, 25, 18, 9, 14, 303, DateTimeKind.Local).AddTicks(9288), "Clay_Abshire@yahoo.com", "Clay", "Abshire", "c1130528318f54711024ffa98df995bf925e5304", "663.744.5518" },
+                    { new Guid("24a86f6c-5977-f46f-67dd-dddba5a9a732"), new DateTime(2010, 9, 10, 22, 7, 0, 499, DateTimeKind.Local).AddTicks(7286), "Glenda.Miller55@hotmail.com", "Glenda", "Miller", "c2f97b613f85667f540a1ab347f59196eb9912e5", "501-919-5456 x91797" },
+                    { new Guid("370d7448-f7f8-fe75-2c48-ac7cd88f0347"), new DateTime(2016, 12, 28, 7, 17, 59, 275, DateTimeKind.Local).AddTicks(3724), "Olive97@hotmail.com", "Olive", "Hickle", "a382513e123e640970820b27036340be38d694c4", "1-576-378-1925" },
+                    { new Guid("3c5d782e-c346-d1a4-ea87-956078911a78"), new DateTime(2011, 3, 22, 1, 21, 19, 684, DateTimeKind.Local).AddTicks(656), "Becky42@yahoo.com", "Becky", "Jenkins", "10604579c6d7de9cf245bf6248b3c11ff1ea1dc1", "375-796-3358" },
+                    { new Guid("4c3865c2-4fa0-2030-ee84-adc09a2380c0"), new DateTime(2009, 10, 20, 15, 7, 35, 782, DateTimeKind.Local).AddTicks(8805), "Monica_Toy9@yahoo.com", "Monica", "Toy", "eff466ec72b71f1089bb20eb4a759cc6edeafcf7", "472.363.9783 x0777" },
+                    { new Guid("4ff0a3f7-1b7e-b61c-4dc4-04965e1306c6"), new DateTime(2013, 6, 12, 12, 1, 11, 799, DateTimeKind.Local).AddTicks(9522), "Lloyd_Murphy@yahoo.com", "Lloyd", "Murphy", "0ce1e8101f9d3178d882f7060b08148a061b39dc", "400-844-7911 x196" },
+                    { new Guid("54515b47-693f-f4da-e89f-9862d69a44ab"), new DateTime(2011, 3, 7, 12, 25, 11, 607, DateTimeKind.Local).AddTicks(773), "Marcia_Blick47@yahoo.com", "Marcia", "Blick", "95ee6b9b17ccfd4fa44d4f2e4d52037573b4c3f8", "1-477-419-8185 x7652" },
+                    { new Guid("547a3a2a-9746-f1f7-0dc1-9f411376967d"), new DateTime(2007, 9, 24, 0, 9, 42, 322, DateTimeKind.Local).AddTicks(8032), "Jeannie.Erdman98@yahoo.com", "Jeannie", "Erdman", "15e7b22540b89b81c33920eb1cde27f631f52e51", "(887) 331-9600 x582" },
+                    { new Guid("5c2b4042-627b-9bd8-71c2-8a4b10ba2dc3"), new DateTime(2022, 10, 10, 20, 29, 17, 933, DateTimeKind.Local).AddTicks(5041), "Moses_Orn98@yahoo.com", "Moses", "Orn", "f6dd88a12ff0d731b9d97f95f6c49efd2b5e8575", "337.591.0174 x05854" },
+                    { new Guid("5cfc8e08-5314-1ffe-852b-cf7695022774"), new DateTime(2013, 3, 5, 18, 45, 36, 179, DateTimeKind.Local).AddTicks(1104), "Teri_Gleichner72@gmail.com", "Teri", "Gleichner", "e6f37227df1cfff027e5fd0a9129e478759a3156", "840-924-2437" },
+                    { new Guid("639e22a8-ebb5-9b66-f18f-64bce6951b54"), new DateTime(2005, 6, 20, 8, 32, 29, 378, DateTimeKind.Local).AddTicks(7296), "Ebony35@gmail.com", "Ebony", "White", "b09ea9aa65cfbd7cb24c3d525424a54dfaaa5bad", "658-849-9321" },
+                    { new Guid("64b4e5c0-6541-cdce-487f-d0cf5e41bcdd"), new DateTime(2019, 3, 10, 6, 1, 16, 743, DateTimeKind.Local).AddTicks(7947), "Gregory.Gibson@yahoo.com", "Gregory", "Gibson", "4b9c633ebd15025786d1696936cf719fe755c9ee", "(235) 878-4897 x002" },
+                    { new Guid("64bb2e44-3584-aec1-ee15-f67e8b1fe2d8"), new DateTime(2014, 8, 18, 15, 47, 50, 79, DateTimeKind.Local).AddTicks(2346), "Vanessa.Lindgren4@yahoo.com", "Vanessa", "Lindgren", "0626d7d31d39f0447528657f25be92cc8b1955c9", "544.217.2112 x7292" },
+                    { new Guid("6569e4a5-16d0-f2e7-efd6-d481c804b5da"), new DateTime(2006, 3, 19, 0, 46, 25, 394, DateTimeKind.Local).AddTicks(6468), "Jacob.Zboncak27@gmail.com", "Jacob", "Zboncak", "57e1d6e7af3ed32bfe76dbb6a2440572be4ce9a1", "(725) 766-6845" },
+                    { new Guid("771b2a2f-d9a0-2f46-b75e-94585589f127"), new DateTime(2013, 7, 8, 3, 18, 42, 997, DateTimeKind.Local).AddTicks(2322), "Owen.Kutch81@gmail.com", "Owen", "Kutch", "79c39c51c08e3db58556321310d4705d719c781c", "1-533-638-9063" },
+                    { new Guid("8e09c622-cfa5-b448-898b-fcdeeaed3264"), new DateTime(2006, 1, 1, 15, 54, 45, 346, DateTimeKind.Local).AddTicks(216), "Molly47@hotmail.com", "Molly", "Connelly", "1ca15085de48bdac3363c866db3b1d54872283b6", "287-431-0605 x289" },
+                    { new Guid("9a2731a6-8052-7fba-e7d5-859847ce1ba1"), new DateTime(2007, 3, 7, 4, 43, 40, 319, DateTimeKind.Local).AddTicks(2969), "Beverly95@yahoo.com", "Beverly", "Pfeffer", "3f3a3b3b666a4c77c6eb2253b33fb31dcb73e0df", "785-350-1846" },
+                    { new Guid("9f9b9048-2e80-a16c-f77a-e0a6fe86ef5e"), new DateTime(2005, 12, 16, 5, 7, 46, 197, DateTimeKind.Local).AddTicks(6740), "Alfredo_Conroy@gmail.com", "Alfredo", "Conroy", "7e6cadf7a519fabbd27bac9815c623c4dffa6781", "(902) 950-3406" },
+                    { new Guid("a20d864f-6e74-3fdf-6542-3bc4a7cc8183"), new DateTime(2022, 4, 22, 17, 19, 27, 85, DateTimeKind.Local).AddTicks(6955), "Wesley1@gmail.com", "Wesley", "Heidenreich", "4a71661c3378db86f754d2e9fefb4b4fcc937c27", "(970) 276-4966" },
+                    { new Guid("bbe74b8f-4d35-5124-de8a-c572b6c207fe"), new DateTime(2016, 11, 12, 11, 19, 56, 112, DateTimeKind.Local).AddTicks(3822), "Stacy_Effertz@hotmail.com", "Stacy", "Effertz", "d742462ecf3fc4d9d9e00bf5e9786fa48d422160", "(535) 793-4002" },
+                    { new Guid("c4919c93-3b57-f555-d360-0930100173c3"), new DateTime(2016, 9, 5, 21, 5, 47, 769, DateTimeKind.Local).AddTicks(7268), "Bethany24@gmail.com", "Bethany", "Hills", "b230ee58f7932edfd30b14d40052ea88b9e76299", "842.390.8806 x3055" },
+                    { new Guid("d1b897fc-7777-027f-b858-964806e03621"), new DateTime(2016, 6, 27, 1, 57, 38, 427, DateTimeKind.Local).AddTicks(8135), "Mable.Rolfson58@yahoo.com", "Mable", "Rolfson", "e033dd26e7cf26f6cff8231b914bbe0303ba850e", "408-259-3567 x43796" },
+                    { new Guid("d3a3a7af-ddc4-4ae6-f3f6-ce0e100862f8"), new DateTime(2022, 6, 18, 3, 5, 21, 267, DateTimeKind.Local).AddTicks(9162), "Christian_Paucek38@yahoo.com", "Christian", "Paucek", "61e51ff968d560adc3ddf7ed1b8a12f0699907a2", "898.987.7942 x003" },
+                    { new Guid("d7eee062-cbfe-cb53-056f-5ba3e656b6a2"), new DateTime(2007, 1, 27, 10, 50, 56, 637, DateTimeKind.Local).AddTicks(7758), "Glen.Carter@gmail.com", "Glen", "Carter", "9954029fff5432707940ef16dfb476b6bc8caa33", "208-921-5192 x8048" },
+                    { new Guid("d94b91d5-6c77-2434-c3df-919814170af1"), new DateTime(2009, 6, 14, 11, 50, 41, 989, DateTimeKind.Local).AddTicks(674), "Regina_Schinner@yahoo.com", "Regina", "Schinner", "1722ef008e510b639af0f2e6d29ef7a8f32a662b", "487-376-4865 x995" },
+                    { new Guid("e4d782a2-c14b-bfc5-cee8-432a323314b8"), new DateTime(2011, 2, 7, 12, 25, 13, 358, DateTimeKind.Local).AddTicks(5031), "Myrtle.Tremblay@yahoo.com", "Myrtle", "Tremblay", "213a3fffc29dcfdf60eeb7a98ad9a5a81a61cf13", "(431) 650-9030" },
+                    { new Guid("e5d8d983-cc47-c0ad-a4e4-3223e8c09803"), new DateTime(2016, 10, 17, 13, 58, 8, 562, DateTimeKind.Local).AddTicks(6379), "Mable_Conn@yahoo.com", "Mable", "Conn", "0db5458ac49aca27fc5734013543eccb3cab5ae8", "422.982.7599" },
+                    { new Guid("e9bfd8b1-5a52-3800-6862-2b734d40cd00"), new DateTime(2014, 8, 29, 11, 41, 42, 183, DateTimeKind.Local).AddTicks(6670), "Kate_Wiegand@gmail.com", "Kate", "Wiegand", "dd63b5ae0f3751ccaa157021025c871051051412", "1-449-983-0589 x903" },
+                    { new Guid("ef5a7cad-8ea0-9b3c-e6a8-909589729ae3"), new DateTime(2015, 8, 15, 19, 41, 9, 211, DateTimeKind.Local).AddTicks(2206), "Duane_Moore37@hotmail.com", "Duane", "Moore", "b7359b9627fa8b91b712c73d06f712aae57b0f75", "1-825-765-0585 x45387" },
+                    { new Guid("f517f468-6424-0fe9-b705-96e2bddd731f"), new DateTime(2012, 4, 20, 7, 19, 21, 722, DateTimeKind.Local).AddTicks(9083), "Micheal1@hotmail.com", "Micheal", "Fay", "f1cf0567c636d823b1e94506d9f1f702e6f1394a", "(604) 399-1908 x8432" }
                 });
 
             migrationBuilder.InsertData(
@@ -450,42 +452,8 @@ namespace BodyRocky.Back.WebApi.Migrations
                 columns: new[] { "CustomerID", "BirthDate", "EmailAddress", "FirstName", "LastName", "Password", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { new Guid("0efd67fc-9c2a-914b-66c4-f73f17803c80"), new DateTime(2005, 9, 22, 12, 2, 31, 61, DateTimeKind.Local).AddTicks(8142), "Kim.Ruecker83@hotmail.com", "Kim", "Ruecker", "c04c18d317124d158a699d63a058af9378dd65b2", "(316) 420-1209 x9740" },
-                    { new Guid("16b4c4a0-2f35-237d-681b-bd453093a236"), new DateTime(2005, 6, 8, 10, 54, 28, 482, DateTimeKind.Local).AddTicks(9864), "Harold.Bogan@gmail.com", "Harold", "Bogan", "2aa937f9a85d813e69f69c15af86c16802d692cb", "(613) 923-3761 x211" },
-                    { new Guid("17577a5e-f5e7-ef5f-e697-f2ace5c8e0c2"), new DateTime(2010, 2, 14, 19, 34, 9, 900, DateTimeKind.Local).AddTicks(5942), "Archie.Hahn@gmail.com", "Archie", "Hahn", "957157e78391aaa4af9916108bbfcbd03b6c7ea0", "813-979-0238 x51606" },
-                    { new Guid("23390a56-c1d1-1d60-1c75-2fa24374999a"), new DateTime(2013, 9, 25, 6, 1, 42, 404, DateTimeKind.Local).AddTicks(1461), "Annie_Feil@hotmail.com", "Annie", "Feil", "64299fd04c627ec243ade12519e1f9a9ffd1ddb5", "1-715-969-4911 x17592" },
-                    { new Guid("241fdd79-d370-d294-5ba2-4214bf51b015"), new DateTime(2006, 3, 19, 21, 59, 58, 705, DateTimeKind.Local).AddTicks(7352), "Clay_Abshire@yahoo.com", "Clay", "Abshire", "c1130528318f54711024ffa98df995bf925e5304", "663.744.5518" },
-                    { new Guid("24a86f6c-5977-f46f-67dd-dddba5a9a732"), new DateTime(2010, 9, 5, 1, 57, 44, 901, DateTimeKind.Local).AddTicks(6607), "Glenda.Miller55@hotmail.com", "Glenda", "Miller", "c2f97b613f85667f540a1ab347f59196eb9912e5", "501-919-5456 x91797" },
-                    { new Guid("370d7448-f7f8-fe75-2c48-ac7cd88f0347"), new DateTime(2016, 12, 22, 11, 8, 43, 677, DateTimeKind.Local).AddTicks(2621), "Olive97@hotmail.com", "Olive", "Hickle", "a382513e123e640970820b27036340be38d694c4", "1-576-378-1925" },
-                    { new Guid("3c5d782e-c346-d1a4-ea87-956078911a78"), new DateTime(2011, 3, 16, 5, 12, 4, 85, DateTimeKind.Local).AddTicks(8635), "Becky42@yahoo.com", "Becky", "Jenkins", "10604579c6d7de9cf245bf6248b3c11ff1ea1dc1", "375-796-3358" },
-                    { new Guid("4c3865c2-4fa0-2030-ee84-adc09a2380c0"), new DateTime(2009, 10, 14, 18, 58, 20, 184, DateTimeKind.Local).AddTicks(7526), "Monica_Toy9@yahoo.com", "Monica", "Toy", "eff466ec72b71f1089bb20eb4a759cc6edeafcf7", "472.363.9783 x0777" },
-                    { new Guid("4ff0a3f7-1b7e-b61c-4dc4-04965e1306c6"), new DateTime(2013, 6, 6, 15, 51, 56, 201, DateTimeKind.Local).AddTicks(7187), "Lloyd_Murphy@yahoo.com", "Lloyd", "Murphy", "0ce1e8101f9d3178d882f7060b08148a061b39dc", "400-844-7911 x196" },
-                    { new Guid("54515b47-693f-f4da-e89f-9862d69a44ab"), new DateTime(2011, 3, 1, 16, 15, 56, 8, DateTimeKind.Local).AddTicks(8336), "Marcia_Blick47@yahoo.com", "Marcia", "Blick", "95ee6b9b17ccfd4fa44d4f2e4d52037573b4c3f8", "1-477-419-8185 x7652" },
-                    { new Guid("547a3a2a-9746-f1f7-0dc1-9f411376967d"), new DateTime(2007, 9, 18, 4, 0, 26, 724, DateTimeKind.Local).AddTicks(5454), "Jeannie.Erdman98@yahoo.com", "Jeannie", "Erdman", "15e7b22540b89b81c33920eb1cde27f631f52e51", "(887) 331-9600 x582" },
-                    { new Guid("5c2b4042-627b-9bd8-71c2-8a4b10ba2dc3"), new DateTime(2022, 10, 5, 0, 20, 2, 335, DateTimeKind.Local).AddTicks(2846), "Moses_Orn98@yahoo.com", "Moses", "Orn", "f6dd88a12ff0d731b9d97f95f6c49efd2b5e8575", "337.591.0174 x05854" },
-                    { new Guid("5cfc8e08-5314-1ffe-852b-cf7695022774"), new DateTime(2013, 2, 27, 22, 36, 20, 580, DateTimeKind.Local).AddTicks(8839), "Teri_Gleichner72@gmail.com", "Teri", "Gleichner", "e6f37227df1cfff027e5fd0a9129e478759a3156", "840-924-2437" },
-                    { new Guid("639e22a8-ebb5-9b66-f18f-64bce6951b54"), new DateTime(2005, 6, 14, 12, 23, 13, 780, DateTimeKind.Local).AddTicks(5849), "Ebony35@gmail.com", "Ebony", "White", "b09ea9aa65cfbd7cb24c3d525424a54dfaaa5bad", "658-849-9321" },
-                    { new Guid("64b4e5c0-6541-cdce-487f-d0cf5e41bcdd"), new DateTime(2019, 3, 4, 9, 52, 1, 145, DateTimeKind.Local).AddTicks(5969), "Gregory.Gibson@yahoo.com", "Gregory", "Gibson", "4b9c633ebd15025786d1696936cf719fe755c9ee", "(235) 878-4897 x002" },
-                    { new Guid("64bb2e44-3584-aec1-ee15-f67e8b1fe2d8"), new DateTime(2014, 8, 12, 19, 38, 34, 481, DateTimeKind.Local).AddTicks(811), "Vanessa.Lindgren4@yahoo.com", "Vanessa", "Lindgren", "0626d7d31d39f0447528657f25be92cc8b1955c9", "544.217.2112 x7292" },
-                    { new Guid("6569e4a5-16d0-f2e7-efd6-d481c804b5da"), new DateTime(2006, 3, 13, 4, 37, 9, 796, DateTimeKind.Local).AddTicks(5125), "Jacob.Zboncak27@gmail.com", "Jacob", "Zboncak", "57e1d6e7af3ed32bfe76dbb6a2440572be4ce9a1", "(725) 766-6845" },
-                    { new Guid("771b2a2f-d9a0-2f46-b75e-94585589f127"), new DateTime(2013, 7, 2, 7, 9, 27, 399, DateTimeKind.Local).AddTicks(799), "Owen.Kutch81@gmail.com", "Owen", "Kutch", "79c39c51c08e3db58556321310d4705d719c781c", "1-533-638-9063" },
-                    { new Guid("8e09c622-cfa5-b448-898b-fcdeeaed3264"), new DateTime(2005, 12, 26, 19, 45, 29, 747, DateTimeKind.Local).AddTicks(9273), "Molly47@hotmail.com", "Molly", "Connelly", "1ca15085de48bdac3363c866db3b1d54872283b6", "287-431-0605 x289" },
-                    { new Guid("9a2731a6-8052-7fba-e7d5-859847ce1ba1"), new DateTime(2007, 3, 1, 8, 34, 24, 721, DateTimeKind.Local).AddTicks(1540), "Beverly95@yahoo.com", "Beverly", "Pfeffer", "3f3a3b3b666a4c77c6eb2253b33fb31dcb73e0df", "785-350-1846" },
-                    { new Guid("9f9b9048-2e80-a16c-f77a-e0a6fe86ef5e"), new DateTime(2005, 12, 10, 8, 58, 30, 599, DateTimeKind.Local).AddTicks(5145), "Alfredo_Conroy@gmail.com", "Alfredo", "Conroy", "7e6cadf7a519fabbd27bac9815c623c4dffa6781", "(902) 950-3406" },
-                    { new Guid("a20d864f-6e74-3fdf-6542-3bc4a7cc8183"), new DateTime(2022, 4, 16, 21, 10, 11, 487, DateTimeKind.Local).AddTicks(6118), "Wesley1@gmail.com", "Wesley", "Heidenreich", "4a71661c3378db86f754d2e9fefb4b4fcc937c27", "(970) 276-4966" },
-                    { new Guid("bbe74b8f-4d35-5124-de8a-c572b6c207fe"), new DateTime(2016, 11, 6, 15, 10, 40, 514, DateTimeKind.Local).AddTicks(1316), "Stacy_Effertz@hotmail.com", "Stacy", "Effertz", "d742462ecf3fc4d9d9e00bf5e9786fa48d422160", "(535) 793-4002" },
-                    { new Guid("c4919c93-3b57-f555-d360-0930100173c3"), new DateTime(2016, 8, 31, 0, 56, 32, 171, DateTimeKind.Local).AddTicks(5613), "Bethany24@gmail.com", "Bethany", "Hills", "b230ee58f7932edfd30b14d40052ea88b9e76299", "842.390.8806 x3055" },
-                    { new Guid("d1b897fc-7777-027f-b858-964806e03621"), new DateTime(2016, 6, 21, 5, 48, 22, 829, DateTimeKind.Local).AddTicks(7985), "Mable.Rolfson58@yahoo.com", "Mable", "Rolfson", "e033dd26e7cf26f6cff8231b914bbe0303ba850e", "408-259-3567 x43796" },
-                    { new Guid("d3a3a7af-ddc4-4ae6-f3f6-ce0e100862f8"), new DateTime(2022, 6, 12, 6, 56, 5, 669, DateTimeKind.Local).AddTicks(7204), "Christian_Paucek38@yahoo.com", "Christian", "Paucek", "61e51ff968d560adc3ddf7ed1b8a12f0699907a2", "898.987.7942 x003" },
-                    { new Guid("d7eee062-cbfe-cb53-056f-5ba3e656b6a2"), new DateTime(2007, 1, 21, 14, 41, 41, 39, DateTimeKind.Local).AddTicks(6734), "Glen.Carter@gmail.com", "Glen", "Carter", "9954029fff5432707940ef16dfb476b6bc8caa33", "208-921-5192 x8048" },
-                    { new Guid("d94b91d5-6c77-2434-c3df-919814170af1"), new DateTime(2009, 6, 8, 15, 41, 26, 390, DateTimeKind.Local).AddTicks(9068), "Regina_Schinner@yahoo.com", "Regina", "Schinner", "1722ef008e510b639af0f2e6d29ef7a8f32a662b", "487-376-4865 x995" },
-                    { new Guid("e4d782a2-c14b-bfc5-cee8-432a323314b8"), new DateTime(2011, 2, 1, 16, 15, 57, 760, DateTimeKind.Local).AddTicks(2837), "Myrtle.Tremblay@yahoo.com", "Myrtle", "Tremblay", "213a3fffc29dcfdf60eeb7a98ad9a5a81a61cf13", "(431) 650-9030" },
-                    { new Guid("e5d8d983-cc47-c0ad-a4e4-3223e8c09803"), new DateTime(2016, 10, 11, 17, 48, 52, 964, DateTimeKind.Local).AddTicks(5469), "Mable_Conn@yahoo.com", "Mable", "Conn", "0db5458ac49aca27fc5734013543eccb3cab5ae8", "422.982.7599" },
-                    { new Guid("e9bfd8b1-5a52-3800-6862-2b734d40cd00"), new DateTime(2014, 8, 23, 15, 32, 26, 585, DateTimeKind.Local).AddTicks(4210), "Kate_Wiegand@gmail.com", "Kate", "Wiegand", "dd63b5ae0f3751ccaa157021025c871051051412", "1-449-983-0589 x903" },
-                    { new Guid("ef5a7cad-8ea0-9b3c-e6a8-909589729ae3"), new DateTime(2015, 8, 9, 23, 31, 53, 613, DateTimeKind.Local).AddTicks(1379), "Duane_Moore37@hotmail.com", "Duane", "Moore", "b7359b9627fa8b91b712c73d06f712aae57b0f75", "1-825-765-0585 x45387" },
-                    { new Guid("f517f468-6424-0fe9-b705-96e2bddd731f"), new DateTime(2012, 4, 14, 11, 10, 6, 124, DateTimeKind.Local).AddTicks(8157), "Micheal1@hotmail.com", "Micheal", "Fay", "f1cf0567c636d823b1e94506d9f1f702e6f1394a", "(604) 399-1908 x8432" },
-                    { new Guid("f6bd4214-fcae-251e-1c0e-19ff98cd05d9"), new DateTime(2012, 6, 6, 2, 6, 27, 638, DateTimeKind.Local).AddTicks(4661), "Nina.Kshlerin@yahoo.com", "Nina", "Kshlerin", "f04574552ee7ffdbef231961a7dcf2eeb25a1a19", "823.596.1362" },
-                    { new Guid("f6d2645c-d118-86e3-b4d6-dead790666a7"), new DateTime(2020, 3, 6, 18, 22, 9, 96, DateTimeKind.Local).AddTicks(9224), "Otis42@yahoo.com", "Otis", "Carter", "a4036c10959e443503e7c9b14a46f279163a02ce", "749.362.8114 x436" }
+                    { new Guid("f6bd4214-fcae-251e-1c0e-19ff98cd05d9"), new DateTime(2012, 6, 11, 22, 15, 43, 236, DateTimeKind.Local).AddTicks(6087), "Nina.Kshlerin@yahoo.com", "Nina", "Kshlerin", "f04574552ee7ffdbef231961a7dcf2eeb25a1a19", "823.596.1362" },
+                    { new Guid("f6d2645c-d118-86e3-b4d6-dead790666a7"), new DateTime(2020, 3, 12, 14, 31, 24, 695, DateTimeKind.Local).AddTicks(1621), "Otis42@yahoo.com", "Otis", "Carter", "a4036c10959e443503e7c9b14a46f279163a02ce", "749.362.8114 x436" }
                 });
 
             migrationBuilder.InsertData(
@@ -498,14 +466,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                     { new Guid("1b1dad0b-a3e9-a159-0373-c09337b99331"), 4017, "Stokesview" },
                     { new Guid("24e067a5-bcba-a64b-89a1-f492864098c2"), 8414, "Guiseppeport" },
                     { new Guid("2c7254c6-cbae-3bff-8407-d6e27ce6fd7b"), 4172, "Kaliview" },
-                    { new Guid("2fe62252-a708-551d-a9ff-d8833d091197"), 2696, "East Vilma" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ZipCode",
-                columns: new[] { "ZipCodeID", "Code", "Commune" },
-                values: new object[,]
-                {
+                    { new Guid("2fe62252-a708-551d-a9ff-d8833d091197"), 2696, "East Vilma" },
                     { new Guid("3336805e-5e4e-7318-2b02-2a6e5d2e4c82"), 6997, "Rooseveltfurt" },
                     { new Guid("3d669649-f46a-4191-51a1-e414fdbff9d4"), 8569, "Kanebury" },
                     { new Guid("42fd0dfe-7c0b-d282-ffd4-9aa835798a96"), 6608, "South Roslyn" },

@@ -22,11 +22,11 @@ public sealed class CategoryRepository : IDisposable
         return await _context.Categories.ToListAsync();
     }
 
-    public async Task<List<Category>> GetTop5FeaturedAsync()
+    public async Task<List<Category>> GetTop6FeaturedAsync()
     {
         return await _context.Categories
             .Where(x => x.IsFeatured)
-            .Take(5)
+            .Take(6)
             .ToListAsync();
     }
 

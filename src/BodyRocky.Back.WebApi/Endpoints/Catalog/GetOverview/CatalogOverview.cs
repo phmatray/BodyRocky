@@ -6,16 +6,20 @@ public class CatalogOverview
 {
     public CatalogOverview(
         List<Category> featuredCategories,
-        List<Product> featuredProducts)
+        List<Product> featuredProducts,
+        List<Product> recommendedProducts)
     {
-        FeaturedProducts = featuredProducts;
         FeaturedCategories = featuredCategories;
+        FeaturedProducts = featuredProducts;
+        RecommendedProducts = recommendedProducts;
     }
-
-    public List<Product> FeaturedProducts { get; }
 
     public List<Category> FeaturedCategories { get; }
     
+    public List<Product> FeaturedProducts { get; }
+    
+    public List<Product> RecommendedProducts { get; }
+
     public int TotalProducts { get; init; }
     
     public int TotalCategories { get; init; }

@@ -17,6 +17,14 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
         builder
             .Property(category => category.CategoryName)
             .IsRequired();
+        
+        builder
+            .Property(category => category.CategoryImage)
+            .IsRequired();
+        
+        builder
+            .Property(category => category.CategoryIcon)
+            .IsRequired();
 
         builder
             .Property(category => category.IsFeatured)

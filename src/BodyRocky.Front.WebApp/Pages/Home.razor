@@ -1,4 +1,8 @@
 @page "/"
+@using BodyRocky.Core.Contracts.Responses.CatalogResponses
+@using BodyRocky.Core.Contracts.Responses.CategoryResponses
+@using BodyRocky.Core.Contracts.Responses.ProductResponses
+@inject IBodyRockyApi ApiClient
 
 <!-- banner -->
 <div class="bg-cover bg-no-repeat bg-center py-36" style="background-image: url('assets/images/banner-bg.jpg');">
@@ -64,68 +68,38 @@
 <!-- ./features -->
 
 <!-- categories -->
-<div class="container py-16">
-  <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">shop by category</h2>
-  <div class="grid grid-cols-3 gap-3">
-    <div class="relative rounded-sm overflow-hidden group">
-      <img src="assets/images/category/category-1.jpg" alt="category 1" class="w-full">
-      <a href="#"
-         class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
-        Bedroom
-      </a>
-    </div>
-    <div class="relative rounded-sm overflow-hidden group">
-      <img src="assets/images/category/category-2.jpg" alt="category 1" class="w-full">
-      <a href="#"
-         class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
-        Mattrass
-      </a>
-    </div>
-    <div class="relative rounded-sm overflow-hidden group">
-      <img src="assets/images/category/category-3.jpg" alt="category 1" class="w-full">
-      <a href="#"
-         class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
-        Outdoor
-      </a>
-    </div>
-    <div class="relative rounded-sm overflow-hidden group">
-      <img src="assets/images/category/category-4.jpg" alt="category 1" class="w-full">
-      <a href="#"
-         class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
-        Sofa
-      </a>
-    </div>
-    <div class="relative rounded-sm overflow-hidden group">
-      <img src="assets/images/category/category-5.jpg" alt="category 1" class="w-full">
-      <a href="#"
-         class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
-        Living
-        Room
-      </a>
-    </div>
-    <div class="relative rounded-sm overflow-hidden group">
-      <img src="assets/images/category/category-6.jpg" alt="category 1" class="w-full">
-      <a href="#"
-         class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
-        Kitchen
-      </a>
+@if (_featuredCategories != null)
+{
+  <div class="container py-16">
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
+      Découvrez nos catégories
+    </h2>
+    <div class="grid grid-cols-3 gap-3">
+      @foreach (CategoryResponse category in _featuredCategories)
+      {
+        <UiCategoryCard Data="category"/>
+      }
     </div>
   </div>
-</div>
+}
+
 <!-- ./categories -->
 
 <!-- new arrival -->
-<div class="container pb-16">
-  <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
-    top new arrival
-  </h2>
-  <div class="grid grid-cols-4 gap-6">
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
+@if (_featuredProducts != null)
+{
+  <div class="container pb-16">
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
+      top new arrival
+    </h2>
+    <div class="grid grid-cols-4 gap-6">
+      @foreach (ProductResponse product in _featuredProducts)
+      {
+        <UiProductCard Data="product" />
+      }
+    </div>
   </div>
-</div>
+}
 <!-- ./new arrival -->
 
 <!-- ads -->
@@ -137,21 +111,32 @@
 <!-- ./ads -->
 
 <!-- product -->
-<div class="container pb-16">
-  <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">recomended for you</h2>
-  <div class="grid grid-cols-4 gap-6">
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
-    <UiProductCard/>
+@if (_recommendedProducts != null)
+{
+  <div class="container pb-16">
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">recomended for you</h2>
+    <div class="grid grid-cols-4 gap-6">
+      @foreach (ProductResponse product in _recommendedProducts)
+      {
+        <UiProductCard Data="product" />
+      }
+    </div>
   </div>
-</div>
+}
 <!-- ./product -->
 
 @code {
+
+  private List<CategoryResponse>? _featuredCategories;
+  private List<ProductResponse>? _featuredProducts;
+  private List<ProductResponse>? _recommendedProducts;
+
+  protected override async Task OnInitializedAsync()
+  {
+    GetOverviewCatalogResponse catalogResponse = await ApiClient.GetOverviewCatalogAsync();
+    _featuredCategories = catalogResponse.FeaturedCategories;
+    _featuredProducts = catalogResponse.FeaturedProducts;
+    _recommendedProducts = catalogResponse.RecommendedProducts;
+  }
 
 }

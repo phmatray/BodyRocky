@@ -1,5 +1,6 @@
 ﻿using BodyRocky.Core.Contracts.Requests.CustomerRequests;
 using BodyRocky.Core.Contracts.Responses.CatalogResponses;
+using BodyRocky.Core.Contracts.Responses.CategoryResponses;
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
 using Refit;
 
@@ -11,6 +12,9 @@ public interface IBodyRockyApi
     
     [Get("/catalog/overview")]
     Task<GetOverviewCatalogResponse> GetOverviewCatalogAsync();
+
+    [Get("/categories")]
+    Task<GetAllCategoriesResponse> GetAllCategoriesAsync();
 
     [Get("/customers")]
     Task<GetAllCustomersResponse> GetCustomersAsync();

@@ -22,12 +22,21 @@ public sealed class ProductRepository : IDisposable
         return await _context.Products.ToListAsync();
     }
     
-    public async Task<List<Product>> GetTop5FeaturedAsync()
+    public async Task<List<Product>> GetTop4FeaturedAsync()
     {
         return await _context.Products
             .Where(p => p.IsFeatured)
             .OrderBy(p => p.ProductName)
-            .Take(5)
+            .Take(4)
+            .ToListAsync();
+    }
+
+    public async Task<List<Product>> GetTop8RecommendedAsync()
+    {
+        return await _context.Products
+            .Where(p => !p.IsFeatured)
+            .OrderBy(p => p.ProductName)
+            .Take(8)
             .ToListAsync();
     }
 

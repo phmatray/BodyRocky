@@ -10,6 +10,18 @@ public class GetOverviewCatalogMapper
 {
     public override GetOverviewCatalogResponse FromEntity(CatalogOverview catalogOverview)
     {
+        List<CategoryResponse> featuredCategoryResponses = catalogOverview
+            .FeaturedCategories
+            .Select(c => new CategoryResponse
+            {
+                CategoryID = c.CategoryID,
+                CategoryName = c.CategoryName,
+                CategoryImage = c.CategoryImage,
+                CategoryIcon = c.CategoryIcon,
+                IsFeatured = c.IsFeatured
+            })
+            .ToList();
+        
         List<ProductResponse> featuredProductResponses = catalogOverview
             .FeaturedProducts
             .Select(p => new ProductResponse
@@ -23,13 +35,16 @@ public class GetOverviewCatalogMapper
             })
             .ToList();
         
-        List<CategoryResponse> featuredCategoryResponses = catalogOverview
-            .FeaturedCategories
-            .Select(c => new CategoryResponse
+        List<ProductResponse> recommendedProductResponses = catalogOverview
+            .RecommendedProducts
+            .Select(p => new ProductResponse
             {
-                CategoryID = c.CategoryID,
-                CategoryName = c.CategoryName,
-                IsFeatured = c.IsFeatured
+                ProductID = p.ProductID,
+                ProductName = p.ProductName,
+                ProductDescription = p.ProductDescription,
+                ProductPrice = p.ProductPrice,
+                ProductURL = p.ProductURL,
+                IsFeatured = p.IsFeatured
             })
             .ToList();
 
@@ -38,8 +53,9 @@ public class GetOverviewCatalogMapper
             TotalProducts = catalogOverview.TotalProducts,
             TotalCategories = catalogOverview.TotalCategories,
             TotalBrands = catalogOverview.TotalBrands,
+            FeaturedCategories = featuredCategoryResponses,
             FeaturedProducts = featuredProductResponses,
-            FeaturedCategories = featuredCategoryResponses
+            RecommendedProducts = recommendedProductResponses
         };
     }
 }

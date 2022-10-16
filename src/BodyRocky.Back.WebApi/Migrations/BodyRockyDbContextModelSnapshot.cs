@@ -382,6 +382,14 @@ namespace BodyRocky.Back.WebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("CategoryIcon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CategoryImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -396,242 +404,50 @@ namespace BodyRocky.Back.WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryID = new Guid("332922dd-7992-2d1a-c24a-c8bc17a7917b"),
-                            CategoryName = "Outdoors",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("b5e7d5f8-d2ed-19d0-5bff-e192c1408394"),
-                            CategoryName = "Beauty",
+                            CategoryID = new Guid("7e3a05a1-85d8-4480-bdd7-7e093e9b1014"),
+                            CategoryIcon = "fas fa-heartbeat",
+                            CategoryImage = "https://picsum.photos/200/300",
+                            CategoryName = "Cardio-training",
                             IsFeatured = true
                         },
                         new
                         {
-                            CategoryID = new Guid("7904d0b5-601c-164b-d25d-8f44a8378c04"),
-                            CategoryName = "Health",
+                            CategoryID = new Guid("cf0c2839-aa0d-4b2e-8c89-8c4a635f8a65"),
+                            CategoryIcon = "fas fa-dumbbell",
+                            CategoryImage = "https://picsum.photos/200/300",
+                            CategoryName = "Musculation",
                             IsFeatured = true
                         },
                         new
                         {
-                            CategoryID = new Guid("573527a9-7863-1b1e-4b30-89873882259f"),
-                            CategoryName = "Music",
+                            CategoryID = new Guid("54efda68-a4bf-44b1-81a2-e2cee41b52c2"),
+                            CategoryIcon = "fas fa-gamepad",
+                            CategoryImage = "https://picsum.photos/200/300",
+                            CategoryName = "Jeux et loisirs",
                             IsFeatured = true
                         },
                         new
                         {
-                            CategoryID = new Guid("87b97f39-d66a-72ff-8a17-57a906bdf3b1"),
-                            CategoryName = "Toys",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("8c6d5dbc-015b-1b14-8d4a-250c1e087105"),
-                            CategoryName = "Tools",
+                            CategoryID = new Guid("593e1831-d5d6-4b19-9c24-996006b5f22f"),
+                            CategoryIcon = "fas fa-running",
+                            CategoryImage = "https://picsum.photos/200/300",
+                            CategoryName = "Fitness",
                             IsFeatured = true
                         },
                         new
                         {
-                            CategoryID = new Guid("5ebd2218-f057-06ee-c3a2-2acb948696cc"),
-                            CategoryName = "Health",
+                            CategoryID = new Guid("50b89a6e-e798-4ddd-a719-d953c1d49b9c"),
+                            CategoryIcon = "fas fa-heart",
+                            CategoryImage = "https://picsum.photos/200/300",
+                            CategoryName = "Yoga et bien-être",
                             IsFeatured = true
                         },
                         new
                         {
-                            CategoryID = new Guid("b823ad19-4f72-b449-4d7d-f84e3700f225"),
-                            CategoryName = "Sports",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("7c065e9c-549d-713d-f0c1-b69e75522609"),
-                            CategoryName = "Grocery",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("6daf60aa-a215-70a2-0e75-6a29d86fedcd"),
-                            CategoryName = "Movies",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("ce0f9d61-017a-875e-feaf-07a6272d15d6"),
-                            CategoryName = "Tools",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("63492f1a-2cda-c746-06c7-e847b0a823a2"),
-                            CategoryName = "Jewelery",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("aee6db0c-8d0f-f3a4-6967-4d3d1402f4b5"),
-                            CategoryName = "Movies",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("e2c2fe3b-b288-97fa-9eb7-fe5e838586c6"),
-                            CategoryName = "Electronics",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("bb206c51-e6bf-dec3-7ac9-b3e652faf523"),
-                            CategoryName = "Electronics",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("3353298b-77b3-edef-f40a-e4c8b64d3956"),
-                            CategoryName = "Automotive",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("dc3f7fdf-a91f-3038-e4b8-6404695f1edc"),
-                            CategoryName = "Toys",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("a8b81e4b-d1cb-b9f1-fab1-1265acfc96ae"),
-                            CategoryName = "Books",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("a90aae69-82fb-3693-88f0-a184aada119a"),
-                            CategoryName = "Beauty",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("6db3378e-66ea-86af-1e7e-0b686dba1b36"),
-                            CategoryName = "Books",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("3623a294-9514-0149-1875-07385312f151"),
-                            CategoryName = "Clothing",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("a4c4fc33-74f9-1564-2a1f-83e669736785"),
-                            CategoryName = "Shoes",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("1e225722-e924-3a4e-7ee5-2af9771c990e"),
-                            CategoryName = "Health",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("aea9efc8-ffd1-296a-7e31-0c94d1ce0c89"),
-                            CategoryName = "Clothing",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("dbd714ea-bf56-7ff6-ea31-a8674c5a6ff0"),
-                            CategoryName = "Music",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("238674be-fab4-1c6b-2de9-135becededd1"),
-                            CategoryName = "Electronics",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("ea99ec9f-52b8-3814-8016-e5b225e111f6"),
-                            CategoryName = "Baby",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("dd60c742-3a70-0c91-6b8f-44bb797b3680"),
-                            CategoryName = "Movies",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("34bbd47c-7b0e-5479-377b-c43249f62232"),
-                            CategoryName = "Movies",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("5f7cc18e-ab58-85e6-f4c5-9d697ca49041"),
-                            CategoryName = "Tools",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("e4b90dfe-1b63-1502-4739-454e9847ecd9"),
-                            CategoryName = "Books",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("107b1d54-894d-b487-b7cd-ff20a1087b2d"),
-                            CategoryName = "Electronics",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("605eaaa3-435c-ad64-40a5-2d557da2b201"),
-                            CategoryName = "Industrial",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("30c0ee79-af5c-3564-1526-973cd26b126a"),
-                            CategoryName = "Outdoors",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("38c0f330-9fab-e148-8661-4f5d6ea01b1e"),
-                            CategoryName = "Electronics",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("ae4e73c1-26fb-3d2e-1603-d3c143126c6a"),
-                            CategoryName = "Music",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("2042419c-7ae7-0328-e5b8-b8f620b3b8cd"),
-                            CategoryName = "Outdoors",
-                            IsFeatured = true
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("9af882f8-6e0a-4589-0ec5-1e3df003d022"),
-                            CategoryName = "Music",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("d38ca003-f886-7640-8520-e31f097668aa"),
-                            CategoryName = "Automotive",
-                            IsFeatured = false
-                        },
-                        new
-                        {
-                            CategoryID = new Guid("d4370200-a196-636c-e5a8-c7b425fd3146"),
-                            CategoryName = "Sports",
+                            CategoryID = new Guid("09683532-3346-4f2e-8998-414895ee2810"),
+                            CategoryIcon = "fas fa-utensils",
+                            CategoryImage = "https://picsum.photos/200/300",
+                            CategoryName = "Nutrition",
                             IsFeatured = true
                         });
                 });
@@ -673,7 +489,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d1b897fc-7777-027f-b858-964806e03621"),
-                            BirthDate = new DateTime(2016, 6, 21, 5, 48, 22, 829, DateTimeKind.Local).AddTicks(7985),
+                            BirthDate = new DateTime(2016, 6, 27, 1, 57, 38, 427, DateTimeKind.Local).AddTicks(8135),
                             EmailAddress = "Mable.Rolfson58@yahoo.com",
                             FirstName = "Mable",
                             LastName = "Rolfson",
@@ -683,7 +499,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("24a86f6c-5977-f46f-67dd-dddba5a9a732"),
-                            BirthDate = new DateTime(2010, 9, 5, 1, 57, 44, 901, DateTimeKind.Local).AddTicks(6607),
+                            BirthDate = new DateTime(2010, 9, 10, 22, 7, 0, 499, DateTimeKind.Local).AddTicks(7286),
                             EmailAddress = "Glenda.Miller55@hotmail.com",
                             FirstName = "Glenda",
                             LastName = "Miller",
@@ -693,7 +509,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("17577a5e-f5e7-ef5f-e697-f2ace5c8e0c2"),
-                            BirthDate = new DateTime(2010, 2, 14, 19, 34, 9, 900, DateTimeKind.Local).AddTicks(5942),
+                            BirthDate = new DateTime(2010, 2, 20, 15, 43, 25, 498, DateTimeKind.Local).AddTicks(6758),
                             EmailAddress = "Archie.Hahn@gmail.com",
                             FirstName = "Archie",
                             LastName = "Hahn",
@@ -703,7 +519,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("ef5a7cad-8ea0-9b3c-e6a8-909589729ae3"),
-                            BirthDate = new DateTime(2015, 8, 9, 23, 31, 53, 613, DateTimeKind.Local).AddTicks(1379),
+                            BirthDate = new DateTime(2015, 8, 15, 19, 41, 9, 211, DateTimeKind.Local).AddTicks(2206),
                             EmailAddress = "Duane_Moore37@hotmail.com",
                             FirstName = "Duane",
                             LastName = "Moore",
@@ -713,7 +529,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("a20d864f-6e74-3fdf-6542-3bc4a7cc8183"),
-                            BirthDate = new DateTime(2022, 4, 16, 21, 10, 11, 487, DateTimeKind.Local).AddTicks(6118),
+                            BirthDate = new DateTime(2022, 4, 22, 17, 19, 27, 85, DateTimeKind.Local).AddTicks(6955),
                             EmailAddress = "Wesley1@gmail.com",
                             FirstName = "Wesley",
                             LastName = "Heidenreich",
@@ -723,7 +539,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e5d8d983-cc47-c0ad-a4e4-3223e8c09803"),
-                            BirthDate = new DateTime(2016, 10, 11, 17, 48, 52, 964, DateTimeKind.Local).AddTicks(5469),
+                            BirthDate = new DateTime(2016, 10, 17, 13, 58, 8, 562, DateTimeKind.Local).AddTicks(6379),
                             EmailAddress = "Mable_Conn@yahoo.com",
                             FirstName = "Mable",
                             LastName = "Conn",
@@ -733,7 +549,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("8e09c622-cfa5-b448-898b-fcdeeaed3264"),
-                            BirthDate = new DateTime(2005, 12, 26, 19, 45, 29, 747, DateTimeKind.Local).AddTicks(9273),
+                            BirthDate = new DateTime(2006, 1, 1, 15, 54, 45, 346, DateTimeKind.Local).AddTicks(216),
                             EmailAddress = "Molly47@hotmail.com",
                             FirstName = "Molly",
                             LastName = "Connelly",
@@ -743,7 +559,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f517f468-6424-0fe9-b705-96e2bddd731f"),
-                            BirthDate = new DateTime(2012, 4, 14, 11, 10, 6, 124, DateTimeKind.Local).AddTicks(8157),
+                            BirthDate = new DateTime(2012, 4, 20, 7, 19, 21, 722, DateTimeKind.Local).AddTicks(9083),
                             EmailAddress = "Micheal1@hotmail.com",
                             FirstName = "Micheal",
                             LastName = "Fay",
@@ -753,7 +569,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d7eee062-cbfe-cb53-056f-5ba3e656b6a2"),
-                            BirthDate = new DateTime(2007, 1, 21, 14, 41, 41, 39, DateTimeKind.Local).AddTicks(6734),
+                            BirthDate = new DateTime(2007, 1, 27, 10, 50, 56, 637, DateTimeKind.Local).AddTicks(7758),
                             EmailAddress = "Glen.Carter@gmail.com",
                             FirstName = "Glen",
                             LastName = "Carter",
@@ -763,7 +579,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("09cf3630-e958-88ab-34f5-562947070a64"),
-                            BirthDate = new DateTime(2011, 3, 29, 5, 42, 16, 878, DateTimeKind.Local).AddTicks(3708),
+                            BirthDate = new DateTime(2011, 4, 4, 1, 51, 32, 476, DateTimeKind.Local).AddTicks(4735),
                             EmailAddress = "Miranda_Kautzer@yahoo.com",
                             FirstName = "Miranda",
                             LastName = "Kautzer",
@@ -773,7 +589,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("370d7448-f7f8-fe75-2c48-ac7cd88f0347"),
-                            BirthDate = new DateTime(2016, 12, 22, 11, 8, 43, 677, DateTimeKind.Local).AddTicks(2621),
+                            BirthDate = new DateTime(2016, 12, 28, 7, 17, 59, 275, DateTimeKind.Local).AddTicks(3724),
                             EmailAddress = "Olive97@hotmail.com",
                             FirstName = "Olive",
                             LastName = "Hickle",
@@ -783,7 +599,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("16b4c4a0-2f35-237d-681b-bd453093a236"),
-                            BirthDate = new DateTime(2005, 6, 8, 10, 54, 28, 482, DateTimeKind.Local).AddTicks(9864),
+                            BirthDate = new DateTime(2005, 6, 14, 7, 3, 44, 81, DateTimeKind.Local).AddTicks(1043),
                             EmailAddress = "Harold.Bogan@gmail.com",
                             FirstName = "Harold",
                             LastName = "Bogan",
@@ -793,7 +609,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("4c3865c2-4fa0-2030-ee84-adc09a2380c0"),
-                            BirthDate = new DateTime(2009, 10, 14, 18, 58, 20, 184, DateTimeKind.Local).AddTicks(7526),
+                            BirthDate = new DateTime(2009, 10, 20, 15, 7, 35, 782, DateTimeKind.Local).AddTicks(8805),
                             EmailAddress = "Monica_Toy9@yahoo.com",
                             FirstName = "Monica",
                             LastName = "Toy",
@@ -803,7 +619,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("6569e4a5-16d0-f2e7-efd6-d481c804b5da"),
-                            BirthDate = new DateTime(2006, 3, 13, 4, 37, 9, 796, DateTimeKind.Local).AddTicks(5125),
+                            BirthDate = new DateTime(2006, 3, 19, 0, 46, 25, 394, DateTimeKind.Local).AddTicks(6468),
                             EmailAddress = "Jacob.Zboncak27@gmail.com",
                             FirstName = "Jacob",
                             LastName = "Zboncak",
@@ -813,7 +629,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f6bd4214-fcae-251e-1c0e-19ff98cd05d9"),
-                            BirthDate = new DateTime(2012, 6, 6, 2, 6, 27, 638, DateTimeKind.Local).AddTicks(4661),
+                            BirthDate = new DateTime(2012, 6, 11, 22, 15, 43, 236, DateTimeKind.Local).AddTicks(6087),
                             EmailAddress = "Nina.Kshlerin@yahoo.com",
                             FirstName = "Nina",
                             LastName = "Kshlerin",
@@ -823,7 +639,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("9a2731a6-8052-7fba-e7d5-859847ce1ba1"),
-                            BirthDate = new DateTime(2007, 3, 1, 8, 34, 24, 721, DateTimeKind.Local).AddTicks(1540),
+                            BirthDate = new DateTime(2007, 3, 7, 4, 43, 40, 319, DateTimeKind.Local).AddTicks(2969),
                             EmailAddress = "Beverly95@yahoo.com",
                             FirstName = "Beverly",
                             LastName = "Pfeffer",
@@ -833,7 +649,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("639e22a8-ebb5-9b66-f18f-64bce6951b54"),
-                            BirthDate = new DateTime(2005, 6, 14, 12, 23, 13, 780, DateTimeKind.Local).AddTicks(5849),
+                            BirthDate = new DateTime(2005, 6, 20, 8, 32, 29, 378, DateTimeKind.Local).AddTicks(7296),
                             EmailAddress = "Ebony35@gmail.com",
                             FirstName = "Ebony",
                             LastName = "White",
@@ -843,7 +659,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("64bb2e44-3584-aec1-ee15-f67e8b1fe2d8"),
-                            BirthDate = new DateTime(2014, 8, 12, 19, 38, 34, 481, DateTimeKind.Local).AddTicks(811),
+                            BirthDate = new DateTime(2014, 8, 18, 15, 47, 50, 79, DateTimeKind.Local).AddTicks(2346),
                             EmailAddress = "Vanessa.Lindgren4@yahoo.com",
                             FirstName = "Vanessa",
                             LastName = "Lindgren",
@@ -853,7 +669,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("23390a56-c1d1-1d60-1c75-2fa24374999a"),
-                            BirthDate = new DateTime(2013, 9, 25, 6, 1, 42, 404, DateTimeKind.Local).AddTicks(1461),
+                            BirthDate = new DateTime(2013, 10, 1, 2, 10, 58, 2, DateTimeKind.Local).AddTicks(3040),
                             EmailAddress = "Annie_Feil@hotmail.com",
                             FirstName = "Annie",
                             LastName = "Feil",
@@ -863,7 +679,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("771b2a2f-d9a0-2f46-b75e-94585589f127"),
-                            BirthDate = new DateTime(2013, 7, 2, 7, 9, 27, 399, DateTimeKind.Local).AddTicks(799),
+                            BirthDate = new DateTime(2013, 7, 8, 3, 18, 42, 997, DateTimeKind.Local).AddTicks(2322),
                             EmailAddress = "Owen.Kutch81@gmail.com",
                             FirstName = "Owen",
                             LastName = "Kutch",
@@ -873,7 +689,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("9f9b9048-2e80-a16c-f77a-e0a6fe86ef5e"),
-                            BirthDate = new DateTime(2005, 12, 10, 8, 58, 30, 599, DateTimeKind.Local).AddTicks(5145),
+                            BirthDate = new DateTime(2005, 12, 16, 5, 7, 46, 197, DateTimeKind.Local).AddTicks(6740),
                             EmailAddress = "Alfredo_Conroy@gmail.com",
                             FirstName = "Alfredo",
                             LastName = "Conroy",
@@ -883,7 +699,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("09a1ceff-6067-cfcc-eeee-51e27ad836cf"),
-                            BirthDate = new DateTime(2018, 7, 2, 15, 19, 57, 660, DateTimeKind.Local).AddTicks(7810),
+                            BirthDate = new DateTime(2018, 7, 8, 11, 29, 13, 258, DateTimeKind.Local).AddTicks(9444),
                             EmailAddress = "Laurence40@yahoo.com",
                             FirstName = "Laurence",
                             LastName = "Orn",
@@ -893,7 +709,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d94b91d5-6c77-2434-c3df-919814170af1"),
-                            BirthDate = new DateTime(2009, 6, 8, 15, 41, 26, 390, DateTimeKind.Local).AddTicks(9068),
+                            BirthDate = new DateTime(2009, 6, 14, 11, 50, 41, 989, DateTimeKind.Local).AddTicks(674),
                             EmailAddress = "Regina_Schinner@yahoo.com",
                             FirstName = "Regina",
                             LastName = "Schinner",
@@ -903,7 +719,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("c4919c93-3b57-f555-d360-0930100173c3"),
-                            BirthDate = new DateTime(2016, 8, 31, 0, 56, 32, 171, DateTimeKind.Local).AddTicks(5613),
+                            BirthDate = new DateTime(2016, 9, 5, 21, 5, 47, 769, DateTimeKind.Local).AddTicks(7268),
                             EmailAddress = "Bethany24@gmail.com",
                             FirstName = "Bethany",
                             LastName = "Hills",
@@ -913,7 +729,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("241fdd79-d370-d294-5ba2-4214bf51b015"),
-                            BirthDate = new DateTime(2006, 3, 19, 21, 59, 58, 705, DateTimeKind.Local).AddTicks(7352),
+                            BirthDate = new DateTime(2006, 3, 25, 18, 9, 14, 303, DateTimeKind.Local).AddTicks(9288),
                             EmailAddress = "Clay_Abshire@yahoo.com",
                             FirstName = "Clay",
                             LastName = "Abshire",
@@ -923,7 +739,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d3a3a7af-ddc4-4ae6-f3f6-ce0e100862f8"),
-                            BirthDate = new DateTime(2022, 6, 12, 6, 56, 5, 669, DateTimeKind.Local).AddTicks(7204),
+                            BirthDate = new DateTime(2022, 6, 18, 3, 5, 21, 267, DateTimeKind.Local).AddTicks(9162),
                             EmailAddress = "Christian_Paucek38@yahoo.com",
                             FirstName = "Christian",
                             LastName = "Paucek",
@@ -933,7 +749,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("64b4e5c0-6541-cdce-487f-d0cf5e41bcdd"),
-                            BirthDate = new DateTime(2019, 3, 4, 9, 52, 1, 145, DateTimeKind.Local).AddTicks(5969),
+                            BirthDate = new DateTime(2019, 3, 10, 6, 1, 16, 743, DateTimeKind.Local).AddTicks(7947),
                             EmailAddress = "Gregory.Gibson@yahoo.com",
                             FirstName = "Gregory",
                             LastName = "Gibson",
@@ -943,7 +759,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0a135eb3-695a-2cd4-c170-213222bcdd0e"),
-                            BirthDate = new DateTime(2016, 8, 22, 19, 39, 39, 997, DateTimeKind.Local).AddTicks(2948),
+                            BirthDate = new DateTime(2016, 8, 28, 15, 48, 55, 595, DateTimeKind.Local).AddTicks(4978),
                             EmailAddress = "Santos.Mosciski@yahoo.com",
                             FirstName = "Santos",
                             LastName = "Mosciski",
@@ -953,7 +769,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("3c5d782e-c346-d1a4-ea87-956078911a78"),
-                            BirthDate = new DateTime(2011, 3, 16, 5, 12, 4, 85, DateTimeKind.Local).AddTicks(8635),
+                            BirthDate = new DateTime(2011, 3, 22, 1, 21, 19, 684, DateTimeKind.Local).AddTicks(656),
                             EmailAddress = "Becky42@yahoo.com",
                             FirstName = "Becky",
                             LastName = "Jenkins",
@@ -963,7 +779,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0efd67fc-9c2a-914b-66c4-f73f17803c80"),
-                            BirthDate = new DateTime(2005, 9, 22, 12, 2, 31, 61, DateTimeKind.Local).AddTicks(8142),
+                            BirthDate = new DateTime(2005, 9, 28, 8, 11, 46, 660, DateTimeKind.Local).AddTicks(155),
                             EmailAddress = "Kim.Ruecker83@hotmail.com",
                             FirstName = "Kim",
                             LastName = "Ruecker",
@@ -973,7 +789,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0e006fa9-de45-528c-0bae-9dd6207620e7"),
-                            BirthDate = new DateTime(2008, 1, 30, 17, 20, 32, 105, DateTimeKind.Local).AddTicks(7002),
+                            BirthDate = new DateTime(2008, 2, 5, 13, 29, 47, 703, DateTimeKind.Local).AddTicks(9108),
                             EmailAddress = "Joyce.Breitenberg@yahoo.com",
                             FirstName = "Joyce",
                             LastName = "Breitenberg",
@@ -983,7 +799,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("5cfc8e08-5314-1ffe-852b-cf7695022774"),
-                            BirthDate = new DateTime(2013, 2, 27, 22, 36, 20, 580, DateTimeKind.Local).AddTicks(8839),
+                            BirthDate = new DateTime(2013, 3, 5, 18, 45, 36, 179, DateTimeKind.Local).AddTicks(1104),
                             EmailAddress = "Teri_Gleichner72@gmail.com",
                             FirstName = "Teri",
                             LastName = "Gleichner",
@@ -993,7 +809,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("4ff0a3f7-1b7e-b61c-4dc4-04965e1306c6"),
-                            BirthDate = new DateTime(2013, 6, 6, 15, 51, 56, 201, DateTimeKind.Local).AddTicks(7187),
+                            BirthDate = new DateTime(2013, 6, 12, 12, 1, 11, 799, DateTimeKind.Local).AddTicks(9522),
                             EmailAddress = "Lloyd_Murphy@yahoo.com",
                             FirstName = "Lloyd",
                             LastName = "Murphy",
@@ -1003,7 +819,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("54515b47-693f-f4da-e89f-9862d69a44ab"),
-                            BirthDate = new DateTime(2011, 3, 1, 16, 15, 56, 8, DateTimeKind.Local).AddTicks(8336),
+                            BirthDate = new DateTime(2011, 3, 7, 12, 25, 11, 607, DateTimeKind.Local).AddTicks(773),
                             EmailAddress = "Marcia_Blick47@yahoo.com",
                             FirstName = "Marcia",
                             LastName = "Blick",
@@ -1013,7 +829,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("5c2b4042-627b-9bd8-71c2-8a4b10ba2dc3"),
-                            BirthDate = new DateTime(2022, 10, 5, 0, 20, 2, 335, DateTimeKind.Local).AddTicks(2846),
+                            BirthDate = new DateTime(2022, 10, 10, 20, 29, 17, 933, DateTimeKind.Local).AddTicks(5041),
                             EmailAddress = "Moses_Orn98@yahoo.com",
                             FirstName = "Moses",
                             LastName = "Orn",
@@ -1023,7 +839,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e4d782a2-c14b-bfc5-cee8-432a323314b8"),
-                            BirthDate = new DateTime(2011, 2, 1, 16, 15, 57, 760, DateTimeKind.Local).AddTicks(2837),
+                            BirthDate = new DateTime(2011, 2, 7, 12, 25, 13, 358, DateTimeKind.Local).AddTicks(5031),
                             EmailAddress = "Myrtle.Tremblay@yahoo.com",
                             FirstName = "Myrtle",
                             LastName = "Tremblay",
@@ -1033,7 +849,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f6d2645c-d118-86e3-b4d6-dead790666a7"),
-                            BirthDate = new DateTime(2020, 3, 6, 18, 22, 9, 96, DateTimeKind.Local).AddTicks(9224),
+                            BirthDate = new DateTime(2020, 3, 12, 14, 31, 24, 695, DateTimeKind.Local).AddTicks(1621),
                             EmailAddress = "Otis42@yahoo.com",
                             FirstName = "Otis",
                             LastName = "Carter",
@@ -1043,7 +859,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e9bfd8b1-5a52-3800-6862-2b734d40cd00"),
-                            BirthDate = new DateTime(2014, 8, 23, 15, 32, 26, 585, DateTimeKind.Local).AddTicks(4210),
+                            BirthDate = new DateTime(2014, 8, 29, 11, 41, 42, 183, DateTimeKind.Local).AddTicks(6670),
                             EmailAddress = "Kate_Wiegand@gmail.com",
                             FirstName = "Kate",
                             LastName = "Wiegand",
@@ -1053,7 +869,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("bbe74b8f-4d35-5124-de8a-c572b6c207fe"),
-                            BirthDate = new DateTime(2016, 11, 6, 15, 10, 40, 514, DateTimeKind.Local).AddTicks(1316),
+                            BirthDate = new DateTime(2016, 11, 12, 11, 19, 56, 112, DateTimeKind.Local).AddTicks(3822),
                             EmailAddress = "Stacy_Effertz@hotmail.com",
                             FirstName = "Stacy",
                             LastName = "Effertz",
@@ -1063,7 +879,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("547a3a2a-9746-f1f7-0dc1-9f411376967d"),
-                            BirthDate = new DateTime(2007, 9, 18, 4, 0, 26, 724, DateTimeKind.Local).AddTicks(5454),
+                            BirthDate = new DateTime(2007, 9, 24, 0, 9, 42, 322, DateTimeKind.Local).AddTicks(8032),
                             EmailAddress = "Jeannie.Erdman98@yahoo.com",
                             FirstName = "Jeannie",
                             LastName = "Erdman",
