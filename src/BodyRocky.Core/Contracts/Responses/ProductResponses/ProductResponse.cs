@@ -8,4 +8,5 @@ public class ProductResponse
     public decimal ProductPrice { get; init; } = default!;
     public string ProductURL { get; init; } = default!;
     public bool IsFeatured { get; init; } = default!;
+    public int Stock { get; init; }
 }

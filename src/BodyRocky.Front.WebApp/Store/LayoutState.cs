@@ -14,6 +14,7 @@ public record LayoutState(
     private LayoutState()
         : this(new(), false, null)
     {
+        
     }
 }
 
@@ -52,19 +53,31 @@ public static class Reducers
     [ReducerMethod]
     public static LayoutState ReduceLoadCategoriesAction(LayoutState state, LoadCategoriesAction action)
     {
-        return state with { IsLoading = true };
+        return state with
+        {
+            IsLoading = true
+        };
     }
     
     [ReducerMethod]
     public static LayoutState ReduceLoadCategoriesSuccessAction(LayoutState state, LoadCategoriesSuccessAction action)
     {
-        return state with { Categories = action.Categories, IsLoading = false, ErrorMessage = null };
+        return state with
+        {
+            Categories = action.Categories,
+            IsLoading = false,
+            ErrorMessage = null
+        };
     }
     
     [ReducerMethod]
     public static LayoutState ReduceLoadCategoriesFailureAction(LayoutState state, LoadCategoriesFailureAction action)
     {
-        return state with { ErrorMessage = action.Exception.Message, IsLoading = false };
+        return state with
+        {
+            ErrorMessage = action.Exception.Message,
+            IsLoading = false
+        };
     }
 }
 

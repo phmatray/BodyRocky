@@ -1,4 +1,8 @@
 @page "/checkout"
+@using BodyRocky.Core.Contracts.Responses.ProductResponses
+@inherits FluxorComponent
+@inject IState<BasketState> BasketState
+@inject BasketDispatcher BasketDispatcher
 
 <!-- breadcrumb -->
 <UiBreadcrumb PageTitle="Passer commande"/>
@@ -73,51 +77,31 @@
       Récapitulatif de la commande
     </h4>
     <div class="space-y-2">
-      <div class="flex justify-between">
-        <div>
-          <h5 class="text-gray-800 font-medium">Italian shape sofa</h5>
-          <p class="text-sm text-gray-600">Size: M</p>
+      @foreach ((ProductResponse? product, int quantity) in BasketState.Value.ProductQuantities)
+      {
+        <div class="flex justify-between">
+          <div>
+            <h5 class="text-gray-800 font-medium">
+              @product.ProductName
+              <span class="text-gray-600 font-normal">
+                x @quantity
+              </span>
+            </h5>
+            @* <p class="text-sm text-gray-600">Size: M</p> *@
+          </div>
+          @* <p class="text-gray-600"> *@
+          @*   x @quantity *@
+          @* </p> *@
+          <p class="text-gray-800 font-medium">
+            @product.ProductPrice.ToString("C").Replace(".", ",")
+          </p>
         </div>
-        <p class="text-gray-600">
-          x3
-        </p>
-        <p class="text-gray-800 font-medium">$320</p>
-      </div>
-      <div class="flex justify-between">
-        <div>
-          <h5 class="text-gray-800 font-medium">Italian shape sofa</h5>
-          <p class="text-sm text-gray-600">Size: M</p>
-        </div>
-        <p class="text-gray-600">
-          x3
-        </p>
-        <p class="text-gray-800 font-medium">$320</p>
-      </div>
-      <div class="flex justify-between">
-        <div>
-          <h5 class="text-gray-800 font-medium">Italian shape sofa</h5>
-          <p class="text-sm text-gray-600">Size: M</p>
-        </div>
-        <p class="text-gray-600">
-          x3
-        </p>
-        <p class="text-gray-800 font-medium">$320</p>
-      </div>
-      <div class="flex justify-between">
-        <div>
-          <h5 class="text-gray-800 font-medium">Italian shape sofa</h5>
-          <p class="text-sm text-gray-600">Size: M</p>
-        </div>
-        <p class="text-gray-600">
-          x3
-        </p>
-        <p class="text-gray-800 font-medium">$320</p>
-      </div>
+      }
     </div>
 
     <div class="flex justify-between border-b border-gray-200 mt-1 text-gray-800 font-medium py-3 uppercas">
       <p>sous-total</p>
-      <p>1 280,00 €</p>
+      <p>@BasketState.Value.TotalPrice €</p>
     </div>
 
     <div class="flex justify-between border-b border-gray-200 mt-1 text-gray-800 font-medium py-3 uppercas">
@@ -127,7 +111,7 @@
 
     <div class="flex justify-between text-gray-800 font-medium py-3 uppercas">
       <p class="font-semibold">Total</p>
-      <p>1 280,00 €</p>
+      <p>@BasketState.Value.TotalPrice €</p>
     </div>
 
     <div class="flex items-center mb-4 mt-2">
@@ -142,11 +126,21 @@
        href="#">
       Passer commande
     </a>
+    
+    <button class="block w-full py-3 px-4 text-center text-primary bg-transparent border border-primary rounded-md hover:bg-primary hover:text-white transition font-medium mt-2"
+       @onclick="ClearBasket">
+      Vider le panier
+    </button>
   </div>
 
 </div>
 <!-- ./wrapper -->
 
 @code {
+
+  private void ClearBasket()
+  {
+    BasketDispatcher.ClearBasket();
+  }
 
 }

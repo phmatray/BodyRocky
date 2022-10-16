@@ -1,3 +1,6 @@
+@inherits FluxorComponent
+@inject IState<BasketState> BasketState
+
 <header class="py-4 shadow-sm bg-white">
   <div class="container flex items-center justify-between">
     <NavLink href="@Routes.HOME_ROUTE">
@@ -35,7 +38,7 @@
         <div class="text-xs leading-3">Panier</div>
         <div
           class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-          2
+          @BasketState.Value.TotalQuantity
         </div>
       </NavLink>
       <NavLink href="@Routes.ACCOUNT_ROUTE" class="text-center text-gray-700 hover:text-primary transition relative">

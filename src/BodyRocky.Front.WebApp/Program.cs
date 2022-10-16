@@ -44,7 +44,9 @@ services
         });
     });
 
+// Add strongly-typed Flux Dispatchers
 services
-    .AddScoped<LayoutDispatcher>();
+    .AddScoped<LayoutDispatcher>()
+    .AddScoped<BasketDispatcher>();
 
 await builder.Build().RunAsync();
