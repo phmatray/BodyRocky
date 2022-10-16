@@ -1,61 +1,77 @@
 @page "/checkout"
 
 <!-- breadcrumb -->
-<UiBreadcrumb PageTitle="Passer commande" />
+<UiBreadcrumb PageTitle="Passer commande"/>
 <!-- ./breadcrumb -->
 
 <!-- wrapper -->
 <div class="container grid grid-cols-12 items-start pb-16 pt-4 gap-6">
 
   <div class="col-span-8 border border-gray-200 p-4 rounded">
-    <h3 class="text-lg font-medium capitalize mb-4">Checkout</h3>
+    <h3 class="text-lg font-medium capitalize mb-4">
+      Passer commande
+    </h3>
     <div class="space-y-4">
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <label class="text-gray-600" for="first-name">First Name <span
-              class="text-primary">*</span></label>
+          <label class="text-gray-600" for="first-name">
+            Prénom
+            <span class="text-primary">*</span>
+          </label>
           <input class="input-box" id="first-name" name="first-name" type="text">
         </div>
         <div>
-          <label class="text-gray-600" for="last-name">Last Name <span
-              class="text-primary">*</span></label>
+          <label class="text-gray-600" for="last-name">
+            Nom
+            <span class="text-primary">*</span>
+          </label>
           <input class="input-box" id="last-name" name="last-name" type="text">
         </div>
       </div>
       <div>
-        <label class="text-gray-600" for="company">Company</label>
+        <label class="text-gray-600" for="company">
+          Société
+        </label>
         <input class="input-box" id="company" name="company" type="text">
       </div>
       <div>
-        <label class="text-gray-600" for="region">Country/Region</label>
+        <label class="text-gray-600" for="region">
+          Pays / Région
+        </label>
         <input class="input-box" id="region" name="region" type="text">
       </div>
       <div>
-        <label class="text-gray-600" for="address">Street address</label>
+        <label class="text-gray-600" for="address">
+          Adresse
+        </label>
         <input class="input-box" id="address" name="address" type="text">
       </div>
       <div>
-        <label class="text-gray-600" for="city">City</label>
+        <label class="text-gray-600" for="city">
+          Ville
+        </label>
         <input class="input-box" id="city" name="city" type="text">
       </div>
       <div>
-        <label class="text-gray-600" for="phone">Phone number</label>
+        <label class="text-gray-600" for="phone">
+          Numéro de téléphone
+        </label>
         <input class="input-box" id="phone" name="phone" type="text">
       </div>
       <div>
-        <label class="text-gray-600" for="email">Email address</label>
+        <label class="text-gray-600" for="email">
+          Adresse email
+        </label>
         <input class="input-box" id="email" name="email" type="email">
-      </div>
-      <div>
-        <label class="text-gray-600" for="company">Company</label>
-        <input class="input-box" id="company" name="company" type="text">
       </div>
     </div>
 
   </div>
 
   <div class="col-span-4 border border-gray-200 p-4 rounded">
-    <h4 class="text-gray-800 text-lg mb-4 font-medium uppercase">order summary</h4>
+    <h4 class="text-gray-800 text-lg mb-4 font-medium uppercase">
+      Récapitulatif de la commande
+    </h4>
     <div class="space-y-2">
       <div class="flex justify-between">
         <div>
@@ -100,31 +116,32 @@
     </div>
 
     <div class="flex justify-between border-b border-gray-200 mt-1 text-gray-800 font-medium py-3 uppercas">
-      <p>subtotal</p>
-      <p>$1280</p>
+      <p>sous-total</p>
+      <p>1 280,00 €</p>
     </div>
 
     <div class="flex justify-between border-b border-gray-200 mt-1 text-gray-800 font-medium py-3 uppercas">
-      <p>shipping</p>
-      <p>Free</p>
+      <p>frais de livraison</p>
+      <p>Gratuit</p>
     </div>
 
     <div class="flex justify-between text-gray-800 font-medium py-3 uppercas">
       <p class="font-semibold">Total</p>
-      <p>$1280</p>
+      <p>1 280,00 €</p>
     </div>
 
     <div class="flex items-center mb-4 mt-2">
       <input class="text-primary focus:ring-0 rounded-sm cursor-pointer w-3 h-3" id="aggrement" name="aggrement"
              type="checkbox">
-      <label class="text-gray-600 ml-3 cursor-pointer text-sm" for="aggrement">I agree to the <a class="text-primary"
-                                                                                                 href="#">terms
-        & conditions</a></label>
+      <label class="text-gray-600 ml-3 cursor-pointer text-sm" for="aggrement">
+        J'ai lu et j'accepte les <a href="#" class="text-primary">conditions générales de vente</a>
+      </label>
     </div>
 
     <a class="block w-full py-3 px-4 text-center text-white bg-primary border border-primary rounded-md hover:bg-transparent hover:text-primary transition font-medium"
-       href="#">Place
-      order</a>
+       href="#">
+      Passer commande
+    </a>
   </div>
 
 </div>
