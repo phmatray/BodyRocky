@@ -18,7 +18,9 @@
         {
           foreach (CategoryResponse category in LayoutState.Value.Categories)
           {
-            <NavLink href="@Routes.SHOP_ROUTE" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
+            <NavLink
+              href="@GetCategoryNavLink(category)"
+              class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
               <i class="@category.CategoryIcon fa-fw text-primary"></i>
               <span class="ml-6 text-gray-600 text-sm">
                 @category.CategoryName
@@ -35,7 +37,7 @@
           Accueil
         </NavLink>
         <NavLink href="@Routes.SHOP_ROUTE" class="text-gray-200 hover:text-white transition">
-          Shop
+          Boutique
         </NavLink>
         @* <NavLink href="@NavigationService.CONTACT_ROUTE" class="text-gray-200 hover:text-white transition"> *@
         @*   Contactez-nous *@
@@ -49,5 +51,12 @@
 </nav>
 
 @code {
+  
+  private string GetCategoryNavLink(CategoryResponse? category)
+  {
+    return category is not null
+      ? $"{Routes.SHOP_ROUTE}?categories={category.CategoryName}"
+      : Routes.SHOP_ROUTE;
+  } 
 
 }

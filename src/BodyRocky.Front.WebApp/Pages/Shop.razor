@@ -1,11 +1,13 @@
 @page "/shop"
 @using BodyRocky.Core.Contracts.Responses.ProductResponses
 @using BodyRocky.Core.Contracts.Responses.CategoryResponses
+@using System.Net
 @inherits FluxorComponent
 @inject IState<LayoutState> LayoutState
+@inject NavigationManager NavigationManager
 
 <!-- breadcrumb -->
-<UiBreadcrumb PageTitle="Shop" />
+<UiBreadcrumb PageTitle="Boutique" />
 <!-- ./breadcrumb -->
 
 <!-- shop wrapper -->
@@ -21,8 +23,13 @@
             foreach (CategoryResponse category in LayoutState.Value.Categories)
             {
               <div class="flex items-center">
-                <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="cat-1" name="cat-1"
-                       type="checkbox">
+                <input
+                  class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  id="@category.CategoryID"
+                  name="category-@category.CategoryID"
+                  type="checkbox"
+                  checked="@IsCategorySelected(category.CategoryName)"
+                  @onclick="@(() => UpdateNavigation(category.CategoryName))"/>
                 <label class="text-gray-600 ml-3 cusror-pointer" for="cat-1">
                   @category.CategoryName
                 </label>
@@ -149,10 +156,10 @@
     <div class="flex items-center mb-4">
       <select class="w-44 text-sm text-gray-600 py-3 px-4 border-gray-300 shadow-sm rounded focus:ring-primary focus:border-primary" id="sort"
               name="sort">
-        <option value="">Default sorting</option>
-        <option value="price-low-to-high">Price low to high</option>
-        <option value="price-high-to-low">Price high to low</option>
-        <option value="latest">Latest product</option>
+        <option value="">Tri par défaut</option>
+        <option value="price-low-to-high">Prix: ascendant</option>
+        <option value="price-high-to-low">Prix: descendant</option>
+        <option value="latest">Nouveautés</option>
       </select>
 
       <div class="flex gap-2 ml-auto">
@@ -181,6 +188,10 @@
 <!-- ./shop wrapper -->
 
 @code {
+  
+  [Parameter]
+  [SupplyParameterFromQuery(Name = "categories")]
+  public string[] CategoryNames { get; set; } = {  };
 
   private readonly ProductResponse _sampleProduct = new()
   {
@@ -191,5 +202,46 @@
     ProductURL = "https://www.google.com",
     IsFeatured = false
   };
+  
+  private bool IsCategorySelected(string categoryName)
+  {
+    return CategoryNames
+      .Select(WebUtility.UrlDecode)
+      .Contains(categoryName);
+  }
+  
+  private void UpdateNavigation(string categoryName)
+  {
+    // copy the current category names
+    var categoryNames = CategoryNames
+      .Select(WebUtility.UrlDecode)
+      .ToList();
+    
+    // if the category is already selected, remove it
+    if (categoryNames.Contains(categoryName))
+    {
+      categoryNames.Remove(categoryName);
+    }
+    
+    // otherwise, add it
+    else
+    {
+      categoryNames.Add(categoryName);
+    }
+    
+    // update the query string
+    string queryString = string
+      .Join("&", categoryNames.Select(x=>"categories=" + x));
+    
+    // navigate to the new query string
+    if (string.IsNullOrWhiteSpace(queryString))
+    {
+      NavigationManager.NavigateTo(NavigationManager.Uri.Split("?")[0]);
+    }
+    else
+    {
+      NavigationManager.NavigateTo(NavigationManager.Uri.Split("?")[0] + "?" + queryString);
+    }
+  }
 
 }

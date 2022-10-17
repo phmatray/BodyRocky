@@ -3,7 +3,7 @@
   @if (Data is not null)
   {
     <img src="@Data.CategoryImage" alt="@Data.CategoryName" class="w-full">
-    <NavLink href="@Routes.SHOP_ROUTE"
+    <NavLink href="@GetNavLink()"
              class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
       @Data.CategoryName
     </NavLink>
@@ -22,5 +22,12 @@
   
   [Parameter]
   public CategoryResponse? Data { get; set; }
+  
+  private string GetNavLink()
+  {
+    return Data is not null
+      ? $"{Routes.SHOP_ROUTE}?categories={Data.CategoryName}"
+      : Routes.SHOP_ROUTE;
+  }
   
 }
