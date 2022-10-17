@@ -6,11 +6,12 @@ namespace BodyRocky.Back.WebApi.DataAccess;
 public static class FakeData
 {
     private static Faker<Brand>? _fakeBrand;
-    private static Faker<Category>? _fakeCategory;
+    // private static Faker<Category>? _fakeCategory;
     private static Faker<Customer>? _fakeCustomer;
     private static Faker<ZipCode>? _fakeZipCode;
     private static Faker<Address>? _fakeAddress;
     private static Faker<Product>? _fakeProduct;
+    private static Faker<ProductCategory>? _fakeProductCategory;
 
     public static List<Brand>? Brands;
     public static List<Category>? Categories;
@@ -18,6 +19,7 @@ public static class FakeData
     public static List<ZipCode>? ZipCodes;
     public static List<Address>? Addresses;
     public static List<Product>? Products;
+    public static List<ProductCategory>? ProductCategories;
 
     public static void Init()
     {
@@ -45,7 +47,6 @@ public static class FakeData
         
         #region Categories
 
-        // List<Guid> categoryIds = new();
         
         // _fakeCategory = new Faker<Category>()
         //     .StrictMode(false)
@@ -65,6 +66,10 @@ public static class FakeData
         
         Categories = GetPredefinedCategories();
         
+        List<Guid> categoryIds = Categories
+            .Select(c => c.CategoryID)
+            .ToList();
+
         #endregion
         
         #region Customers
@@ -162,6 +167,7 @@ public static class FakeData
             .RuleFor(m => m.ProductPrice, f => f.Random.Decimal(0, 100))
             .RuleFor(m => m.ProductURL, f => f.Image.PicsumUrl())
             .RuleFor(m => m.IsFeatured, f => f.Random.Bool())
+            .RuleFor(m => m.Stock, f => f.Random.Number(0, 50))
             .RuleFor(m => m.BrandID, f =>
             {
                 Guid random = f.PickRandom(brandIds);
@@ -170,6 +176,29 @@ public static class FakeData
             });
         
         Products = _fakeProduct.Generate(numToSeed);
+        
+        #endregion
+        
+        #region ProductCategories
+        
+        List<Guid> productCategoryIds = new();
+        
+        _fakeProductCategory = new Faker<ProductCategory>()
+            .StrictMode(false)
+            .UseSeed(6666)
+            .RuleFor(m => m.ProductID, f =>
+            {
+                Guid random = f.PickRandom(productIds);
+                productIds.Remove(random);
+                return random;
+            })
+            .RuleFor(m => m.CategoryID, f =>
+            {
+                Guid random = f.PickRandom(categoryIds);
+                return random;
+            });
+        
+        ProductCategories = _fakeProductCategory.Generate(numToSeed);
         
         #endregion
     }

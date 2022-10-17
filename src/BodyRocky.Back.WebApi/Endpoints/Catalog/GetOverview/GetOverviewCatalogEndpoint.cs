@@ -23,7 +23,7 @@ public class GetOverviewCatalogEndpoint
     public override async Task HandleAsync(CancellationToken ct)
     {
         CatalogOverview catalog = await _catalogService.GetOverviewAsync();
-        var response = Map.FromEntity(catalog);
+        GetOverviewCatalogResponse response = Map.FromEntity(catalog);
         await SendOkAsync(response, ct);
     }
 }

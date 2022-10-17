@@ -8,7 +8,8 @@ public class Product
     public decimal ProductPrice { get; set; } = default!;
     public string ProductURL { get; set; } = default!;
     public bool IsFeatured { get; set; } = default!;
-    
+    public int Stock { get; set; }
+
     // relation brand
     public Guid BrandID { get; set; } = default!;
     public Brand Brand { get; set; } = default!;

@@ -40,4 +40,11 @@ public class CatalogService
             TotalBrands = totalBrands
         };
     }
+
+    public async Task<List<Product>> GetProductsAsync()
+    {
+        List<Product> products = await _productRepository.GetAllAsync();
+
+        return products;
+    }
 }

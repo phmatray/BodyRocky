@@ -33,5 +33,6 @@ public sealed class BodyRockyDbContext : DbContext
         modelBuilder.Entity<ZipCode>().HasData(FakeData.ZipCodes!);
         // modelBuilder.Entity<Address>().HasData(FakeData.Addresses!);
         modelBuilder.Entity<Product>().HasData(FakeData.Products!);
+        modelBuilder.Entity<ProductCategory>().HasData(FakeData.ProductCategories!);
     }
 }

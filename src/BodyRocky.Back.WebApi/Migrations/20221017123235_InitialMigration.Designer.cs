@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BodyRocky.Back.WebApi.Migrations
 {
     [DbContext(typeof(BodyRockyDbContext))]
-    [Migration("20221016202438_InitialMigration")]
+    [Migration("20221017123235_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -406,7 +406,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryID = new Guid("822d1cc3-7d5d-470d-9161-6f673337af2e"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3"),
                             CategoryIcon = "fas fa-heartbeat",
                             CategoryImage = "/assets/images/category/category-1.jpg",
                             CategoryName = "Cardio-training",
@@ -414,7 +414,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("e4ac22fa-2db3-44e0-8b4a-cf9f185b8181"),
+                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7"),
                             CategoryIcon = "fas fa-dumbbell",
                             CategoryImage = "/assets/images/category/category-2.jpg",
                             CategoryName = "Musculation",
@@ -422,7 +422,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("3bdec983-8065-44be-86a2-849bd9621f9c"),
+                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480"),
                             CategoryIcon = "fas fa-gamepad",
                             CategoryImage = "/assets/images/category/category-3.jpg",
                             CategoryName = "Jeux et loisirs",
@@ -430,7 +430,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("557507a5-97fe-4501-be9c-bf6505a6d2d5"),
+                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5"),
                             CategoryIcon = "fas fa-running",
                             CategoryImage = "/assets/images/category/category-4.jpg",
                             CategoryName = "Fitness",
@@ -438,7 +438,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("0ec7e5bc-8916-4841-bc6b-a2d4d459d77c"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7"),
                             CategoryIcon = "fas fa-heart",
                             CategoryImage = "/assets/images/category/category-5.jpg",
                             CategoryName = "Yoga et bien-être",
@@ -446,7 +446,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("fb944b8a-a1bb-4cc5-99cc-b48dade08f3a"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559"),
                             CategoryIcon = "fas fa-utensils",
                             CategoryImage = "/assets/images/category/category-6.jpg",
                             CategoryName = "Nutrition",
@@ -491,7 +491,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d1b897fc-7777-027f-b858-964806e03621"),
-                            BirthDate = new DateTime(2016, 6, 27, 6, 54, 19, 468, DateTimeKind.Local).AddTicks(2360),
+                            BirthDate = new DateTime(2016, 6, 27, 23, 2, 17, 383, DateTimeKind.Local).AddTicks(9376),
                             EmailAddress = "Mable.Rolfson58@yahoo.com",
                             FirstName = "Mable",
                             LastName = "Rolfson",
@@ -501,7 +501,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("24a86f6c-5977-f46f-67dd-dddba5a9a732"),
-                            BirthDate = new DateTime(2010, 9, 11, 3, 3, 41, 540, DateTimeKind.Local).AddTicks(2415),
+                            BirthDate = new DateTime(2010, 9, 11, 19, 11, 39, 455, DateTimeKind.Local).AddTicks(8172),
                             EmailAddress = "Glenda.Miller55@hotmail.com",
                             FirstName = "Glenda",
                             LastName = "Miller",
@@ -511,7 +511,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("17577a5e-f5e7-ef5f-e697-f2ace5c8e0c2"),
-                            BirthDate = new DateTime(2010, 2, 20, 20, 40, 6, 539, DateTimeKind.Local).AddTicks(2543),
+                            BirthDate = new DateTime(2010, 2, 21, 12, 48, 4, 454, DateTimeKind.Local).AddTicks(7657),
                             EmailAddress = "Archie.Hahn@gmail.com",
                             FirstName = "Archie",
                             LastName = "Hahn",
@@ -521,7 +521,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("ef5a7cad-8ea0-9b3c-e6a8-909589729ae3"),
-                            BirthDate = new DateTime(2015, 8, 16, 0, 37, 50, 251, DateTimeKind.Local).AddTicks(8548),
+                            BirthDate = new DateTime(2015, 8, 16, 16, 45, 48, 167, DateTimeKind.Local).AddTicks(3183),
                             EmailAddress = "Duane_Moore37@hotmail.com",
                             FirstName = "Duane",
                             LastName = "Moore",
@@ -531,7 +531,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("a20d864f-6e74-3fdf-6542-3bc4a7cc8183"),
-                            BirthDate = new DateTime(2022, 4, 22, 22, 16, 8, 126, DateTimeKind.Local).AddTicks(4276),
+                            BirthDate = new DateTime(2022, 4, 23, 14, 24, 6, 41, DateTimeKind.Local).AddTicks(8092),
                             EmailAddress = "Wesley1@gmail.com",
                             FirstName = "Wesley",
                             LastName = "Heidenreich",
@@ -541,7 +541,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e5d8d983-cc47-c0ad-a4e4-3223e8c09803"),
-                            BirthDate = new DateTime(2016, 10, 17, 18, 54, 49, 603, DateTimeKind.Local).AddTicks(4297),
+                            BirthDate = new DateTime(2016, 10, 18, 11, 2, 47, 518, DateTimeKind.Local).AddTicks(7550),
                             EmailAddress = "Mable_Conn@yahoo.com",
                             FirstName = "Mable",
                             LastName = "Conn",
@@ -551,7 +551,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("8e09c622-cfa5-b448-898b-fcdeeaed3264"),
-                            BirthDate = new DateTime(2006, 1, 1, 20, 51, 26, 386, DateTimeKind.Local).AddTicks(8620),
+                            BirthDate = new DateTime(2006, 1, 2, 12, 59, 24, 302, DateTimeKind.Local).AddTicks(1454),
                             EmailAddress = "Molly47@hotmail.com",
                             FirstName = "Molly",
                             LastName = "Connelly",
@@ -561,7 +561,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f517f468-6424-0fe9-b705-96e2bddd731f"),
-                            BirthDate = new DateTime(2012, 4, 20, 12, 16, 2, 763, DateTimeKind.Local).AddTicks(8457),
+                            BirthDate = new DateTime(2012, 4, 21, 4, 24, 0, 679, DateTimeKind.Local).AddTicks(437),
                             EmailAddress = "Micheal1@hotmail.com",
                             FirstName = "Micheal",
                             LastName = "Fay",
@@ -571,7 +571,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d7eee062-cbfe-cb53-056f-5ba3e656b6a2"),
-                            BirthDate = new DateTime(2007, 1, 27, 15, 47, 37, 678, DateTimeKind.Local).AddTicks(8172),
+                            BirthDate = new DateTime(2007, 1, 28, 7, 55, 35, 593, DateTimeKind.Local).AddTicks(9151),
                             EmailAddress = "Glen.Carter@gmail.com",
                             FirstName = "Glen",
                             LastName = "Carter",
@@ -581,7 +581,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("09cf3630-e958-88ab-34f5-562947070a64"),
-                            BirthDate = new DateTime(2011, 4, 4, 6, 48, 13, 517, DateTimeKind.Local).AddTicks(6100),
+                            BirthDate = new DateTime(2011, 4, 4, 22, 56, 11, 432, DateTimeKind.Local).AddTicks(6217),
                             EmailAddress = "Miranda_Kautzer@yahoo.com",
                             FirstName = "Miranda",
                             LastName = "Kautzer",
@@ -591,7 +591,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("370d7448-f7f8-fe75-2c48-ac7cd88f0347"),
-                            BirthDate = new DateTime(2016, 12, 28, 12, 14, 40, 316, DateTimeKind.Local).AddTicks(5598),
+                            BirthDate = new DateTime(2016, 12, 29, 4, 22, 38, 231, DateTimeKind.Local).AddTicks(5246),
                             EmailAddress = "Olive97@hotmail.com",
                             FirstName = "Olive",
                             LastName = "Hickle",
@@ -601,7 +601,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("16b4c4a0-2f35-237d-681b-bd453093a236"),
-                            BirthDate = new DateTime(2005, 6, 14, 12, 0, 25, 122, DateTimeKind.Local).AddTicks(3441),
+                            BirthDate = new DateTime(2005, 6, 15, 4, 8, 23, 37, DateTimeKind.Local).AddTicks(2593),
                             EmailAddress = "Harold.Bogan@gmail.com",
                             FirstName = "Harold",
                             LastName = "Bogan",
@@ -611,7 +611,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("4c3865c2-4fa0-2030-ee84-adc09a2380c0"),
-                            BirthDate = new DateTime(2009, 10, 20, 20, 4, 16, 824, DateTimeKind.Local).AddTicks(1724),
+                            BirthDate = new DateTime(2009, 10, 21, 12, 12, 14, 739, DateTimeKind.Local).AddTicks(300),
                             EmailAddress = "Monica_Toy9@yahoo.com",
                             FirstName = "Monica",
                             LastName = "Toy",
@@ -621,7 +621,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("6569e4a5-16d0-f2e7-efd6-d481c804b5da"),
-                            BirthDate = new DateTime(2006, 3, 19, 5, 43, 6, 435, DateTimeKind.Local).AddTicks(9965),
+                            BirthDate = new DateTime(2006, 3, 19, 21, 51, 4, 350, DateTimeKind.Local).AddTicks(8021),
                             EmailAddress = "Jacob.Zboncak27@gmail.com",
                             FirstName = "Jacob",
                             LastName = "Zboncak",
@@ -631,7 +631,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f6bd4214-fcae-251e-1c0e-19ff98cd05d9"),
-                            BirthDate = new DateTime(2012, 6, 12, 3, 12, 24, 278, DateTimeKind.Local).AddTicks(543),
+                            BirthDate = new DateTime(2012, 6, 12, 19, 20, 22, 192, DateTimeKind.Local).AddTicks(7678),
                             EmailAddress = "Nina.Kshlerin@yahoo.com",
                             FirstName = "Nina",
                             LastName = "Kshlerin",
@@ -641,7 +641,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("9a2731a6-8052-7fba-e7d5-859847ce1ba1"),
-                            BirthDate = new DateTime(2007, 3, 7, 9, 40, 21, 360, DateTimeKind.Local).AddTicks(7969),
+                            BirthDate = new DateTime(2007, 3, 8, 1, 48, 19, 275, DateTimeKind.Local).AddTicks(4627),
                             EmailAddress = "Beverly95@yahoo.com",
                             FirstName = "Beverly",
                             LastName = "Pfeffer",
@@ -651,7 +651,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("639e22a8-ebb5-9b66-f18f-64bce6951b54"),
-                            BirthDate = new DateTime(2005, 6, 20, 13, 29, 10, 420, DateTimeKind.Local).AddTicks(2886),
+                            BirthDate = new DateTime(2005, 6, 21, 5, 37, 8, 334, DateTimeKind.Local).AddTicks(9060),
                             EmailAddress = "Ebony35@gmail.com",
                             FirstName = "Ebony",
                             LastName = "White",
@@ -661,7 +661,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("64bb2e44-3584-aec1-ee15-f67e8b1fe2d8"),
-                            BirthDate = new DateTime(2014, 8, 18, 20, 44, 31, 120, DateTimeKind.Local).AddTicks(8507),
+                            BirthDate = new DateTime(2014, 8, 19, 12, 52, 29, 35, DateTimeKind.Local).AddTicks(4172),
                             EmailAddress = "Vanessa.Lindgren4@yahoo.com",
                             FirstName = "Vanessa",
                             LastName = "Lindgren",
@@ -671,7 +671,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("23390a56-c1d1-1d60-1c75-2fa24374999a"),
-                            BirthDate = new DateTime(2013, 10, 1, 7, 7, 39, 43, DateTimeKind.Local).AddTicks(9699),
+                            BirthDate = new DateTime(2013, 10, 1, 23, 15, 36, 958, DateTimeKind.Local).AddTicks(4920),
                             EmailAddress = "Annie_Feil@hotmail.com",
                             FirstName = "Annie",
                             LastName = "Feil",
@@ -681,7 +681,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("771b2a2f-d9a0-2f46-b75e-94585589f127"),
-                            BirthDate = new DateTime(2013, 7, 8, 8, 15, 24, 38, DateTimeKind.Local).AddTicks(9470),
+                            BirthDate = new DateTime(2013, 7, 9, 0, 23, 21, 953, DateTimeKind.Local).AddTicks(4278),
                             EmailAddress = "Owen.Kutch81@gmail.com",
                             FirstName = "Owen",
                             LastName = "Kutch",
@@ -691,7 +691,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("9f9b9048-2e80-a16c-f77a-e0a6fe86ef5e"),
-                            BirthDate = new DateTime(2005, 12, 16, 10, 4, 27, 239, DateTimeKind.Local).AddTicks(4512),
+                            BirthDate = new DateTime(2005, 12, 17, 2, 12, 25, 153, DateTimeKind.Local).AddTicks(8835),
                             EmailAddress = "Alfredo_Conroy@gmail.com",
                             FirstName = "Alfredo",
                             LastName = "Conroy",
@@ -701,7 +701,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("09a1ceff-6067-cfcc-eeee-51e27ad836cf"),
-                            BirthDate = new DateTime(2018, 7, 8, 16, 25, 54, 300, DateTimeKind.Local).AddTicks(8157),
+                            BirthDate = new DateTime(2018, 7, 9, 8, 33, 52, 215, DateTimeKind.Local).AddTicks(1645),
                             EmailAddress = "Laurence40@yahoo.com",
                             FirstName = "Laurence",
                             LastName = "Orn",
@@ -711,7 +711,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d94b91d5-6c77-2434-c3df-919814170af1"),
-                            BirthDate = new DateTime(2009, 6, 14, 16, 47, 23, 31, DateTimeKind.Local).AddTicks(293),
+                            BirthDate = new DateTime(2009, 6, 15, 8, 55, 20, 945, DateTimeKind.Local).AddTicks(2938),
                             EmailAddress = "Regina_Schinner@yahoo.com",
                             FirstName = "Regina",
                             LastName = "Schinner",
@@ -721,7 +721,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("c4919c93-3b57-f555-d360-0930100173c3"),
-                            BirthDate = new DateTime(2016, 9, 6, 2, 2, 28, 811, DateTimeKind.Local).AddTicks(7362),
+                            BirthDate = new DateTime(2016, 9, 6, 18, 10, 26, 725, DateTimeKind.Local).AddTicks(9604),
                             EmailAddress = "Bethany24@gmail.com",
                             FirstName = "Bethany",
                             LastName = "Hills",
@@ -731,7 +731,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("241fdd79-d370-d294-5ba2-4214bf51b015"),
-                            BirthDate = new DateTime(2006, 3, 25, 23, 5, 55, 345, DateTimeKind.Local).AddTicks(9761),
+                            BirthDate = new DateTime(2006, 3, 26, 15, 13, 53, 260, DateTimeKind.Local).AddTicks(1452),
                             EmailAddress = "Clay_Abshire@yahoo.com",
                             FirstName = "Clay",
                             LastName = "Abshire",
@@ -741,7 +741,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("d3a3a7af-ddc4-4ae6-f3f6-ce0e100862f8"),
-                            BirthDate = new DateTime(2022, 6, 18, 8, 2, 2, 310, DateTimeKind.Local).AddTicks(146),
+                            BirthDate = new DateTime(2022, 6, 19, 0, 10, 0, 224, DateTimeKind.Local).AddTicks(1329),
                             EmailAddress = "Christian_Paucek38@yahoo.com",
                             FirstName = "Christian",
                             LastName = "Paucek",
@@ -751,7 +751,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("64b4e5c0-6541-cdce-487f-d0cf5e41bcdd"),
-                            BirthDate = new DateTime(2019, 3, 10, 10, 57, 57, 785, DateTimeKind.Local).AddTicks(9403),
+                            BirthDate = new DateTime(2019, 3, 11, 3, 5, 55, 700, DateTimeKind.Local).AddTicks(224),
                             EmailAddress = "Gregory.Gibson@yahoo.com",
                             FirstName = "Gregory",
                             LastName = "Gibson",
@@ -761,7 +761,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0a135eb3-695a-2cd4-c170-213222bcdd0e"),
-                            BirthDate = new DateTime(2016, 8, 28, 20, 45, 36, 637, DateTimeKind.Local).AddTicks(7009),
+                            BirthDate = new DateTime(2016, 8, 29, 12, 53, 34, 551, DateTimeKind.Local).AddTicks(7246),
                             EmailAddress = "Santos.Mosciski@yahoo.com",
                             FirstName = "Santos",
                             LastName = "Mosciski",
@@ -771,7 +771,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("3c5d782e-c346-d1a4-ea87-956078911a78"),
-                            BirthDate = new DateTime(2011, 3, 22, 6, 18, 0, 726, DateTimeKind.Local).AddTicks(3950),
+                            BirthDate = new DateTime(2011, 3, 22, 22, 25, 58, 640, DateTimeKind.Local).AddTicks(3048),
                             EmailAddress = "Becky42@yahoo.com",
                             FirstName = "Becky",
                             LastName = "Jenkins",
@@ -781,7 +781,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0efd67fc-9c2a-914b-66c4-f73f17803c80"),
-                            BirthDate = new DateTime(2005, 9, 28, 13, 8, 27, 702, DateTimeKind.Local).AddTicks(4606),
+                            BirthDate = new DateTime(2005, 9, 29, 5, 16, 25, 616, DateTimeKind.Local).AddTicks(2649),
                             EmailAddress = "Kim.Ruecker83@hotmail.com",
                             FirstName = "Kim",
                             LastName = "Ruecker",
@@ -791,7 +791,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("0e006fa9-de45-528c-0bae-9dd6207620e7"),
-                            BirthDate = new DateTime(2008, 2, 5, 18, 26, 28, 746, DateTimeKind.Local).AddTicks(4098),
+                            BirthDate = new DateTime(2008, 2, 6, 10, 34, 26, 660, DateTimeKind.Local).AddTicks(1616),
                             EmailAddress = "Joyce.Breitenberg@yahoo.com",
                             FirstName = "Joyce",
                             LastName = "Breitenberg",
@@ -801,7 +801,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("5cfc8e08-5314-1ffe-852b-cf7695022774"),
-                            BirthDate = new DateTime(2013, 3, 5, 23, 42, 17, 221, DateTimeKind.Local).AddTicks(6712),
+                            BirthDate = new DateTime(2013, 3, 6, 15, 50, 15, 135, DateTimeKind.Local).AddTicks(3620),
                             EmailAddress = "Teri_Gleichner72@gmail.com",
                             FirstName = "Teri",
                             LastName = "Gleichner",
@@ -811,7 +811,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("4ff0a3f7-1b7e-b61c-4dc4-04965e1306c6"),
-                            BirthDate = new DateTime(2013, 6, 12, 16, 57, 52, 842, DateTimeKind.Local).AddTicks(5635),
+                            BirthDate = new DateTime(2013, 6, 13, 9, 5, 50, 756, DateTimeKind.Local).AddTicks(2092),
                             EmailAddress = "Lloyd_Murphy@yahoo.com",
                             FirstName = "Lloyd",
                             LastName = "Murphy",
@@ -821,7 +821,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("54515b47-693f-f4da-e89f-9862d69a44ab"),
-                            BirthDate = new DateTime(2011, 3, 7, 17, 21, 52, 649, DateTimeKind.Local).AddTicks(7457),
+                            BirthDate = new DateTime(2011, 3, 8, 9, 29, 50, 563, DateTimeKind.Local).AddTicks(3350),
                             EmailAddress = "Marcia_Blick47@yahoo.com",
                             FirstName = "Marcia",
                             LastName = "Blick",
@@ -831,7 +831,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("5c2b4042-627b-9bd8-71c2-8a4b10ba2dc3"),
-                            BirthDate = new DateTime(2022, 10, 11, 1, 25, 58, 976, DateTimeKind.Local).AddTicks(2617),
+                            BirthDate = new DateTime(2022, 10, 11, 17, 33, 56, 889, DateTimeKind.Local).AddTicks(7657),
                             EmailAddress = "Moses_Orn98@yahoo.com",
                             FirstName = "Moses",
                             LastName = "Orn",
@@ -841,7 +841,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e4d782a2-c14b-bfc5-cee8-432a323314b8"),
-                            BirthDate = new DateTime(2011, 2, 7, 17, 21, 54, 401, DateTimeKind.Local).AddTicks(3099),
+                            BirthDate = new DateTime(2011, 2, 8, 9, 29, 52, 314, DateTimeKind.Local).AddTicks(7958),
                             EmailAddress = "Myrtle.Tremblay@yahoo.com",
                             FirstName = "Myrtle",
                             LastName = "Tremblay",
@@ -851,7 +851,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("f6d2645c-d118-86e3-b4d6-dead790666a7"),
-                            BirthDate = new DateTime(2020, 3, 12, 19, 28, 5, 738, DateTimeKind.Local).AddTicks(119),
+                            BirthDate = new DateTime(2020, 3, 13, 11, 36, 3, 651, DateTimeKind.Local).AddTicks(4550),
                             EmailAddress = "Otis42@yahoo.com",
                             FirstName = "Otis",
                             LastName = "Carter",
@@ -861,7 +861,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("e9bfd8b1-5a52-3800-6862-2b734d40cd00"),
-                            BirthDate = new DateTime(2014, 8, 29, 16, 38, 23, 226, DateTimeKind.Local).AddTicks(5601),
+                            BirthDate = new DateTime(2014, 8, 30, 8, 46, 21, 139, DateTimeKind.Local).AddTicks(9585),
                             EmailAddress = "Kate_Wiegand@gmail.com",
                             FirstName = "Kate",
                             LastName = "Wiegand",
@@ -871,7 +871,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("bbe74b8f-4d35-5124-de8a-c572b6c207fe"),
-                            BirthDate = new DateTime(2016, 11, 12, 16, 16, 37, 155, DateTimeKind.Local).AddTicks(3265),
+                            BirthDate = new DateTime(2016, 11, 13, 8, 24, 35, 68, DateTimeKind.Local).AddTicks(6810),
                             EmailAddress = "Stacy_Effertz@hotmail.com",
                             FirstName = "Stacy",
                             LastName = "Effertz",
@@ -881,7 +881,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             CustomerID = new Guid("547a3a2a-9746-f1f7-0dc1-9f411376967d"),
-                            BirthDate = new DateTime(2007, 9, 24, 5, 6, 23, 365, DateTimeKind.Local).AddTicks(8005),
+                            BirthDate = new DateTime(2007, 9, 24, 21, 14, 21, 279, DateTimeKind.Local).AddTicks(1023),
                             EmailAddress = "Jeannie.Erdman98@yahoo.com",
                             FirstName = "Jeannie",
                             LastName = "Erdman",
@@ -1015,6 +1015,9 @@ namespace BodyRocky.Back.WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductID");
 
                     b.HasIndex("BrandID");
@@ -1025,402 +1028,442 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             ProductID = new Guid("5a7ec381-7fe2-acea-e21f-5c1649fca189"),
-                            BrandID = new Guid("bb2b43b4-bdc4-6ac7-c2ee-9c850c9c4d75"),
+                            BrandID = new Guid("963e205d-c089-03f5-23c8-ab1b097901d5"),
                             IsFeatured = false,
                             ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
                             ProductName = "Tasty Wooden Car",
                             ProductPrice = 91.274773232301100m,
-                            ProductURL = "https://picsum.photos/640/480/?image=752"
+                            ProductURL = "https://picsum.photos/640/480/?image=752",
+                            Stock = 33
                         },
                         new
                         {
-                            ProductID = new Guid("7dcc32a6-9135-8d56-5a12-05ac8fdbe918"),
-                            BrandID = new Guid("7834298a-c5eb-188f-c4b8-7b2e59525a8c"),
-                            IsFeatured = true,
-                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
-                            ProductName = "Small Steel Shirt",
-                            ProductPrice = 70.295350239749700m,
-                            ProductURL = "https://picsum.photos/640/480/?image=813"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("0de12714-7dd7-b007-baf0-b4afb26d7650"),
-                            BrandID = new Guid("9cb19bf8-afde-ddc7-db50-e2ad897154d2"),
-                            IsFeatured = false,
-                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-                            ProductName = "Handmade Wooden Bike",
-                            ProductPrice = 15.758120601884100m,
-                            ProductURL = "https://picsum.photos/640/480/?image=889"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("9be586f7-4338-c32d-2d13-680eb049b5dc"),
-                            BrandID = new Guid("e39c64d3-fd29-e24f-16a6-8e0134a19954"),
-                            IsFeatured = false,
-                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
-                            ProductName = "Licensed Concrete Towels",
-                            ProductPrice = 99.497796920825600m,
-                            ProductURL = "https://picsum.photos/640/480/?image=918"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("90fc49db-ce26-20c2-2da2-1550986b7777"),
-                            BrandID = new Guid("9ff33aaf-690f-bbc1-2c6f-ce2c728d04a5"),
+                            ProductID = new Guid("357dcc32-5691-5a8d-1205-ac8fdbe918d8"),
+                            BrandID = new Guid("5b1fd012-2199-dab9-e58b-92bd68d0fa17"),
                             IsFeatured = true,
                             ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-                            ProductName = "Small Soft Tuna",
-                            ProductPrice = 47.668922155941300m,
-                            ProductURL = "https://picsum.photos/640/480/?image=977"
+                            ProductName = "Small Cotton Salad",
+                            ProductPrice = 74.96114833045800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=289",
+                            Stock = 42
                         },
                         new
                         {
-                            ProductID = new Guid("a12cdf19-5b03-bd17-207a-c0ef479d9c5f"),
+                            ProductID = new Guid("7dd70de1-b007-f0ba-b4af-b26d7650c8cf"),
                             BrandID = new Guid("0ff7bd5d-7afb-72a0-d8aa-f62c8441cdf7"),
-                            IsFeatured = false,
-                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            ProductName = "Rustic Soft Bacon",
-                            ProductPrice = 69.409277462125400m,
-                            ProductURL = "https://picsum.photos/640/480/?image=121"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("36db7add-c7b7-7366-a87d-7747a1201cd2"),
-                            BrandID = new Guid("0506fb2f-86b6-b93c-348f-d4f2697be09a"),
                             IsFeatured = true,
-                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-                            ProductName = "Ergonomic Plastic Bacon",
-                            ProductPrice = 33.834000459794900m,
-                            ProductURL = "https://picsum.photos/640/480/?image=575"
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Gorgeous Wooden Keyboard",
+                            ProductPrice = 73.315584367753700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=922",
+                            Stock = 48
                         },
                         new
                         {
-                            ProductID = new Guid("bb4d2353-9387-b44b-9a8d-c4887fe10659"),
-                            BrandID = new Guid("0680f4bc-ea50-98f6-7504-6a63414cdf42"),
-                            IsFeatured = true,
-                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-                            ProductName = "Small Granite Towels",
-                            ProductPrice = 7.5096863356929700m,
-                            ProductURL = "https://picsum.photos/640/480/?image=747"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("db820e2c-2735-54f3-4bb5-e29379aaec15"),
-                            BrandID = new Guid("5b1fd012-2199-dab9-e58b-92bd68d0fa17"),
-                            IsFeatured = false,
-                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
-                            ProductName = "Handcrafted Concrete Fish",
-                            ProductPrice = 87.607566820274800m,
-                            ProductURL = "https://picsum.photos/640/480/?image=37"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("5e09d651-6441-feff-661c-8f7811707e73"),
-                            BrandID = new Guid("3bc6573e-7be9-adf6-82f4-32bcb4b0f1b2"),
-                            IsFeatured = false,
-                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-                            ProductName = "Incredible Rubber Shoes",
-                            ProductPrice = 22.209727727905700m,
-                            ProductURL = "https://picsum.photos/640/480/?image=916"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("6298315f-a8a8-97d4-bbd8-895f1d9512e6"),
+                            ProductID = new Guid("2d43389b-2dc3-6813-0eb0-49b5dc0a55f1"),
                             BrandID = new Guid("7c04d23b-019f-8a60-3710-6edd8e2bd064"),
                             IsFeatured = true,
-                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
-                            ProductName = "Intelligent Concrete Ball",
-                            ProductPrice = 89.520610631220300m,
-                            ProductURL = "https://picsum.photos/640/480/?image=935"
+                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+                            ProductName = "Sleek Frozen Pizza",
+                            ProductPrice = 80.496113505445500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=692",
+                            Stock = 9
                         },
                         new
                         {
-                            ProductID = new Guid("ec7b3944-8856-dfaa-f6a0-fe10cb9c55bd"),
-                            BrandID = new Guid("0136a8be-afc5-e0cc-f28b-6c79d99c9320"),
+                            ProductID = new Guid("20c2ce26-a22d-5015-986b-7777c3f0829e"),
+                            BrandID = new Guid("68fbb9a4-cd27-aa9f-7ae6-4281bda59a71"),
+                            IsFeatured = true,
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Sleek Fresh Gloves",
+                            ProductPrice = 23.144258243564600m,
+                            ProductURL = "https://picsum.photos/640/480/?image=363",
+                            Stock = 47
+                        },
+                        new
+                        {
+                            ProductID = new Guid("20bd175b-c07a-47ef-9d9c-5f5148e00d33"),
+                            BrandID = new Guid("cc4236f3-8909-7940-c61f-66e5915e05ad"),
+                            IsFeatured = true,
+                            ProductDescription = "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+                            ProductName = "Ergonomic Fresh Mouse",
+                            ProductPrice = 53.488236411236300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=501",
+                            Stock = 9
+                        },
+                        new
+                        {
+                            ProductID = new Guid("7da87366-4777-20a1-1cd2-8b582f1dab88"),
+                            BrandID = new Guid("33734837-1227-5085-ded5-1b373c300fe9"),
+                            IsFeatured = true,
+                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+                            ProductName = "Incredible Metal Salad",
+                            ProductPrice = 56.220618521897400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=778",
+                            Stock = 8
+                        },
+                        new
+                        {
+                            ProductID = new Guid("c48d9ab4-7f88-06e1-5914-4c46ca2655bd"),
+                            BrandID = new Guid("3bf480d3-cb4e-a040-56e8-a8186acdfd9b"),
+                            IsFeatured = true,
+                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            ProductName = "Handmade Steel Gloves",
+                            ProductPrice = 37.648282729856800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=306",
+                            Stock = 43
+                        },
+                        new
+                        {
+                            ProductID = new Guid("93e2b54b-aa79-15ec-31c3-ac145b9452a9"),
+                            BrandID = new Guid("490c6622-bbea-0234-2100-e37d6a9bb082"),
+                            IsFeatured = false,
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Unbranded Wooden Soap",
+                            ProductPrice = 97.489312383108400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=693",
+                            Stock = 9
+                        },
+                        new
+                        {
+                            ProductID = new Guid("11788f1c-7e70-9973-6f3d-c9ff72df695f"),
+                            BrandID = new Guid("bb2b43b4-bdc4-6ac7-c2ee-9c850c9c4d75"),
+                            IsFeatured = false,
+                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+                            ProductName = "Small Frozen Pizza",
+                            ProductPrice = 79.048832170222400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=929",
+                            Stock = 31
+                        },
+                        new
+                        {
+                            ProductID = new Guid("951d5f89-e612-e4b6-2d5c-1a7304c14439"),
+                            BrandID = new Guid("8d3443d6-7c48-9e89-a8bb-e145421d90c2"),
+                            IsFeatured = true,
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Intelligent Concrete Towels",
+                            ProductPrice = 25.920053304135800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=66",
+                            Stock = 7
+                        },
+                        new
+                        {
+                            ProductID = new Guid("559ccb10-47bd-bdf7-38e6-1f55045c5613"),
+                            BrandID = new Guid("cbae5d6d-972f-22f0-58bf-b9d0ee21d8ed"),
                             IsFeatured = true,
                             ProductDescription = "The Football Is Good For Training And Recreational Purposes",
-                            ProductName = "Tasty Soft Keyboard",
-                            ProductPrice = 56.527720697469900m,
-                            ProductURL = "https://picsum.photos/640/480/?image=748"
+                            ProductName = "Small Rubber Car",
+                            ProductPrice = 1.3081779709589600m,
+                            ProductURL = "https://picsum.photos/640/480/?image=630",
+                            Stock = 26
                         },
                         new
                         {
-                            ProductID = new Guid("1b13565c-8345-ec4e-2cd7-1e6f2de84132"),
+                            ProductID = new Guid("3241e82d-aa2e-7d68-9601-1a198e6f1423"),
+                            BrandID = new Guid("959badbe-7bad-57b5-cd3c-f92f276eebd5"),
+                            IsFeatured = false,
+                            ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            ProductName = "Handmade Fresh Car",
+                            ProductPrice = 5.8141218525423300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=1004",
+                            Stock = 34
+                        },
+                        new
+                        {
+                            ProductID = new Guid("5173998f-e412-7ef4-e58f-5fb68a0a3cb6"),
+                            BrandID = new Guid("7834298a-c5eb-188f-c4b8-7b2e59525a8c"),
+                            IsFeatured = false,
+                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+                            ProductName = "Tasty Concrete Cheese",
+                            ProductPrice = 20.966636864918600m,
+                            ProductURL = "https://picsum.photos/640/480/?image=83",
+                            Stock = 7
+                        },
+                        new
+                        {
+                            ProductID = new Guid("f9fc6035-b68b-4159-bd9f-10f52b831d26"),
+                            BrandID = new Guid("4c9ea98f-1208-8361-8f5f-ccf4b179ff89"),
+                            IsFeatured = false,
+                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
+                            ProductName = "Incredible Wooden Pizza",
+                            ProductPrice = 81.274550259706800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=444",
+                            Stock = 46
+                        },
+                        new
+                        {
+                            ProductID = new Guid("c334080c-037a-04c3-26dd-83f7845ad906"),
+                            BrandID = new Guid("0bf3561a-9991-29d4-ce39-8263dd0de6f4"),
+                            IsFeatured = true,
+                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            ProductName = "Awesome Granite Keyboard",
+                            ProductPrice = 81.241056360882300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=43",
+                            Stock = 10
+                        },
+                        new
+                        {
+                            ProductID = new Guid("b8f5e25e-08be-5d9f-8b7f-ad247e439b4d"),
+                            BrandID = new Guid("0136a8be-afc5-e0cc-f28b-6c79d99c9320"),
+                            IsFeatured = false,
+                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            ProductName = "Tasty Metal Hat",
+                            ProductPrice = 69.810464172535800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=1046",
+                            Stock = 29
+                        },
+                        new
+                        {
+                            ProductID = new Guid("73565ff8-60ad-f71d-ae1b-20cd4c67d4e4"),
+                            BrandID = new Guid("c2bba114-d677-a87e-9248-5a20bead30a8"),
+                            IsFeatured = true,
+                            ProductDescription = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+                            ProductName = "Awesome Granite Bike",
+                            ProductPrice = 99.846159014779200m,
+                            ProductURL = "https://picsum.photos/640/480/?image=630",
+                            Stock = 11
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a345a6cf-47e6-ef94-09c6-a848e9de1f90"),
+                            BrandID = new Guid("3bc6573e-7be9-adf6-82f4-32bcb4b0f1b2"),
+                            IsFeatured = true,
+                            ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            ProductName = "Handmade Granite Car",
+                            ProductPrice = 48.363655781542700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=688",
+                            Stock = 39
+                        },
+                        new
+                        {
+                            ProductID = new Guid("db731e94-01cd-87d6-95dd-b9d854c7d48b"),
+                            BrandID = new Guid("9ff33aaf-690f-bbc1-2c6f-ce2c728d04a5"),
+                            IsFeatured = false,
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Fantastic Frozen Ball",
+                            ProductPrice = 97.21016418058900m,
+                            ProductURL = "https://picsum.photos/640/480/?image=922",
+                            Stock = 2
+                        },
+                        new
+                        {
+                            ProductID = new Guid("536227b5-2b5e-7408-ee52-2920143cc4d2"),
+                            BrandID = new Guid("9cb19bf8-afde-ddc7-db50-e2ad897154d2"),
+                            IsFeatured = false,
+                            ProductDescription = "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+                            ProductName = "Fantastic Steel Shirt",
+                            ProductPrice = 20.333191389373100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=545",
+                            Stock = 2
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a4fc61a1-e319-b704-4017-da743337b2b1"),
                             BrandID = new Guid("102c15a0-6464-7616-6d88-01236ecd42b5"),
                             IsFeatured = false,
                             ProductDescription = "The Football Is Good For Training And Recreational Purposes",
-                            ProductName = "Incredible Cotton Chips",
-                            ProductPrice = 7.9470227509490300m,
-                            ProductURL = "https://picsum.photos/640/480/?image=1025"
+                            ProductName = "Gorgeous Concrete Shoes",
+                            ProductPrice = 90.381531925118300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=230",
+                            Stock = 28
                         },
                         new
                         {
-                            ProductID = new Guid("23146f8e-cbb6-24db-e476-8fff758f9973"),
-                            BrandID = new Guid("cc4236f3-8909-7940-c61f-66e5915e05ad"),
-                            IsFeatured = false,
-                            ProductDescription = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-                            ProductName = "Generic Frozen Shirt",
-                            ProductPrice = 19.54252115429500m,
-                            ProductURL = "https://picsum.photos/640/480/?image=906"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("3c0a8ab6-d7b6-5a6e-3bfa-8cd56e2b3560"),
-                            BrandID = new Guid("89acfb10-c061-8721-53b1-d060c8aa0ce0"),
-                            IsFeatured = false,
-                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-                            ProductName = "Incredible Fresh Pants",
-                            ProductPrice = 6.9035452357044200m,
-                            ProductURL = "https://picsum.photos/640/480/?image=809"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("832bf510-261d-a99b-dfb5-6c2cc19e6d0c"),
-                            BrandID = new Guid("cec876ad-01dd-e278-c9a2-a9307cb760db"),
-                            IsFeatured = false,
-                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
-                            ProductName = "Handmade Soft Fish",
-                            ProductPrice = 14.977932122991400m,
-                            ProductURL = "https://picsum.photos/640/480/?image=752"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("84f783dd-d95a-7406-cc6b-2bc0aceb3d15"),
-                            BrandID = new Guid("cbae5d6d-972f-22f0-58bf-b9d0ee21d8ed"),
-                            IsFeatured = true,
-                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-                            ProductName = "Unbranded Frozen Sausages",
-                            ProductPrice = 58.316251569574800m,
-                            ProductURL = "https://picsum.photos/640/480/?image=973"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("24ad7f8b-437e-4d9b-f005-a5992e164e06"),
-                            BrandID = new Guid("c75e8db1-a293-6c21-daa0-4d8d3f9bc259"),
-                            IsFeatured = true,
-                            ProductDescription = "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
-                            ProductName = "Gorgeous Concrete Sausages",
-                            ProductPrice = 66.958027503899300m,
-                            ProductURL = "https://picsum.photos/640/480/?image=167"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("201baef7-4ccd-d467-e49a-f8db2be1f689"),
-                            BrandID = new Guid("8d3443d6-7c48-9e89-a8bb-e145421d90c2"),
-                            IsFeatured = false,
-                            ProductDescription = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-                            ProductName = "Intelligent Steel Pizza",
-                            ProductPrice = 56.449809929565400m,
-                            ProductURL = "https://picsum.photos/640/480/?image=356"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("c609ef94-48a8-dee9-1f90-2ccf277b7fa4"),
-                            BrandID = new Guid("0bf3561a-9991-29d4-ce39-8263dd0de6f4"),
-                            IsFeatured = true,
-                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            ProductName = "Ergonomic Soft Ball",
-                            ProductPrice = 47.714508999006100m,
-                            ProductURL = "https://picsum.photos/640/480/?image=408"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("9587d601-b9dd-54d8-c7d4-8bde42a12b9b"),
-                            BrandID = new Guid("9dee3a3f-f243-4328-71f1-e8ffc3e39632"),
-                            IsFeatured = true,
-                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-                            ProductName = "Refined Soft Car",
-                            ProductPrice = 26.211186743439700m,
-                            ProductURL = "https://picsum.photos/640/480/?image=66"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("74082b5e-52ee-2029-143c-c4d2c1540165"),
-                            BrandID = new Guid("4700fa3f-5a0e-779f-9a1d-3561e7579c43"),
-                            IsFeatured = false,
-                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-                            ProductName = "Intelligent Granite Soap",
-                            ProductPrice = 87.955784047001900m,
-                            ProductURL = "https://picsum.photos/640/480/?image=132"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("04e319a4-40b7-da17-7433-37b2b1636675"),
-                            BrandID = new Guid("0bd7df94-02a8-b034-5c45-1dfb54b1f529"),
-                            IsFeatured = false,
-                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
-                            ProductName = "Awesome Fresh Bike",
-                            ProductPrice = 55.440436143167500m,
-                            ProductURL = "https://picsum.photos/640/480/?image=307"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("dce25618-0f1f-bd63-c90b-cfd46f2469d3"),
+                            ProductID = new Guid("56185cda-dce2-0f1f-63bd-c90bcfd46f24"),
                             BrandID = new Guid("801abe43-31c6-11d5-ac49-5c10586c790b"),
                             IsFeatured = false,
-                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-                            ProductName = "Ergonomic Wooden Table",
-                            ProductPrice = 94.013108170597400m,
-                            ProductURL = "https://picsum.photos/640/480/?image=346"
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Generic Frozen Computer",
+                            ProductPrice = 43.034367190224300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=703",
+                            Stock = 16
                         },
                         new
                         {
-                            ProductID = new Guid("84a89272-5ad6-4b20-3e86-ec605d3bbb64"),
+                            ProductID = new Guid("a8927254-d684-205a-4b3e-86ec605d3bbb"),
                             BrandID = new Guid("cec3aa34-f966-56f0-4664-0aaf516dc3be"),
                             IsFeatured = true,
-                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            ProductName = "Rustic Metal Hat",
-                            ProductPrice = 48.107952786659800m,
-                            ProductURL = "https://picsum.photos/640/480/?image=506"
+                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
+                            ProductName = "Handmade Wooden Fish",
+                            ProductPrice = 9.6679049589056100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=521",
+                            Stock = 16
                         },
                         new
                         {
                             ProductID = new Guid("f2e2f601-4cfa-c93f-a28d-6a8d66dee66e"),
-                            BrandID = new Guid("41c09f22-e462-eec2-b236-046951f599dd"),
+                            BrandID = new Guid("89acfb10-c061-8721-53b1-d060c8aa0ce0"),
                             IsFeatured = false,
                             ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
                             ProductName = "Rustic Wooden Chips",
                             ProductPrice = 39.078262093979100m,
-                            ProductURL = "https://picsum.photos/640/480/?image=958"
+                            ProductURL = "https://picsum.photos/640/480/?image=958",
+                            Stock = 43
                         },
                         new
                         {
-                            ProductID = new Guid("a3bdf92f-0d66-e0c1-8b22-83e0772d50f1"),
-                            BrandID = new Guid("490c6622-bbea-0234-2100-e37d6a9bb082"),
-                            IsFeatured = false,
-                            ProductDescription = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            ProductName = "Handcrafted Plastic Keyboard",
-                            ProductPrice = 78.844258970974100m,
-                            ProductURL = "https://picsum.photos/640/480/?image=804"
+                            ProductID = new Guid("66a3bdf9-c10d-8be0-2283-e0772d50f146"),
+                            BrandID = new Guid("0680f4bc-ea50-98f6-7504-6a63414cdf42"),
+                            IsFeatured = true,
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Incredible Wooden Shirt",
+                            ProductPrice = 74.111094220593200m,
+                            ProductURL = "https://picsum.photos/640/480/?image=924",
+                            Stock = 11
                         },
                         new
                         {
-                            ProductID = new Guid("0fba7993-1dfb-f84d-7ff9-c3018f9c6294"),
+                            ProductID = new Guid("1dfb0fba-f84d-f97f-c301-8f9c6294cc89"),
                             BrandID = new Guid("e3e45b65-eda4-a53a-66d0-9b1f8ed98efc"),
-                            IsFeatured = false,
-                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-                            ProductName = "Sleek Rubber Soap",
-                            ProductPrice = 93.439952793270300m,
-                            ProductURL = "https://picsum.photos/640/480/?image=898"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("15a2a433-a74a-0118-fbcc-0fed52b2e56e"),
-                            BrandID = new Guid("959badbe-7bad-57b5-cd3c-f92f276eebd5"),
                             IsFeatured = true,
-                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-                            ProductName = "Intelligent Plastic Car",
-                            ProductPrice = 43.849628159706300m,
-                            ProductURL = "https://picsum.photos/640/480/?image=779"
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Generic Concrete Sausages",
+                            ProductPrice = 90.101110511506500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=311",
+                            Stock = 10
                         },
                         new
                         {
-                            ProductID = new Guid("470229c1-b92c-8d96-82fd-dc577b38add8"),
+                            ProductID = new Guid("18a74a15-fb01-0fcc-ed52-b2e56ed58b61"),
                             BrandID = new Guid("c7b3305f-9bdb-472c-95c4-51184dd2aa8d"),
-                            IsFeatured = false,
-                            ProductDescription = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            ProductName = "Unbranded Wooden Ball",
-                            ProductPrice = 63.62331568432200m,
-                            ProductURL = "https://picsum.photos/640/480/?image=161"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("cf6e93a4-78a4-e352-41f7-5421a4d0d542"),
-                            BrandID = new Guid("3bf480d3-cb4e-a040-56e8-a8186acdfd9b"),
                             IsFeatured = true,
-                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-                            ProductName = "Practical Rubber Gloves",
-                            ProductPrice = 91.227636761603700m,
-                            ProductURL = "https://picsum.photos/640/480/?image=100"
+                            ProductDescription = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+                            ProductName = "Tasty Cotton Fish",
+                            ProductPrice = 2.6719768544062900m,
+                            ProductURL = "https://picsum.photos/640/480/?image=70",
+                            Stock = 45
                         },
                         new
                         {
-                            ProductID = new Guid("a89c88dd-9e4a-4b1d-e7e8-a2984ac6e809"),
-                            BrandID = new Guid("c2bba114-d677-a87e-9248-5a20bead30a8"),
+                            ProductID = new Guid("8d96b92c-fd82-57dc-7b38-add8e1c205c3"),
+                            BrandID = new Guid("e39c64d3-fd29-e24f-16a6-8e0134a19954"),
                             IsFeatured = false,
-                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-                            ProductName = "Refined Rubber Shoes",
-                            ProductPrice = 33.854745530455700m,
-                            ProductURL = "https://picsum.photos/640/480/?image=309"
+                            ProductDescription = "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+                            ProductName = "Generic Wooden Bacon",
+                            ProductPrice = 23.710091609372800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=520",
+                            Stock = 31
                         },
                         new
                         {
-                            ProductID = new Guid("0a8dc3ec-ec0a-1644-a0d2-f11cdcaa99a2"),
+                            ProductID = new Guid("41e35278-54f7-a421-d0d5-4235826a55d5"),
+                            BrandID = new Guid("4700fa3f-5a0e-779f-9a1d-3561e7579c43"),
+                            IsFeatured = true,
+                            ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            ProductName = "Ergonomic Granite Pizza",
+                            ProductPrice = 72.573548961697900m,
+                            ProductURL = "https://picsum.photos/640/480/?image=38",
+                            Stock = 22
+                        },
+                        new
+                        {
+                            ProductID = new Guid("e8e74b1d-98a2-c64a-e809-aaf81583e48c"),
+                            BrandID = new Guid("0506fb2f-86b6-b93c-348f-d4f2697be09a"),
+                            IsFeatured = false,
+                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            ProductName = "Tasty Steel Chips",
+                            ProductPrice = 92.933303766387200m,
+                            ProductURL = "https://picsum.photos/640/480/?image=53",
+                            Stock = 30
+                        },
+                        new
+                        {
+                            ProductID = new Guid("f1d2a016-dc1c-99aa-a2da-0839bb2d3cf7"),
                             BrandID = new Guid("4d70da6f-141a-62ce-cc33-9a5596935366"),
                             IsFeatured = false,
-                            ProductDescription = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
-                            ProductName = "Generic Wooden Bacon",
-                            ProductPrice = 93.218626730711500m,
-                            ProductURL = "https://picsum.photos/640/480/?image=515"
+                            ProductDescription = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+                            ProductName = "Sleek Frozen Table",
+                            ProductPrice = 29.698811345593400m,
+                            ProductURL = "https://picsum.photos/640/480/?image=685",
+                            Stock = 26
                         },
                         new
                         {
-                            ProductID = new Guid("ddaa6099-6e78-51b8-548a-bb87111341fa"),
-                            BrandID = new Guid("68fbb9a4-cd27-aa9f-7ae6-4281bda59a71"),
-                            IsFeatured = false,
-                            ProductDescription = "The Football Is Good For Training And Recreational Purposes",
-                            ProductName = "Unbranded Soft Chicken",
-                            ProductPrice = 97.784135722454700m,
-                            ProductURL = "https://picsum.photos/640/480/?image=665"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("dca9725f-7852-b0e3-cb1f-70aa42679d32"),
-                            BrandID = new Guid("b2c36398-f822-2f8c-9e02-bd1e16f7c55a"),
-                            IsFeatured = false,
-                            ProductDescription = "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-                            ProductName = "Awesome Rubber Gloves",
-                            ProductPrice = 23.267161065371300m,
-                            ProductURL = "https://picsum.photos/640/480/?image=745"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("a1173ec7-7e44-cd99-33aa-7d05c5dcfedc"),
+                            ProductID = new Guid("87bb8a54-1311-fa41-a38c-f778d4cc2c00"),
                             BrandID = new Guid("93a16dfd-ab85-04b9-fd40-0ecea27f8448"),
-                            IsFeatured = false,
-                            ProductDescription = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-                            ProductName = "Unbranded Soft Salad",
-                            ProductPrice = 23.57375189828400m,
-                            ProductURL = "https://picsum.photos/640/480/?image=709"
-                        },
-                        new
-                        {
-                            ProductID = new Guid("345ec5ef-db05-4d11-e0e1-151360416b4c"),
-                            BrandID = new Guid("33734837-1227-5085-ded5-1b373c300fe9"),
                             IsFeatured = true,
-                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            ProductName = "Refined Soft Salad",
-                            ProductPrice = 47.683690929638100m,
-                            ProductURL = "https://picsum.photos/640/480/?image=559"
+                            ProductDescription = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            ProductName = "Awesome Rubber Chair",
+                            ProductPrice = 48.725120094011100m,
+                            ProductURL = "https://picsum.photos/640/480/?image=90",
+                            Stock = 26
                         },
                         new
                         {
-                            ProductID = new Guid("e4aaeaa1-a055-3024-86db-b17f2065c858"),
-                            BrandID = new Guid("4c9ea98f-1208-8361-8f5f-ccf4b179ff89"),
+                            ProductID = new Guid("42aa701f-9d67-1932-a0c7-51ef1191c7c7"),
+                            BrandID = new Guid("b2c36398-f822-2f8c-9e02-bd1e16f7c55a"),
+                            IsFeatured = true,
+                            ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            ProductName = "Refined Frozen Keyboard",
+                            ProductPrice = 98.645073128233200m,
+                            ProductURL = "https://picsum.photos/640/480/?image=597",
+                            Stock = 26
+                        },
+                        new
+                        {
+                            ProductID = new Guid("dcc5057d-dcfe-0aa7-bbf1-a396b83cefc5"),
+                            BrandID = new Guid("9dee3a3f-f243-4328-71f1-e8ffc3e39632"),
                             IsFeatured = false,
-                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            ProductName = "Ergonomic Fresh Keyboard",
-                            ProductPrice = 9.2919680798854500m,
-                            ProductURL = "https://picsum.photos/640/480/?image=269"
+                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            ProductName = "Tasty Cotton Gloves",
+                            ProductPrice = 5.4074056937393800m,
+                            ProductURL = "https://picsum.photos/640/480/?image=922",
+                            Stock = 38
                         },
                         new
                         {
-                            ProductID = new Guid("006b6f9f-201f-5753-5921-921a302cf840"),
+                            ProductID = new Guid("6b416013-854c-76a2-98e9-976c3da1eaaa"),
                             BrandID = new Guid("3d77c624-9356-3068-8f30-0bb85651729c"),
+                            IsFeatured = true,
+                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            ProductName = "Practical Soft Computer",
+                            ProductPrice = 38.488092291396200m,
+                            ProductURL = "https://picsum.photos/640/480/?image=90",
+                            Stock = 43
+                        },
+                        new
+                        {
+                            ProductID = new Guid("58c86520-2f99-e425-c7eb-7c659f6f6b00"),
+                            BrandID = new Guid("0bd7df94-02a8-b034-5c45-1dfb54b1f529"),
                             IsFeatured = false,
                             ProductDescription = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
-                            ProductName = "Handmade Soft Towels",
-                            ProductPrice = 12.984628236379800m,
-                            ProductURL = "https://picsum.photos/640/480/?image=533"
+                            ProductName = "Handmade Metal Mouse",
+                            ProductPrice = 30.77958046029300m,
+                            ProductURL = "https://picsum.photos/640/480/?image=743",
+                            Stock = 34
                         },
                         new
                         {
-                            ProductID = new Guid("b9ff1eda-8872-b676-6e44-45e634231065"),
-                            BrandID = new Guid("963e205d-c089-03f5-23c8-ab1b097901d5"),
+                            ProductID = new Guid("bd40f82c-8de4-9084-ec2c-20da1effb972"),
+                            BrandID = new Guid("c75e8db1-a293-6c21-daa0-4d8d3f9bc259"),
+                            IsFeatured = true,
+                            ProductDescription = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            ProductName = "Rustic Concrete Table",
+                            ProductPrice = 11.224380327027500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=414",
+                            Stock = 15
+                        },
+                        new
+                        {
+                            ProductID = new Guid("5a886510-fe25-add2-276c-37e426e25df7"),
+                            BrandID = new Guid("cec876ad-01dd-e278-c9a2-a9307cb760db"),
                             IsFeatured = false,
-                            ProductDescription = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-                            ProductName = "Ergonomic Steel Sausages",
-                            ProductPrice = 42.445562147742900m,
-                            ProductURL = "https://picsum.photos/640/480/?image=362"
+                            ProductDescription = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            ProductName = "Licensed Rubber Pizza",
+                            ProductPrice = 69.504680004671500m,
+                            ProductURL = "https://picsum.photos/640/480/?image=398",
+                            Stock = 32
+                        },
+                        new
+                        {
+                            ProductID = new Guid("acdcabd1-e7ec-0c11-9ad4-28fc36c62e4e"),
+                            BrandID = new Guid("41c09f22-e462-eec2-b236-046951f599dd"),
+                            IsFeatured = false,
+                            ProductDescription = "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+                            ProductName = "Practical Fresh Towels",
+                            ProductPrice = 0.84484284783007700m,
+                            ProductURL = "https://picsum.photos/640/480/?image=831",
+                            Stock = 37
                         });
                 });
 
@@ -1437,6 +1480,208 @@ namespace BodyRocky.Back.WebApi.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("ProductCategories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ProductID = new Guid("93e2b54b-aa79-15ec-31c3-ac145b9452a9"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("11788f1c-7e70-9973-6f3d-c9ff72df695f"),
+                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("87bb8a54-1311-fa41-a38c-f778d4cc2c00"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("1dfb0fba-f84d-f97f-c301-8f9c6294cc89"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("18a74a15-fb01-0fcc-ed52-b2e56ed58b61"),
+                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("5173998f-e412-7ef4-e58f-5fb68a0a3cb6"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("7da87366-4777-20a1-1cd2-8b582f1dab88"),
+                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("acdcabd1-e7ec-0c11-9ad4-28fc36c62e4e"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("5a886510-fe25-add2-276c-37e426e25df7"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("2d43389b-2dc3-6813-0eb0-49b5dc0a55f1"),
+                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("536227b5-2b5e-7408-ee52-2920143cc4d2"),
+                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("56185cda-dce2-0f1f-63bd-c90bcfd46f24"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("5a7ec381-7fe2-acea-e21f-5c1649fca189"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("20bd175b-c07a-47ef-9d9c-5f5148e00d33"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("f1d2a016-dc1c-99aa-a2da-0839bb2d3cf7"),
+                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("c48d9ab4-7f88-06e1-5914-4c46ca2655bd"),
+                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("dcc5057d-dcfe-0aa7-bbf1-a396b83cefc5"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("f9fc6035-b68b-4159-bd9f-10f52b831d26"),
+                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("e8e74b1d-98a2-c64a-e809-aaf81583e48c"),
+                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("58c86520-2f99-e425-c7eb-7c659f6f6b00"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("bd40f82c-8de4-9084-ec2c-20da1effb972"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("357dcc32-5691-5a8d-1205-ac8fdbe918d8"),
+                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a345a6cf-47e6-ef94-09c6-a848e9de1f90"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("3241e82d-aa2e-7d68-9601-1a198e6f1423"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("b8f5e25e-08be-5d9f-8b7f-ad247e439b4d"),
+                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("41e35278-54f7-a421-d0d5-4235826a55d5"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("951d5f89-e612-e4b6-2d5c-1a7304c14439"),
+                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("6b416013-854c-76a2-98e9-976c3da1eaaa"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("20c2ce26-a22d-5015-986b-7777c3f0829e"),
+                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("73565ff8-60ad-f71d-ae1b-20cd4c67d4e4"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("8d96b92c-fd82-57dc-7b38-add8e1c205c3"),
+                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("66a3bdf9-c10d-8be0-2283-e0772d50f146"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("559ccb10-47bd-bdf7-38e6-1f55045c5613"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("f2e2f601-4cfa-c93f-a28d-6a8d66dee66e"),
+                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("c334080c-037a-04c3-26dd-83f7845ad906"),
+                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("db731e94-01cd-87d6-95dd-b9d854c7d48b"),
+                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("7dd70de1-b007-f0ba-b4af-b26d7650c8cf"),
+                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a8927254-d684-205a-4b3e-86ec605d3bbb"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("a4fc61a1-e319-b704-4017-da743337b2b1"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        },
+                        new
+                        {
+                            ProductID = new Guid("42aa701f-9d67-1932-a0c7-51ef1191c7c7"),
+                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                        });
                 });
 
             modelBuilder.Entity("BodyRocky.Back.WebApi.DataAccess.Entities.ProductImage", b =>

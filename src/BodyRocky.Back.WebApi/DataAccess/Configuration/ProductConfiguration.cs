@@ -40,5 +40,9 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder
             .Property(product => product.IsFeatured)
             .IsRequired();
+        
+        builder
+            .Property(product => product.Stock)
+            .IsRequired();
     }
 }

@@ -1,4 +1,5 @@
 using BodyRocky.Core.Contracts.Responses.CategoryResponses;
+using BodyRocky.Front.WebApp.Store.Models;
 using Fluxor;
 
 namespace BodyRocky.Front.WebApp.Store;
@@ -9,12 +10,12 @@ namespace BodyRocky.Front.WebApp.Store;
 public record LayoutState(
     List<CategoryResponse> Categories,
     bool IsLoading,
-    string? ErrorMessage)
+    string? ErrorMessage,
+    ViewMode ViewMode)
 {
     private LayoutState()
-        : this(new(), false, null)
+        : this(new(), false, null, ViewMode.Grid)
     {
-        
     }
 }
 
@@ -48,14 +49,15 @@ public class LoadCategoriesFailureAction
 
 #region Reducers
 
-public static class Reducers
+public static class LayoutReducers
 {
     [ReducerMethod]
     public static LayoutState ReduceLoadCategoriesAction(LayoutState state, LoadCategoriesAction action)
     {
         return state with
         {
-            IsLoading = true
+            IsLoading = true,
+            ErrorMessage = null
         };
     }
     
@@ -66,7 +68,6 @@ public static class Reducers
         {
             Categories = action.Categories,
             IsLoading = false,
-            ErrorMessage = null
         };
     }
     
