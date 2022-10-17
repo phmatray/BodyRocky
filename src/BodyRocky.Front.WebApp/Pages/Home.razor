@@ -105,7 +105,21 @@
 <!-- ads -->
 <div class="container pb-16">
   <NavLink href="@Routes.SHOP_ROUTE">
-    <img src="assets/images/offer.jpg" alt="ads" class="w-full">
+    <div class="border border-primary rounded-md overflow-hidden">
+    <section aria-labelledby="sale-heading" class="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-24 pb-16 text-center sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <h2 id="sale-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+          Obtenez 25% de réduction sur une sélection d'articles
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl text-xl text-gray-600">
+          La plupart de nos produits sont des éditions limitées qui ne reviendront pas. Obtenez vos articles préférés pendant qu'ils sont en stock.
+        </p>
+        <NavLink href="@Routes.SHOP_ROUTE" class="mt-6 inline-block w-full rounded-md border border-transparent bg-gray-900 py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto">
+          Voir les offres spéciales
+        </NavLink>
+      </div>
+    </section>
+    </div>
   </NavLink>
 </div>
 <!-- ./ads -->
