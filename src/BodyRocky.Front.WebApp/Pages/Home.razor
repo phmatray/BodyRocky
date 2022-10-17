@@ -5,23 +5,27 @@
 @inject IBodyRockyApi ApiClient
 
 <!-- banner -->
-<div class="bg-cover bg-no-repeat bg-center py-36" style="background-image: url('assets/images/banner-bg.jpg');">
-  <div class="container">
-    <h1 class="text-6xl text-white font-medium mb-4">
-      Bien plus qu'un magasin<br/>d'articles de sport
-    </h1>
-    <p class="text-white font-medium mb-4">
-      Chez BodyRocky, vous trouverez tout ce dont vous avez besoin pour vous entraîner et atteindre vos objectifs.
-      <br/>
-      Nous vous proposons une large gamme de produits de qualité, à des prix imbattables.
-    </p>
-    <div class="mt-12">
-      <NavLink
-        href="@Routes.SHOP_ROUTE"
-        class="bg-primary border border-primary text-white px-8 py-3 font-medium 
+<div 
+  class="bg-cover bg-no-repeat bg-center flex items-center justify-center"
+  style="background-image: url('assets/images/banner-bg.jpg');">
+  <div class="bg-black bg-opacity-40 w-full py-36">
+    <div class="container mx-auto">
+      <h1 class="text-6xl text-white font-medium mb-4">
+        Bien plus qu'un magasin<br/>d'articles de sport
+      </h1>
+      <p class="text-white font-medium mb-4">
+        Chez BodyRocky, vous trouverez tout ce dont vous avez besoin pour vous entraîner et atteindre vos objectifs.
+        <br/>
+        Nous vous proposons une large gamme de produits de qualité, à des prix imbattables.
+      </p>
+      <div class="mt-12">
+        <NavLink
+          href="@Routes.SHOP_ROUTE"
+          class="bg-primary border border-primary text-white px-8 py-3 font-medium 
                 rounded-md hover:bg-transparent hover:text-primary">
-        Découvrir
-      </NavLink>
+          Découvrir
+        </NavLink>
+      </div>
     </div>
   </div>
 </div>
@@ -82,7 +86,6 @@
     </div>
   </div>
 }
-
 <!-- ./categories -->
 
 <!-- new arrival -->
@@ -90,7 +93,7 @@
 {
   <div class="container pb-16">
     <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
-      top new arrival
+      Les nouveautés de la semaine
     </h2>
     <div class="grid grid-cols-4 gap-6">
       @foreach (ProductResponse product in _featuredProducts)
@@ -128,7 +131,9 @@
 @if (_recommendedProducts != null)
 {
   <div class="container pb-16">
-    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">recomended for you</h2>
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
+      Recommandé pour vous
+    </h2>
     <div class="grid grid-cols-4 gap-6">
       @foreach (ProductResponse product in _recommendedProducts)
       {
