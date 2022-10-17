@@ -79,3 +79,22 @@ public class ProductEffects
 }
 
 #endregion
+
+#region Strongly-typed dispatcher
+
+public class ProductDispatcher
+{
+    private readonly IDispatcher _dispatcher;
+    
+    public ProductDispatcher(IDispatcher dispatcher)
+    {
+        _dispatcher = dispatcher;
+    }
+    
+    public void GetProducts()
+    {
+        _dispatcher.Dispatch(new GetProductsAction());
+    }
+}
+
+#endregion

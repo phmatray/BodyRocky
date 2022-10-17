@@ -51,6 +51,7 @@ services
 // Add strongly-typed Flux Dispatchers
 services
     .AddScoped<LayoutDispatcher>()
+    .AddScoped<ProductDispatcher>()
     .AddScoped<BasketDispatcher>();
 
 await builder.Build().RunAsync();

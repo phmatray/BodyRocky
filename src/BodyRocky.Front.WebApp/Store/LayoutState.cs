@@ -6,44 +6,36 @@ namespace BodyRocky.Front.WebApp.Store;
 
 #region State
 
-[FeatureState(Name = "Layout")]
 public record LayoutState(
     List<CategoryResponse> Categories,
     bool IsLoading,
     string? ErrorMessage,
     ViewMode ViewMode)
 {
-    private LayoutState()
-        : this(new(), false, null, ViewMode.Grid)
-    {
-    }
+    public bool IsGridViewMode
+        => ViewMode == ViewMode.Grid;
+    
+    public bool IsListViewMode
+        => ViewMode == ViewMode.List;
+}
+
+public class LayoutFeature : Feature<LayoutState>
+{
+    public override string GetName()
+        => "Layout";
+    
+    protected override LayoutState GetInitialState()
+        => new(new(), false, null, ViewMode.Grid);
 }
 
 #endregion
 
 #region Actions
 
-public class LoadCategoriesAction { }
-
-public class LoadCategoriesSuccessAction
-{
-    public List<CategoryResponse> Categories { get; }
-    
-    public LoadCategoriesSuccessAction(List<CategoryResponse> categories)
-    {
-        Categories = categories;
-    }
-}
-
-public class LoadCategoriesFailureAction
-{
-    public Exception Exception { get; }
-    
-    public LoadCategoriesFailureAction(Exception exception)
-    {
-        Exception = exception;
-    }
-}
+public record LoadCategoriesAction;
+public record LoadCategoriesSuccessAction(List<CategoryResponse> Categories);
+public record LoadCategoriesFailureAction(Exception Exception);
+public record ChangeViewModeAction(ViewMode ViewMode);
 
 #endregion
 
@@ -78,6 +70,15 @@ public static class LayoutReducers
         {
             ErrorMessage = action.Exception.Message,
             IsLoading = false
+        };
+    }
+    
+    [ReducerMethod]
+    public static LayoutState ReduceChangeViewModeAction(LayoutState state, ChangeViewModeAction action)
+    {
+        return state with
+        {
+            ViewMode = action.ViewMode
         };
     }
 }
@@ -130,6 +131,11 @@ public class LayoutDispatcher
     public void LoadCategories()
     {
         _dispatcher.Dispatch(new LoadCategoriesAction());
+    }
+    
+    public void ChangeViewMode(ViewMode viewMode)
+    {
+        _dispatcher.Dispatch(new ChangeViewModeAction(viewMode));
     }
 }
 

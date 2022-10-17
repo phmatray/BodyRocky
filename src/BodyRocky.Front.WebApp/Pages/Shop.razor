@@ -2,8 +2,12 @@
 @using BodyRocky.Core.Contracts.Responses.ProductResponses
 @using BodyRocky.Core.Contracts.Responses.CategoryResponses
 @using System.Net
+@using BodyRocky.Front.WebApp.Store.Models
 @inherits FluxorComponent
 @inject IState<LayoutState> LayoutState
+@inject IState<ProductState> ProductState
+@inject LayoutDispatcher LayoutDispatcher
+@inject ProductDispatcher ProductDispatcher
 @inject NavigationManager NavigationManager
 
 <!-- breadcrumb -->
@@ -165,25 +169,57 @@
       </select>
 
       <div class="flex gap-2 ml-auto">
-        <div
-            class="border border-primary w-10 h-9 flex items-center justify-center text-white bg-primary rounded cursor-pointer">
+        <button class="@GetCssClassForViewMode(ViewMode.Grid) border w-10 h-9 flex items-center justify-center rounded cursor-pointer"
+                @onclick="() => LayoutDispatcher.ChangeViewMode(ViewMode.Grid)">
           <i class="fa-solid fa-grip-vertical"></i>
-        </div>
-        <div
-            class="border border-gray-300 w-10 h-9 flex items-center justify-center text-gray-600 rounded cursor-pointer">
+        </button>
+        <button class="@GetCssClassForViewMode(ViewMode.List) border w-10 h-9 flex items-center justify-center rounded cursor-pointer"
+                @onclick="() => LayoutDispatcher.ChangeViewMode(ViewMode.List)">
           <i class="fa-solid fa-list"></i>
-        </div>
+        </button>
       </div>
     </div>
-
-    <div class="grid grid-cols-3 gap-6">
-      <UiProductCard Data="_sampleProduct"/>
-      <UiProductCard Data="_sampleProduct"/>
-      <UiProductCard Data="_sampleProduct"/>
-      <UiProductCard Data="_sampleProduct"/>
-      <UiProductCard Data="_sampleProduct"/>
-      <UiProductCard Data="_sampleProduct"/>
-    </div>
+    
+    @if (ProductState.Value.IsLoading)
+    {
+      <div class="col-span-3">
+        <div class="flex justify-center">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    }
+    else
+    {
+      if (ProductState.Value.Products.Any())
+      {
+        @if (LayoutState.Value.ViewMode is ViewMode.Grid)
+        {
+          <div class="grid grid-cols-3 gap-6">
+            @foreach (ProductResponse product in ProductState.Value.Products)
+            {
+              <UiProductCard @key="product.ProductID" Data="product"/>
+            }
+          </div>
+        }
+        else
+        {
+          <div class="col-span-9 space-y-4">
+            @foreach (ProductResponse product in ProductState.Value.Products)
+            {
+              <UiProductListItem @key="product.ProductID" Data="product"/>
+            }
+          </div>
+        }
+      }
+      else
+      {
+        <div class="col-span-3">
+          <div class="flex justify-center">
+            <div class="text-gray-600">Aucun produit trouvé</div>
+          </div>
+        </div>
+      }
+    }
   </div>
   <!-- ./products -->
 </div>
@@ -195,15 +231,20 @@
   [SupplyParameterFromQuery(Name = "categories")]
   public string[] CategoryNames { get; set; } = {  };
 
-  private readonly ProductResponse _sampleProduct = new()
+  protected override void OnInitialized()
   {
-    ProductID = Guid.NewGuid(),
-    ProductName = "Sample Product",
-    ProductDescription = "Sample Product Description",
-    ProductPrice = 100,
-    ProductURL = "https://www.google.com",
-    IsFeatured = false
-  };
+    if (ProductState.Value.Products.Count == 0)
+    {
+      ProductDispatcher.GetProducts();
+    }
+  }
+  
+  private string GetCssClassForViewMode(ViewMode viewMode)
+  {
+    return LayoutState.Value.ViewMode == viewMode
+      ? "border-primary text-white bg-primary" 
+      : "border-gray-300 text-gray-600";
+  }
   
   private bool IsCategorySelected(string categoryName)
   {
