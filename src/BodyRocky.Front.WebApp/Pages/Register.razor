@@ -92,7 +92,7 @@
             else
             {
               <span>
-                créer un compte
+                Créer un compte
               </span>
             }
           </button>
@@ -134,7 +134,7 @@
 
   private void HandleRegister(EditContext context)
   {
-    var signupRequest = new SignupRequest
+    SignupRequest signupRequest = new()
     {
       FirstName = _registerModel.FirstName,
       LastName = _registerModel.LastName,

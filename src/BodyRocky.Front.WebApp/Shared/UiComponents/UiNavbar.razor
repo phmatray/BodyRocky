@@ -2,6 +2,7 @@
 @inherits FluxorComponent
 @inject Routes Navigation
 @inject IState<LayoutState> LayoutState
+@inject IState<AuthState> AuthState
 
 <nav class="bg-gray-800">
   <div class="container flex">
@@ -43,9 +44,12 @@
         @*   Contactez-nous *@
         @* </NavLink> *@
       </div>
-      <NavLink href="@Routes.LOGIN_ROUTE" class="text-gray-200 hover:text-white transition">
-        Connexion / Enregistrement
-      </NavLink>
+      @if(AuthState?.Value.IsAuthenticated == false)
+      {
+        <NavLink href="@Routes.LOGIN_ROUTE" class="text-gray-200 hover:text-white transition">
+          Connexion / Enregistrement
+        </NavLink>
+      }
     </div>
   </div>
 </nav>

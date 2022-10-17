@@ -1,4 +1,5 @@
 @page "/product"
+@page "/product/{productId?}"
 
 <PageTitle>Produit - BodyRocky</PageTitle>
 <UiBreadcrumb PageTitle="Produit"/>
@@ -357,5 +358,10 @@
 <!-- ./related product -->
 
 @code {
+  
+  // get parameter from url
+  [Parameter]
+  public string ProductId { get; set; }
+  
 
 }

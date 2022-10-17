@@ -10,11 +10,12 @@ namespace BodyRocky.Front.WebApp.Store;
 
 public record AuthState(
     bool IsLoading,
-    string? ErrorMessage,
-    CustomerResponse? User)
+    CustomerResponse? Customer,
+    string? Token,
+    string? ErrorMessage)
 {
     public bool IsAuthenticated
-        => User is not null;
+        => Token is not null && Customer is not null;
     
     public bool HasError
         => ErrorMessage is not null;
@@ -29,6 +30,7 @@ public class AuthFeature : Feature<AuthState>
         new AuthState(
             false,
             null,
+            null,
             null);
 }
 
@@ -36,8 +38,8 @@ public class AuthFeature : Feature<AuthState>
 
 #region Actions
 
-public record LoginAction(string Email, string Password);
-public record LoginSuccessAction(CustomerResponse User);
+public record LoginAction(LoginRequest LoginRequest);
+public record LoginSuccessAction(bool IsSuccessfulLogin, CustomerResponse Customer, string Token);
 public record LoginFailureAction(string Error);
 
 public record RegisterAction(SignupRequest SignupRequest);
@@ -54,31 +56,65 @@ public static class AuthReducer
 {
     [ReducerMethod]
     public static AuthState ReduceLoginAction(AuthState state, LoginAction action)
-        => state with { IsLoading = true };
+        => state with
+        {
+            IsLoading = true,
+            ErrorMessage = null
+        };
     
     [ReducerMethod]
     public static AuthState ReduceLoginSuccessAction(AuthState state, LoginSuccessAction action)
-        => state with { IsLoading = false, ErrorMessage = null, User = action.User };
+        => state with
+        {
+            IsLoading = false,
+            ErrorMessage = null,
+            Customer = action.Customer,
+            Token = action.Token
+        };
     
     [ReducerMethod]
     public static AuthState ReduceLoginFailureAction(AuthState state, LoginFailureAction action)
-        => state with { IsLoading = false, ErrorMessage = action.Error, User = null };
+        => state with
+        {
+            IsLoading = false,
+            ErrorMessage = action.Error,
+            Customer = null,
+            Token = null
+        };
     
     [ReducerMethod]
     public static AuthState ReduceRegisterAction(AuthState state, RegisterAction action)
-        => state with { IsLoading = true, ErrorMessage = null };
+        => state with
+        {
+            IsLoading = true,
+            ErrorMessage = null
+        };
     
     [ReducerMethod]
     public static AuthState ReduceRegisterSuccessAction(AuthState state, RegisterSuccessAction action)
-        => state with { IsLoading = false, ErrorMessage = null };
+        => state with
+        {
+            IsLoading = false,
+            ErrorMessage = null
+        };
     
     [ReducerMethod]
     public static AuthState ReduceRegisterFailureAction(AuthState state, RegisterFailureAction action)
-        => state with { IsLoading = false, ErrorMessage = action.Error, User = null };
+        => state with
+        {
+            IsLoading = false,
+            ErrorMessage = action.Error
+        };
     
     [ReducerMethod]
     public static AuthState ReduceLogoutAction(AuthState state, LogoutAction action)
-        => state with { IsLoading = false, ErrorMessage = null, User = null };
+        => state with
+        {
+            IsLoading = false,
+            ErrorMessage = null,
+            Customer = null,
+            Token = null
+        };
 }
 
 #endregion
@@ -101,17 +137,27 @@ public class AuthEffects
     [EffectMethod]
     public async Task HandleLoginAction(LoginAction action, IDispatcher dispatcher)
     {
-        // try
-        // {
-        //     var response = await _bodyRockyClient.LoginAsync(new LoginRequest(action.Email, action.Password));
-        //     dispatcher.Dispatch(new LoginSuccessAction(response));
-        // }
-        // catch (Exception e)
-        // {
-        //     dispatcher.Dispatch(new LoginFailureAction(e.Message));
-        // }
-        
-        throw new NotImplementedException();
+        try
+        {
+            LoginResponse response = await _bodyRockyClient.LoginAsync(action.LoginRequest);
+            
+            LoginSuccessAction successAction = new(
+                response.IsSuccessfulLogin,
+                response.Customer,
+                response.Token);
+            
+            dispatcher.Dispatch(successAction);
+            
+            if (response.IsSuccessfulLogin)
+            {
+                _navigationManager.NavigateTo("/");
+            }
+        }
+        catch (Exception e)
+        {
+            string exceptionMessage = e.InnerException?.Message ?? e.Message;
+            dispatcher.Dispatch(new LoginFailureAction(exceptionMessage));
+        }
     }
     
     [EffectMethod]
@@ -148,8 +194,8 @@ public class AuthDispatcher
         _dispatcher = dispatcher;
     }
 
-    public void Login(string email, string password)
-        => _dispatcher.Dispatch(new LoginAction(email, password));
+    public void Login(LoginRequest loginRequest)
+        => _dispatcher.Dispatch(new LoginAction(loginRequest));
     
     public void Register(SignupRequest signupRequest)
         => _dispatcher.Dispatch(new RegisterAction(signupRequest));

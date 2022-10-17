@@ -16,6 +16,9 @@ public interface IBodyRockyApi
     [Post("/accounts/register")]
     Task<SignupResponse> RegisterAsync([Body] SignupRequest request);
     
+    [Post("/accounts/login")]
+    Task<LoginResponse> LoginAsync([Body] LoginRequest request);
+    
     [Get("/catalog/overview")]
     Task<GetOverviewCatalogResponse> GetOverviewCatalogAsync();
     

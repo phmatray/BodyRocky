@@ -1,5 +1,6 @@
 @inherits FluxorComponent
 @inject IState<BasketState> BasketState
+@inject IState<AuthState> AuthState
 
 <header class="py-4 shadow-sm bg-white">
   <div class="container flex items-center justify-between">
@@ -41,12 +42,24 @@
           @BasketState.Value.TotalQuantity
         </div>
       </NavLink>
-      <NavLink href="@Routes.ACCOUNT_ROUTE" class="text-center text-gray-700 hover:text-primary transition relative">
-        <div class="text-2xl">
-          <i class="fa-regular fa-user"></i>
-        </div>
-        <div class="text-xs leading-3">Compte</div>
-      </NavLink>
+      @if (AuthState.Value.IsAuthenticated)
+      {
+        <NavLink href="@Routes.ACCOUNT_ROUTE" class="text-center text-gray-700 hover:text-primary transition relative">
+          <div class="text-2xl">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="text-xs leading-3">Mon compte</div>
+        </NavLink>
+      }
+      else
+      {
+        <NavLink href="@Routes.LOGIN_ROUTE" class="text-center text-gray-700 hover:text-primary transition relative">
+          <div class="text-2xl">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="text-xs leading-3">Se connecter</div>
+        </NavLink>
+      }
     </div>
   </div>
 </header>

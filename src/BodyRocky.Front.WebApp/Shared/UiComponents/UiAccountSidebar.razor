@@ -1,3 +1,6 @@
+@inherits FluxorComponent
+@inject IState<AuthState> AuthState
+
 <div class="col-span-3">
   <div class="px-4 py-3 shadow flex items-center gap-4">
     <div class="flex-shrink-0">
@@ -6,7 +9,14 @@
     </div>
     <div class="flex-grow">
       <p class="text-gray-600">Bonjour,</p>
-      <h4 class="text-gray-800 font-medium">John Doe</h4>
+      <h4 class="text-gray-800 font-medium">
+        @if(AuthState.Value.IsAuthenticated)
+        {
+          <span>
+            @AuthState.Value.Customer!.FirstName @AuthState.Value.Customer!.LastName
+          </span>
+        }
+      </h4>
     </div>
   </div>
 

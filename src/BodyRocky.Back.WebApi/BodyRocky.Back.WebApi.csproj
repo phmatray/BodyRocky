@@ -22,8 +22,4 @@
       <ProjectReference Include="..\BodyRocky.Core\BodyRocky.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Endpoints\Account\Login" />
-    </ItemGroup>
-
 </Project>

@@ -26,7 +26,7 @@
           {
             foreach (CategoryResponse category in LayoutState.Value.Categories)
             {
-              <div class="flex items-center">
+              <div class="flex items-center" @key="category.CategoryID">
                 <input
                   class="text-primary focus:ring-0 rounded-sm cursor-pointer"
                   id="@category.CategoryID"
