@@ -17,7 +17,7 @@ namespace BodyRocky.Back.WebApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -404,7 +404,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3"),
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4"),
                             CategoryIcon = "fas fa-heartbeat",
                             CategoryImage = "/assets/images/category/category-1.jpg",
                             CategoryName = "Cardio-training",
@@ -412,7 +412,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7"),
+                            CategoryID = new Guid("34af17e2-8958-422c-9b45-03d54869212c"),
                             CategoryIcon = "fas fa-dumbbell",
                             CategoryImage = "/assets/images/category/category-2.jpg",
                             CategoryName = "Musculation",
@@ -420,7 +420,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480"),
+                            CategoryID = new Guid("7fb37ecc-2549-4b70-866e-39da204c4bdb"),
                             CategoryIcon = "fas fa-gamepad",
                             CategoryImage = "/assets/images/category/category-3.jpg",
                             CategoryName = "Jeux et loisirs",
@@ -428,7 +428,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5"),
+                            CategoryID = new Guid("af32e8f8-1404-46fd-9a70-c1a136985eb9"),
                             CategoryIcon = "fas fa-running",
                             CategoryImage = "/assets/images/category/category-4.jpg",
                             CategoryName = "Fitness",
@@ -436,7 +436,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7"),
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac"),
                             CategoryIcon = "fas fa-heart",
                             CategoryImage = "/assets/images/category/category-5.jpg",
                             CategoryName = "Yoga et bien-être",
@@ -444,7 +444,7 @@ namespace BodyRocky.Back.WebApi.Migrations
                         },
                         new
                         {
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559"),
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce"),
                             CategoryIcon = "fas fa-utensils",
                             CategoryImage = "/assets/images/category/category-6.jpg",
                             CategoryName = "Nutrition",
@@ -454,16 +454,26 @@ namespace BodyRocky.Back.WebApi.Migrations
 
             modelBuilder.Entity("BodyRocky.Back.WebApi.DataAccess.Entities.Customer", b =>
                 {
-                    b.Property<Guid>("CustomerID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EmailAddress")
-                        .IsRequired()
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -473,418 +483,691 @@ namespace BodyRocky.Back.WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CustomerID");
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("Customer", (string)null);
 
                     b.HasData(
                         new
                         {
-                            CustomerID = new Guid("d1b897fc-7777-027f-b858-964806e03621"),
-                            BirthDate = new DateTime(2016, 6, 27, 23, 2, 17, 383, DateTimeKind.Local).AddTicks(9376),
-                            EmailAddress = "Mable.Rolfson58@yahoo.com",
+                            Id = new Guid("d1b897fc-7777-027f-b858-964806e03621"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2016, 6, 28, 1, 49, 27, 879, DateTimeKind.Local).AddTicks(3370),
+                            ConcurrencyStamp = "55b9ea0a-d443-4a6f-9040-8810b901958d",
+                            Email = "Mable.Rolfson58@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Mable",
                             LastName = "Rolfson",
-                            Password = "e033dd26e7cf26f6cff8231b914bbe0303ba850e",
-                            PhoneNumber = "408-259-3567 x43796"
+                            LockoutEnabled = false,
+                            PasswordHash = "e033dd26e7cf26f6cff8231b914bbe0303ba850e",
+                            PhoneNumber = "408-259-3567 x43796",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("24a86f6c-5977-f46f-67dd-dddba5a9a732"),
-                            BirthDate = new DateTime(2010, 9, 11, 19, 11, 39, 455, DateTimeKind.Local).AddTicks(8172),
-                            EmailAddress = "Glenda.Miller55@hotmail.com",
+                            Id = new Guid("24a86f6c-5977-f46f-67dd-dddba5a9a732"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2010, 9, 11, 21, 58, 49, 951, DateTimeKind.Local).AddTicks(2131),
+                            ConcurrencyStamp = "b37d2736-d649-4c47-bbd7-b04b3ae136b3",
+                            Email = "Glenda.Miller55@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Glenda",
                             LastName = "Miller",
-                            Password = "c2f97b613f85667f540a1ab347f59196eb9912e5",
-                            PhoneNumber = "501-919-5456 x91797"
+                            LockoutEnabled = false,
+                            PasswordHash = "c2f97b613f85667f540a1ab347f59196eb9912e5",
+                            PhoneNumber = "501-919-5456 x91797",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("17577a5e-f5e7-ef5f-e697-f2ace5c8e0c2"),
-                            BirthDate = new DateTime(2010, 2, 21, 12, 48, 4, 454, DateTimeKind.Local).AddTicks(7657),
-                            EmailAddress = "Archie.Hahn@gmail.com",
+                            Id = new Guid("17577a5e-f5e7-ef5f-e697-f2ace5c8e0c2"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2010, 2, 21, 15, 35, 14, 950, DateTimeKind.Local).AddTicks(1622),
+                            ConcurrencyStamp = "3b5a0576-fa29-4412-8e98-10a5be9ad415",
+                            Email = "Archie.Hahn@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Archie",
                             LastName = "Hahn",
-                            Password = "957157e78391aaa4af9916108bbfcbd03b6c7ea0",
-                            PhoneNumber = "813-979-0238 x51606"
+                            LockoutEnabled = false,
+                            PasswordHash = "957157e78391aaa4af9916108bbfcbd03b6c7ea0",
+                            PhoneNumber = "813-979-0238 x51606",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("ef5a7cad-8ea0-9b3c-e6a8-909589729ae3"),
-                            BirthDate = new DateTime(2015, 8, 16, 16, 45, 48, 167, DateTimeKind.Local).AddTicks(3183),
-                            EmailAddress = "Duane_Moore37@hotmail.com",
+                            Id = new Guid("ef5a7cad-8ea0-9b3c-e6a8-909589729ae3"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2015, 8, 16, 19, 32, 58, 662, DateTimeKind.Local).AddTicks(7057),
+                            ConcurrencyStamp = "f483d3cf-7231-47b3-86e8-1af4b3ec7742",
+                            Email = "Duane_Moore37@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Duane",
                             LastName = "Moore",
-                            Password = "b7359b9627fa8b91b712c73d06f712aae57b0f75",
-                            PhoneNumber = "1-825-765-0585 x45387"
+                            LockoutEnabled = false,
+                            PasswordHash = "b7359b9627fa8b91b712c73d06f712aae57b0f75",
+                            PhoneNumber = "1-825-765-0585 x45387",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("a20d864f-6e74-3fdf-6542-3bc4a7cc8183"),
-                            BirthDate = new DateTime(2022, 4, 23, 14, 24, 6, 41, DateTimeKind.Local).AddTicks(8092),
-                            EmailAddress = "Wesley1@gmail.com",
+                            Id = new Guid("a20d864f-6e74-3fdf-6542-3bc4a7cc8183"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2022, 4, 23, 17, 11, 16, 537, DateTimeKind.Local).AddTicks(2032),
+                            ConcurrencyStamp = "5183d279-4833-462d-a90b-42dd4a0166a6",
+                            Email = "Wesley1@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Wesley",
                             LastName = "Heidenreich",
-                            Password = "4a71661c3378db86f754d2e9fefb4b4fcc937c27",
-                            PhoneNumber = "(970) 276-4966"
+                            LockoutEnabled = false,
+                            PasswordHash = "4a71661c3378db86f754d2e9fefb4b4fcc937c27",
+                            PhoneNumber = "(970) 276-4966",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("e5d8d983-cc47-c0ad-a4e4-3223e8c09803"),
-                            BirthDate = new DateTime(2016, 10, 18, 11, 2, 47, 518, DateTimeKind.Local).AddTicks(7550),
-                            EmailAddress = "Mable_Conn@yahoo.com",
+                            Id = new Guid("e5d8d983-cc47-c0ad-a4e4-3223e8c09803"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2016, 10, 18, 13, 49, 58, 14, DateTimeKind.Local).AddTicks(1500),
+                            ConcurrencyStamp = "d136ef25-63ef-465f-ba2a-2fa0211edb6f",
+                            Email = "Mable_Conn@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Mable",
                             LastName = "Conn",
-                            Password = "0db5458ac49aca27fc5734013543eccb3cab5ae8",
-                            PhoneNumber = "422.982.7599"
+                            LockoutEnabled = false,
+                            PasswordHash = "0db5458ac49aca27fc5734013543eccb3cab5ae8",
+                            PhoneNumber = "422.982.7599",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("8e09c622-cfa5-b448-898b-fcdeeaed3264"),
-                            BirthDate = new DateTime(2006, 1, 2, 12, 59, 24, 302, DateTimeKind.Local).AddTicks(1454),
-                            EmailAddress = "Molly47@hotmail.com",
+                            Id = new Guid("8e09c622-cfa5-b448-898b-fcdeeaed3264"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2006, 1, 2, 15, 46, 34, 797, DateTimeKind.Local).AddTicks(5315),
+                            ConcurrencyStamp = "a494396f-1ee3-4942-9757-511bdfc42a37",
+                            Email = "Molly47@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Molly",
                             LastName = "Connelly",
-                            Password = "1ca15085de48bdac3363c866db3b1d54872283b6",
-                            PhoneNumber = "287-431-0605 x289"
+                            LockoutEnabled = false,
+                            PasswordHash = "1ca15085de48bdac3363c866db3b1d54872283b6",
+                            PhoneNumber = "287-431-0605 x289",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("f517f468-6424-0fe9-b705-96e2bddd731f"),
-                            BirthDate = new DateTime(2012, 4, 21, 4, 24, 0, 679, DateTimeKind.Local).AddTicks(437),
-                            EmailAddress = "Micheal1@hotmail.com",
+                            Id = new Guid("f517f468-6424-0fe9-b705-96e2bddd731f"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2012, 4, 21, 7, 11, 11, 174, DateTimeKind.Local).AddTicks(4246),
+                            ConcurrencyStamp = "42bb9f9c-1494-4116-8399-b7016dd97f43",
+                            Email = "Micheal1@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Micheal",
                             LastName = "Fay",
-                            Password = "f1cf0567c636d823b1e94506d9f1f702e6f1394a",
-                            PhoneNumber = "(604) 399-1908 x8432"
+                            LockoutEnabled = false,
+                            PasswordHash = "f1cf0567c636d823b1e94506d9f1f702e6f1394a",
+                            PhoneNumber = "(604) 399-1908 x8432",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("d7eee062-cbfe-cb53-056f-5ba3e656b6a2"),
-                            BirthDate = new DateTime(2007, 1, 28, 7, 55, 35, 593, DateTimeKind.Local).AddTicks(9151),
-                            EmailAddress = "Glen.Carter@gmail.com",
+                            Id = new Guid("d7eee062-cbfe-cb53-056f-5ba3e656b6a2"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2007, 1, 28, 10, 42, 46, 89, DateTimeKind.Local).AddTicks(2869),
+                            ConcurrencyStamp = "f2099306-bd4a-455b-a40e-5e6456ee1475",
+                            Email = "Glen.Carter@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Glen",
                             LastName = "Carter",
-                            Password = "9954029fff5432707940ef16dfb476b6bc8caa33",
-                            PhoneNumber = "208-921-5192 x8048"
+                            LockoutEnabled = false,
+                            PasswordHash = "9954029fff5432707940ef16dfb476b6bc8caa33",
+                            PhoneNumber = "208-921-5192 x8048",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("09cf3630-e958-88ab-34f5-562947070a64"),
-                            BirthDate = new DateTime(2011, 4, 4, 22, 56, 11, 432, DateTimeKind.Local).AddTicks(6217),
-                            EmailAddress = "Miranda_Kautzer@yahoo.com",
+                            Id = new Guid("09cf3630-e958-88ab-34f5-562947070a64"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2011, 4, 5, 1, 43, 21, 927, DateTimeKind.Local).AddTicks(9894),
+                            ConcurrencyStamp = "11c6db68-ee93-435d-87ea-71558f800a62",
+                            Email = "Miranda_Kautzer@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Miranda",
                             LastName = "Kautzer",
-                            Password = "61e9b6a8243268b0a562447f3add7326a534cdab",
-                            PhoneNumber = "773.504.2410 x607"
+                            LockoutEnabled = false,
+                            PasswordHash = "61e9b6a8243268b0a562447f3add7326a534cdab",
+                            PhoneNumber = "773.504.2410 x607",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("370d7448-f7f8-fe75-2c48-ac7cd88f0347"),
-                            BirthDate = new DateTime(2016, 12, 29, 4, 22, 38, 231, DateTimeKind.Local).AddTicks(5246),
-                            EmailAddress = "Olive97@hotmail.com",
+                            Id = new Guid("370d7448-f7f8-fe75-2c48-ac7cd88f0347"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2016, 12, 29, 7, 9, 48, 726, DateTimeKind.Local).AddTicks(8876),
+                            ConcurrencyStamp = "fa5191de-8976-4a72-9555-e8dd44d44fc1",
+                            Email = "Olive97@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Olive",
                             LastName = "Hickle",
-                            Password = "a382513e123e640970820b27036340be38d694c4",
-                            PhoneNumber = "1-576-378-1925"
+                            LockoutEnabled = false,
+                            PasswordHash = "a382513e123e640970820b27036340be38d694c4",
+                            PhoneNumber = "1-576-378-1925",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("16b4c4a0-2f35-237d-681b-bd453093a236"),
-                            BirthDate = new DateTime(2005, 6, 15, 4, 8, 23, 37, DateTimeKind.Local).AddTicks(2593),
-                            EmailAddress = "Harold.Bogan@gmail.com",
+                            Id = new Guid("16b4c4a0-2f35-237d-681b-bd453093a236"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2005, 6, 15, 6, 55, 33, 532, DateTimeKind.Local).AddTicks(6158),
+                            ConcurrencyStamp = "52bf904e-de45-43ff-99d0-b3c05850dd53",
+                            Email = "Harold.Bogan@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Harold",
                             LastName = "Bogan",
-                            Password = "2aa937f9a85d813e69f69c15af86c16802d692cb",
-                            PhoneNumber = "(613) 923-3761 x211"
+                            LockoutEnabled = false,
+                            PasswordHash = "2aa937f9a85d813e69f69c15af86c16802d692cb",
+                            PhoneNumber = "(613) 923-3761 x211",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("4c3865c2-4fa0-2030-ee84-adc09a2380c0"),
-                            BirthDate = new DateTime(2009, 10, 21, 12, 12, 14, 739, DateTimeKind.Local).AddTicks(300),
-                            EmailAddress = "Monica_Toy9@yahoo.com",
+                            Id = new Guid("4c3865c2-4fa0-2030-ee84-adc09a2380c0"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2009, 10, 21, 14, 59, 25, 234, DateTimeKind.Local).AddTicks(3939),
+                            ConcurrencyStamp = "b8068cb1-f3d6-465b-8f12-aebd33da65b9",
+                            Email = "Monica_Toy9@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Monica",
                             LastName = "Toy",
-                            Password = "eff466ec72b71f1089bb20eb4a759cc6edeafcf7",
-                            PhoneNumber = "472.363.9783 x0777"
+                            LockoutEnabled = false,
+                            PasswordHash = "eff466ec72b71f1089bb20eb4a759cc6edeafcf7",
+                            PhoneNumber = "472.363.9783 x0777",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("6569e4a5-16d0-f2e7-efd6-d481c804b5da"),
-                            BirthDate = new DateTime(2006, 3, 19, 21, 51, 4, 350, DateTimeKind.Local).AddTicks(8021),
-                            EmailAddress = "Jacob.Zboncak27@gmail.com",
+                            Id = new Guid("6569e4a5-16d0-f2e7-efd6-d481c804b5da"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2006, 3, 20, 0, 38, 14, 846, DateTimeKind.Local).AddTicks(1609),
+                            ConcurrencyStamp = "b587aadd-a05f-4572-8f60-9bdbeedcd66b",
+                            Email = "Jacob.Zboncak27@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Jacob",
                             LastName = "Zboncak",
-                            Password = "57e1d6e7af3ed32bfe76dbb6a2440572be4ce9a1",
-                            PhoneNumber = "(725) 766-6845"
+                            LockoutEnabled = false,
+                            PasswordHash = "57e1d6e7af3ed32bfe76dbb6a2440572be4ce9a1",
+                            PhoneNumber = "(725) 766-6845",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("f6bd4214-fcae-251e-1c0e-19ff98cd05d9"),
-                            BirthDate = new DateTime(2012, 6, 12, 19, 20, 22, 192, DateTimeKind.Local).AddTicks(7678),
-                            EmailAddress = "Nina.Kshlerin@yahoo.com",
+                            Id = new Guid("f6bd4214-fcae-251e-1c0e-19ff98cd05d9"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2012, 6, 12, 22, 7, 32, 688, DateTimeKind.Local).AddTicks(1257),
+                            ConcurrencyStamp = "992729ae-136a-4779-8035-5181e7548316",
+                            Email = "Nina.Kshlerin@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Nina",
                             LastName = "Kshlerin",
-                            Password = "f04574552ee7ffdbef231961a7dcf2eeb25a1a19",
-                            PhoneNumber = "823.596.1362"
+                            LockoutEnabled = false,
+                            PasswordHash = "f04574552ee7ffdbef231961a7dcf2eeb25a1a19",
+                            PhoneNumber = "823.596.1362",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("9a2731a6-8052-7fba-e7d5-859847ce1ba1"),
-                            BirthDate = new DateTime(2007, 3, 8, 1, 48, 19, 275, DateTimeKind.Local).AddTicks(4627),
-                            EmailAddress = "Beverly95@yahoo.com",
+                            Id = new Guid("9a2731a6-8052-7fba-e7d5-859847ce1ba1"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2007, 3, 8, 4, 35, 29, 770, DateTimeKind.Local).AddTicks(8178),
+                            ConcurrencyStamp = "47e2ec17-59f2-4238-a5b4-49f6dfa347fc",
+                            Email = "Beverly95@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Beverly",
                             LastName = "Pfeffer",
-                            Password = "3f3a3b3b666a4c77c6eb2253b33fb31dcb73e0df",
-                            PhoneNumber = "785-350-1846"
+                            LockoutEnabled = false,
+                            PasswordHash = "3f3a3b3b666a4c77c6eb2253b33fb31dcb73e0df",
+                            PhoneNumber = "785-350-1846",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("639e22a8-ebb5-9b66-f18f-64bce6951b54"),
-                            BirthDate = new DateTime(2005, 6, 21, 5, 37, 8, 334, DateTimeKind.Local).AddTicks(9060),
-                            EmailAddress = "Ebony35@gmail.com",
+                            Id = new Guid("639e22a8-ebb5-9b66-f18f-64bce6951b54"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2005, 6, 21, 8, 24, 18, 830, DateTimeKind.Local).AddTicks(2654),
+                            ConcurrencyStamp = "20ded7a1-567d-432d-ae1b-aa45f227bd39",
+                            Email = "Ebony35@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Ebony",
                             LastName = "White",
-                            Password = "b09ea9aa65cfbd7cb24c3d525424a54dfaaa5bad",
-                            PhoneNumber = "658-849-9321"
+                            LockoutEnabled = false,
+                            PasswordHash = "b09ea9aa65cfbd7cb24c3d525424a54dfaaa5bad",
+                            PhoneNumber = "658-849-9321",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("64bb2e44-3584-aec1-ee15-f67e8b1fe2d8"),
-                            BirthDate = new DateTime(2014, 8, 19, 12, 52, 29, 35, DateTimeKind.Local).AddTicks(4172),
-                            EmailAddress = "Vanessa.Lindgren4@yahoo.com",
+                            Id = new Guid("64bb2e44-3584-aec1-ee15-f67e8b1fe2d8"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2014, 8, 19, 15, 39, 39, 530, DateTimeKind.Local).AddTicks(7698),
+                            ConcurrencyStamp = "b3bccdec-1ca5-4665-b006-40167bbeaf17",
+                            Email = "Vanessa.Lindgren4@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Vanessa",
                             LastName = "Lindgren",
-                            Password = "0626d7d31d39f0447528657f25be92cc8b1955c9",
-                            PhoneNumber = "544.217.2112 x7292"
+                            LockoutEnabled = false,
+                            PasswordHash = "0626d7d31d39f0447528657f25be92cc8b1955c9",
+                            PhoneNumber = "544.217.2112 x7292",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("23390a56-c1d1-1d60-1c75-2fa24374999a"),
-                            BirthDate = new DateTime(2013, 10, 1, 23, 15, 36, 958, DateTimeKind.Local).AddTicks(4920),
-                            EmailAddress = "Annie_Feil@hotmail.com",
+                            Id = new Guid("23390a56-c1d1-1d60-1c75-2fa24374999a"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2013, 10, 2, 2, 2, 47, 453, DateTimeKind.Local).AddTicks(8442),
+                            ConcurrencyStamp = "67a0f6ab-fc9c-41c2-a9ef-2f05ac3136be",
+                            Email = "Annie_Feil@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Annie",
                             LastName = "Feil",
-                            Password = "64299fd04c627ec243ade12519e1f9a9ffd1ddb5",
-                            PhoneNumber = "1-715-969-4911 x17592"
+                            LockoutEnabled = false,
+                            PasswordHash = "64299fd04c627ec243ade12519e1f9a9ffd1ddb5",
+                            PhoneNumber = "1-715-969-4911 x17592",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("771b2a2f-d9a0-2f46-b75e-94585589f127"),
-                            BirthDate = new DateTime(2013, 7, 9, 0, 23, 21, 953, DateTimeKind.Local).AddTicks(4278),
-                            EmailAddress = "Owen.Kutch81@gmail.com",
+                            Id = new Guid("771b2a2f-d9a0-2f46-b75e-94585589f127"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2013, 7, 9, 3, 10, 32, 448, DateTimeKind.Local).AddTicks(7754),
+                            ConcurrencyStamp = "7f293e5f-ca1a-4207-ac1a-a7b9c906b440",
+                            Email = "Owen.Kutch81@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Owen",
                             LastName = "Kutch",
-                            Password = "79c39c51c08e3db58556321310d4705d719c781c",
-                            PhoneNumber = "1-533-638-9063"
+                            LockoutEnabled = false,
+                            PasswordHash = "79c39c51c08e3db58556321310d4705d719c781c",
+                            PhoneNumber = "1-533-638-9063",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("9f9b9048-2e80-a16c-f77a-e0a6fe86ef5e"),
-                            BirthDate = new DateTime(2005, 12, 17, 2, 12, 25, 153, DateTimeKind.Local).AddTicks(8835),
-                            EmailAddress = "Alfredo_Conroy@gmail.com",
+                            Id = new Guid("9f9b9048-2e80-a16c-f77a-e0a6fe86ef5e"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2005, 12, 17, 4, 59, 35, 649, DateTimeKind.Local).AddTicks(2175),
+                            ConcurrencyStamp = "7534cc15-6d0d-4575-baa9-3912bd1cf9b9",
+                            Email = "Alfredo_Conroy@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Alfredo",
                             LastName = "Conroy",
-                            Password = "7e6cadf7a519fabbd27bac9815c623c4dffa6781",
-                            PhoneNumber = "(902) 950-3406"
+                            LockoutEnabled = false,
+                            PasswordHash = "7e6cadf7a519fabbd27bac9815c623c4dffa6781",
+                            PhoneNumber = "(902) 950-3406",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("09a1ceff-6067-cfcc-eeee-51e27ad836cf"),
-                            BirthDate = new DateTime(2018, 7, 9, 8, 33, 52, 215, DateTimeKind.Local).AddTicks(1645),
-                            EmailAddress = "Laurence40@yahoo.com",
+                            Id = new Guid("09a1ceff-6067-cfcc-eeee-51e27ad836cf"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2018, 7, 9, 11, 21, 2, 710, DateTimeKind.Local).AddTicks(4864),
+                            ConcurrencyStamp = "70cca966-4bcb-4276-aa88-00d07808f6bf",
+                            Email = "Laurence40@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Laurence",
                             LastName = "Orn",
-                            Password = "6bb86560998d073a1b9ba1d5b931af91266d6ddd",
-                            PhoneNumber = "(236) 432-2476 x6727"
+                            LockoutEnabled = false,
+                            PasswordHash = "6bb86560998d073a1b9ba1d5b931af91266d6ddd",
+                            PhoneNumber = "(236) 432-2476 x6727",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("d94b91d5-6c77-2434-c3df-919814170af1"),
-                            BirthDate = new DateTime(2009, 6, 15, 8, 55, 20, 945, DateTimeKind.Local).AddTicks(2938),
-                            EmailAddress = "Regina_Schinner@yahoo.com",
+                            Id = new Guid("d94b91d5-6c77-2434-c3df-919814170af1"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2009, 6, 15, 11, 42, 31, 440, DateTimeKind.Local).AddTicks(6158),
+                            ConcurrencyStamp = "f7f0fe1a-2d92-4645-b35f-49e0a407e962",
+                            Email = "Regina_Schinner@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Regina",
                             LastName = "Schinner",
-                            Password = "1722ef008e510b639af0f2e6d29ef7a8f32a662b",
-                            PhoneNumber = "487-376-4865 x995"
+                            LockoutEnabled = false,
+                            PasswordHash = "1722ef008e510b639af0f2e6d29ef7a8f32a662b",
+                            PhoneNumber = "487-376-4865 x995",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("c4919c93-3b57-f555-d360-0930100173c3"),
-                            BirthDate = new DateTime(2016, 9, 6, 18, 10, 26, 725, DateTimeKind.Local).AddTicks(9604),
-                            EmailAddress = "Bethany24@gmail.com",
+                            Id = new Guid("c4919c93-3b57-f555-d360-0930100173c3"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2016, 9, 6, 20, 57, 37, 221, DateTimeKind.Local).AddTicks(2745),
+                            ConcurrencyStamp = "9b8bae72-8872-49a9-b2a0-2875ac1bc7b1",
+                            Email = "Bethany24@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Bethany",
                             LastName = "Hills",
-                            Password = "b230ee58f7932edfd30b14d40052ea88b9e76299",
-                            PhoneNumber = "842.390.8806 x3055"
+                            LockoutEnabled = false,
+                            PasswordHash = "b230ee58f7932edfd30b14d40052ea88b9e76299",
+                            PhoneNumber = "842.390.8806 x3055",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("241fdd79-d370-d294-5ba2-4214bf51b015"),
-                            BirthDate = new DateTime(2006, 3, 26, 15, 13, 53, 260, DateTimeKind.Local).AddTicks(1452),
-                            EmailAddress = "Clay_Abshire@yahoo.com",
+                            Id = new Guid("241fdd79-d370-d294-5ba2-4214bf51b015"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2006, 3, 26, 18, 1, 3, 755, DateTimeKind.Local).AddTicks(4603),
+                            ConcurrencyStamp = "b34fa6be-75e2-4504-b320-421a1407b976",
+                            Email = "Clay_Abshire@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Clay",
                             LastName = "Abshire",
-                            Password = "c1130528318f54711024ffa98df995bf925e5304",
-                            PhoneNumber = "663.744.5518"
+                            LockoutEnabled = false,
+                            PasswordHash = "c1130528318f54711024ffa98df995bf925e5304",
+                            PhoneNumber = "663.744.5518",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("d3a3a7af-ddc4-4ae6-f3f6-ce0e100862f8"),
-                            BirthDate = new DateTime(2022, 6, 19, 0, 10, 0, 224, DateTimeKind.Local).AddTicks(1329),
-                            EmailAddress = "Christian_Paucek38@yahoo.com",
+                            Id = new Guid("d3a3a7af-ddc4-4ae6-f3f6-ce0e100862f8"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2022, 6, 19, 2, 57, 10, 719, DateTimeKind.Local).AddTicks(4530),
+                            ConcurrencyStamp = "6c21a593-7357-4d96-b6a2-eb32c7e9cf20",
+                            Email = "Christian_Paucek38@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Christian",
                             LastName = "Paucek",
-                            Password = "61e51ff968d560adc3ddf7ed1b8a12f0699907a2",
-                            PhoneNumber = "898.987.7942 x003"
+                            LockoutEnabled = false,
+                            PasswordHash = "61e51ff968d560adc3ddf7ed1b8a12f0699907a2",
+                            PhoneNumber = "898.987.7942 x003",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("64b4e5c0-6541-cdce-487f-d0cf5e41bcdd"),
-                            BirthDate = new DateTime(2019, 3, 11, 3, 5, 55, 700, DateTimeKind.Local).AddTicks(224),
-                            EmailAddress = "Gregory.Gibson@yahoo.com",
+                            Id = new Guid("64b4e5c0-6541-cdce-487f-d0cf5e41bcdd"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2019, 3, 11, 5, 53, 6, 195, DateTimeKind.Local).AddTicks(3337),
+                            ConcurrencyStamp = "68f2eef3-c01e-4bed-b511-a436eef70f8c",
+                            Email = "Gregory.Gibson@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Gregory",
                             LastName = "Gibson",
-                            Password = "4b9c633ebd15025786d1696936cf719fe755c9ee",
-                            PhoneNumber = "(235) 878-4897 x002"
+                            LockoutEnabled = false,
+                            PasswordHash = "4b9c633ebd15025786d1696936cf719fe755c9ee",
+                            PhoneNumber = "(235) 878-4897 x002",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("0a135eb3-695a-2cd4-c170-213222bcdd0e"),
-                            BirthDate = new DateTime(2016, 8, 29, 12, 53, 34, 551, DateTimeKind.Local).AddTicks(7246),
-                            EmailAddress = "Santos.Mosciski@yahoo.com",
+                            Id = new Guid("0a135eb3-695a-2cd4-c170-213222bcdd0e"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2016, 8, 29, 15, 40, 45, 47, DateTimeKind.Local).AddTicks(482),
+                            ConcurrencyStamp = "10fed974-f988-44b3-afc2-160571a2d4e8",
+                            Email = "Santos.Mosciski@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Santos",
                             LastName = "Mosciski",
-                            Password = "8a399cd1fd098f0a8c0228ba23c7d86461fdfb41",
-                            PhoneNumber = "749-945-8869"
+                            LockoutEnabled = false,
+                            PasswordHash = "8a399cd1fd098f0a8c0228ba23c7d86461fdfb41",
+                            PhoneNumber = "749-945-8869",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("3c5d782e-c346-d1a4-ea87-956078911a78"),
-                            BirthDate = new DateTime(2011, 3, 22, 22, 25, 58, 640, DateTimeKind.Local).AddTicks(3048),
-                            EmailAddress = "Becky42@yahoo.com",
+                            Id = new Guid("3c5d782e-c346-d1a4-ea87-956078911a78"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2011, 3, 23, 1, 13, 9, 135, DateTimeKind.Local).AddTicks(6238),
+                            ConcurrencyStamp = "54d809bd-afcd-4e8f-be4d-cb48a471bf8a",
+                            Email = "Becky42@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Becky",
                             LastName = "Jenkins",
-                            Password = "10604579c6d7de9cf245bf6248b3c11ff1ea1dc1",
-                            PhoneNumber = "375-796-3358"
+                            LockoutEnabled = false,
+                            PasswordHash = "10604579c6d7de9cf245bf6248b3c11ff1ea1dc1",
+                            PhoneNumber = "375-796-3358",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("0efd67fc-9c2a-914b-66c4-f73f17803c80"),
-                            BirthDate = new DateTime(2005, 9, 29, 5, 16, 25, 616, DateTimeKind.Local).AddTicks(2649),
-                            EmailAddress = "Kim.Ruecker83@hotmail.com",
+                            Id = new Guid("0efd67fc-9c2a-914b-66c4-f73f17803c80"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2005, 9, 29, 8, 3, 36, 111, DateTimeKind.Local).AddTicks(5760),
+                            ConcurrencyStamp = "91b6a4b8-dd61-4c54-bb87-a24dc1424aed",
+                            Email = "Kim.Ruecker83@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Kim",
                             LastName = "Ruecker",
-                            Password = "c04c18d317124d158a699d63a058af9378dd65b2",
-                            PhoneNumber = "(316) 420-1209 x9740"
+                            LockoutEnabled = false,
+                            PasswordHash = "c04c18d317124d158a699d63a058af9378dd65b2",
+                            PhoneNumber = "(316) 420-1209 x9740",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("0e006fa9-de45-528c-0bae-9dd6207620e7"),
-                            BirthDate = new DateTime(2008, 2, 6, 10, 34, 26, 660, DateTimeKind.Local).AddTicks(1616),
-                            EmailAddress = "Joyce.Breitenberg@yahoo.com",
+                            Id = new Guid("0e006fa9-de45-528c-0bae-9dd6207620e7"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2008, 2, 6, 13, 21, 37, 155, DateTimeKind.Local).AddTicks(4719),
+                            ConcurrencyStamp = "860c2dd8-a94e-4f26-9fbc-462c0e56fa70",
+                            Email = "Joyce.Breitenberg@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Joyce",
                             LastName = "Breitenberg",
-                            Password = "c9ec82fae34791da1559cdb081ddb3797e0ce2e5",
-                            PhoneNumber = "318-923-3924"
+                            LockoutEnabled = false,
+                            PasswordHash = "c9ec82fae34791da1559cdb081ddb3797e0ce2e5",
+                            PhoneNumber = "318-923-3924",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("5cfc8e08-5314-1ffe-852b-cf7695022774"),
-                            BirthDate = new DateTime(2013, 3, 6, 15, 50, 15, 135, DateTimeKind.Local).AddTicks(3620),
-                            EmailAddress = "Teri_Gleichner72@gmail.com",
+                            Id = new Guid("5cfc8e08-5314-1ffe-852b-cf7695022774"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2013, 3, 6, 18, 37, 25, 630, DateTimeKind.Local).AddTicks(6589),
+                            ConcurrencyStamp = "56618e78-dd7f-499f-9e91-50d31a273250",
+                            Email = "Teri_Gleichner72@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Teri",
                             LastName = "Gleichner",
-                            Password = "e6f37227df1cfff027e5fd0a9129e478759a3156",
-                            PhoneNumber = "840-924-2437"
+                            LockoutEnabled = false,
+                            PasswordHash = "e6f37227df1cfff027e5fd0a9129e478759a3156",
+                            PhoneNumber = "840-924-2437",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("4ff0a3f7-1b7e-b61c-4dc4-04965e1306c6"),
-                            BirthDate = new DateTime(2013, 6, 13, 9, 5, 50, 756, DateTimeKind.Local).AddTicks(2092),
-                            EmailAddress = "Lloyd_Murphy@yahoo.com",
+                            Id = new Guid("4ff0a3f7-1b7e-b61c-4dc4-04965e1306c6"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2013, 6, 13, 11, 53, 1, 251, DateTimeKind.Local).AddTicks(4956),
+                            ConcurrencyStamp = "433b2a5b-6a06-4978-bec0-22c132c18c8b",
+                            Email = "Lloyd_Murphy@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Lloyd",
                             LastName = "Murphy",
-                            Password = "0ce1e8101f9d3178d882f7060b08148a061b39dc",
-                            PhoneNumber = "400-844-7911 x196"
+                            LockoutEnabled = false,
+                            PasswordHash = "0ce1e8101f9d3178d882f7060b08148a061b39dc",
+                            PhoneNumber = "400-844-7911 x196",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("54515b47-693f-f4da-e89f-9862d69a44ab"),
-                            BirthDate = new DateTime(2011, 3, 8, 9, 29, 50, 563, DateTimeKind.Local).AddTicks(3350),
-                            EmailAddress = "Marcia_Blick47@yahoo.com",
+                            Id = new Guid("54515b47-693f-f4da-e89f-9862d69a44ab"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2011, 3, 8, 12, 17, 1, 58, DateTimeKind.Local).AddTicks(6193),
+                            ConcurrencyStamp = "c955db5b-16b8-4d8c-ae3d-f34c23107368",
+                            Email = "Marcia_Blick47@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Marcia",
                             LastName = "Blick",
-                            Password = "95ee6b9b17ccfd4fa44d4f2e4d52037573b4c3f8",
-                            PhoneNumber = "1-477-419-8185 x7652"
+                            LockoutEnabled = false,
+                            PasswordHash = "95ee6b9b17ccfd4fa44d4f2e4d52037573b4c3f8",
+                            PhoneNumber = "1-477-419-8185 x7652",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("5c2b4042-627b-9bd8-71c2-8a4b10ba2dc3"),
-                            BirthDate = new DateTime(2022, 10, 11, 17, 33, 56, 889, DateTimeKind.Local).AddTicks(7657),
-                            EmailAddress = "Moses_Orn98@yahoo.com",
+                            Id = new Guid("5c2b4042-627b-9bd8-71c2-8a4b10ba2dc3"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2022, 10, 11, 20, 21, 7, 385, DateTimeKind.Local).AddTicks(491),
+                            ConcurrencyStamp = "258f1d97-8348-4e2c-99d3-520e510a4fab",
+                            Email = "Moses_Orn98@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Moses",
                             LastName = "Orn",
-                            Password = "f6dd88a12ff0d731b9d97f95f6c49efd2b5e8575",
-                            PhoneNumber = "337.591.0174 x05854"
+                            LockoutEnabled = false,
+                            PasswordHash = "f6dd88a12ff0d731b9d97f95f6c49efd2b5e8575",
+                            PhoneNumber = "337.591.0174 x05854",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("e4d782a2-c14b-bfc5-cee8-432a323314b8"),
-                            BirthDate = new DateTime(2011, 2, 8, 9, 29, 52, 314, DateTimeKind.Local).AddTicks(7958),
-                            EmailAddress = "Myrtle.Tremblay@yahoo.com",
+                            Id = new Guid("e4d782a2-c14b-bfc5-cee8-432a323314b8"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2011, 2, 8, 12, 17, 2, 810, DateTimeKind.Local).AddTicks(513),
+                            ConcurrencyStamp = "678baa36-54c2-413b-bda3-f94e2b125640",
+                            Email = "Myrtle.Tremblay@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Myrtle",
                             LastName = "Tremblay",
-                            Password = "213a3fffc29dcfdf60eeb7a98ad9a5a81a61cf13",
-                            PhoneNumber = "(431) 650-9030"
+                            LockoutEnabled = false,
+                            PasswordHash = "213a3fffc29dcfdf60eeb7a98ad9a5a81a61cf13",
+                            PhoneNumber = "(431) 650-9030",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("f6d2645c-d118-86e3-b4d6-dead790666a7"),
-                            BirthDate = new DateTime(2020, 3, 13, 11, 36, 3, 651, DateTimeKind.Local).AddTicks(4550),
-                            EmailAddress = "Otis42@yahoo.com",
+                            Id = new Guid("f6d2645c-d118-86e3-b4d6-dead790666a7"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2020, 3, 13, 14, 23, 14, 146, DateTimeKind.Local).AddTicks(6963),
+                            ConcurrencyStamp = "86735259-a7c2-416d-9ab9-75a134e98ff2",
+                            Email = "Otis42@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Otis",
                             LastName = "Carter",
-                            Password = "a4036c10959e443503e7c9b14a46f279163a02ce",
-                            PhoneNumber = "749.362.8114 x436"
+                            LockoutEnabled = false,
+                            PasswordHash = "a4036c10959e443503e7c9b14a46f279163a02ce",
+                            PhoneNumber = "749.362.8114 x436",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("e9bfd8b1-5a52-3800-6862-2b734d40cd00"),
-                            BirthDate = new DateTime(2014, 8, 30, 8, 46, 21, 139, DateTimeKind.Local).AddTicks(9585),
-                            EmailAddress = "Kate_Wiegand@gmail.com",
+                            Id = new Guid("e9bfd8b1-5a52-3800-6862-2b734d40cd00"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2014, 8, 30, 11, 33, 31, 635, DateTimeKind.Local).AddTicks(2075),
+                            ConcurrencyStamp = "57aa9804-ecc7-4daf-ac2f-3775b29ce66e",
+                            Email = "Kate_Wiegand@gmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Kate",
                             LastName = "Wiegand",
-                            Password = "dd63b5ae0f3751ccaa157021025c871051051412",
-                            PhoneNumber = "1-449-983-0589 x903"
+                            LockoutEnabled = false,
+                            PasswordHash = "dd63b5ae0f3751ccaa157021025c871051051412",
+                            PhoneNumber = "1-449-983-0589 x903",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("bbe74b8f-4d35-5124-de8a-c572b6c207fe"),
-                            BirthDate = new DateTime(2016, 11, 13, 8, 24, 35, 68, DateTimeKind.Local).AddTicks(6810),
-                            EmailAddress = "Stacy_Effertz@hotmail.com",
+                            Id = new Guid("bbe74b8f-4d35-5124-de8a-c572b6c207fe"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2016, 11, 13, 11, 11, 45, 563, DateTimeKind.Local).AddTicks(9222),
+                            ConcurrencyStamp = "35c64c6a-cf95-4a07-96e6-3801ece1425f",
+                            Email = "Stacy_Effertz@hotmail.com",
+                            EmailConfirmed = false,
                             FirstName = "Stacy",
                             LastName = "Effertz",
-                            Password = "d742462ecf3fc4d9d9e00bf5e9786fa48d422160",
-                            PhoneNumber = "(535) 793-4002"
+                            LockoutEnabled = false,
+                            PasswordHash = "d742462ecf3fc4d9d9e00bf5e9786fa48d422160",
+                            PhoneNumber = "(535) 793-4002",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            CustomerID = new Guid("547a3a2a-9746-f1f7-0dc1-9f411376967d"),
-                            BirthDate = new DateTime(2007, 9, 24, 21, 14, 21, 279, DateTimeKind.Local).AddTicks(1023),
-                            EmailAddress = "Jeannie.Erdman98@yahoo.com",
+                            Id = new Guid("547a3a2a-9746-f1f7-0dc1-9f411376967d"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(2007, 9, 25, 0, 1, 31, 774, DateTimeKind.Local).AddTicks(3498),
+                            ConcurrencyStamp = "e48ee5c5-1417-4a3b-bfc3-bdafd814788f",
+                            Email = "Jeannie.Erdman98@yahoo.com",
+                            EmailConfirmed = false,
                             FirstName = "Jeannie",
                             LastName = "Erdman",
-                            Password = "15e7b22540b89b81c33920eb1cde27f631f52e51",
-                            PhoneNumber = "(887) 331-9600 x582"
+                            LockoutEnabled = false,
+                            PasswordHash = "15e7b22540b89b81c33920eb1cde27f631f52e51",
+                            PhoneNumber = "(887) 331-9600 x582",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
                         });
                 });
 
@@ -1483,202 +1766,202 @@ namespace BodyRocky.Back.WebApi.Migrations
                         new
                         {
                             ProductID = new Guid("93e2b54b-aa79-15ec-31c3-ac145b9452a9"),
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac")
                         },
                         new
                         {
                             ProductID = new Guid("11788f1c-7e70-9973-6f3d-c9ff72df695f"),
-                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                            CategoryID = new Guid("7fb37ecc-2549-4b70-866e-39da204c4bdb")
                         },
                         new
                         {
                             ProductID = new Guid("87bb8a54-1311-fa41-a38c-f778d4cc2c00"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("1dfb0fba-f84d-f97f-c301-8f9c6294cc89"),
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac")
                         },
                         new
                         {
                             ProductID = new Guid("18a74a15-fb01-0fcc-ed52-b2e56ed58b61"),
-                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                            CategoryID = new Guid("7fb37ecc-2549-4b70-866e-39da204c4bdb")
                         },
                         new
                         {
                             ProductID = new Guid("5173998f-e412-7ef4-e58f-5fb68a0a3cb6"),
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac")
                         },
                         new
                         {
                             ProductID = new Guid("7da87366-4777-20a1-1cd2-8b582f1dab88"),
-                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                            CategoryID = new Guid("7fb37ecc-2549-4b70-866e-39da204c4bdb")
                         },
                         new
                         {
                             ProductID = new Guid("acdcabd1-e7ec-0c11-9ad4-28fc36c62e4e"),
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4")
                         },
                         new
                         {
                             ProductID = new Guid("5a886510-fe25-add2-276c-37e426e25df7"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("2d43389b-2dc3-6813-0eb0-49b5dc0a55f1"),
-                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                            CategoryID = new Guid("7fb37ecc-2549-4b70-866e-39da204c4bdb")
                         },
                         new
                         {
                             ProductID = new Guid("536227b5-2b5e-7408-ee52-2920143cc4d2"),
-                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                            CategoryID = new Guid("34af17e2-8958-422c-9b45-03d54869212c")
                         },
                         new
                         {
                             ProductID = new Guid("56185cda-dce2-0f1f-63bd-c90bcfd46f24"),
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac")
                         },
                         new
                         {
                             ProductID = new Guid("5a7ec381-7fe2-acea-e21f-5c1649fca189"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("20bd175b-c07a-47ef-9d9c-5f5148e00d33"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("f1d2a016-dc1c-99aa-a2da-0839bb2d3cf7"),
-                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                            CategoryID = new Guid("af32e8f8-1404-46fd-9a70-c1a136985eb9")
                         },
                         new
                         {
                             ProductID = new Guid("c48d9ab4-7f88-06e1-5914-4c46ca2655bd"),
-                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                            CategoryID = new Guid("34af17e2-8958-422c-9b45-03d54869212c")
                         },
                         new
                         {
                             ProductID = new Guid("dcc5057d-dcfe-0aa7-bbf1-a396b83cefc5"),
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4")
                         },
                         new
                         {
                             ProductID = new Guid("f9fc6035-b68b-4159-bd9f-10f52b831d26"),
-                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                            CategoryID = new Guid("af32e8f8-1404-46fd-9a70-c1a136985eb9")
                         },
                         new
                         {
                             ProductID = new Guid("e8e74b1d-98a2-c64a-e809-aaf81583e48c"),
-                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                            CategoryID = new Guid("34af17e2-8958-422c-9b45-03d54869212c")
                         },
                         new
                         {
                             ProductID = new Guid("58c86520-2f99-e425-c7eb-7c659f6f6b00"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("bd40f82c-8de4-9084-ec2c-20da1effb972"),
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac")
                         },
                         new
                         {
                             ProductID = new Guid("357dcc32-5691-5a8d-1205-ac8fdbe918d8"),
-                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                            CategoryID = new Guid("af32e8f8-1404-46fd-9a70-c1a136985eb9")
                         },
                         new
                         {
                             ProductID = new Guid("a345a6cf-47e6-ef94-09c6-a848e9de1f90"),
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4")
                         },
                         new
                         {
                             ProductID = new Guid("3241e82d-aa2e-7d68-9601-1a198e6f1423"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("b8f5e25e-08be-5d9f-8b7f-ad247e439b4d"),
-                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                            CategoryID = new Guid("34af17e2-8958-422c-9b45-03d54869212c")
                         },
                         new
                         {
                             ProductID = new Guid("41e35278-54f7-a421-d0d5-4235826a55d5"),
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4")
                         },
                         new
                         {
                             ProductID = new Guid("951d5f89-e612-e4b6-2d5c-1a7304c14439"),
-                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                            CategoryID = new Guid("af32e8f8-1404-46fd-9a70-c1a136985eb9")
                         },
                         new
                         {
                             ProductID = new Guid("6b416013-854c-76a2-98e9-976c3da1eaaa"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("20c2ce26-a22d-5015-986b-7777c3f0829e"),
-                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                            CategoryID = new Guid("7fb37ecc-2549-4b70-866e-39da204c4bdb")
                         },
                         new
                         {
                             ProductID = new Guid("73565ff8-60ad-f71d-ae1b-20cd4c67d4e4"),
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac")
                         },
                         new
                         {
                             ProductID = new Guid("8d96b92c-fd82-57dc-7b38-add8e1c205c3"),
-                            CategoryID = new Guid("a85d899f-05b5-456f-bff2-5c66a3fec3e5")
+                            CategoryID = new Guid("af32e8f8-1404-46fd-9a70-c1a136985eb9")
                         },
                         new
                         {
                             ProductID = new Guid("66a3bdf9-c10d-8be0-2283-e0772d50f146"),
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4")
                         },
                         new
                         {
                             ProductID = new Guid("559ccb10-47bd-bdf7-38e6-1f55045c5613"),
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4")
                         },
                         new
                         {
                             ProductID = new Guid("f2e2f601-4cfa-c93f-a28d-6a8d66dee66e"),
-                            CategoryID = new Guid("c1335c7f-bc8f-4550-b54d-0fc020e0f9a3")
+                            CategoryID = new Guid("ec07b8e2-f9cc-41bd-8101-ad92ddb51ea4")
                         },
                         new
                         {
                             ProductID = new Guid("c334080c-037a-04c3-26dd-83f7845ad906"),
-                            CategoryID = new Guid("d50c44df-7c21-48dd-a4a5-59d4637a1480")
+                            CategoryID = new Guid("7fb37ecc-2549-4b70-866e-39da204c4bdb")
                         },
                         new
                         {
                             ProductID = new Guid("db731e94-01cd-87d6-95dd-b9d854c7d48b"),
-                            CategoryID = new Guid("044318dd-7a67-4e40-a8aa-21f5938c3cc7")
+                            CategoryID = new Guid("69f56e45-e95b-4694-b546-6cb76c0facac")
                         },
                         new
                         {
                             ProductID = new Guid("7dd70de1-b007-f0ba-b4af-b26d7650c8cf"),
-                            CategoryID = new Guid("898c680d-24de-452b-9b94-2c540e3b8ac7")
+                            CategoryID = new Guid("34af17e2-8958-422c-9b45-03d54869212c")
                         },
                         new
                         {
                             ProductID = new Guid("a8927254-d684-205a-4b3e-86ec605d3bbb"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("a4fc61a1-e319-b704-4017-da743337b2b1"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         },
                         new
                         {
                             ProductID = new Guid("42aa701f-9d67-1932-a0c7-51ef1191c7c7"),
-                            CategoryID = new Guid("7f8062d5-d970-403a-842a-5502acc09559")
+                            CategoryID = new Guid("8ceeac06-1e28-4d24-8d56-ac9d1e44cfce")
                         });
                 });
 
@@ -1996,6 +2279,153 @@ namespace BodyRocky.Back.WebApi.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000002"),
+                            ConcurrencyStamp = "ebeb65f4-abc1-4062-87cb-a3e91bd29b9f",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        },
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                            ConcurrencyStamp = "6ebf93f4-8493-4b1a-81ae-e983972dc65b",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
             modelBuilder.Entity("BodyRocky.Back.WebApi.DataAccess.Entities.Address", b =>
                 {
                     b.HasOne("BodyRocky.Back.WebApi.DataAccess.Entities.Customer", "Customer")
@@ -2165,6 +2595,57 @@ namespace BodyRocky.Back.WebApi.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.HasOne("BodyRocky.Back.WebApi.DataAccess.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.HasOne("BodyRocky.Back.WebApi.DataAccess.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BodyRocky.Back.WebApi.DataAccess.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.HasOne("BodyRocky.Back.WebApi.DataAccess.Entities.Customer", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BodyRocky.Back.WebApi.DataAccess.Entities.Address", b =>

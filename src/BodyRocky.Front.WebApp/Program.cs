@@ -32,7 +32,10 @@ services.AddScoped<Routes>();
 // Add Refit client
 services
     .AddRefitClient<IBodyRockyApi>()
-    .ConfigureHttpClient(c => c.BaseAddress = new("https://localhost:7180"));
+    .ConfigureHttpClient(c =>
+    {
+        c.BaseAddress = new("https://localhost:7180");
+    });
 
 // Add Blazored Toast
 services.AddBlazoredToast();
@@ -51,6 +54,7 @@ services
 // Add strongly-typed Flux Dispatchers
 services
     .AddScoped<LayoutDispatcher>()
+    .AddScoped<AuthDispatcher>()
     .AddScoped<ProductDispatcher>()
     .AddScoped<BasketDispatcher>();
 

@@ -1,4 +1,6 @@
-﻿using BodyRocky.Core.Contracts.Requests.CustomerRequests;
+﻿using BodyRocky.Core.Contracts.Requests.AccountRequests;
+using BodyRocky.Core.Contracts.Requests.CustomerRequests;
+using BodyRocky.Core.Contracts.Responses.AccountResponses;
 using BodyRocky.Core.Contracts.Responses.CatalogResponses;
 using BodyRocky.Core.Contracts.Responses.CategoryResponses;
 using BodyRocky.Core.Contracts.Responses.CustomerResponses;
@@ -10,6 +12,9 @@ namespace BodyRocky.Client;
 public interface IBodyRockyApi
 {
     #region Customers
+    
+    [Post("/accounts/register")]
+    Task<SignupResponse> RegisterAsync([Body] SignupRequest request);
     
     [Get("/catalog/overview")]
     Task<GetOverviewCatalogResponse> GetOverviewCatalogAsync();

@@ -1,4 +1,7 @@
 @page "/register"
+@using BodyRocky.Core.Contracts.Requests.AccountRequests
+@inject IState<AuthState> AuthState
+@inject AuthDispatcher AuthDispatcher
 
 <!-- login -->
 <div class="contain py-16">
@@ -9,57 +12,93 @@
     <p class="text-gray-600 mb-6 text-sm">
       Inscrivez-vous pour accéder à votre compte
     </p>
-    <form action="#" autocomplete="off" method="post">
+    <EditForm Model="_registerModel" OnValidSubmit="HandleRegister" autocomplete="off">
+      <DataAnnotationsValidator/>
+      
       <div class="space-y-2">
         <div>
-          <label class="text-gray-600 mb-2 block" for="name">
-            Nom complet
-          </label>
-          <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" id="name" name="name"
-                 placeholder="fulan fulana"
-                 type="text">
+          <label class="text-gray-600 mb-2 block" for="firstname">Prénom</label>
+          <InputText class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+                     id="firstname"
+                     placeholder="Laurent"
+                     @bind-Value="_registerModel.FirstName"/>
         </div>
+        
         <div>
-          <label class="text-gray-600 mb-2 block" for="email">
-            Adresse email
-          </label>
-          <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" id="email" name="email"
-                 placeholder="votreadresse.@@domain.com"
-                 type="email">
+          <label class="text-gray-600 mb-2 block" for="lastname">Nom</label>
+          <InputText class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+                     id="lastname"
+                     placeholder="Dupont"
+                     @bind-Value="_registerModel.LastName"/>
         </div>
+      
         <div>
-          <label class="text-gray-600 mb-2 block" for="password">
-            Mot de passe
-          </label>
-          <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" id="password" name="password"
-                 placeholder="*******"
-                 type="password">
+          <label class="text-gray-600 mb-2 block" for="email">Email</label>
+          <InputText class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+                     id="email"
+                     placeholder="laurent.dupont@example.com"
+                     autocomplete="email"
+                     @bind-Value="_registerModel.Email"/>
         </div>
+        
         <div>
-          <label class="text-gray-600 mb-2 block" for="confirm">
-            Confirmer le mot de passe
-          </label>
-          <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" id="confirm" name="confirm"
-                 placeholder="*******"
-                 type="password">
+          <label class="text-gray-600 mb-2 block" for="birthdate">Date de naissance</label>
+          <InputDate class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+                     id="birthdate"
+                     @bind-Value="_registerModel.BirthDate"/>
+        </div>
+        
+        <div>
+          <label class="text-gray-600 mb-2 block" for="password">Mot de passe</label>
+          <InputText class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+                     id="password"
+                     type="password"
+                     placeholder="********"
+                     autocomplete="new-password"
+                     @bind-Value="_registerModel.Password"/>
+        </div>
+        
+        <div>
+          <label class="text-gray-600 mb-2 block" for="confirmPassword">Confirmer le mot de passe</label>
+          <InputText class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+                     id="confirmPassword"
+                     type="password"
+                     placeholder="********"   
+                     autocomplete="new-password"
+                     @bind-Value="_registerModel.ConfirmPassword"/>
+        </div>
+        
+        <div class="mt-6">
+          <div class="flex items-center">
+            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="aggrement" name="aggrement"
+                   type="checkbox">
+            <label class="text-gray-600 ml-3 cursor-pointer" for="aggrement">
+              J'accepte les <a class="text-primary" href="#">termes et conditions</a>
+            </label>
+          </div>
+        </div>
+        
+        <ValidationSummary/>
+
+        <div class="mt-4">
+          <button class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-roboto font-medium"
+                  type="submit">
+            @if(AuthState.Value.IsLoading)
+            {
+              <span class="animate-spin">
+                <i class="fas fa-spinner"></i>
+              </span>
+            }
+            else
+            {
+              <span>
+                créer un compte
+              </span>
+            }
+          </button>
         </div>
       </div>
-      <div class="mt-6">
-        <div class="flex items-center">
-          <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="aggrement" name="aggrement"
-                 type="checkbox">
-          <label class="text-gray-600 ml-3 cursor-pointer" for="aggrement">
-            J'accepte les <a class="text-primary" href="#">termes et conditions</a>
-          </label>
-        </div>
-      </div>
-      <div class="mt-4">
-        <button class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-roboto font-medium"
-                type="submit">
-          creer un compte
-        </button>
-      </div>
-    </form>
+    </EditForm>
 
     <!-- login with -->
     <div class="mt-6 flex justify-center relative">
@@ -87,5 +126,24 @@
 <!-- ./login -->
 
 @code {
+
+  private readonly RegisterModel _registerModel = new()
+  {
+    BirthDate = DateTime.Now.AddYears(-18)
+  };
+
+  private void HandleRegister(EditContext context)
+  {
+    var signupRequest = new SignupRequest
+    {
+      FirstName = _registerModel.FirstName,
+      LastName = _registerModel.LastName,
+      Email = _registerModel.Email,
+      Password = _registerModel.Password,
+      ConfirmPassword = _registerModel.ConfirmPassword
+    };
+    
+    AuthDispatcher.Register(signupRequest);
+  }
 
 }

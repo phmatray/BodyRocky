@@ -79,7 +79,7 @@ public static class FakeData
         _fakeCustomer = new Faker<Customer>()
             .StrictMode(false)
             .UseSeed(1111)
-            .RuleFor(m => m.CustomerID, f =>
+            .RuleFor(m => m.Id, f =>
             {
                 Guid guid = f.Random.Guid();
                 customerIds.Add(guid);
@@ -88,9 +88,9 @@ public static class FakeData
             .RuleFor(m => m.FirstName, f => f.Person.FirstName)
             .RuleFor(m => m.LastName, f => f.Person.LastName)
             .RuleFor(m => m.BirthDate, f => f.Date.Past(18))
-            .RuleFor(m => m.Password, f => f.Random.Hash())
+            .RuleFor(m => m.PasswordHash, f => f.Random.Hash())
             .RuleFor(m => m.PhoneNumber, f => f.Person.Phone)
-            .RuleFor(m => m.EmailAddress, f => f.Person.Email);
+            .RuleFor(m => m.Email, f => f.Person.Email);
         
         Customers = _fakeCustomer.Generate(numToSeed);
         

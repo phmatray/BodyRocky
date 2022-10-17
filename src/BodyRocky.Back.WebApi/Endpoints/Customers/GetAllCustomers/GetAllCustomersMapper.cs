@@ -12,12 +12,12 @@ public class GetAllCustomersMapper
         List<CustomerResponse> customerResponses = customers
             .Select(customer => new CustomerResponse
             {
-                CustomerID = customer.CustomerID,
+                CustomerID = customer.Id,
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
                 BirthDate = customer.BirthDate,
                 PhoneNumber = customer.PhoneNumber,
-                EmailAddress = customer.EmailAddress
+                EmailAddress = customer.Email
             })
             .ToList();
 

@@ -10,15 +10,15 @@ public class CreateCustomerMapper
 {
     public override Customer ToEntity(CreateCustomerRequest r)
     {
+        // create a new customer using Identity
         return new Customer
         {
-            CustomerID = default,
+            Id = default,
             FirstName = r.FirstName,
             LastName = r.LastName,
             BirthDate = r.BirthDate,
-            Password = r.Password,
             PhoneNumber = r.PhoneNumber,
-            EmailAddress = r.EmailAddress
+            Email = r.EmailAddress
         };
     }
 
@@ -26,12 +26,12 @@ public class CreateCustomerMapper
     {
         return new CustomerResponse
         {
-            CustomerID = customer.CustomerID,
+            CustomerID = customer.Id,
             FirstName = customer.FirstName,
             LastName = customer.LastName,
             BirthDate = customer.BirthDate,
             PhoneNumber = customer.PhoneNumber,
-            EmailAddress = customer.EmailAddress
+            EmailAddress = customer.Email
         };
     }
 }

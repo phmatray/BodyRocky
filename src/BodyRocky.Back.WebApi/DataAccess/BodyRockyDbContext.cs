@@ -1,16 +1,18 @@
 ﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BodyRocky.Back.WebApi.DataAccess;
 
-public sealed class BodyRockyDbContext : DbContext
+public sealed class BodyRockyDbContext 
+    : IdentityDbContext<Customer, IdentityRole<Guid>, Guid>
 {
-    public BodyRockyDbContext(DbContextOptions options)
+    public BodyRockyDbContext(DbContextOptions<BodyRockyDbContext> options)
         : base(options)
     {
     }
     
-    public DbSet<Customer> Customers { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Basket> Baskets { get; set; }
     public DbSet<Brand> Brands { get; set; }
@@ -23,10 +25,13 @@ public sealed class BodyRockyDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+        
         modelBuilder
             .ApplyConfigurationsFromAssembly(typeof(BodyRockyDbContext).Assembly);
 
         FakeData.Init();
+        
         modelBuilder.Entity<Brand>().HasData(FakeData.Brands!);
         modelBuilder.Entity<Category>().HasData(FakeData.Categories!);
         modelBuilder.Entity<Customer>().HasData(FakeData.Customers!);

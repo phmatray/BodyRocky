@@ -14,12 +14,12 @@ public sealed class CustomerRepository : IDisposable
     
     public async Task<int> CountAsync()
     {
-        return await _context.Customers.CountAsync();
+        return await _context.Users.CountAsync();
     }
 
     public async Task<List<Customer>> GetAllAsync(int skip, int take)
     {
-        return await _context.Customers
+        return await _context.Users
             .Skip(skip)
             .Take(take)
             .ToListAsync();
@@ -27,12 +27,12 @@ public sealed class CustomerRepository : IDisposable
 
     public async Task<Customer?> GetByIDAsync(Guid customerID)
     {
-        return await _context.Customers.FindAsync(customerID);
+        return await _context.Users.FindAsync(customerID);
     }
 
     public async Task<Customer> InsertAsync(Customer customer)
     {
-        var entityEntry = await _context.Customers.AddAsync(customer);
+        var entityEntry = await _context.Users.AddAsync(customer);
         var newCustomer = entityEntry.Entity;
         await _context.SaveChangesAsync();
         return newCustomer;
@@ -40,7 +40,7 @@ public sealed class CustomerRepository : IDisposable
 
     public async Task DeleteAsync(Guid customerID)
     {
-        var customer = await _context.Customers.FindAsync(customerID);
+        var customer = await _context.Users.FindAsync(customerID);
         if (customer is not null)
         {
             _context.Remove(customer);

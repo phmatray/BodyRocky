@@ -11,8 +11,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         ArgumentNullException.ThrowIfNull(builder);
 
         builder
-            .ToTable("Customer")
-            .HasKey(customer => customer.CustomerID);
+            .ToTable("Customer");
 
         builder
             .Property(customer => customer.FirstName)
@@ -24,18 +23,6 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         
         builder
             .Property(customer => customer.BirthDate)
-            .IsRequired();
-        
-        builder
-            .Property(customer => customer.Password)
-            .IsRequired();
-        
-        builder
-            .Property(customer => customer.PhoneNumber)
-            .IsRequired();
-        
-        builder
-            .Property(customer => customer.EmailAddress)
             .IsRequired();
     }
 }

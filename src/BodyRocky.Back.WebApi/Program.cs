@@ -1,8 +1,10 @@
 using BodyRocky.Back.WebApi.DataAccess;
+using BodyRocky.Back.WebApi.DataAccess.Entities;
 using BodyRocky.Back.WebApi.DataAccess.Repositories;
 using BodyRocky.Back.WebApi.Services;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 const string allowDevFrontendOrigin = "_myAllowSpecificOrigins";
@@ -18,6 +20,9 @@ builder.Services.AddSwaggerDoc();
 // https://blog.jetbrains.com/dotnet/2019/03/05/connecting-microsoft-sql-server-linux-docker-container-rider/
 builder.Services.AddDbContext<BodyRockyDbContext>(
     options => options.UseSqlServer(connectionString));
+
+builder.Services.AddIdentity<Customer, IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<BodyRockyDbContext>();
 
 // repositories
 builder.Services.AddScoped<AddressRepository>();
@@ -43,12 +48,16 @@ builder.Services.AddCors(options =>
         policy  =>
         {
             policy.WithOrigins(
+                "http://localhost:5049",
                 "https://localhost:7051",
-                "https://www.bodyrocky.com");
+                "https://www.bodyrocky.com")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
         });
 });
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // app.UseMiddleware<ValidationExceptionMiddleware>();
 app.UseCors(allowDevFrontendOrigin);

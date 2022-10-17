@@ -38,7 +38,7 @@ public class UpdateCustomerEndpoint
         existingCustomer.LastName = req.LastName;
         existingCustomer.BirthDate = req.BirthDate;
         existingCustomer.PhoneNumber = req.PhoneNumber;
-        existingCustomer.EmailAddress = req.EmailAddress;
+        existingCustomer.Email = req.EmailAddress;
         
         await _repository.UpdateAsync(existingCustomer);
         
