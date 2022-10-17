@@ -1,3 +1,4 @@
+using Blazored.Toast;
 using BodyRocky.Front.WebApp;
 using BodyRocky.Front.WebApp.Shared;
 using BodyRocky.Front.WebApp.Store;
@@ -32,6 +33,9 @@ services.AddScoped<Routes>();
 services
     .AddRefitClient<IBodyRockyApi>()
     .ConfigureHttpClient(c => c.BaseAddress = new("https://localhost:7180"));
+
+// Add Blazored Toast
+services.AddBlazoredToast();
 
 // Add Fluxor
 services

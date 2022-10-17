@@ -121,14 +121,24 @@
         J'ai lu et j'accepte les <a href="#" class="text-primary">conditions générales de vente</a>
       </label>
     </div>
-
-    <a class="block w-full py-3 px-4 text-center text-white bg-primary border border-primary rounded-md hover:bg-transparent hover:text-primary transition font-medium"
-       href="#">
-      Passer commande
-    </a>
     
+    @if(BasketState.Value.ProductQuantities.Any())
+    {
+      <button
+        class="block w-full py-3 px-4 text-center text-white bg-primary border border-primary rounded-md hover:bg-transparent hover:text-primary transition font-medium"
+        @onclick="() => BasketDispatcher.PlaceOrder()">
+        Passer commande
+      </button>
+    }
+    else
+    {
+      <button class="block w-full py-3 px-4 text-center text-white bg-gray-400 border border-gray-400 rounded-md hover:bg-gray-500 transition font-medium" disabled>
+        Passer commande
+      </button>
+    }
+
     <button class="block w-full py-3 px-4 text-center text-primary bg-transparent border border-primary rounded-md hover:bg-primary hover:text-white transition font-medium mt-2"
-       @onclick="ClearBasket">
+       @onclick="() => BasketDispatcher.ClearBasket()">
       Vider le panier
     </button>
   </div>
@@ -137,11 +147,6 @@
 <!-- ./wrapper -->
 
 @code {
-
-  private void ClearBasket()
-  {
-    BasketDispatcher.ClearBasket();
-  }
 
   private string GetSubtotalForProduct(ProductResponse? product, int quantity)
   {

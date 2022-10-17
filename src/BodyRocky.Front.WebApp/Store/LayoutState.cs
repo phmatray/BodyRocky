@@ -85,11 +85,11 @@ public static class Reducers
 
 #region Effects
 
-public class Effects
+public class LayoutEffects
 {
     private readonly IBodyRockyApi _bodyRockyClient;
     
-    public Effects(IBodyRockyApi bodyRockyClient)
+    public LayoutEffects(IBodyRockyApi bodyRockyClient)
     {
         _bodyRockyClient = bodyRockyClient;
     }
