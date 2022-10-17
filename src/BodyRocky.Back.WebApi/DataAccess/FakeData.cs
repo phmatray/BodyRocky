@@ -182,7 +182,7 @@ public static class FakeData
         {
             CategoryID = Guid.NewGuid(),
             CategoryName = "Cardio-training",
-            CategoryImage = "https://picsum.photos/200/300",
+            CategoryImage = "/assets/images/category/category-1.jpg",
             CategoryIcon = "fas fa-heartbeat",
             IsFeatured = true
         });
@@ -191,7 +191,7 @@ public static class FakeData
         {
             CategoryID = Guid.NewGuid(),
             CategoryName = "Musculation",
-            CategoryImage = "https://picsum.photos/200/300",
+            CategoryImage = "/assets/images/category/category-2.jpg",
             CategoryIcon = "fas fa-dumbbell",
             IsFeatured = true
         });
@@ -200,7 +200,7 @@ public static class FakeData
         {
             CategoryID = Guid.NewGuid(),
             CategoryName = "Jeux et loisirs",
-            CategoryImage = "https://picsum.photos/200/300",
+            CategoryImage = "/assets/images/category/category-3.jpg",
             CategoryIcon = "fas fa-gamepad",
             IsFeatured = true
         });
@@ -209,7 +209,7 @@ public static class FakeData
         {
             CategoryID = Guid.NewGuid(),
             CategoryName = "Fitness",
-            CategoryImage = "https://picsum.photos/200/300",
+            CategoryImage = "/assets/images/category/category-4.jpg",
             CategoryIcon = "fas fa-running",
             IsFeatured = true
         });
@@ -218,7 +218,7 @@ public static class FakeData
         {
             CategoryID = Guid.NewGuid(),
             CategoryName = "Yoga et bien-être",
-            CategoryImage = "https://picsum.photos/200/300",
+            CategoryImage = "/assets/images/category/category-5.jpg",
             CategoryIcon = "fas fa-heart",
             IsFeatured = true
         });
@@ -227,7 +227,7 @@ public static class FakeData
         {
             CategoryID = Guid.NewGuid(),
             CategoryName = "Nutrition",
-            CategoryImage = "https://picsum.photos/200/300",
+            CategoryImage = "/assets/images/category/category-6.jpg",
             CategoryIcon = "fas fa-utensils",
             IsFeatured = true
         });

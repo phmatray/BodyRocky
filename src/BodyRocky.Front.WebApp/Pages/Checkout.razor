@@ -93,7 +93,7 @@
           @*   x @quantity *@
           @* </p> *@
           <p class="text-gray-800 font-medium">
-            @product.ProductPrice.ToString("C").Replace(".", ",")
+            @GetSubtotalForProduct(product, quantity)
           </p>
         </div>
       }
@@ -141,6 +141,20 @@
   private void ClearBasket()
   {
     BasketDispatcher.ClearBasket();
+  }
+
+  private string GetSubtotalForProduct(ProductResponse? product, int quantity)
+  {
+    if (product is null)
+    {
+      return "0,00";
+    }
+    
+    decimal subtotal = product.ProductPrice * quantity;
+    
+    return subtotal
+      .ToString("C")
+      .Replace(".", ",");
   }
 
 }
