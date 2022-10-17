@@ -19,7 +19,7 @@
           foreach (CategoryResponse category in LayoutState.Value.Categories)
           {
             <NavLink href="@Routes.SHOP_ROUTE" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-              <img src="../assets/images/icons/sofa.svg" alt="sofa" class="w-5 h-5 object-contain">
+              <i class="@category.CategoryIcon fa-fw text-primary"></i>
               <span class="ml-6 text-gray-600 text-sm">
                 @category.CategoryName
               </span>
