@@ -18,7 +18,8 @@ public class GetOverviewCatalogMapper
                 CategoryName = c.CategoryName,
                 CategoryImage = c.CategoryImage,
                 CategoryIcon = c.CategoryIcon,
-                IsFeatured = c.IsFeatured
+                IsFeatured = c.IsFeatured,
+                ProductCount = c.ProductCategories.Count
             })
             .ToList();
         

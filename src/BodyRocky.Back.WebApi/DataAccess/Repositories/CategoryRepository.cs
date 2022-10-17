@@ -19,12 +19,15 @@ public sealed class CategoryRepository : IDisposable
 
     public async Task<List<Category>> GetAllAsync()
     {
-        return await _context.Categories.ToListAsync();
+        return await _context.Categories
+            .Include(x => x.ProductCategories)
+            .ToListAsync();
     }
 
     public async Task<List<Category>> GetTop6FeaturedAsync()
     {
         return await _context.Categories
+            .Include(x => x.ProductCategories)
             .Where(x => x.IsFeatured)
             .Take(6)
             .ToListAsync();
@@ -32,7 +35,8 @@ public sealed class CategoryRepository : IDisposable
 
     public async Task<Category?> GetByIDAsync(Guid categoryID)
     {
-        return await _context.Categories.FindAsync(categoryID);
+        return await _context.Categories
+            .FindAsync(categoryID);
     }
 
     public async Task InsertAsync(Category category)

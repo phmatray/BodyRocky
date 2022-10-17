@@ -17,6 +17,7 @@ public class GetAllCategoriesMapper
                 CategoryImage = category.CategoryImage,
                 CategoryIcon = category.CategoryIcon,
                 IsFeatured = category.IsFeatured,
+                ProductCount = category.ProductCategories.Count
             })
             .ToList();
 
