@@ -1,8 +1,6 @@
 @page "/"
 @inherits FluxorComponent
 @inject IState<CatalogOverviewState> CatalogOverviewState
-@inject CatalogOverviewDispatcher CatalogOverviewDispatcher
-@inject CatalogFullDispatcher CatalogFullDispatcher
 
 <!-- banner -->
 <div 
@@ -154,12 +152,5 @@
   
   public IEnumerable<ProductResponse>? RecommendedProducts
     => CatalogOverviewState.Value?.RecommendedProducts;
-
-  protected override void OnInitialized()
-  {
-    base.OnInitialized();
-    CatalogOverviewDispatcher.LoadCatalogOverview();
-    CatalogFullDispatcher.LoadCatalogFull();
-  }
 
 }

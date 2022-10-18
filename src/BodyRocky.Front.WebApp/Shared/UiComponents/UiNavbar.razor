@@ -2,6 +2,7 @@
 @inherits FluxorComponent
 @inject Routes Navigation
 @inject IState<LayoutState> LayoutState
+@inject IState<CatalogFullState> CatalogState
 @inject IState<AuthState> AuthState
 
 <nav class="bg-gray-800">
@@ -15,9 +16,9 @@
       <!-- dropdown -->
       <div
         class="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-300 invisible group-hover:visible">
-        @if (LayoutState?.Value.Categories != null)
+        @if (CatalogState?.Value.Categories != null)
         {
-          foreach (CategoryResponse category in LayoutState.Value.Categories)
+          foreach (CategoryResponse category in CatalogState.Value.Categories)
           {
             <NavLink
               href="@GetCategoryNavLink(category)"

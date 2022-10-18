@@ -55,7 +55,6 @@ services
 services
     .AddScoped<LayoutDispatcher>()
     .AddScoped<AuthDispatcher>()
-    .AddScoped<ProductDispatcher>()
     .AddScoped<BasketDispatcher>()
     .AddScoped<CatalogOverviewDispatcher>()
     .AddScoped<CatalogFullDispatcher>();
