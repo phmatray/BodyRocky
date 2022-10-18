@@ -5,7 +5,7 @@
 @inject BasketDispatcher BasketDispatcher
 
 <!-- breadcrumb -->
-<UiBreadcrumb PageTitle="Passer commande"/>
+<UiBreadcrumb Segments="_segments"/>
 <!-- ./breadcrumb -->
 
 <!-- wrapper -->
@@ -147,6 +147,10 @@
 <!-- ./wrapper -->
 
 @code {
+
+  private readonly UiBreadcrumb.BreadcrumbSegment[] _segments = {
+    new("Passer commande", Routes.CHECKOUT_ROUTE)
+  };
 
   private string GetSubtotalForProduct(ProductResponse? product, int quantity)
   {

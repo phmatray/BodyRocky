@@ -1,7 +1,7 @@
 @page "/wishlist"
 
 <!-- breadcrumb -->
-<UiBreadcrumb PageTitle="Wishlist" />
+<UiBreadcrumb Segments="_segments" />
 <!-- ./breadcrumb -->
 
 <!-- wrapper -->
@@ -154,5 +154,9 @@
 <!-- ./wrapper -->
 
 @code {
+
+  private readonly UiBreadcrumb.BreadcrumbSegment[] _segments = {
+    new("Liste de souhaits", Routes.WISHLIST_ROUTE),
+  };
 
 }

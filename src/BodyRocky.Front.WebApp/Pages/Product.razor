@@ -2,7 +2,7 @@
 @page "/product/{productId?}"
 
 <PageTitle>Produit - BodyRocky</PageTitle>
-<UiBreadcrumb PageTitle="Produit"/>
+<UiBreadcrumb Segments="_segments"/>
 
 <!-- product-detail -->
 <div class="container grid grid-cols-2 gap-6">
@@ -358,10 +358,22 @@
 <!-- ./related product -->
 
 @code {
+
+  private UiBreadcrumb.BreadcrumbSegment[]? _segments;
   
   // get parameter from url
   [Parameter]
   public string ProductId { get; set; }
-  
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+
+    _segments = new[]
+    {
+      new UiBreadcrumb.BreadcrumbSegment("Boutique", Routes.SHOP_ROUTE),
+      new(ProductId, $"product/{ProductId}")
+    };
+  }
 
 }

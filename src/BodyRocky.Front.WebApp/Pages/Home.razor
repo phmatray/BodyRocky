@@ -152,6 +152,8 @@
 
   protected override async Task OnInitializedAsync()
   {
+    await base.OnInitializedAsync();
+    
     GetOverviewCatalogResponse catalogResponse = await ApiClient.GetOverviewCatalogAsync();
     _featuredCategories = catalogResponse.FeaturedCategories;
     _featuredProducts = catalogResponse.FeaturedProducts;
