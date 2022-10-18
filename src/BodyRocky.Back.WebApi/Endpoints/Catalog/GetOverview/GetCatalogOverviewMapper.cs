@@ -5,10 +5,10 @@ using FastEndpoints;
 
 namespace BodyRocky.Back.WebApi.Endpoints.Catalog.GetOverview;
 
-public class GetOverviewCatalogMapper
-    : ResponseMapper<GetOverviewCatalogResponse, CatalogOverview>
+public class GetCatalogOverviewMapper
+    : ResponseMapper<GetCatalogOverviewResponse, CatalogOverview>
 {
-    public override GetOverviewCatalogResponse FromEntity(CatalogOverview catalogOverview)
+    public override GetCatalogOverviewResponse FromEntity(CatalogOverview catalogOverview)
     {
         List<CategoryResponse> featuredCategoryResponses = catalogOverview
             .FeaturedCategories
@@ -49,7 +49,7 @@ public class GetOverviewCatalogMapper
             })
             .ToList();
 
-        return new GetOverviewCatalogResponse
+        return new GetCatalogOverviewResponse
         {
             TotalProducts = catalogOverview.TotalProducts,
             TotalCategories = catalogOverview.TotalCategories,

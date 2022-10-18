@@ -3,7 +3,7 @@ using BodyRocky.Core.Contracts.Responses.ProductResponses;
 
 namespace BodyRocky.Core.Contracts.Responses.CatalogResponses;
 
-public class GetOverviewCatalogResponse
+public class GetCatalogOverviewResponse
 {
     public List<CategoryResponse> FeaturedCategories { get; init; } = new();
 

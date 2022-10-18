@@ -11,7 +11,7 @@ namespace BodyRocky.Client;
 
 public interface IBodyRockyApi
 {
-    #region Customers
+    #region Account
     
     [Post("/accounts/register")]
     Task<SignupResponse> RegisterAsync([Body] SignupRequest request);
@@ -19,12 +19,21 @@ public interface IBodyRockyApi
     [Post("/accounts/login")]
     Task<LoginResponse> LoginAsync([Body] LoginRequest request);
     
+    #endregion
+    
+    #region Catalog
+    
     [Get("/catalog/overview")]
-    Task<GetOverviewCatalogResponse> GetOverviewCatalogAsync();
+    Task<GetCatalogOverviewResponse> GetCatalogOverviewAsync();
+    
+    [Get("/catalog/full")]
+    Task<GetCatalogFullResponse> GetCatalogFullAsync();
     
     [Get("/catalog/products")]
     Task<GetAllProductsResponse> GetAllProductsAsync();
-
+    
+    #endregion
+    
     [Get("/categories")]
     Task<GetAllCategoriesResponse> GetAllCategoriesAsync();
 
@@ -42,6 +51,4 @@ public interface IBodyRockyApi
     
     [Delete("/customers/{request.CustomerID}")]
     Task DeleteCustomerAsync(DeleteCustomerRequest request);
-
-    #endregion
 }

@@ -56,6 +56,8 @@ services
     .AddScoped<LayoutDispatcher>()
     .AddScoped<AuthDispatcher>()
     .AddScoped<ProductDispatcher>()
-    .AddScoped<BasketDispatcher>();
+    .AddScoped<BasketDispatcher>()
+    .AddScoped<CatalogOverviewDispatcher>()
+    .AddScoped<CatalogFullDispatcher>();
 
 await builder.Build().RunAsync();

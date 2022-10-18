@@ -1,5 +1,6 @@
 using BodyRocky.Back.WebApi.DataAccess.Entities;
 using BodyRocky.Back.WebApi.DataAccess.Repositories;
+using BodyRocky.Back.WebApi.Endpoints.Catalog.GetFull;
 using BodyRocky.Back.WebApi.Endpoints.Catalog.GetOverview;
 
 namespace BodyRocky.Back.WebApi.Services;
@@ -20,7 +21,7 @@ public class CatalogService
         _brandRepository = brandRepository;
     }
     
-    public async Task<CatalogOverview> GetOverviewAsync()
+    public async Task<CatalogOverview> GetCatalogOverviewAsync()
     {
         List<Category> featuredCategories = await _categoryRepository.GetTop6FeaturedAsync();
         List<Product> featuredProducts = await _productRepository.GetTop4FeaturedAsync();
@@ -40,11 +41,34 @@ public class CatalogService
             TotalBrands = totalBrands
         };
     }
+    
+    public async Task<CatalogFull> GetCatalogFullAsync()
+    {
+        List<Category> categories = await _categoryRepository.GetAllAsync();
+        List<Product> products = await _productRepository.GetAllAsync();
+        List<Brand> brands = await _brandRepository.GetAllAsync();
+
+        return new CatalogFull(categories, products, brands);
+    }
 
     public async Task<List<Product>> GetProductsAsync()
     {
         List<Product> products = await _productRepository.GetAllAsync();
 
         return products;
+    }
+    
+    public async Task<Product?> GetProductAsync(Guid id)
+    {
+        Product? product = await _productRepository.GetByIDAsync(id);
+
+        return product;
+    }
+    
+    public async Task<List<Category>> GetBrandsAsync()
+    {
+        List<Category> brands = await _categoryRepository.GetAllAsync();
+
+        return brands;
     }
 }

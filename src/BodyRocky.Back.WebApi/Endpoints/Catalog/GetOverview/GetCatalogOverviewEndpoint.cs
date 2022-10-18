@@ -4,12 +4,12 @@ using FastEndpoints;
 
 namespace BodyRocky.Back.WebApi.Endpoints.Catalog.GetOverview;
 
-public class GetOverviewCatalogEndpoint
-    : EndpointWithoutRequest<GetOverviewCatalogResponse, GetOverviewCatalogMapper>
+public class GetCatalogOverviewEndpoint
+    : EndpointWithoutRequest<GetCatalogOverviewResponse, GetCatalogOverviewMapper>
 {
     private readonly CatalogService _catalogService;
     
-    public GetOverviewCatalogEndpoint(CatalogService catalogService)
+    public GetCatalogOverviewEndpoint(CatalogService catalogService)
     {
         _catalogService = catalogService;
     }
@@ -22,8 +22,8 @@ public class GetOverviewCatalogEndpoint
 
     public override async Task HandleAsync(CancellationToken ct)
     {
-        CatalogOverview catalog = await _catalogService.GetOverviewAsync();
-        GetOverviewCatalogResponse response = Map.FromEntity(catalog);
+        CatalogOverview catalog = await _catalogService.GetCatalogOverviewAsync();
+        GetCatalogOverviewResponse response = Map.FromEntity(catalog);
         await SendOkAsync(response, ct);
     }
 }

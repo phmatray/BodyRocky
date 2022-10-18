@@ -1,8 +1,8 @@
 @page "/"
-@using BodyRocky.Core.Contracts.Responses.CatalogResponses
-@using BodyRocky.Core.Contracts.Responses.CategoryResponses
-@using BodyRocky.Core.Contracts.Responses.ProductResponses
-@inject IBodyRockyApi ApiClient
+@inherits FluxorComponent
+@inject IState<CatalogOverviewState> CatalogOverviewState
+@inject CatalogOverviewDispatcher CatalogOverviewDispatcher
+@inject CatalogFullDispatcher CatalogFullDispatcher
 
 <!-- banner -->
 <div 
@@ -72,14 +72,14 @@
 <!-- ./features -->
 
 <!-- categories -->
-@if (_featuredCategories != null)
+@if (FeaturedCategories != null)
 {
   <div class="container py-16">
     <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
       Découvrez nos catégories
     </h2>
     <div class="grid grid-cols-3 gap-3">
-      @foreach (CategoryResponse category in _featuredCategories)
+      @foreach (CategoryResponse category in FeaturedCategories)
       {
         <UiCategoryCard Data="category"/>
       }
@@ -89,14 +89,14 @@
 <!-- ./categories -->
 
 <!-- new arrival -->
-@if (_featuredProducts != null)
+@if (FeaturedProducts != null)
 {
   <div class="container pb-16">
     <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
       Les nouveautés de la semaine
     </h2>
     <div class="grid grid-cols-4 gap-6">
-      @foreach (ProductResponse product in _featuredProducts)
+      @foreach (ProductResponse product in FeaturedProducts)
       {
         <UiProductCard Data="product" />
       }
@@ -128,14 +128,14 @@
 <!-- ./ads -->
 
 <!-- product -->
-@if (_recommendedProducts != null)
+@if (RecommendedProducts != null)
 {
   <div class="container pb-16">
     <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
       Recommandé pour vous
     </h2>
     <div class="grid grid-cols-4 gap-6">
-      @foreach (ProductResponse product in _recommendedProducts)
+      @foreach (ProductResponse product in RecommendedProducts)
       {
         <UiProductCard Data="product" />
       }
@@ -146,18 +146,20 @@
 
 @code {
 
-  private List<CategoryResponse>? _featuredCategories;
-  private List<ProductResponse>? _featuredProducts;
-  private List<ProductResponse>? _recommendedProducts;
+  public IEnumerable<CategoryResponse>? FeaturedCategories
+    => CatalogOverviewState.Value?.FeaturedCategories;
+  
+  public IEnumerable<ProductResponse>? FeaturedProducts
+    => CatalogOverviewState.Value?.FeaturedProducts;
+  
+  public IEnumerable<ProductResponse>? RecommendedProducts
+    => CatalogOverviewState.Value?.RecommendedProducts;
 
-  protected override async Task OnInitializedAsync()
+  protected override void OnInitialized()
   {
-    await base.OnInitializedAsync();
-    
-    GetOverviewCatalogResponse catalogResponse = await ApiClient.GetOverviewCatalogAsync();
-    _featuredCategories = catalogResponse.FeaturedCategories;
-    _featuredProducts = catalogResponse.FeaturedProducts;
-    _recommendedProducts = catalogResponse.RecommendedProducts;
+    base.OnInitialized();
+    CatalogOverviewDispatcher.LoadCatalogOverview();
+    CatalogFullDispatcher.LoadCatalogFull();
   }
 
 }

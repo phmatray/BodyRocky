@@ -1,7 +1,6 @@
 using System.Globalization;
 using Blazored.Toast;
 using Blazored.Toast.Services;
-using BodyRocky.Core.Contracts.Responses.ProductResponses;
 using BodyRocky.Front.WebApp.Shared.Toasts;
 using Fluxor;
 
