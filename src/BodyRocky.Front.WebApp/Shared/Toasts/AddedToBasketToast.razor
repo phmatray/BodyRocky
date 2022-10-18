@@ -13,10 +13,20 @@
         <p class="mt-1 text-sm text-gray-500">
           @if (Product != null)
           {
-            <span>
-              Un exemplaire de <span class="font-medium">@Product.ProductName</span>
-              au prix de <span class="font-medium">@Product.ProductPrice.ToString("C")</span> a été ajouté au panier.
-            </span>
+            if (Quantity == 1)
+            {
+              <span>
+                Un exemplaire de <span class="font-medium">@Product.ProductName</span>
+                au prix de <span class="font-medium">@Product.ProductPrice.ToString("C")</span> a été ajouté au panier.
+              </span>
+            }
+            else
+            {
+              <span>
+                @Quantity exemplaires de <span class="font-medium">@Product.ProductName</span>
+                au prix de <span class="font-medium">@Product.ProductPrice.ToString("C")</span> ont été ajoutés au panier.
+              </span>
+            }
           }
           else
           {
@@ -54,5 +64,8 @@
   [Parameter]
   [EditorRequired]
   public ProductResponse? Product { get; set; }
+  
+  [Parameter]
+  public int Quantity { get; set; } = 1;
 
 }

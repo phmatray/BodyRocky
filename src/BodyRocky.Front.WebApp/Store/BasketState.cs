@@ -128,6 +128,7 @@ public class BasketEffects
     {
         ToastParameters parameters = new();
         parameters.Add(nameof(AddedToBasketToast.Product), action.Product);
+        parameters.Add(nameof(AddedToBasketToast.Quantity), action.Quantity);
         
         ToastInstanceSettings settings = new(5, true);
         
