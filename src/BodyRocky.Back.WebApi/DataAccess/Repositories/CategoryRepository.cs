@@ -35,8 +35,16 @@ public sealed class CategoryRepository : IDisposable
 
     public async Task<Category?> GetByIDAsync(Guid categoryID)
     {
-        return await _context.Categories
-            .FindAsync(categoryID);
+        Category? category = await _context.Categories.FindAsync(categoryID);
+        
+        if (category is not null)
+        {
+            await _context.Entry(category)
+                .Collection(x => x.ProductCategories)
+                .LoadAsync();
+        }
+        
+        return category;
     }
 
     public async Task InsertAsync(Category category)

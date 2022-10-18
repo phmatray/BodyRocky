@@ -19,12 +19,23 @@ public sealed class BrandRepository : IDisposable
 
     public async Task<List<Brand>> GetAllAsync()
     {
-        return await _context.Brands.ToListAsync();
+        return await _context.Brands
+            .Include(x => x.Products)
+            .ToListAsync();
     }
 
     public async Task<Brand?> GetByIDAsync(Guid brandID)
     {
-        return await _context.Brands.FindAsync(brandID);
+        Brand? brand = await _context.Brands.FindAsync(brandID);
+        
+        if (brand is not null)
+        {
+            await _context.Entry(brand)
+                .Collection(x => x.Products)
+                .LoadAsync();
+        }
+        
+        return brand;
     }
 
     public async Task InsertAsync(Brand brand)

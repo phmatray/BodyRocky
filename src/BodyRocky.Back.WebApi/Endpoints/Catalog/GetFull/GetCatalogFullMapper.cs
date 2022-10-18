@@ -33,7 +33,8 @@ public class GetCatalogFullMapper
                 ProductDescription = p.ProductDescription,
                 ProductPrice = p.ProductPrice,
                 ProductURL = p.ProductURL,
-                IsFeatured = p.IsFeatured
+                IsFeatured = p.IsFeatured,
+                Stock = p.Stock
             })
             .ToList();
         
@@ -43,7 +44,8 @@ public class GetCatalogFullMapper
             {
                 BrandID = b.BrandID,
                 BrandName = b.BrandName,
-                BrandLogo = b.BrandLogo
+                BrandLogo = b.BrandLogo,
+                ProductCount = b.Products.Count
             })
             .ToList();
 

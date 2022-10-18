@@ -32,7 +32,8 @@ public class GetCatalogOverviewMapper
                 ProductDescription = p.ProductDescription,
                 ProductPrice = p.ProductPrice,
                 ProductURL = p.ProductURL,
-                IsFeatured = p.IsFeatured
+                IsFeatured = p.IsFeatured,
+                Stock = p.Stock
             })
             .ToList();
         
@@ -45,7 +46,8 @@ public class GetCatalogOverviewMapper
                 ProductDescription = p.ProductDescription,
                 ProductPrice = p.ProductPrice,
                 ProductURL = p.ProductURL,
-                IsFeatured = p.IsFeatured
+                IsFeatured = p.IsFeatured,
+                Stock = p.Stock
             })
             .ToList();
 

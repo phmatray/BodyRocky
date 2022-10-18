@@ -5,7 +5,6 @@
 @inject IState<LayoutState> LayoutState
 @inject IState<CatalogFullState> CatalogState
 @inject LayoutDispatcher LayoutDispatcher
-@inject CatalogFullDispatcher CatalogDispatcher
 @inject NavigationManager NavigationManager
 
 <!-- breadcrumb -->
@@ -32,7 +31,7 @@
                   type="checkbox"
                   checked="@IsCategorySelected(category.CategoryName)"
                   @onclick="@(() => UpdateNavigation(category.CategoryName))"/>
-                <label class="text-gray-600 ml-3 cusror-pointer" for="cat-1">
+                <label class="text-gray-600 ml-3 cusror-pointer" for="@category.CategoryID">
                   @category.CategoryName
                 </label>
                 <div class="ml-auto text-gray-600 text-sm">
@@ -49,36 +48,25 @@
           Marques
         </h3>
         <div class="space-y-2">
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-1" name="brand-1"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-1">Cooking Color</label>
-            <div class="ml-auto text-gray-600 text-sm">(15)</div>
-          </div>
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-2" name="brand-2"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-2">Magniflex</label>
-            <div class="ml-auto text-gray-600 text-sm">(9)</div>
-          </div>
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-3" name="brand-3"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-3">Ashley</label>
-            <div class="ml-auto text-gray-600 text-sm">(21)</div>
-          </div>
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-4" name="brand-4"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-4">M&D</label>
-            <div class="ml-auto text-gray-600 text-sm">(10)</div>
-          </div>
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="brand-5" name="brand-5"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cusror-pointer" for="brand-5">Olympic</label>
-            <div class="ml-auto text-gray-600 text-sm">(10)</div>
-          </div>
+          @if (CatalogState?.Value.Brands != null)
+          {
+            foreach (BrandResponse brand in CatalogState.Value.Brands)
+            {
+              <div class="flex items-center" @key="brand.BrandID">
+                <input
+                  class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  id="@brand.BrandID"
+                  name="category-@brand.BrandID"
+                  type="checkbox">
+                <label class="text-gray-600 ml-3 cusror-pointer" for="@brand.BrandID">
+                  @brand.BrandName
+                </label>
+                <div class="ml-auto text-gray-600 text-sm">
+                  (@brand.ProductCount)
+                </div>
+              </div>
+            }
+          }
         </div>
       </div>
 
@@ -232,16 +220,6 @@
   [Parameter]
   [SupplyParameterFromQuery(Name = "categories")]
   public string[] CategoryNames { get; set; } = {  };
-
-  protected override void OnInitialized()
-  {
-    base.OnInitialized();
-    
-    if (!CatalogState.Value.Products.Any())
-    {
-      CatalogDispatcher.LoadCatalogFull();
-    }
-  }
   
   private string GetCssClassForViewMode(ViewMode viewMode)
   {
