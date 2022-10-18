@@ -29,14 +29,18 @@ public sealed class BodyRockyDbContext
         
         modelBuilder
             .ApplyConfigurationsFromAssembly(typeof(BodyRockyDbContext).Assembly);
-
-        FakeData.Init();
         
+        // predefined data
+        modelBuilder.Entity<Category>().HasData(ReferentialData.GetPredefinedCategories());
+        modelBuilder.Entity<ZipCode>().HasData(ReferentialData.GetPredefinedZipCodes());
+        modelBuilder.Entity<BasketStatus>().HasData(ReferentialData.GetPredefinedBasketStatuses());
+        modelBuilder.Entity<OrderStatus>().HasData(ReferentialData.GetPredefinedOrderStatuses());
+        
+        // fake data
+        FakeData.Init();
         modelBuilder.Entity<Brand>().HasData(FakeData.Brands!);
-        modelBuilder.Entity<Category>().HasData(FakeData.Categories!);
         modelBuilder.Entity<Customer>().HasData(FakeData.Customers!);
-        modelBuilder.Entity<ZipCode>().HasData(FakeData.ZipCodes!);
-        // modelBuilder.Entity<Address>().HasData(FakeData.Addresses!);
+        modelBuilder.Entity<Address>().HasData(FakeData.Addresses!);
         modelBuilder.Entity<Product>().HasData(FakeData.Products!);
         modelBuilder.Entity<ProductCategory>().HasData(FakeData.ProductCategories!);
     }
