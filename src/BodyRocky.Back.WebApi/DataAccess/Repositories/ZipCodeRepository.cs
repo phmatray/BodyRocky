@@ -24,7 +24,8 @@ public sealed class ZipCodeRepository : IDisposable
 
     public async Task<ZipCode?> GetByIDAsync(Guid zipCodeID)
     {
-        return await _context.ZipCodes.FindAsync(zipCodeID);
+        return await _context.ZipCodes
+            .SingleOrDefaultAsync(x => x.ZipCodeID == zipCodeID);
     }
 
     public async Task InsertAsync(ZipCode zipCode)
@@ -35,7 +36,9 @@ public sealed class ZipCodeRepository : IDisposable
 
     public async Task DeleteAsync(Guid zipCodeID)
     {
-        var zipCode = await _context.ZipCodes.FindAsync(zipCodeID);
+        var zipCode = await _context.ZipCodes
+            .SingleOrDefaultAsync(x => x.ZipCodeID == zipCodeID);
+        
         _context.Remove(zipCode);
         await _context.SaveChangesAsync();
     }

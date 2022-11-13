@@ -24,7 +24,8 @@ public sealed class ProductImageRepository : IDisposable
 
     public async Task<ProductImage?> GetByIDAsync(Guid productImageID)
     {
-        return await _context.ProductImages.FindAsync(productImageID);
+        return await _context.ProductImages
+            .SingleOrDefaultAsync(productImage => productImage.ProductImageID == productImageID);
     }
 
     public async Task InsertAsync(ProductImage productImage)
@@ -35,7 +36,9 @@ public sealed class ProductImageRepository : IDisposable
 
     public async Task DeleteAsync(Guid productImageID)
     {
-        var productImage = await _context.ProductImages.FindAsync(productImageID);
+        var productImage = await _context.ProductImages
+            .SingleOrDefaultAsync(productImage => productImage.ProductImageID == productImageID);
+        
         _context.Remove(productImage);
         await _context.SaveChangesAsync();
     }

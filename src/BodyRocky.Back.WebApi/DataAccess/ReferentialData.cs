@@ -64,7 +64,7 @@ public static class ReferentialData
 
         return categories;
     }
-
+    
     public static List<BasketStatus> GetPredefinedBasketStatuses()
     {
         List<BasketStatus> basketStatuses = new();
@@ -89,7 +89,7 @@ public static class ReferentialData
 
         return basketStatuses;
     }
-    
+
     public static List<OrderStatus> GetPredefinedOrderStatuses()
     {
         List<OrderStatus> orderStatuses = new();

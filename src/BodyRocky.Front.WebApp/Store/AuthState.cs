@@ -1,8 +1,11 @@
-using BodyRocky.Core.Contracts.Requests.AccountRequests;
-using BodyRocky.Core.Contracts.Responses.AccountResponses;
-using BodyRocky.Core.Contracts.Responses.CustomerResponses;
+using System.Text.Json;
+using Blazored.Toast.Services;
+using BodyRocky.Core.Contracts.Requests;
+using BodyRocky.Core.Contracts.Responses;
+using BodyRocky.Front.WebApp.Store.Models;
 using Fluxor;
 using Microsoft.AspNetCore.Components;
+using Refit;
 
 namespace BodyRocky.Front.WebApp.Store;
 
@@ -10,7 +13,7 @@ namespace BodyRocky.Front.WebApp.Store;
 
 public record AuthState(
     bool IsLoading,
-    CustomerResponse? Customer,
+    CustomerDetailsResponse? Customer,
     string? Token,
     string? ErrorMessage)
 {
@@ -39,7 +42,7 @@ public class AuthFeature : Feature<AuthState>
 #region Actions
 
 public record LoginAction(LoginRequest LoginRequest);
-public record LoginSuccessAction(bool IsSuccessfulLogin, CustomerResponse Customer, string Token);
+public record LoginSuccessAction(bool IsSuccessfulLogin, CustomerDetailsResponse Customer, string Token);
 public record LoginFailureAction(string Error);
 
 public record RegisterAction(SignupRequest SignupRequest);
@@ -125,13 +128,19 @@ public class AuthEffects
 {
     private readonly IBodyRockyApi _bodyRockyClient;
     private readonly NavigationManager _navigationManager;
+    private readonly IToastService _toastService;
+    private readonly ILogger<AuthEffects> _logger;
 
     public AuthEffects(
         IBodyRockyApi bodyRockyClient,
-        NavigationManager navigationManager)
+        NavigationManager navigationManager,
+        IToastService toastService,
+        ILogger<AuthEffects> logger)
     {
         _bodyRockyClient = bodyRockyClient;
         _navigationManager = navigationManager;
+        _toastService = toastService;
+        _logger = logger;
     }
 
     [EffectMethod]
@@ -165,19 +174,64 @@ public class AuthEffects
     {
         try
         {
-            SignupResponse response = await _bodyRockyClient.RegisterAsync(action.SignupRequest);
-            dispatcher.Dispatch(new RegisterSuccessAction());
+            // get the response from the API using the Refit client
+            var signupResponse = await _bodyRockyClient.RegisterAsync(action.SignupRequest);
+
+            if (signupResponse.IsSuccessfulRegistration)
+            {
+                // if the registration was successful, dispatch a success action
+                dispatcher.Dispatch(new RegisterSuccessAction());
+            }
         }
-        catch (Exception e)
+        catch (ApiException exception)
         {
-            dispatcher.Dispatch(new RegisterFailureAction(e.Message));
+            // other exception handling
+            _logger.LogError(exception, "ApiException occurred while registering a new user");
+            dispatcher.Dispatch(new RegisterFailureAction("ApiException occurred while registering a new user"));
+            
+            // deserialize the error response
+            var errorResponse = JsonSerializer.Deserialize<ErrorResponse>(exception.Content);
+            if (errorResponse is not null)
+            {
+                var serialize = JsonSerializer.Serialize(errorResponse);
+
+                // if the error response is not null, dispatch a failure action
+                dispatcher.Dispatch(new RegisterFailureAction(errorResponse.Message));
+                dispatcher.Dispatch(new RegisterFailureAction(serialize));
+            }
+            
+            // // get the json node that contains the errors
+            // var errors = signupResponse.Errors.ToList();
+            // foreach (var error in errors)
+            // {
+            //     // dispatch a failure action for each error
+            //     dispatcher.Dispatch(new RegisterFailureAction(error));
+            // }
         }
     }
     
     [EffectMethod]
-    public async Task HandleRegisterSuccessAction(RegisterSuccessAction action, IDispatcher dispatcher)
+    public Task HandleRegisterSuccessAction(RegisterSuccessAction action, IDispatcher dispatcher)
     {
         _navigationManager.NavigateTo("/login");
+        _toastService.ShowSuccess("Registration successful, you can now login", "Registration");
+        return Task.CompletedTask;
+    }
+
+    [EffectMethod]
+    public Task HandleLoginFailureAction(LoginFailureAction action, IDispatcher dispatcher)
+    {
+        string message = action.Error;
+        _toastService.ShowError(message);
+        return Task.CompletedTask;
+    }
+    
+    [EffectMethod]
+    public Task HandleRegisterFailureAction(RegisterFailureAction action, IDispatcher dispatcher)
+    {
+        string message = action.Error;
+        _toastService.ShowError(message);
+        return Task.CompletedTask;
     }
 }
 

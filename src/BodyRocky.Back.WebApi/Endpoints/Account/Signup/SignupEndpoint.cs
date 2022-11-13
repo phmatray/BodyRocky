@@ -1,6 +1,6 @@
 using BodyRocky.Back.WebApi.DataAccess.Entities;
-using BodyRocky.Core.Contracts.Requests.AccountRequests;
-using BodyRocky.Core.Contracts.Responses.AccountResponses;
+using BodyRocky.Core.Contracts.Requests;
+using BodyRocky.Core.Contracts.Responses;
 using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 
@@ -33,8 +33,18 @@ public class SignupEndpoint
             UserName = req.Email,
             Email = req.Email
         };
-
+        
         IdentityResult? user = await _userManager.CreateAsync(newCustomer, req.Password);
+        
+        if (!user.Succeeded)
+        {
+            foreach (IdentityError error in user.Errors)
+            {
+                AddError(error.Description);
+            }
+            
+            ThrowIfAnyErrors();
+        }
 
         SignupResponse response = user.Succeeded
             ? new SignupResponse

@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.CategoryResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses;
 
 public class GetAllCategoriesResponse
 {

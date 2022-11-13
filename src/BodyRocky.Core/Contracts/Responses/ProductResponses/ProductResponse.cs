@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.ProductResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses;
 
 public class ProductResponse
 {
@@ -9,4 +9,5 @@ public class ProductResponse
     public string ProductURL { get; init; } = default!;
     public bool IsFeatured { get; init; } = default!;
     public int Stock { get; init; }
+    public string ProductCategory { get; set; } = default!;
 }

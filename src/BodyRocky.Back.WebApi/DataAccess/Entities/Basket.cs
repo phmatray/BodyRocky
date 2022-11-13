@@ -6,7 +6,7 @@ public class Basket
     public DateTime BasketDateAdded { get; set; } = default!;
     
     // relation products
-    public IList<BasketProduct> BasketProducts { get; set; }
+    public IList<BasketProduct> BasketProducts { get; set; } = new List<BasketProduct>();
     
     // relation basket status
     public int BasketStatusCode { get; set; }

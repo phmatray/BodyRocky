@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.CategoryRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class GetCategoryRequest
 {

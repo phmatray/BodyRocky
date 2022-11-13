@@ -1,3 +1,4 @@
+using BodyRocky.Core.Contracts.Responses;
 using Fluxor;
 
 namespace BodyRocky.Front.WebApp.Store;

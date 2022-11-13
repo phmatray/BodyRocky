@@ -1,2 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/home/philippe/.nuget/packages/cairosharp/3.24.24.38/lib/net6.0/CairoSharp.dll" /&gt;
+  &lt;Assembly Path="/home/philippe/.nuget/packages/fastendpoints/5.4.0/lib/net6.0/FastEndpoints.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=f2940b72_002D3af1_002D4362_002D8aa4_002D00d814d5358e_0023BodyRocky_002EFront_002EDesktop/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

@@ -1,5 +1,4 @@
-using BodyRocky.Back.WebApi.Endpoints.Account.Signup;
-using BodyRocky.Core.Contracts.Requests.AccountRequests;
+using BodyRocky.Core.Contracts.Requests;
 using FastEndpoints;
 using FluentValidation;
 

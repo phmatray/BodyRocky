@@ -1,48 +1,23 @@
 using BodyRocky.Back.WebApi.DataAccess;
-using BodyRocky.Back.WebApi.DataAccess.Entities;
-using BodyRocky.Back.WebApi.DataAccess.Repositories;
-using BodyRocky.Back.WebApi.Services;
 using FastEndpoints;
+using FastEndpoints.Security;
 using FastEndpoints.Swagger;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 const string allowDevFrontendOrigin = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+var services = builder.Services;
 var connectionString = config.GetConnectionString("SqlServer");
 
 // Add services to the container.
-builder.Services.AddFastEndpoints();
-builder.Services.AddSwaggerDoc();
+services.AddAuthenticationJWTBearer("TokenSigningKey");
+services.AddFastEndpoints();
+services.AddSwaggerDoc();
 
-// https://blog.jetbrains.com/dotnet/2019/03/05/connecting-microsoft-sql-server-linux-docker-container-rider/
-builder.Services.AddDbContext<BodyRockyDbContext>(
-    options => options.UseSqlServer(connectionString));
+services.AddEntityFramework(connectionString);
 
-builder.Services.AddIdentity<Customer, IdentityRole<Guid>>()
-    .AddEntityFrameworkStores<BodyRockyDbContext>();
-
-// repositories
-builder.Services.AddScoped<AddressRepository>();
-builder.Services.AddScoped<BasketRepository>();
-builder.Services.AddScoped<BrandRepository>();
-builder.Services.AddScoped<CategoryRepository>();
-builder.Services.AddScoped<CustomerRepository>();
-builder.Services.AddScoped<OrderRepository>();
-builder.Services.AddScoped<ProductImageRepository>();
-builder.Services.AddScoped<ProductRepository>();
-builder.Services.AddScoped<ReviewRepository>();
-builder.Services.AddScoped<ZipCodeRepository>();
-
-// business services
-builder.Services.AddScoped<AccountService>();
-builder.Services.AddScoped<BasketService>();
-builder.Services.AddScoped<CatalogService>();
-builder.Services.AddScoped<OrderService>();
-
-builder.Services.AddCors(options =>
+services.AddCors(options =>
 {
     options.AddPolicy(name: allowDevFrontendOrigin,
         policy  =>
@@ -61,6 +36,8 @@ WebApplication app = builder.Build();
 
 // app.UseMiddleware<ValidationExceptionMiddleware>();
 app.UseCors(allowDevFrontendOrigin);
+app.UseDefaultExceptionHandler(); 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseFastEndpoints(x =>
 {

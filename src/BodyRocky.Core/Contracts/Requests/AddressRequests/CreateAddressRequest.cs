@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.AddressRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class CreateAddressRequest
 {

@@ -71,4 +71,9 @@ public class CatalogService
 
         return brands;
     }
+    
+    public async Task DeleteProductAsync(Guid id)
+    {
+        await _productRepository.DeleteAsync(id);
+    }
 }

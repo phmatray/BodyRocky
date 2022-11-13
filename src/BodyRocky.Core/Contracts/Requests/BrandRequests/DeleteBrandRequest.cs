@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.BrandRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class DeleteBrandRequest
 {

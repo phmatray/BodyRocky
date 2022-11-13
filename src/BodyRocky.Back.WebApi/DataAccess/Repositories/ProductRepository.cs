@@ -42,7 +42,8 @@ public sealed class ProductRepository : IDisposable
 
     public async Task<Product?> GetByIDAsync(Guid productID)
     {
-        return await _context.Products.FindAsync(productID);
+        return await _context.Products
+            .SingleOrDefaultAsync(p => p.ProductID == productID);
     }
 
     public async Task InsertAsync(Product product)
@@ -53,7 +54,9 @@ public sealed class ProductRepository : IDisposable
 
     public async Task DeleteAsync(Guid productID)
     {
-        var product = await _context.Products.FindAsync(productID);
+        var product = await _context.Products
+            .SingleOrDefaultAsync(p => p.ProductID == productID);
+        
         _context.Remove(product);
         await _context.SaveChangesAsync();
     }

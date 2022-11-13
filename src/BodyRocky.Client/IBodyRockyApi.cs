@@ -1,10 +1,5 @@
-﻿using BodyRocky.Core.Contracts.Requests.AccountRequests;
-using BodyRocky.Core.Contracts.Requests.CustomerRequests;
-using BodyRocky.Core.Contracts.Responses.AccountResponses;
-using BodyRocky.Core.Contracts.Responses.CatalogResponses;
-using BodyRocky.Core.Contracts.Responses.CategoryResponses;
-using BodyRocky.Core.Contracts.Responses.CustomerResponses;
-using BodyRocky.Core.Contracts.Responses.ProductResponses;
+﻿using BodyRocky.Core.Contracts.Requests;
+using BodyRocky.Core.Contracts.Responses;
 using Refit;
 
 namespace BodyRocky.Client;
@@ -18,6 +13,28 @@ public interface IBodyRockyApi
     
     [Post("/accounts/login")]
     Task<LoginResponse> LoginAsync([Body] LoginRequest request);
+
+    [Get("/accounts/customers")]
+    Task<GetAllCustomersResponse> GetCustomersAsync();
+    
+    [Get("/accounts/customers/{request.CustomerID}")]
+    Task<CustomerDetailsResponse> GetCustomerAsync(GetCustomerRequest request);
+    
+    [Post("/accounts/customers")]
+    Task<CustomerDetailsResponse> CreateCustomerAsync([Body] CreateCustomerRequest request);
+    
+    [Put("/accounts/customers")]
+    Task<CustomerDetailsResponse> UpdateCustomerAsync([Body] UpdateCustomerRequest request);
+    
+    [Delete("/accounts/customers/{request.CustomerID}")]
+    Task DeleteCustomerAsync(DeleteCustomerRequest request);
+    
+    #endregion
+    
+    #region Baskets
+    
+    [Post("/baskets/products")]
+    Task AddProductToBasketAsync([Body] AddProductToBasketRequest request);
     
     #endregion
     
@@ -32,23 +49,14 @@ public interface IBodyRockyApi
     [Get("/catalog/products")]
     Task<GetAllProductsResponse> GetAllProductsAsync();
     
-    #endregion
+    [Delete("/catalog/products/{request.ProductID}")]
+    Task DeleteProductAsync([Body] DeleteProductRequest request);
     
-    [Get("/categories")]
+    [Get("/catalog/categories")]
     Task<GetAllCategoriesResponse> GetAllCategoriesAsync();
-
-    [Get("/customers")]
-    Task<GetAllCustomersResponse> GetCustomersAsync();
     
-    [Get("/customers/{request.CustomerID}")]
-    Task<CustomerResponse> GetCustomerAsync(GetCustomerRequest request);
+    [Post("/catalog/brands")]
+    Task<BrandResponse> CreateBrandAsync([Body] CreateBrandRequest request);
     
-    [Post("/customers")]
-    Task<CustomerResponse> CreateCustomerAsync([Body] CreateCustomerRequest request);
-    
-    [Put("/customers")]
-    Task<CustomerResponse> UpdateCustomerAsync([Body] UpdateCustomerRequest request);
-    
-    [Delete("/customers/{request.CustomerID}")]
-    Task DeleteCustomerAsync(DeleteCustomerRequest request);
+    #endregion
 }

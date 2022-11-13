@@ -35,7 +35,8 @@ public sealed class CategoryRepository : IDisposable
 
     public async Task<Category?> GetByIDAsync(Guid categoryID)
     {
-        Category? category = await _context.Categories.FindAsync(categoryID);
+        Category? category = await _context.Categories
+            .SingleOrDefaultAsync(x => x.CategoryID == categoryID);
         
         if (category is not null)
         {
@@ -55,7 +56,9 @@ public sealed class CategoryRepository : IDisposable
 
     public async Task DeleteAsync(Guid categoryID)
     {
-        var category = await _context.Categories.FindAsync(categoryID);
+        var category = await _context.Categories
+            .SingleOrDefaultAsync(x => x.CategoryID == categoryID);
+        
         _context.Remove(category);
         await _context.SaveChangesAsync();
     }

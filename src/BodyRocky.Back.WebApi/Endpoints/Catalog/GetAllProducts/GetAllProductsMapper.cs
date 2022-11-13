@@ -1,5 +1,5 @@
 using BodyRocky.Back.WebApi.DataAccess.Entities;
-using BodyRocky.Core.Contracts.Responses.ProductResponses;
+using BodyRocky.Core.Contracts.Responses;
 using FastEndpoints;
 
 namespace BodyRocky.Back.WebApi.Endpoints.Catalog.GetAllProducts;

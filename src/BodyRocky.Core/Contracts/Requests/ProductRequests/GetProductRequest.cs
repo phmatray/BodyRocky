@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.ProductRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class GetProductRequest
 {

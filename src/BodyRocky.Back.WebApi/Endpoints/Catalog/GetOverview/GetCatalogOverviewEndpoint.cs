@@ -1,5 +1,5 @@
 using BodyRocky.Back.WebApi.Services;
-using BodyRocky.Core.Contracts.Responses.CatalogResponses;
+using BodyRocky.Core.Contracts.Responses;
 using FastEndpoints;
 
 namespace BodyRocky.Back.WebApi.Endpoints.Catalog.GetOverview;

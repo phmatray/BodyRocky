@@ -1,4 +1,4 @@
-﻿using BodyRocky.Core.Contracts.Requests.CustomerRequests;
+﻿using BodyRocky.Core.Contracts.Requests;
 using FastEndpoints;
 using FluentValidation;
 

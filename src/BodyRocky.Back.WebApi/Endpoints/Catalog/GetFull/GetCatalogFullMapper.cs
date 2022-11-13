@@ -1,7 +1,4 @@
-using BodyRocky.Core.Contracts.Responses.BrandResponses;
-using BodyRocky.Core.Contracts.Responses.CatalogResponses;
-using BodyRocky.Core.Contracts.Responses.CategoryResponses;
-using BodyRocky.Core.Contracts.Responses.ProductResponses;
+using BodyRocky.Core.Contracts.Responses;
 using FastEndpoints;
 
 namespace BodyRocky.Back.WebApi.Endpoints.Catalog.GetFull;
@@ -9,9 +6,9 @@ namespace BodyRocky.Back.WebApi.Endpoints.Catalog.GetFull;
 public class GetCatalogFullMapper
     : ResponseMapper<GetCatalogFullResponse, CatalogFull>
 {
-    public override GetCatalogFullResponse FromEntity(CatalogFull catalogOverview)
+    public override GetCatalogFullResponse FromEntity(CatalogFull catalog)
     {
-        List<CategoryResponse> categoryResponses = catalogOverview
+        List<CategoryResponse> categoryResponses = catalog
             .Categories
             .Select(c => new CategoryResponse
             {
@@ -24,7 +21,7 @@ public class GetCatalogFullMapper
             })
             .ToList();
         
-        List<ProductResponse> productResponses = catalogOverview
+        List<ProductResponse> productResponses = catalog
             .Products
             .Select(p => new ProductResponse
             {
@@ -34,11 +31,12 @@ public class GetCatalogFullMapper
                 ProductPrice = p.ProductPrice,
                 ProductURL = p.ProductURL,
                 IsFeatured = p.IsFeatured,
-                Stock = p.Stock
+                Stock = p.Stock,
+                ProductCategory = p.ProductCategories.FirstOrDefault()?.Category.CategoryName ?? string.Empty,
             })
             .ToList();
         
-        List<BrandResponse> brandResponses = catalogOverview
+        List<BrandResponse> brandResponses = catalog
             .Brands
             .Select(b => new BrandResponse
             {
@@ -51,9 +49,9 @@ public class GetCatalogFullMapper
 
         return new GetCatalogFullResponse
         {
-            TotalProducts = catalogOverview.TotalProducts,
-            TotalCategories = catalogOverview.TotalCategories,
-            TotalBrands = catalogOverview.TotalBrands,
+            TotalProducts = catalog.TotalProducts,
+            TotalCategories = catalog.TotalCategories,
+            TotalBrands = catalog.TotalBrands,
             Categories = categoryResponses,
             Products = productResponses,
             Brands = brandResponses

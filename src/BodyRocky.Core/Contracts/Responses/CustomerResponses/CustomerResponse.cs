@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.CustomerResponses;
+namespace BodyRocky.Core.Contracts.Responses;
 
 public class CustomerResponse
 {

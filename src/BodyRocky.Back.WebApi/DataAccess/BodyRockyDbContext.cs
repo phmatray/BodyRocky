@@ -15,6 +15,7 @@ public sealed class BodyRockyDbContext
     
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Basket> Baskets { get; set; }
+    public DbSet<BasketProduct> BasketProducts { get; set; }
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Order> Orders { get; set; }

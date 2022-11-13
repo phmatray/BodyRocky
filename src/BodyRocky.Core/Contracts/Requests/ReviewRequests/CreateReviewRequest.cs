@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.ReviewRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class CreateReviewRequest
 {

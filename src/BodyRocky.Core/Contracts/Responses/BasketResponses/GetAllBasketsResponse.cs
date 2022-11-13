@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.BasketResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses;
 
 public class GetAllBasketsResponse
 {

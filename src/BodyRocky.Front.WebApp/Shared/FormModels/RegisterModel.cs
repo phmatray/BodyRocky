@@ -7,28 +7,28 @@ public class RegisterModel
     [Required]
     [Display(Name = "Prénom")]
     [StringLength(50, ErrorMessage = "Le prénom ne peut pas dépasser 50 caractères.")]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = string.Empty;
     
     [Required]
     [Display(Name = "Nom")]
     [StringLength(50, ErrorMessage = "Le nom ne peut pas dépasser 50 caractères.")]
-    public string LastName { get; set; }
+    public string LastName { get; set; } = string.Empty;
     
     [Required]
     [Display(Name = "Adresse e-mail")]
     [EmailAddress(ErrorMessage = "WTF")]
-    public string Email { get; set; }
+    public string Email { get; set; } = string.Empty;
     
     [Required]
     [Display(Name = "Mot de passe")]
     [DataType(DataType.Password)]
-    public string Password { get; set; }
+    public string Password { get; set; } = string.Empty;
     
     [Required]
     [Display(Name = "Confirmation du mot de passe")]
     [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "Le mot de passe et la confirmation du mot de passe ne correspondent pas.")]
-    public string ConfirmPassword { get; set; }
+    public string ConfirmPassword { get; set; } = string.Empty;
     
     [Required]
     [Display(Name = "Date de naissance")]

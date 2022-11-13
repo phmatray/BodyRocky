@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.CustomerRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class UpdateCustomerRequest
 {

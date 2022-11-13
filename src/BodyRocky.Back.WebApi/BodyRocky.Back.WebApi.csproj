@@ -8,8 +8,9 @@
 
     <ItemGroup>
         <PackageReference Include="Bogus" Version="34.0.2" />
-        <PackageReference Include="FastEndpoints" Version="5.3.2" />
-        <PackageReference Include="FastEndpoints.Swagger" Version="5.3.2" />
+        <PackageReference Include="FastEndpoints" Version="5.4.0" />
+        <PackageReference Include="FastEndpoints.Security" Version="5.4.0" />
+        <PackageReference Include="FastEndpoints.Swagger" Version="5.4.0" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,5 +22,8 @@
     <ItemGroup>
       <ProjectReference Include="..\BodyRocky.Core\BodyRocky.Core.csproj" />
     </ItemGroup>
-
+    
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="cp $(OutDir)runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll $(OutDir)" />
+    </Target>
 </Project>

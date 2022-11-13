@@ -1,6 +1,7 @@
 @page "/product"
 @page "/product/{productId?}"
 @using System.Globalization
+@using BodyRocky.Core.Contracts.Responses
 @inherits FluxorComponent
 @inject IState<CatalogFullState> CatalogState
 @inject BasketDispatcher BasketDispatcher

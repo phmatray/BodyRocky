@@ -1,5 +1,6 @@
 @page "/shop"
 @using System.Net
+@using BodyRocky.Core.Contracts.Responses
 @using BodyRocky.Front.WebApp.Store.Models
 @inherits FluxorComponent
 @inject IState<LayoutState> LayoutState
@@ -8,7 +9,7 @@
 @inject NavigationManager NavigationManager
 
 <!-- breadcrumb -->
-<UiBreadcrumb Segments="_segments" />
+<UiBreadcrumb Segments="@_segments" />
 <!-- ./breadcrumb -->
 
 <!-- shop wrapper -->
@@ -181,7 +182,7 @@
         @if (LayoutState.Value.ViewMode is ViewMode.Grid)
         {
           <div class="grid grid-cols-3 gap-6">
-            @foreach (ProductResponse product in CatalogState.Value.Products)
+            @foreach (ProductResponse product in _filteredProducts)
             {
               <UiProductCard @key="product.ProductID" Data="product"/>
             }
@@ -190,7 +191,7 @@
         else
         {
           <div class="col-span-9 space-y-4">
-            @foreach (ProductResponse product in CatalogState.Value.Products)
+            @foreach (ProductResponse product in _filteredProducts)
             {
               <UiProductListItem @key="product.ProductID" Data="product"/>
             }
@@ -216,11 +217,32 @@
   private readonly UiBreadcrumb.BreadcrumbSegment[] _segments = {
     new("Boutique", Routes.SHOP_ROUTE),
   };
-  
+
+  private IEnumerable<ProductResponse>? _filteredProducts = new List<ProductResponse>();
+
   [Parameter]
   [SupplyParameterFromQuery(Name = "categories")]
   public string[] CategoryNames { get; set; } = {  };
-  
+
+  public string SearchTerm
+    => LayoutState.Value.SearchTerm;
+
+  protected override void OnAfterRender(bool firstRender)
+  {
+    base.OnAfterRender(firstRender);
+    
+    _filteredProducts = CatalogState.Value.Products
+      .Where(p => p.ProductName.ToLower().Contains(SearchTerm, StringComparison.OrdinalIgnoreCase));
+  }
+
+  protected override void OnParametersSet()
+  {
+    base.OnParametersSet();
+    
+    _filteredProducts = CatalogState.Value.Products
+      .Where(p => p.ProductName.ToLower().Contains(SearchTerm, StringComparison.OrdinalIgnoreCase));
+  }
+
   private string GetCssClassForViewMode(ViewMode viewMode)
   {
     return LayoutState.Value.ViewMode == viewMode

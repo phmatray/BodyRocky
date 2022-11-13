@@ -1,4 +1,4 @@
-namespace BodyRocky.Core.Contracts.Responses.AccountResponses;
+namespace BodyRocky.Core.Contracts.Responses;
 
 public class SignupResponse
 {

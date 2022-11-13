@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.BrandResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses;
 
 public class GetAllBrandsResponse
 {

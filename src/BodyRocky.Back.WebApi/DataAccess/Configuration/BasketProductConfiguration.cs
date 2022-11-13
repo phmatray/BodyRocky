@@ -1,7 +1,6 @@
 ﻿using BodyRocky.Back.WebApi.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Namotion.Reflection;
 
 namespace BodyRocky.Back.WebApi.DataAccess.Configuration;
 

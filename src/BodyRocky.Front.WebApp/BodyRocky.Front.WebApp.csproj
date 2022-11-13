@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+    <_ContentIncludedByDefault Remove="Shared\TailwindUtilities\TWTransition.razor" />
+    <_ContentIncludedByDefault Remove="Shared\TailwindUtilities\TWTransitionalElement.razor" />
   </ItemGroup>
 
 </Project>

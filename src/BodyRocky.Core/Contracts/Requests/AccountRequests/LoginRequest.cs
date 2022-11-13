@@ -1,4 +1,4 @@
-namespace BodyRocky.Core.Contracts.Requests.AccountRequests;
+namespace BodyRocky.Core.Contracts.Requests;
 
 public class LoginRequest
 {

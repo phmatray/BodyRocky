@@ -26,7 +26,8 @@ public sealed class BrandRepository : IDisposable
 
     public async Task<Brand?> GetByIDAsync(Guid brandID)
     {
-        Brand? brand = await _context.Brands.FindAsync(brandID);
+        Brand? brand = await _context.Brands
+            .SingleOrDefaultAsync(x => x.BrandID == brandID);
         
         if (brand is not null)
         {
@@ -46,7 +47,9 @@ public sealed class BrandRepository : IDisposable
     
     public async Task DeleteAsync(Guid brandID)
     {
-        var brand = await _context.Addresses.FindAsync(brandID);
+        var brand = await _context.Brands
+            .SingleOrDefaultAsync(x => x.BrandID == brandID);
+        
         _context.Remove(brand);
         await _context.SaveChangesAsync();
     }

@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.OrderRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class CreateOrderRequest
 {

@@ -1,6 +1,8 @@
 using System.Globalization;
 using Blazored.Toast;
 using Blazored.Toast.Services;
+using BodyRocky.Core.Contracts.Requests;
+using BodyRocky.Core.Contracts.Responses;
 using BodyRocky.Front.WebApp.Shared.Toasts;
 using Fluxor;
 
@@ -116,16 +118,24 @@ public static class BasketReducers
 
 public class BasketEffects
 {
+    private readonly IBodyRockyApi _bodyRockyClient;
     private readonly IToastService _toastService;
+    private readonly AuthState _authState;
     
-    public BasketEffects(IToastService toastService)
+    public BasketEffects(
+        IBodyRockyApi bodyRockyClient,
+        IToastService toastService,
+        IState<AuthState> authState)
     {
+        _bodyRockyClient = bodyRockyClient;
         _toastService = toastService;
+        _authState = authState.Value;
     }
     
     [EffectMethod]
     public async Task HandleAddToBasketAction(AddToBasketAction action, IDispatcher dispatcher)
     {
+        // 1. send the toast   
         ToastParameters parameters = new();
         parameters.Add(nameof(AddedToBasketToast.Product), action.Product);
         parameters.Add(nameof(AddedToBasketToast.Quantity), action.Quantity);
@@ -133,14 +143,31 @@ public class BasketEffects
         ToastInstanceSettings settings = new(5, true);
         
         _toastService.ShowToast<AddedToBasketToast>(parameters, settings);
+        
+        // 2. send request to backend
+        Guid? customerId = _authState.Customer?.CustomerID;
+        
+        if (customerId is not null)
+        {
+            var addProductToBasketRequest = new AddProductToBasketRequest
+            {
+                CustomerId = customerId.Value,
+                ProductId = action.Product.ProductID,
+                Quantity = action.Quantity
+            };
+        
+            await _bodyRockyClient.AddProductToBasketAsync(addProductToBasketRequest);
+        }
     }
     
     [EffectMethod]
-    public async Task HandlePlaceOrderAction(PlaceOrderAction action, IDispatcher dispatcher)
+    public Task HandlePlaceOrderAction(PlaceOrderAction action, IDispatcher dispatcher)
     {
         ToastInstanceSettings settings = new(5, true);
         
         _toastService.ShowToast<PaiementSuccessToast>(settings);
+        
+        return Task.CompletedTask;
     }
 }
 

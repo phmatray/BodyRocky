@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Responses.ReviewResponses;
+﻿namespace BodyRocky.Core.Contracts.Responses;
 
 public class ReviewResponse
 {

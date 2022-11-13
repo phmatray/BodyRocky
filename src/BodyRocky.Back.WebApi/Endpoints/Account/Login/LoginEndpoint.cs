@@ -2,9 +2,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using BodyRocky.Back.WebApi.DataAccess.Entities;
-using BodyRocky.Core.Contracts.Requests.AccountRequests;
-using BodyRocky.Core.Contracts.Responses.AccountResponses;
-using BodyRocky.Core.Contracts.Responses.CustomerResponses;
+using BodyRocky.Core.Contracts.Requests;
+using BodyRocky.Core.Contracts.Responses;
 using FastEndpoints;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -62,7 +61,7 @@ public class LoginEndpoint
             IsSuccessfulLogin = true,
             Expiration = token.ValidTo,
             Token = tokenString,
-            Customer = new CustomerResponse
+            Customer = new CustomerDetailsResponse
             {
                 CustomerID = user.Id,
                 FirstName = user.FirstName,

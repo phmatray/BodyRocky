@@ -20,6 +20,7 @@ public sealed class CustomerRepository : IDisposable
     public async Task<List<Customer>> GetAllAsync(int skip, int take)
     {
         return await _context.Users
+            .OrderBy(x => x.Id)
             .Skip(skip)
             .Take(take)
             .ToListAsync();
@@ -27,7 +28,9 @@ public sealed class CustomerRepository : IDisposable
 
     public async Task<Customer?> GetByIDAsync(Guid customerID)
     {
-        return await _context.Users.FindAsync(customerID);
+        return await _context.Users
+            .Include(x => x.Baskets)
+            .SingleOrDefaultAsync(x => x.Id == customerID);
     }
 
     public async Task<Customer> InsertAsync(Customer customer)
@@ -40,7 +43,9 @@ public sealed class CustomerRepository : IDisposable
 
     public async Task DeleteAsync(Guid customerID)
     {
-        var customer = await _context.Users.FindAsync(customerID);
+        var customer = await _context.Users
+            .SingleOrDefaultAsync(x => x.Id == customerID);
+        
         if (customer is not null)
         {
             _context.Remove(customer);

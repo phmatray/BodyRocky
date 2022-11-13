@@ -24,7 +24,8 @@ public sealed class OrderRepository : IDisposable
 
     public async Task<Order?> GetByIDAsync(Guid orderID)
     {
-        return await _context.Orders.FindAsync(orderID);
+        return await _context.Orders
+            .SingleOrDefaultAsync(order => order.OrderID == orderID);
     }
 
     public async Task InsertAsync(Order order)
@@ -35,7 +36,9 @@ public sealed class OrderRepository : IDisposable
 
     public async Task DeleteAsync(Guid orderID)
     {
-        var order = await _context.Orders.FindAsync(orderID);
+        var order = await _context.Orders
+            .SingleOrDefaultAsync(order => order.OrderID == orderID);
+        
         _context.Remove(order);
         await _context.SaveChangesAsync();
     }

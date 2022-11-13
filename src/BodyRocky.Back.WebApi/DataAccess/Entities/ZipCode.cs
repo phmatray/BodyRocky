@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-
-namespace BodyRocky.Back.WebApi.DataAccess.Entities;
+﻿namespace BodyRocky.Back.WebApi.DataAccess.Entities;
 
 public class ZipCode
 {

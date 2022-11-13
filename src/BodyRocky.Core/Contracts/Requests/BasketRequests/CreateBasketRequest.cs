@@ -1,4 +1,4 @@
-﻿namespace BodyRocky.Core.Contracts.Requests.BasketRequests;
+﻿namespace BodyRocky.Core.Contracts.Requests;
 
 public class CreateBasketRequest
 {

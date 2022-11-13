@@ -11,6 +11,7 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 IServiceCollection services = builder.Services;
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
+builder.Logging.SetMinimumLevel(LogLevel.Warning);
 
 // Add client-side HttpClient
 services.AddScoped(sp => new HttpClient
@@ -18,7 +19,6 @@ services.AddScoped(sp => new HttpClient
     BaseAddress = new(builder.HostEnvironment.BaseAddress)
 });
 
-// Add Oidc (OpenID Connect) client
 services.AddOidcAuthentication(options =>
 {
     // Configure your authentication provider options here.
@@ -31,7 +31,16 @@ services.AddScoped<Routes>();
 
 // Add Refit client
 services
-    .AddRefitClient<IBodyRockyApi>()
+    .AddRefitClient<IBodyRockyApi>(new RefitSettings
+    {
+        // ExceptionFactory = httpResponse =>
+        // {
+        //     httpResponse.
+        //     ApiException apiException = new ApiException()
+        //     
+        //     return new Task<ApiException?>() 
+        // }
+    })
     .ConfigureHttpClient(c =>
     {
         c.BaseAddress = new("https://localhost:7180");

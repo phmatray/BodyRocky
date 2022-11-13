@@ -24,7 +24,8 @@ public sealed class AddressRepository : IDisposable
 
     public async Task<Address?> GetByIDAsync(Guid addressID)
     {
-        return await _context.Addresses.FindAsync(addressID);
+        return await _context.Addresses
+            .SingleOrDefaultAsync(address => address.AddressID == addressID);
     }
 
     public async Task InsertAsync(Address address)
@@ -35,7 +36,9 @@ public sealed class AddressRepository : IDisposable
 
     public async Task DeleteAsync(Guid addressID)
     {
-        var address = await _context.Addresses.FindAsync(addressID);
+        var address = await _context.Addresses
+            .SingleOrDefaultAsync(address => address.AddressID == addressID);
+        
         _context.Remove(address);
         await _context.SaveChangesAsync();
     }
