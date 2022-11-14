@@ -1,0 +1,41 @@
+﻿using BodyRocky.Back.Server.DataAccess.Entities;
+using BodyRocky.Back.Server.DataAccess.Repositories;
+using BodyRocky.Back.Server.Endpoints.Account.GetCustomer;
+using BodyRocky.Shared.Contracts.Requests;
+using BodyRocky.Shared.Contracts.Responses;
+using FastEndpoints;
+
+namespace BodyRocky.Back.Server.Endpoints.Account.CreateCustomer;
+
+public class CreateCustomerEndpoint
+    : Endpoint<CreateCustomerRequest, CustomerDetailsResponse, CreateCustomerMapper>
+{
+    private readonly CustomerRepository _repository;
+
+    public CreateCustomerEndpoint(CustomerRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public override void Configure()
+    {
+        Post("/accounts/customers");
+        AllowAnonymous();
+    }
+
+    public override async Task HandleAsync(
+        CreateCustomerRequest req,
+        CancellationToken ct)
+    {
+        Customer customer = Map.ToEntity(req);
+        customer = await _repository.InsertAsync(customer);
+
+        CustomerDetailsResponse response = Map.FromEntity(customer);
+
+        await SendCreatedAtAsync<GetCustomerEndpoint>(
+            "vaitefouderch",
+            response,
+            Http.GET,
+            cancellation: ct);
+    }
+}

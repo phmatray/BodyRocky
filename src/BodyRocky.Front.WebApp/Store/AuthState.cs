@@ -1,11 +1,11 @@
-using System.Text.Json;
+using System.Security.Claims;
 using Blazored.Toast.Services;
-using BodyRocky.Core.Contracts.Requests;
-using BodyRocky.Core.Contracts.Responses;
-using BodyRocky.Front.WebApp.Store.Models;
+using BodyRocky.Front.WebApp.Services.Implementations;
+using BodyRocky.Front.WebApp.Shared;
+using BodyRocky.Shared;
+using BodyRocky.Shared.Forms;
 using Fluxor;
 using Microsoft.AspNetCore.Components;
-using Refit;
 
 namespace BodyRocky.Front.WebApp.Store;
 
@@ -13,12 +13,12 @@ namespace BodyRocky.Front.WebApp.Store;
 
 public record AuthState(
     bool IsLoading,
-    CustomerDetailsResponse? Customer,
+    ClaimsPrincipal? UserPrincipal,
     string? Token,
     string? ErrorMessage)
 {
     public bool IsAuthenticated
-        => Token is not null && Customer is not null;
+        => Token is not null && UserPrincipal is not null;
     
     public bool HasError
         => ErrorMessage is not null;
@@ -41,11 +41,11 @@ public class AuthFeature : Feature<AuthState>
 
 #region Actions
 
-public record LoginAction(LoginRequest LoginRequest);
-public record LoginSuccessAction(bool IsSuccessfulLogin, CustomerDetailsResponse Customer, string Token);
+public record LoginAction(LoginParameters LoginParameters);
+public record LoginSuccessAction(bool IsSuccessfulLogin, ClaimsPrincipal UserPrincipal, string Token);
 public record LoginFailureAction(string Error);
 
-public record RegisterAction(SignupRequest SignupRequest);
+public record RegisterAction(RegisterParameters RegisterParameters);
 public record RegisterSuccessAction();
 public record RegisterFailureAction(string Error);
 
@@ -71,7 +71,7 @@ public static class AuthReducer
         {
             IsLoading = false,
             ErrorMessage = null,
-            Customer = action.Customer,
+            UserPrincipal = action.UserPrincipal,
             Token = action.Token
         };
     
@@ -81,7 +81,7 @@ public static class AuthReducer
         {
             IsLoading = false,
             ErrorMessage = action.Error,
-            Customer = null,
+            UserPrincipal = null,
             Token = null
         };
     
@@ -115,7 +115,7 @@ public static class AuthReducer
         {
             IsLoading = false,
             ErrorMessage = null,
-            Customer = null,
+            UserPrincipal = null,
             Token = null
         };
 }
@@ -130,17 +130,20 @@ public class AuthEffects
     private readonly NavigationManager _navigationManager;
     private readonly IToastService _toastService;
     private readonly ILogger<AuthEffects> _logger;
+    private readonly IdentityAuthenticationStateProvider _authStateProvider;
 
     public AuthEffects(
         IBodyRockyApi bodyRockyClient,
         NavigationManager navigationManager,
         IToastService toastService,
-        ILogger<AuthEffects> logger)
+        ILogger<AuthEffects> logger,
+        IdentityAuthenticationStateProvider authStateProvider)
     {
         _bodyRockyClient = bodyRockyClient;
         _navigationManager = navigationManager;
         _toastService = toastService;
         _logger = logger;
+        _authStateProvider = authStateProvider;
     }
 
     [EffectMethod]
@@ -148,25 +151,37 @@ public class AuthEffects
     {
         try
         {
-            LoginResponse response = await _bodyRockyClient.LoginAsync(action.LoginRequest);
-            
-            LoginSuccessAction successAction = new(
-                response.IsSuccessfulLogin,
-                response.Customer,
-                response.Token);
-            
-            dispatcher.Dispatch(successAction);
-            
-            if (response.IsSuccessfulLogin)
-            {
-                _navigationManager.NavigateTo("/");
-            }
+            await _authStateProvider.Login(action.LoginParameters);
+            var auth = await _authStateProvider.GetAuthenticationStateAsync();
+            dispatcher.Dispatch(new LoginSuccessAction(true, auth.User, "FAKE_TOKEN"));
         }
         catch (Exception e)
         {
             string exceptionMessage = e.InnerException?.Message ?? e.Message;
             dispatcher.Dispatch(new LoginFailureAction(exceptionMessage));
         }
+        
+        // try
+        // {
+        //     LoginResponse response = await _bodyRockyClient.LoginAsync(action.LoginRequest);
+        //     
+        //     LoginSuccessAction successAction = new(
+        //         response.IsSuccessfulLogin,
+        //         response.Customer,
+        //         response.Token);
+        //     
+        //     dispatcher.Dispatch(successAction);
+        //     
+        //     if (response.IsSuccessfulLogin)
+        //     {
+        //         _navigationManager.NavigateTo("/");
+        //     }
+        // }
+        // catch (Exception e)
+        // {
+        //     string exceptionMessage = e.InnerException?.Message ?? e.Message;
+        //     dispatcher.Dispatch(new LoginFailureAction(exceptionMessage));
+        // }
     }
     
     [EffectMethod]
@@ -174,46 +189,51 @@ public class AuthEffects
     {
         try
         {
-            // get the response from the API using the Refit client
-            var signupResponse = await _bodyRockyClient.RegisterAsync(action.SignupRequest);
-
-            if (signupResponse.IsSuccessfulRegistration)
-            {
-                // if the registration was successful, dispatch a success action
-                dispatcher.Dispatch(new RegisterSuccessAction());
-            }
+            await _authStateProvider.Register(action.RegisterParameters);
+            dispatcher.Dispatch(new RegisterSuccessAction());
         }
-        catch (ApiException exception)
+        catch (Exception e)
         {
-            // other exception handling
-            _logger.LogError(exception, "ApiException occurred while registering a new user");
-            dispatcher.Dispatch(new RegisterFailureAction("ApiException occurred while registering a new user"));
-            
-            // deserialize the error response
-            var errorResponse = JsonSerializer.Deserialize<ErrorResponse>(exception.Content);
-            if (errorResponse is not null)
-            {
-                var serialize = JsonSerializer.Serialize(errorResponse);
-
-                // if the error response is not null, dispatch a failure action
-                dispatcher.Dispatch(new RegisterFailureAction(errorResponse.Message));
-                dispatcher.Dispatch(new RegisterFailureAction(serialize));
-            }
-            
-            // // get the json node that contains the errors
-            // var errors = signupResponse.Errors.ToList();
-            // foreach (var error in errors)
-            // {
-            //     // dispatch a failure action for each error
-            //     dispatcher.Dispatch(new RegisterFailureAction(error));
-            // }
+            string exceptionMessage = e.InnerException?.Message ?? e.Message;
+            dispatcher.Dispatch(new RegisterFailureAction(exceptionMessage));
         }
+        
+        // try
+        // {
+        //     // get the response from the API using the Refit client
+        //     var signupResponse = await _bodyRockyClient.RegisterAsync(action.SignupRequest);
+        //
+        //     if (signupResponse.IsSuccessfulRegistration)
+        //     {
+        //         // if the registration was successful, dispatch a success action
+        //         dispatcher.Dispatch(new RegisterSuccessAction());
+        //     }
+        // }
+        // catch (ApiException exception)
+        // {
+        //     // other exception handling
+        //     _logger.LogError(exception, "ApiException occurred while registering a new user");
+        //     dispatcher.Dispatch(new RegisterFailureAction("ApiException occurred while registering a new user"));
+        //
+        //     var contentAsAsync = await exception.GetContentAsAsync<ErrorResponse>();
+        //
+        //     // deserialize the error response
+        //     var errorResponse = JsonSerializer.Deserialize<ErrorResponse>(exception.Content);
+        //     if (errorResponse is not null)
+        //     {
+        //         var serialize = JsonSerializer.Serialize(errorResponse);
+        //
+        //         // if the error response is not null, dispatch a failure action
+        //         dispatcher.Dispatch(new RegisterFailureAction(errorResponse.Message));
+        //         dispatcher.Dispatch(new RegisterFailureAction(serialize));
+        //     }
+        // }
     }
     
     [EffectMethod]
     public Task HandleRegisterSuccessAction(RegisterSuccessAction action, IDispatcher dispatcher)
     {
-        _navigationManager.NavigateTo("/login");
+        _navigationManager.NavigateTo(Routes.LOGIN_ROUTE);
         _toastService.ShowSuccess("Registration successful, you can now login", "Registration");
         return Task.CompletedTask;
     }
@@ -248,11 +268,11 @@ public class AuthDispatcher
         _dispatcher = dispatcher;
     }
 
-    public void Login(LoginRequest loginRequest)
-        => _dispatcher.Dispatch(new LoginAction(loginRequest));
+    public void Login(LoginParameters loginParameters)
+        => _dispatcher.Dispatch(new LoginAction(loginParameters));
     
-    public void Register(SignupRequest signupRequest)
-        => _dispatcher.Dispatch(new RegisterAction(signupRequest));
+    public void Register(RegisterParameters registerParameters)
+        => _dispatcher.Dispatch(new RegisterAction(registerParameters));
     
     public void Logout()
         => _dispatcher.Dispatch(new LogoutAction());

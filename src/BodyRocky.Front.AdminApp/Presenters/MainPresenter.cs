@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BodyRocky.Client;
-using BodyRocky.Core.Contracts.Requests;
 using BodyRocky.Front.AdminApp.Models;
+using BodyRocky.Shared;
+using BodyRocky.Shared.Contracts.Requests;
 
 namespace BodyRocky.Front.AdminApp.Presenters;
 

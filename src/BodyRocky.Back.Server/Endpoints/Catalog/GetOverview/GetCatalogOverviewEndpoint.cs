@@ -1,0 +1,29 @@
+using BodyRocky.Back.Server.Services;
+using BodyRocky.Shared.Contracts.Responses;
+using FastEndpoints;
+
+namespace BodyRocky.Back.Server.Endpoints.Catalog.GetOverview;
+
+public class GetCatalogOverviewEndpoint
+    : EndpointWithoutRequest<GetCatalogOverviewResponse, GetCatalogOverviewMapper>
+{
+    private readonly CatalogService _catalogService;
+    
+    public GetCatalogOverviewEndpoint(CatalogService catalogService)
+    {
+        _catalogService = catalogService;
+    }
+
+    public override void Configure()
+    {
+        Get("/catalog/overview");
+        AllowAnonymous();
+    }
+
+    public override async Task HandleAsync(CancellationToken ct)
+    {
+        CatalogOverview catalog = await _catalogService.GetCatalogOverviewAsync();
+        GetCatalogOverviewResponse response = Map.FromEntity(catalog);
+        await SendOkAsync(response, ct);
+    }
+}

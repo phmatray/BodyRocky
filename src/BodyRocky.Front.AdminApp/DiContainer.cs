@@ -1,5 +1,5 @@
-using BodyRocky.Client;
 using BodyRocky.Front.AdminApp.Presenters;
+using BodyRocky.Shared;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
@@ -16,7 +16,7 @@ public static class DiContainer
             .AddRefitClient<IBodyRockyApi>()
             .ConfigureHttpClient(c =>
             {
-                c.BaseAddress = new("http://localhost:5060");
+                c.BaseAddress = new("https://localhost:5001");
             });
         
         // Add presentation services

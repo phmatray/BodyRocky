@@ -1,9 +1,10 @@
 using System.Globalization;
 using Blazored.Toast;
 using Blazored.Toast.Services;
-using BodyRocky.Core.Contracts.Requests;
-using BodyRocky.Core.Contracts.Responses;
 using BodyRocky.Front.WebApp.Shared.Toasts;
+using BodyRocky.Shared;
+using BodyRocky.Shared.Contracts.Requests;
+using BodyRocky.Shared.Contracts.Responses;
 using Fluxor;
 
 namespace BodyRocky.Front.WebApp.Store;
@@ -145,7 +146,8 @@ public class BasketEffects
         _toastService.ShowToast<AddedToBasketToast>(parameters, settings);
         
         // 2. send request to backend
-        Guid? customerId = _authState.Customer?.CustomerID;
+        // Guid? customerId = _authState.Customer?.CustomerID;
+        Guid? customerId = Guid.Parse("c0a8016b-0000-0000-0000-000000000000");
         
         if (customerId is not null)
         {

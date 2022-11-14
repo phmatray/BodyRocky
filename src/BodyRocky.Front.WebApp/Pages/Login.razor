@@ -1,5 +1,5 @@
 @page "/login"
-@using BodyRocky.Core.Contracts.Requests
+@using BodyRocky.Shared.Forms
 @inherits FluxorComponent
 @inject IState<AuthState> AuthState
 @inject AuthDispatcher AuthDispatcher
@@ -25,6 +25,7 @@
                      placeholder="laurent.dupont@example.com"
                      autocomplete="username"
                      @bind-Value="_loginModel.Email"/>
+          <ValidationMessage For="@(() => _loginModel.Email)" />
         </div>
         <div>
           <label class="text-gray-600 mb-2 block" for="password">Mot de passe</label>
@@ -34,13 +35,13 @@
                      placeholder="********"
                      autocomplete="password"
                      @bind-Value="_loginModel.Password"/>
+          <ValidationMessage For="@(() => _loginModel.Password)" />
         </div>
       </div>
       <div class="flex items-center justify-between mt-6">
         <div class="flex items-center">
-          <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="remember" name="remember"
-                 type="checkbox">
-          <label class="text-gray-600 ml-3 cursor-pointer" for="remember">
+          <InputCheckbox id="inputRememberMe" class="text-primary focus:ring-0 rounded-sm cursor-pointer" @bind-Value="@_loginModel.RememberMe" />
+          <label class="text-gray-600 ml-3 cursor-pointer" for="inputRememberMe">
             Se souvenir de moi
           </label>
         </div>
@@ -98,17 +99,11 @@
 
 @code {
   
-  private readonly LoginModel _loginModel = new();
+  private readonly LoginParameters _loginModel = new();
 
   private void HandleLogin()
   {
-    LoginRequest loginRequest = new()
-    {
-      Email = _loginModel.Email,
-      Password = _loginModel.Password
-    };
-    
-    AuthDispatcher.Login(loginRequest);
+    AuthDispatcher.Login(_loginModel);
   }
 
 }

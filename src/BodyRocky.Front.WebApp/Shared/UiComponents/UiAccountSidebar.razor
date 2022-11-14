@@ -13,7 +13,8 @@
         @if(AuthState.Value.IsAuthenticated)
         {
           <span>
-            @AuthState.Value.Customer!.FirstName @AuthState.Value.Customer!.LastName
+            @AuthState.Value.UserPrincipal?.Identity?.Name
+            @* @AuthState.Value.Customer!.FirstName @AuthState.Value.Customer!.LastName *@
           </span>
         }
       </h4>

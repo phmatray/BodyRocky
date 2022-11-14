@@ -17,10 +17,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="PangoSharp" Version="3.24.24.38" />
     <PackageReference Include="Refit" Version="6.3.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BodyRocky.Client\BodyRocky.Client.csproj" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +27,10 @@
     <Reference Include="Refit.HttpClientFactory">
       <HintPath>..\..\..\..\..\..\.nuget\packages\refit.httpclientfactory\6.3.2\lib\net6.0\Refit.HttpClientFactory.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BodyRocky.Shared\BodyRocky.Shared.csproj" />
   </ItemGroup>
 
 </Project>

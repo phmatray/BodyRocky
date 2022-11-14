@@ -1,5 +1,5 @@
 using System;
-using BodyRocky.Core.Contracts.Responses;
+using BodyRocky.Shared.Contracts.Responses;
 
 namespace BodyRocky.Front.AdminApp.Models;
 

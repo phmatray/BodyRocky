@@ -1,71 +1,61 @@
-using Blazored.Toast;
+﻿using Blazored.Toast;
 using BodyRocky.Front.WebApp;
+using BodyRocky.Front.WebApp.Services.Contracts;
+using BodyRocky.Front.WebApp.Services.Implementations;
 using BodyRocky.Front.WebApp.Shared;
 using BodyRocky.Front.WebApp.Store;
+using BodyRocky.Shared;
 using Fluxor;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Refit;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
-IServiceCollection services = builder.Services;
+var services = builder.Services;
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Logging.SetMinimumLevel(LogLevel.Warning);
 
-// Add client-side HttpClient
-services.AddScoped(sp => new HttpClient
-{
-    BaseAddress = new(builder.HostEnvironment.BaseAddress)
-});
+services.AddOptions();
+services.AddAuthorizationCore();
+services.AddScoped<IdentityAuthenticationStateProvider>();
+services.AddScoped<AuthenticationStateProvider>(s => s.GetRequiredService<IdentityAuthenticationStateProvider>());
+services.AddScoped<IAuthorizeApi, AuthorizeApi>();
 
-services.AddOidcAuthentication(options =>
-{
-    // Configure your authentication provider options here.
-    // For more information, see https://aka.ms/blazor-standalone-auth
-    builder.Configuration.Bind("Local", options.ProviderOptions);
-});
+// Add client-side HttpClient
+services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Add Routes
 services.AddScoped<Routes>();
 
 // Add Refit client
 services
-    .AddRefitClient<IBodyRockyApi>(new RefitSettings
-    {
-        // ExceptionFactory = httpResponse =>
-        // {
-        //     httpResponse.
-        //     ApiException apiException = new ApiException()
-        //     
-        //     return new Task<ApiException?>() 
-        // }
-    })
+    .AddRefitClient<IBodyRockyApi>(new RefitSettings { })
     .ConfigureHttpClient(c =>
     {
-        c.BaseAddress = new("https://localhost:7180");
+        c.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
     });
 
 // Add Blazored Toast
 services.AddBlazoredToast();
 
 // Add Fluxor
-services
-    .AddFluxor(o =>
+services.AddFluxor(o =>
+{
+    o.ScanAssemblies(typeof(Program).Assembly);
+    o.UseReduxDevTools(rdt =>
     {
-        o.ScanAssemblies(typeof(Program).Assembly);
-        o.UseReduxDevTools(rdt =>
-        {
-            rdt.Name = "BodyRocky";
-        });
+        rdt.Name = "BodyRocky";
     });
+});
 
 // Add strongly-typed Flux Dispatchers
-services
-    .AddScoped<LayoutDispatcher>()
-    .AddScoped<AuthDispatcher>()
-    .AddScoped<BasketDispatcher>()
-    .AddScoped<CatalogOverviewDispatcher>()
-    .AddScoped<CatalogFullDispatcher>();
+services.AddScoped<LayoutDispatcher>();
+services.AddScoped<AuthDispatcher>();
+services.AddScoped<BasketDispatcher>();
+services.AddScoped<CatalogOverviewDispatcher>();
+services.AddScoped<CatalogFullDispatcher>();
 
 await builder.Build().RunAsync();

@@ -1,5 +1,5 @@
 @page "/register"
-@using BodyRocky.Core.Contracts.Requests
+@using BodyRocky.Shared.Forms
 @inherits FluxorComponent
 @inject IState<AuthState> AuthState
 @inject AuthDispatcher AuthDispatcher
@@ -13,7 +13,7 @@
     <p class="text-gray-600 mb-6 text-sm">
       Inscrivez-vous pour accéder à votre compte
     </p>
-    <EditForm Model="_registerModel" OnValidSubmit="HandleRegister" autocomplete="off">
+    <EditForm Model="_registerParameters" OnValidSubmit="OnSubmit" autocomplete="off">
       <DataAnnotationsValidator/>
       
       <div class="space-y-2">
@@ -22,7 +22,8 @@
           <InputText class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                      id="firstname"
                      placeholder="Laurent"
-                     @bind-Value="_registerModel.FirstName"/>
+                     @bind-Value="_registerParameters.FirstName"/>
+          <ValidationMessage For="@(() => _registerParameters.FirstName)" />
         </div>
         
         <div>
@@ -30,7 +31,8 @@
           <InputText class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                      id="lastname"
                      placeholder="Dupont"
-                     @bind-Value="_registerModel.LastName"/>
+                     @bind-Value="_registerParameters.LastName"/>
+          <ValidationMessage For="@(() => _registerParameters.LastName)" />
         </div>
       
         <div>
@@ -39,15 +41,16 @@
                      id="email"
                      placeholder="laurent.dupont@example.com"
                      autocomplete="email"
-                     @bind-Value="_registerModel.Email"/>
+                     @bind-Value="_registerParameters.Email"/>
+          <ValidationMessage For="@(() => _registerParameters.Email)" />
         </div>
         
-        <div>
-          <label class="text-gray-600 mb-2 block" for="birthdate">Date de naissance</label>
-          <InputDate class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
-                     id="birthdate"
-                     @bind-Value="_registerModel.BirthDate"/>
-        </div>
+        @* <div> *@
+        @*   <label class="text-gray-600 mb-2 block" for="birthdate">Date de naissance</label> *@
+        @*   <InputDate class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" *@
+        @*              id="birthdate" *@
+        @*              @bind-Value="_registerModel.BirthDate"/> *@
+        @* </div> *@
         
         <div>
           <label class="text-gray-600 mb-2 block" for="password">Mot de passe</label>
@@ -56,7 +59,8 @@
                      type="password"
                      placeholder="********"
                      autocomplete="new-password"
-                     @bind-Value="_registerModel.Password"/>
+                     @bind-Value="_registerParameters.Password"/>
+          <ValidationMessage For="@(() => _registerParameters.Password)" />
         </div>
         
         <div>
@@ -66,18 +70,19 @@
                      type="password"
                      placeholder="********"   
                      autocomplete="new-password"
-                     @bind-Value="_registerModel.ConfirmPassword"/>
+                     @bind-Value="_registerParameters.ConfirmPassword"/>
+          <ValidationMessage For="@(() => _registerParameters.ConfirmPassword)" />
         </div>
         
-        <div class="mt-6">
-          <div class="flex items-center">
-            <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="aggrement" name="aggrement"
-                   type="checkbox">
-            <label class="text-gray-600 ml-3 cursor-pointer" for="aggrement">
-              J'accepte les <a class="text-primary" href="#">termes et conditions</a>
-            </label>
-          </div>
-        </div>
+        @* <div class="mt-6"> *@
+        @*   <div class="flex items-center"> *@
+        @*     <input class="text-primary focus:ring-0 rounded-sm cursor-pointer" id="aggrement" name="aggrement" *@
+        @*            type="checkbox"> *@
+        @*     <label class="text-gray-600 ml-3 cursor-pointer" for="aggrement"> *@
+        @*       J'accepte les <a class="text-primary" href="#">termes et conditions</a> *@
+        @*     </label> *@
+        @*   </div> *@
+        @* </div> *@
         
         <ValidationSummary/>
 
@@ -128,23 +133,14 @@
 
 @code {
 
-  private readonly RegisterModel _registerModel = new()
+  private readonly RegisterParameters _registerParameters = new()
   {
-    BirthDate = DateTime.Now.AddYears(-18)
+    // BirthDate = DateTime.Now.AddYears(-18)
   };
 
-  private void HandleRegister(EditContext context)
+  private void OnSubmit(EditContext context)
   {
-    SignupRequest signupRequest = new()
-    {
-      FirstName = _registerModel.FirstName,
-      LastName = _registerModel.LastName,
-      Email = _registerModel.Email,
-      Password = _registerModel.Password,
-      ConfirmPassword = _registerModel.ConfirmPassword
-    };
-    
-    AuthDispatcher.Register(signupRequest);
+    AuthDispatcher.Register(_registerParameters);
   }
 
 }

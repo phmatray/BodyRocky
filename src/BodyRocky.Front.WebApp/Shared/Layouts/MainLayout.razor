@@ -1,0 +1,32 @@
+﻿@using BodyRocky.Front.WebApp.Services.Implementations
+@inherits FluxorLayout
+@inject CatalogOverviewDispatcher CatalogOverviewDispatcher
+@inject CatalogFullDispatcher CatalogFullDispatcher
+@inject NavigationManager NavigationManager
+@inject IdentityAuthenticationStateProvider AuthStateProvider
+
+<BlazoredToasts />
+
+<UiHeader/>
+<UiNavbar/>
+@Body
+<UiFooter/>
+<UiCopyright/>
+
+@code{
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    
+    CatalogOverviewDispatcher.LoadCatalogOverview();
+    CatalogFullDispatcher.LoadCatalogFull();
+  }
+
+  private async Task LogoutClick()
+  {
+    await AuthStateProvider.Logout();
+    NavigationManager.NavigateTo("/login");
+  }
+  
+}

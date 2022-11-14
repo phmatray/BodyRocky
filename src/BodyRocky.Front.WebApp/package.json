@@ -1,0 +1,12 @@
+{
+  "name": "bodyrocky",
+  "version": "1.0.0",
+  "scripts": {
+    "cssbuild": "npx tailwindcss -i ./Styles/tailwind-bodyrocky.css -o ./wwwroot/css/main.css",
+    "csswatch": "npx tailwindcss -i ./Styles/tailwind-bodyrocky.css -o ./wwwroot/css/main.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4",
+    "@tailwindcss/forms": "^0.5.3"
+  }
+}
