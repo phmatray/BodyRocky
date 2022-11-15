@@ -2,7 +2,7 @@
 using BodyRocky.Shared.Contracts.Requests;
 using FastEndpoints;
 
-namespace BodyRocky.Back.Server.Endpoints.Account.DeleteCustomer;
+namespace BodyRocky.Back.Server.Endpoints.CrudCustomers.DeleteCustomer;
 
 public class DeleteCustomerEndpoint
     : Endpoint<DeleteCustomerRequest>
@@ -16,7 +16,7 @@ public class DeleteCustomerEndpoint
 
     public override void Configure()
     {
-        Delete("/accounts/customers/{CustomerID}");
+        Delete("/crud/customers/{customerID}");
         AllowAnonymous();
     }
 

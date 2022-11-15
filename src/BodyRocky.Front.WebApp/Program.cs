@@ -1,8 +1,7 @@
 ﻿using Blazored.Toast;
 using BodyRocky.Front.WebApp;
-using BodyRocky.Front.WebApp.Services.Contracts;
-using BodyRocky.Front.WebApp.Services.Implementations;
 using BodyRocky.Front.WebApp.Shared;
+using BodyRocky.Front.WebApp.Shared.Services;
 using BodyRocky.Front.WebApp.Store;
 using BodyRocky.Shared;
 using Fluxor;
@@ -22,7 +21,6 @@ services.AddOptions();
 services.AddAuthorizationCore();
 services.AddScoped<IdentityAuthenticationStateProvider>();
 services.AddScoped<AuthenticationStateProvider>(s => s.GetRequiredService<IdentityAuthenticationStateProvider>());
-services.AddScoped<IAuthorizeApi, AuthorizeApi>();
 
 // Add client-side HttpClient
 services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
@@ -32,7 +30,7 @@ services.AddScoped<Routes>();
 
 // Add Refit client
 services
-    .AddRefitClient<IBodyRockyApi>(new RefitSettings { })
+    .AddRefitClient<IBodyRockyApi>()
     .ConfigureHttpClient(c =>
     {
         c.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);

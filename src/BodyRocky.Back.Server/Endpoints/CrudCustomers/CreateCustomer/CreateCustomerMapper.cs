@@ -3,7 +3,7 @@ using BodyRocky.Shared.Contracts.Requests;
 using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.Server.Endpoints.Account.CreateCustomer;
+namespace BodyRocky.Back.Server.Endpoints.CrudCustomers.CreateCustomer;
 
 public class CreateCustomerMapper
     : Mapper<CreateCustomerRequest, CustomerDetailsResponse, Customer>

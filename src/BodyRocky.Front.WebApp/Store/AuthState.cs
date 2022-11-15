@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Blazored.Toast.Services;
-using BodyRocky.Front.WebApp.Services.Implementations;
 using BodyRocky.Front.WebApp.Shared;
+using BodyRocky.Front.WebApp.Shared.Services;
 using BodyRocky.Shared;
 using BodyRocky.Shared.Forms;
 using Fluxor;
@@ -157,6 +157,7 @@ public class AuthEffects
         }
         catch (Exception e)
         {
+            Console.WriteLine(e);
             string exceptionMessage = e.InnerException?.Message ?? e.Message;
             dispatcher.Dispatch(new LoginFailureAction(exceptionMessage));
         }

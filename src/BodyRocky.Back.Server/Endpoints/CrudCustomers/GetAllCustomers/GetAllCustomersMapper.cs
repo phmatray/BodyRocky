@@ -2,7 +2,7 @@
 using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.Server.Endpoints.Account.GetAllCustomers;
+namespace BodyRocky.Back.Server.Endpoints.CrudCustomers.GetAllCustomers;
 
 public class GetAllCustomersMapper
     : ResponseMapper<GetAllCustomersResponse, List<Customer>>

@@ -4,7 +4,7 @@ using BodyRocky.Shared.Contracts.Requests;
 using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.Server.Endpoints.Account.UpdateCustomer;
+namespace BodyRocky.Back.Server.Endpoints.CrudCustomers.UpdateCustomer;
 
 public class UpdateCustomerEndpoint
     : Endpoint<UpdateCustomerRequest, CustomerDetailsResponse, CustomerMapper>
@@ -18,7 +18,7 @@ public class UpdateCustomerEndpoint
 
     public override void Configure()
     {
-        Put("/accounts/customers");
+        Put("/crud/customers");
         AllowAnonymous();
     }
 

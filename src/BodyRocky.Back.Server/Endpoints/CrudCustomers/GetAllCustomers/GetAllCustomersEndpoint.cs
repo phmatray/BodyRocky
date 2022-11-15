@@ -4,7 +4,7 @@ using BodyRocky.Shared.Contracts.Requests;
 using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.Server.Endpoints.Account.GetAllCustomers;
+namespace BodyRocky.Back.Server.Endpoints.CrudCustomers.GetAllCustomers;
 
 public class GetAllCustomersEndpoint
     : Endpoint<GetAllCustomersRequest, GetAllCustomersResponse, GetAllCustomersMapper>
@@ -18,7 +18,7 @@ public class GetAllCustomersEndpoint
 
     public override void Configure()
     {
-        Get("/accounts/customers");
+        Get("/crud/customers");
         AllowAnonymous();
     }
 

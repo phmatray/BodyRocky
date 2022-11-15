@@ -1,10 +1,9 @@
 ﻿using BodyRocky.Back.Server.DataAccess.Entities;
-using BodyRocky.Back.Server.DataAccess.Enumerations;
 using BodyRocky.Back.Server.DataAccess.Factories;
 using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.Server.Endpoints.Account;
+namespace BodyRocky.Back.Server.Endpoints.CrudCustomers;
 
 public class CustomerMapper
     : ResponseMapper<CustomerDetailsResponse, Customer>

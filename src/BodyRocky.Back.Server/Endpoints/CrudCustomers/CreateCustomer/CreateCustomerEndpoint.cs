@@ -1,11 +1,11 @@
 ﻿using BodyRocky.Back.Server.DataAccess.Entities;
 using BodyRocky.Back.Server.DataAccess.Repositories;
-using BodyRocky.Back.Server.Endpoints.Account.GetCustomer;
+using BodyRocky.Back.Server.Endpoints.CrudCustomers.GetCustomer;
 using BodyRocky.Shared.Contracts.Requests;
 using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
-namespace BodyRocky.Back.Server.Endpoints.Account.CreateCustomer;
+namespace BodyRocky.Back.Server.Endpoints.CrudCustomers.CreateCustomer;
 
 public class CreateCustomerEndpoint
     : Endpoint<CreateCustomerRequest, CustomerDetailsResponse, CreateCustomerMapper>
@@ -19,7 +19,7 @@ public class CreateCustomerEndpoint
 
     public override void Configure()
     {
-        Post("/accounts/customers");
+        Post("/crud/customers");
         AllowAnonymous();
     }
 

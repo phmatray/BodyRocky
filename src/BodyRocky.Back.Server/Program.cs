@@ -68,7 +68,7 @@ if (app.Environment.IsDevelopment())
     {
         //Note: Microsoft recommends to NOT migrate your database at Startup. 
         //You should consider your migration strategy according to the guidelines.
-        serviceScope.ServiceProvider.GetRequiredService<BodyRockyDbContext>().Database.Migrate();
+        // serviceScope.ServiceProvider.GetRequiredService<BodyRockyDbContext>().Database.Migrate();
     }
 
     app.UseWebAssemblyDebugging();

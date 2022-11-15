@@ -1,33 +1,25 @@
 ﻿using BodyRocky.Shared.Contracts.Requests;
 using BodyRocky.Shared.Contracts.Responses;
+using BodyRocky.Shared.Forms;
 using Refit;
 
 namespace BodyRocky.Shared;
 
 public interface IBodyRockyApi
 {
-    #region Account
+    #region Authorize
     
-    [Post("/accounts/register")]
-    Task<SignupResponse> RegisterAsync([Body] SignupRequest request);
+    [Get("/authorize/user-info")]
+    Task<UserInfo> GetUserInfoAsync();
     
-    [Post("/accounts/login")]
-    Task<LoginResponse> LoginAsync([Body] LoginRequest request);
-
-    [Get("/accounts/customers")]
-    Task<GetAllCustomersResponse> GetCustomersAsync();
+    [Post("/authorize/login")]
+    Task LoginAsync([Body] LoginParameters parameters);
     
-    [Get("/accounts/customers/{request.CustomerID}")]
-    Task<CustomerDetailsResponse> GetCustomerAsync(GetCustomerRequest request);
+    [Post("/authorize/logout")]
+    Task LogoutAsync();
     
-    [Post("/accounts/customers")]
-    Task<CustomerDetailsResponse> CreateCustomerAsync([Body] CreateCustomerRequest request);
-    
-    [Put("/accounts/customers")]
-    Task<CustomerDetailsResponse> UpdateCustomerAsync([Body] UpdateCustomerRequest request);
-    
-    [Delete("/accounts/customers/{request.CustomerID}")]
-    Task DeleteCustomerAsync(DeleteCustomerRequest request);
+    [Post("/authorize/register")]
+    Task RegisterAsync([Body] RegisterParameters parameters);
     
     #endregion
     
@@ -59,4 +51,43 @@ public interface IBodyRockyApi
     Task<BrandResponse> CreateBrandAsync([Body] CreateBrandRequest request);
     
     #endregion
+    
+    #region CrudCustomer
+    
+    [Get("/crud/customers")]
+    Task<GetAllCustomersResponse> GetCustomersAsync();
+    
+    [Get("/crud/customers/{request.CustomerID}")]
+    Task<CustomerDetailsResponse> GetCustomerAsync(GetCustomerRequest request);
+    
+    [Post("/crud/customers")]
+    Task<CustomerDetailsResponse> CreateCustomerAsync([Body] CreateCustomerRequest request);
+    
+    [Put("/crud/customers")]
+    Task<CustomerDetailsResponse> UpdateCustomerAsync([Body] UpdateCustomerRequest request);
+    
+    [Delete("/crud/customers/{request.CustomerID}")]
+    Task DeleteCustomerAsync(DeleteCustomerRequest request);
+    
+    #endregion
 }
+
+
+
+
+
+
+
+
+// Il m’est donc impossible de continuer a assurer mes cours. 
+
+
+// Je vous prie de bien vouloir m’excuser pour ce qui s’est passe et de croire, Madame, a l’assurance de ma plus haute consideration.
+
+// Cordialement,
+
+
+
+// Dans ces circonstances, je ne peux que vous presenter mes excuses et remettre ma demission.
+
+// necessite un arret complet de mes activites pour une periode indeterminee.
