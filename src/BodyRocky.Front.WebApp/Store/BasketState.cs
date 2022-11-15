@@ -121,7 +121,7 @@ public class BasketEffects
 {
     private readonly IBodyRockyApi _bodyRockyClient;
     private readonly IToastService _toastService;
-    private readonly AuthState _authState;
+    private readonly IState<AuthState> _authState;
     
     public BasketEffects(
         IBodyRockyApi bodyRockyClient,
@@ -130,14 +130,14 @@ public class BasketEffects
     {
         _bodyRockyClient = bodyRockyClient;
         _toastService = toastService;
-        _authState = authState.Value;
+        _authState = authState;
     }
     
     [EffectMethod]
     public async Task HandleAddToBasketAction(AddToBasketAction action, IDispatcher dispatcher)
     {
         // 1. send the request
-        var customerId = _authState.UserInfo?.UserId;
+        var customerId = _authState.Value.UserInfo?.UserId;
         
         if (customerId is not null)
         {
