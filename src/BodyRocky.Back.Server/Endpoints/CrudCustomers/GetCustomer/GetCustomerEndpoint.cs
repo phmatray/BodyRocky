@@ -29,7 +29,7 @@ public class GetCustomerEndpoint
 
         if (!isIDGuid)
         {
-            throw new Exception("customerID is not a valid GUID");
+            ThrowError("customerID is not a valid GUID");
         }
         
         var customers = await _repository.GetByIDAsync(customerID);

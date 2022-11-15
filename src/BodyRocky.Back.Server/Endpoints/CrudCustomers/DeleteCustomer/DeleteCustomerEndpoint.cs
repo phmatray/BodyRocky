@@ -28,7 +28,7 @@ public class DeleteCustomerEndpoint
 
         if (!isIDGuid)
         {
-            throw new Exception("customerID is not a valid GUID");
+            ThrowError("customerID is not a valid GUID");
         }
         
         await _repository.DeleteAsync(customerID);

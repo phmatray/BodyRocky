@@ -29,6 +29,7 @@ public sealed class CategoryRepository : IDisposable
         return await _context.Categories
             .Include(x => x.ProductCategories)
             .Where(x => x.IsFeatured)
+            .OrderBy(category => category.CategoryID)
             .Take(6)
             .ToListAsync();
     }
