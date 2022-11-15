@@ -8,28 +8,32 @@ namespace BodyRocky.Front.WebApp.Shared.Services;
 public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
 {
     private UserInfo? _userInfoCache;
-    private readonly IBodyRockyApi _bodyRockyApi;
+    private readonly IAuthorizeApi _authorizeApi;
+    private readonly ILogger<IdentityAuthenticationStateProvider> _logger;
 
-    public IdentityAuthenticationStateProvider(IBodyRockyApi bodyRockyApi)
+    public IdentityAuthenticationStateProvider(
+        IAuthorizeApi authorizeApi,
+        ILogger<IdentityAuthenticationStateProvider> logger)
     {
-        _bodyRockyApi = bodyRockyApi;
+        _authorizeApi = authorizeApi;
+        _logger = logger;
     }
 
     public async Task Login(LoginParameters loginParameters)
     {
-        await _bodyRockyApi.LoginAsync(loginParameters);
+        await _authorizeApi.Login(loginParameters);
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
     }
 
     public async Task Register(RegisterParameters registerParameters)
     {
-        await _bodyRockyApi.RegisterAsync(registerParameters);
+        await _authorizeApi.Register(registerParameters);
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
     }
 
     public async Task Logout()
     {
-        await _bodyRockyApi.LogoutAsync();
+        await _authorizeApi.Logout();
         _userInfoCache = null;
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
     }
@@ -41,16 +45,8 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
             return _userInfoCache;
         }
 
-        try
-        {
-            _userInfoCache = await _bodyRockyApi.GetUserInfoAsync();
-            return _userInfoCache;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        _userInfoCache = await _authorizeApi.GetUserInfo();
+        return _userInfoCache;
     }
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -67,9 +63,9 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
                 identity = new ClaimsIdentity(claims, "Server authentication");
             }
         }
-        catch (Refit.ApiException ex)
+        catch (HttpRequestException ex)
         {
-            Console.WriteLine($"Request failed:{ex}");
+            _logger.LogError(ex, "Request failed");
         }
 
         return new AuthenticationState(new ClaimsPrincipal(identity));

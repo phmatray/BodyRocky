@@ -1,36 +1,19 @@
 ﻿using BodyRocky.Shared.Contracts.Requests;
 using BodyRocky.Shared.Contracts.Responses;
-using BodyRocky.Shared.Forms;
 using Refit;
 
 namespace BodyRocky.Shared;
 
 public interface IBodyRockyApi
 {
-    #region Authorize
-    
-    [Get("/authorize/user-info")]
-    Task<UserInfo> GetUserInfoAsync();
-    
-    [Post("/authorize/login")]
-    Task LoginAsync([Body] LoginParameters parameters);
-    
-    [Post("/authorize/logout")]
-    Task LogoutAsync();
-    
-    [Post("/authorize/register")]
-    Task RegisterAsync([Body] RegisterParameters parameters);
-    
-    #endregion
-    
-    #region Baskets
+    #region Baskets (with fastendpoints)
     
     [Post("/baskets/products")]
     Task AddProductToBasketAsync([Body] AddProductToBasketRequest request);
     
     #endregion
     
-    #region Catalog
+    #region Catalog (with fastendpoints)
     
     [Get("/catalog/overview")]
     Task<GetCatalogOverviewResponse> GetCatalogOverviewAsync();
@@ -52,7 +35,7 @@ public interface IBodyRockyApi
     
     #endregion
     
-    #region CrudCustomer
+    #region CrudCustomer (with fastendpoints)
     
     [Get("/crud/customers")]
     Task<GetAllCustomersResponse> GetCustomersAsync();
@@ -71,23 +54,3 @@ public interface IBodyRockyApi
     
     #endregion
 }
-
-
-
-
-
-
-
-
-// Il m’est donc impossible de continuer a assurer mes cours. 
-
-
-// Je vous prie de bien vouloir m’excuser pour ce qui s’est passe et de croire, Madame, a l’assurance de ma plus haute consideration.
-
-// Cordialement,
-
-
-
-// Dans ces circonstances, je ne peux que vous presenter mes excuses et remettre ma demission.
-
-// necessite un arret complet de mes activites pour une periode indeterminee.

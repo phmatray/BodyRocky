@@ -2,6 +2,7 @@
 @using System.Net
 @using BodyRocky.Front.WebApp.Store.Models
 @inherits FluxorComponent
+@attribute [Authorize]
 @inject IState<LayoutState> LayoutState
 @inject IState<CatalogFullState> CatalogState
 @inject LayoutDispatcher LayoutDispatcher

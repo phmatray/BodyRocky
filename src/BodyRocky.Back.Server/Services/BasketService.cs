@@ -1,5 +1,4 @@
 using BodyRocky.Back.Server.DataAccess.Entities;
-using BodyRocky.Back.Server.DataAccess.Enumerations;
 using BodyRocky.Back.Server.DataAccess.Factories;
 using BodyRocky.Back.Server.DataAccess.Repositories;
 

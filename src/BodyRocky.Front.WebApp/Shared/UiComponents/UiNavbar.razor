@@ -3,6 +3,7 @@
 @inject IState<LayoutState> LayoutState
 @inject IState<CatalogFullState> CatalogState
 @inject IState<AuthState> AuthState
+@inject AuthDispatcher AuthDispatcher
 
 <nav class="bg-gray-800">
   <div class="container flex">
@@ -45,26 +46,28 @@
         @* </NavLink> *@
       </div>
 
-      @* <AuthorizeView> *@
-      @*   <Authorized> *@
-      @*     Bonjour @context.User.Identity.Name *@
-      @*   </Authorized> *@
-      @*   <Authorizing> *@
-      @*     <h1>Loading ...</h1> *@
-      @*   </Authorizing> *@
-      @*   <NotAuthorized> *@
-      @*     <NavLink href="@Routes.LOGIN_ROUTE" class="text-gray-200 hover:text-white transition"> *@
-      @*       Connexion / Enregistrement *@
-      @*     </NavLink> *@
-      @*   </NotAuthorized> *@
-      @* </AuthorizeView> *@
+      <AuthorizeView>
+        <NotAuthorized>
+          <NavLink href="@Routes.LOGIN_ROUTE" class="text-gray-200 hover:text-white transition">
+            Connexion / Enregistrement
+          </NavLink>
+        </NotAuthorized>
+        <Authorizing>
+          <i class="fa-solid fa-spinner fa-spin text-white"></i>
+        </Authorizing>
+        <Authorized>
+          <button class="text-gray-200 hover:text-white transition" @onclick="Logout">
+            Déconnexion
+          </button>
+        </Authorized>
+      </AuthorizeView>
       
-      @if(AuthState?.Value.IsAuthenticated == false)
-      {
-        <NavLink href="@Routes.LOGIN_ROUTE" class="text-gray-200 hover:text-white transition">
-          Connexion / Enregistrement
-        </NavLink>
-      }
+      @* @if(AuthState?.Value.IsAuthenticated == false) *@
+      @* { *@
+      @*   <NavLink href="@Routes.LOGIN_ROUTE" class="text-gray-200 hover:text-white transition"> *@
+      @*     Connexion / Enregistrement *@
+      @*   </NavLink> *@
+      @* } *@
     </div>
   </div>
 </nav>
@@ -76,6 +79,11 @@
     return category is not null
       ? $"{Routes.SHOP_ROUTE}?categories={category.CategoryName}"
       : Routes.SHOP_ROUTE;
-  } 
+  }
+
+  private void Logout()
+  {
+    AuthDispatcher.Logout();
+  }
 
 }

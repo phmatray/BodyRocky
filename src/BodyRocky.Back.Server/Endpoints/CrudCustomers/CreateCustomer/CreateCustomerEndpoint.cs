@@ -33,7 +33,7 @@ public class CreateCustomerEndpoint
         CustomerDetailsResponse response = Map.FromEntity(customer);
 
         await SendCreatedAtAsync<GetCustomerEndpoint>(
-            "vaitefouderch",
+            "/crud/customers/{id}",
             response,
             Http.GET,
             cancellation: ct);

@@ -22,6 +22,7 @@ public class AddProductToBasketEndpoint
 
     public override async Task HandleAsync(AddProductToBasketRequest req, CancellationToken ct)
     {
+        Logger.LogError("CustomerId: {CustomerId}, ProductId: {ProductId}, Quantity: {Quantity}", req.CustomerId, req.ProductId, req.Quantity);
         await _basketService.AddProductToBasketAsync(req.CustomerId, req.ProductId, req.Quantity);
         await SendOkAsync(ct);
     }

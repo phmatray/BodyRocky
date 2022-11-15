@@ -28,6 +28,9 @@ services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvi
 // Add Routes
 services.AddScoped<Routes>();
 
+// Add AuthorizeApi client
+services.AddScoped<IAuthorizeApi, AuthorizeApi>();
+
 // Add Refit client
 services
     .AddRefitClient<IBodyRockyApi>()

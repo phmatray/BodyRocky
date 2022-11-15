@@ -1,5 +1,4 @@
 @page "/login"
-@using BodyRocky.Shared.Forms
 @inherits FluxorComponent
 @inject IState<AuthState> AuthState
 @inject AuthDispatcher AuthDispatcher
@@ -13,7 +12,7 @@
     <p class="text-gray-600 mb-6 text-sm">
       bienvenue sur votre espace de connexion
     </p>
-    <EditForm Model="_loginModel" OnValidSubmit="HandleLogin" autocomplete="off">
+    <EditForm Model="_loginParameters" OnValidSubmit="HandleLogin" autocomplete="off">
       <DataAnnotationsValidator/>
       
       <div class="space-y-2">
@@ -24,8 +23,8 @@
                      type="email"
                      placeholder="laurent.dupont@example.com"
                      autocomplete="username"
-                     @bind-Value="_loginModel.Email"/>
-          <ValidationMessage For="@(() => _loginModel.Email)" />
+                     @bind-Value="_loginParameters.Email"/>
+          <ValidationMessage For="@(() => _loginParameters.Email)" />
         </div>
         <div>
           <label class="text-gray-600 mb-2 block" for="password">Mot de passe</label>
@@ -34,13 +33,13 @@
                      type="password"
                      placeholder="********"
                      autocomplete="password"
-                     @bind-Value="_loginModel.Password"/>
-          <ValidationMessage For="@(() => _loginModel.Password)" />
+                     @bind-Value="_loginParameters.Password"/>
+          <ValidationMessage For="@(() => _loginParameters.Password)" />
         </div>
       </div>
       <div class="flex items-center justify-between mt-6">
         <div class="flex items-center">
-          <InputCheckbox id="inputRememberMe" class="text-primary focus:ring-0 rounded-sm cursor-pointer" @bind-Value="@_loginModel.RememberMe" />
+          <InputCheckbox id="inputRememberMe" class="text-primary focus:ring-0 rounded-sm cursor-pointer" @bind-Value="@_loginParameters.RememberMe" />
           <label class="text-gray-600 ml-3 cursor-pointer" for="inputRememberMe">
             Se souvenir de moi
           </label>
@@ -99,11 +98,11 @@
 
 @code {
   
-  private readonly LoginParameters _loginModel = new();
+  private readonly LoginParameters _loginParameters = new();
 
   private void HandleLogin()
   {
-    AuthDispatcher.Login(_loginModel);
+    AuthDispatcher.Login(_loginParameters);
   }
 
 }
