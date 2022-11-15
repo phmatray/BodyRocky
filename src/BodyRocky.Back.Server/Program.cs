@@ -1,7 +1,6 @@
 ﻿using BodyRocky.Back.Server.DataAccess;
 using BodyRocky.Back.Server.DataAccess.Entities;
 using FastEndpoints;
-using FastEndpoints.Security;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +34,7 @@ services.Configure<IdentityOptions>(options =>
     options.Lockout.AllowedForNewUsers = true;
 
     // User settings
-    options.User.RequireUniqueEmail = false;
+    options.User.RequireUniqueEmail = true;
 });
 
 services.ConfigureApplicationCookie(options =>
@@ -55,7 +54,6 @@ services.AddBusinessServices();
 services.AddControllersWithViews();
 services.AddRazorPages();
 
-services.AddAuthenticationJWTBearer("TokenSigningKey");
 services.AddFastEndpoints();
 services.AddSwaggerDoc();
 
