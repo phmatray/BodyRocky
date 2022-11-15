@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using BodyRocky.Front.AdminApp.Models;
 using BodyRocky.Front.AdminApp.Presenters;
-using GLib;
 using Gtk;
 using Application = Gtk.Application;
 using UI = Gtk.Builder.ObjectAttribute;

@@ -7,7 +7,7 @@ namespace BodyRocky.Front.WebApp.Shared.Services;
 
 public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
 {
-    private UserInfo? _userInfoCache;
+    private UserInfoResponse? _userInfoCache;
     private readonly IAuthorizeApi _authorizeApi;
     private readonly ILogger<IdentityAuthenticationStateProvider> _logger;
 
@@ -38,7 +38,7 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
     }
 
-    private async Task<UserInfo> GetUserInfo()
+    private async Task<UserInfoResponse> GetUserInfo()
     {
         if (_userInfoCache is { IsAuthenticated: true })
         {
@@ -57,7 +57,10 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
             var userInfo = await GetUserInfo();
             if (userInfo.IsAuthenticated)
             {
-                var claims = new[] { new Claim(ClaimTypes.Name, userInfo.UserName) }
+                var claims = new[]
+                    {
+                        new Claim(ClaimTypes.Name, userInfo.UserName),
+                    }
                     .Concat(userInfo.ExposedClaims.Select(c => new Claim(c.Key, c.Value)));
                 
                 identity = new ClaimsIdentity(claims, "Server authentication");

@@ -7,12 +7,10 @@ namespace BodyRocky.Front.WebApp.Shared.Services;
 public class AuthorizeApi : IAuthorizeApi
 {
     private readonly HttpClient _httpClient;
-    private readonly ILogger<AuthorizeApi> _logger;
 
-    public AuthorizeApi(HttpClient httpClient, ILogger<AuthorizeApi> logger)
+    public AuthorizeApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _logger = logger;
     }
 
     public async Task Login(LoginParameters loginParameters)
@@ -46,8 +44,8 @@ public class AuthorizeApi : IAuthorizeApi
         result.EnsureSuccessStatusCode();
     }
 
-    public async Task<UserInfo?> GetUserInfo()
+    public async Task<UserInfoResponse?> GetUserInfo()
     {
-        return await _httpClient.GetFromJsonAsync<UserInfo>("authorize/UserInfo");
+        return await _httpClient.GetFromJsonAsync<UserInfoResponse>("authorize/UserInfo");
     }
 }

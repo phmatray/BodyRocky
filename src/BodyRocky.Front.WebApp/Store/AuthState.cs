@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Blazored.Toast.Services;
 using BodyRocky.Front.WebApp.Shared;
 using BodyRocky.Front.WebApp.Shared.Services;
@@ -43,11 +44,11 @@ public record LoginSuccessAction(UserInfo UserInfo);
 public record LoginFailureAction(string Error);
 
 public record RegisterAction(RegisterParameters RegisterParameters);
-public record RegisterSuccessAction();
+public record RegisterSuccessAction;
 public record RegisterFailureAction(string Error);
 
-public record LogoutAction();
-public record LogoutSuccessAction();
+public record LogoutAction;
+public record LogoutSuccessAction;
 public record LogoutFailureAction(string Error);
 
 #endregion
@@ -173,10 +174,14 @@ public class AuthEffects
             // if the user is already authenticated (via cookie), auth.User.Identity will be not null
             if (auth.User.Identity?.IsAuthenticated ?? false)
             {
+                // select guid id from claim
+                var userId = Guid.Parse(auth.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
+                
                 var userInfo = new UserInfo(
                     auth.User.Identity?.Name ?? string.Empty,
                     auth.User.Identity?.AuthenticationType ?? string.Empty,
-                    auth.User.Identity?.IsAuthenticated ?? false);
+                    auth.User.Identity?.IsAuthenticated ?? false,
+                    userId);
                 
                 dispatcher.Dispatch(new LoginSuccessAction(userInfo));
                 _toastService.ShowSuccess("Vous êtes maintenant connecté.", $"Bienvenue {userInfo.Name}");

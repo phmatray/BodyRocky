@@ -81,18 +81,19 @@ namespace BodyRocky.Back.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<UserInfo> UserInfo()
+        public async Task<UserInfoResponse> UserInfo()
         {
-            // var user = await _userManager.GetUserAsync(HttpContext.User);
-            return BuildUserInfo();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            return BuildUserInfo(user.Id);
         }
 
 
-        private UserInfo BuildUserInfo()
+        private UserInfoResponse BuildUserInfo(Guid userId)
         {
-            return new UserInfo
+            return new UserInfoResponse
             {
                 IsAuthenticated = User.Identity.IsAuthenticated,
+                UserId = userId,
                 UserName = User.Identity.Name,
                 ExposedClaims = User.Claims
                     //Optionally: filter the claims you want to expose to the client

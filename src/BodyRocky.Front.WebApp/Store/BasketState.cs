@@ -39,8 +39,8 @@ public record BasketState(
 
 public record AddToBasketAction(ProductResponse Product, int Quantity);
 public record RemoveFromBasketAction(Guid ProductId, int Quantity);
-public record ClearBasketAction();
-public record PlaceOrderAction();
+public record ClearBasketAction;
+public record PlaceOrderAction;
 
 #endregion
 
@@ -136,18 +136,8 @@ public class BasketEffects
     [EffectMethod]
     public async Task HandleAddToBasketAction(AddToBasketAction action, IDispatcher dispatcher)
     {
-        // 1. send the toast   
-        ToastParameters parameters = new();
-        parameters.Add(nameof(AddedToBasketToast.Product), action.Product);
-        parameters.Add(nameof(AddedToBasketToast.Quantity), action.Quantity);
-        
-        ToastInstanceSettings settings = new(5, true);
-        
-        _toastService.ShowToast<AddedToBasketToast>(parameters, settings);
-        
-        // 2. send request to backend
-        // Guid? customerId = _authState.Customer?.CustomerID;
-        Guid? customerId = Guid.Parse("c0a8016b-0000-0000-0000-000000000000");
+        // 1. send the request
+        var customerId = _authState.UserInfo?.UserId;
         
         if (customerId is not null)
         {
@@ -160,6 +150,16 @@ public class BasketEffects
         
             await _bodyRockyClient.AddProductToBasketAsync(addProductToBasketRequest);
         }
+        
+        // 2. show the toast   
+        ToastParameters parameters = new();
+        parameters.Add(nameof(AddedToBasketToast.Product), action.Product);
+        parameters.Add(nameof(AddedToBasketToast.Quantity), action.Quantity);
+        
+        ToastInstanceSettings settings = new(5, true);
+        
+        _toastService.ShowToast<AddedToBasketToast>(parameters, settings);
+
     }
     
     [EffectMethod]

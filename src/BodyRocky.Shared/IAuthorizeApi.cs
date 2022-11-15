@@ -7,5 +7,5 @@ public interface IAuthorizeApi
     Task Login(LoginParameters loginParameters);
     Task Logout();
     Task Register(RegisterParameters registerParameters);
-    Task<UserInfo> GetUserInfo();
+    Task<UserInfoResponse> GetUserInfo();
 }

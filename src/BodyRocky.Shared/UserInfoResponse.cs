@@ -1,10 +1,9 @@
-﻿using System.Text;
+﻿namespace BodyRocky.Shared;
 
-namespace BodyRocky.Shared;
-
-public class UserInfo
+public class UserInfoResponse
 {
     public bool IsAuthenticated { get; set; }
     public string UserName { get; set; }
+    public Guid UserId { get; set; }
     public Dictionary<string, string> ExposedClaims { get; set; }
 }
