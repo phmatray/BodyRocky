@@ -13,7 +13,8 @@ public enum PageType
     Register,
     Shop,
     Wishlist,
-    Faq
+    Faq,
+    Orders,
 }
 
 public class Routes
@@ -28,6 +29,7 @@ public class Routes
     public const string SHOP_ROUTE = "/shop";
     public const string WISHLIST_ROUTE = "/wishlist";
     public const string FAQ_ROUTE = "/faq";
+    public const string ORDERS_ROUTE = "/orders";
     
     private Dictionary<PageType, string> _routes = new()
     {
@@ -40,7 +42,8 @@ public class Routes
         {PageType.Register, REGISTER_ROUTE},
         {PageType.Shop, SHOP_ROUTE},
         {PageType.Wishlist, WISHLIST_ROUTE},
-        {PageType.Faq, FAQ_ROUTE}
+        {PageType.Faq, FAQ_ROUTE},
+        {PageType.Orders, ORDERS_ROUTE}
     };
 
     private readonly NavigationManager _navigationManager;

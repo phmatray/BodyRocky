@@ -58,5 +58,6 @@ services.AddScoped<AuthDispatcher>();
 services.AddScoped<BasketDispatcher>();
 services.AddScoped<CatalogOverviewDispatcher>();
 services.AddScoped<CatalogFullDispatcher>();
+services.AddScoped<OrderHistoryDispatcher>();
 
 await builder.Build().RunAsync();

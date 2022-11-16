@@ -7,4 +7,5 @@ public class OrderResponse
     public string Reference { get; init; } = default!;
     public string DeliveryName { get; init; } = default!;
     public DateTime PurchaseDate { get; init; } = default!;
+    public OrderedProductResponse[] OrderedProducts { get; set; }
 }

@@ -25,6 +25,9 @@ public record AuthState(
     
     public bool HasError
         => ErrorMessage is not null;
+    
+    public string FullName
+        => $"{CustomerDetails?.FirstName} {CustomerDetails?.LastName}";
 }
 
 public class AuthFeature : Feature<AuthState>

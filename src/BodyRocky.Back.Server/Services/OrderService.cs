@@ -61,4 +61,9 @@ public class OrderService
         
         return order;
     }
+    
+    public async Task<List<Order>> GetOrdersByCustomerIDAsync(Guid customerID)
+    {
+        return await _orderRepository.GetOrdersByCustomerIDAsync(customerID);
+    }
 }

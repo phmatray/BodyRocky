@@ -13,7 +13,7 @@
         @if(AuthState.Value.IsAuthenticated)
         {
           <span>
-            @AuthState.Value.UserInfo?.Name
+            @AuthState.Value.FullName
           </span>
         }
       </h4>
@@ -44,12 +44,14 @@
     </div>
 
     <div class="space-y-1 pl-8 pt-4">
-      <a class="relative hover:text-primary block font-medium transition" href="#">
+      <NavLink
+        class="relative hover:text-primary block font-medium transition"
+        href="@Routes.ORDERS_ROUTE">
         <span class="absolute -left-8 top-0 text-base">
           <i class="fa-solid fa-box-archive"></i>
         </span>
         Historique de commande
-      </a>
+      </NavLink>
       <a class="relative hover:text-primary block transition" href="#">
         Mes retours
       </a>

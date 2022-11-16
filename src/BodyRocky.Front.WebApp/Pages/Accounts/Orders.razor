@@ -1,0 +1,92 @@
+@page "/orders"
+@using System.Globalization
+@inherits FluxorComponent
+@layout AccountLayout
+@inject IState<AuthState> AuthState
+@inject IState<OrderHistoryState> OrderHistoryState
+@inject OrderHistoryDispatcher OrderHistoryDispatcher
+
+<!-- info -->
+<div class="col-span-9 shadow rounded px-6 pt-5 pb-7">
+  <h3 class="text-xl font-medium capitalize mb-4">
+    Mes commandes
+  </h3>
+  <div class="space-y-4">
+    @if (OrderHistoryState.Value.Orders.Any())
+    {
+      foreach (var order in OrderHistoryState.Value.Orders)
+      {
+        <div class="flex flex-col space-y-2">
+          <div class="flex justify-between">
+            <div class="flex space x-2">
+              <div class="text-sm font-medium">
+                Commande n°
+              </div>
+              <div class="text-sm font-medium text-primary">
+                @order.OrderID
+              </div>
+              <div class="text-sm font-medium px-2">
+                du
+              </div>
+              <div class="text-sm font-medium text-primary">
+                @order.PurchaseDate.ToString("dd/MM/yyyy")
+              </div>
+            </div>
+            <div class="flex space x-2">
+              <div class="text-sm font-medium">
+                Total
+              </div>
+              <div class="text-sm font-medium text-primary">
+                @order.OrderedProducts.Sum(x => x.Quantity * x.OrderedProductPrice).ToString("C", CultureInfo.CreateSpecificCulture("fr-FR"))
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul>
+          @foreach (var orderedProduct in order.OrderedProducts)
+          {
+            <li>
+              <div class="flex justify-between pl-4">
+                <div class="flex space x-2">
+                  <div class="text-sm font-medium">
+                    @orderedProduct.OrderedProductName
+                  </div>
+                  <div class="text-sm font-medium text-primary">
+                    @orderedProduct.Quantity
+                  </div>
+                </div>
+                <div class="text-sm font-medium text-primary">
+                  @orderedProduct.OrderedProductPrice.ToString("C", CultureInfo.CreateSpecificCulture("fr-FR"))
+                </div>
+              </div>
+            </li>
+          }
+        </ul>
+      }
+    }            
+  </div>
+</div>
+<!-- ./info -->
+
+@code {
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    LoadOrderHistory();
+  }
+
+  protected override void OnParametersSet()
+  {
+    LoadOrderHistory();
+  }
+  
+  private void LoadOrderHistory()
+  {
+    if (AuthState.Value.UserInfo != null)
+    {
+      OrderHistoryDispatcher.LoadOrderHistory(AuthState.Value.UserInfo.UserId);
+    }
+  }
+
+}

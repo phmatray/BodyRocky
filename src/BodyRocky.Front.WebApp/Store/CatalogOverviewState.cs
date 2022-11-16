@@ -37,7 +37,6 @@ public class CatalogOverviewFeature : Feature<CatalogOverviewState>
 
 public record LoadCatalogOverviewAction;
 
-
 public record LoadCatalogOverviewSuccessAction(
     CategoryResponse[] FeaturedCategories,
     ProductResponse[] FeaturedProducts,

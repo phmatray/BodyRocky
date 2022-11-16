@@ -62,5 +62,8 @@ public interface IBodyRockyApi
     [Post("/orders/execute")]
     Task<ExecuteOrderResponse> ExecuteOrderAsync([Body] ExecuteOrderRequest request);
     
+    [Get("/orders/customer/{request.CustomerID}")]
+    Task<GetAllOrdersByCustomerResponse> GetAllOrdersByCustomerAsync(GetAllOrdersByCustomerRequest request);
+
     #endregion
 }

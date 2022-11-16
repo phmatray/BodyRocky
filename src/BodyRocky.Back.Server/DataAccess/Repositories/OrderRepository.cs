@@ -18,12 +18,27 @@ public sealed class OrderRepository : IDisposable
 
     public async Task<List<Order>> GetAllAsync()
     {
-        return await _context.Orders.ToListAsync();
+        return await _context.Orders
+            .Include(o => o.OrderedProducts)
+            .ThenInclude(op => op.Product)
+            .ToListAsync();
+    }
+
+    public async Task<List<Order>> GetOrdersByCustomerIDAsync(Guid customerID)
+    {
+        return await _context.Orders
+            .Include(o => o.OrderedProducts)
+            .ThenInclude(op => op.Product)
+            .Where(o => o.CustomerID == customerID)
+            .OrderByDescending(o => o.PurchaseDate)
+            .ToListAsync();
     }
 
     public async Task<Order?> GetByIDAsync(Guid orderID)
     {
         return await _context.Orders
+            .Include(o => o.OrderedProducts)
+            .ThenInclude(op => op.Product)
             .SingleOrDefaultAsync(order => order.OrderID == orderID);
     }
 
