@@ -1,4 +1,3 @@
-using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
 namespace BodyRocky.Back.Server.Endpoints.Catalog.GetFull;

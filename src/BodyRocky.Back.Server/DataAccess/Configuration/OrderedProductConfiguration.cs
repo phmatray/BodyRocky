@@ -1,5 +1,4 @@
-﻿using BodyRocky.Back.Server.DataAccess.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BodyRocky.Back.Server.DataAccess.Configuration;

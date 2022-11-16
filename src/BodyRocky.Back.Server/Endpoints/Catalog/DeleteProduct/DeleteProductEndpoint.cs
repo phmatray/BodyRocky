@@ -1,4 +1,3 @@
-using BodyRocky.Back.Server.Services;
 using BodyRocky.Shared.Contracts.Requests;
 using FastEndpoints;
 

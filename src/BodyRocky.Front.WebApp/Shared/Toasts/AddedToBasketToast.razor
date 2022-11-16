@@ -11,20 +11,24 @@
           Produit ajouté au panier
         </p>
         <p class="mt-1 text-sm text-gray-500">
-          @if (Product != null)
+          @if (ProductPrice > 0)
           {
             if (Quantity == 1)
             {
               <span>
-                Un exemplaire de <span class="font-medium">@Product.ProductName</span>
-                au prix de <span class="font-medium">@Product.ProductPrice.ToString("C")</span> a été ajouté au panier.
+                Un exemplaire de <span class="font-medium">
+                  @ProductName
+                </span>
+                au prix de <span class="font-medium">@ProductPrice.ToString("C")</span> a été ajouté au panier.
               </span>
             }
             else
             {
               <span>
-                @Quantity exemplaires de <span class="font-medium">@Product.ProductName</span>
-                au prix de <span class="font-medium">@Product.ProductPrice.ToString("C")</span> ont été ajoutés au panier.
+                @Quantity exemplaires de <span class="font-medium">
+                  @ProductName
+                </span>
+                au prix de <span class="font-medium">@ProductPrice.ToString("C")</span> ont été ajoutés au panier.
               </span>
             }
           }
@@ -62,10 +66,14 @@
   private BlazoredToast ToastInstance { get; set; } = default!;
   
   [Parameter]
-  [EditorRequired]
-  public ProductResponse? Product { get; set; }
+  public Guid ProductID { get; init; }
+
+  [Parameter]
+  public string ProductName { get; set; } = "";
+
+  [Parameter]
+  public decimal ProductPrice { get; set; }
   
   [Parameter]
   public int Quantity { get; set; } = 1;
-
 }

@@ -1,5 +1,3 @@
-using BodyRocky.Back.Server.DataAccess.Entities;
-
 namespace BodyRocky.Back.Server.Endpoints.Catalog.GetOverview;
 
 public class CatalogOverview

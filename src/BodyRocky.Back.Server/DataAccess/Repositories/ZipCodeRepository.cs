@@ -1,5 +1,4 @@
-﻿using BodyRocky.Back.Server.DataAccess.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace BodyRocky.Back.Server.DataAccess.Repositories;
 

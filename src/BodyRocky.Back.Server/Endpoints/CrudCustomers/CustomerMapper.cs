@@ -1,6 +1,4 @@
-﻿using BodyRocky.Back.Server.DataAccess.Entities;
-using BodyRocky.Back.Server.DataAccess.Factories;
-using BodyRocky.Shared.Contracts.Responses;
+﻿using BodyRocky.Back.Server.DataAccess.Factories;
 using FastEndpoints;
 
 namespace BodyRocky.Back.Server.Endpoints.CrudCustomers;
@@ -18,34 +16,10 @@ public class CustomerMapper
     public override CustomerDetailsResponse FromEntity(Customer customer)
     {
         Basket currentBasket = 
+            // get the last basket associated with the customer
             customer.Baskets.MaxBy(b => b.BasketDateAdded)
+            // or create a new one
             ?? _basketFactory.CreateEmptyBasket(customer.Id);
-
-        var basketItemResponses = currentBasket?
-            .BasketProducts
-            .Select(bp => new BasketItemResponse
-            {
-                Product = new ProductResponse
-                {
-                    ProductID = bp.Product.ProductID,
-                    ProductName = bp.Product.ProductName,
-                    ProductDescription = bp.Product.ProductDescription,
-                    ProductPrice = bp.Product.ProductPrice,
-                    ProductURL = bp.Product.ProductURL,
-                    IsFeatured = bp.Product.IsFeatured,
-                    Stock = bp.Product.Stock,
-                    ProductCategory = "PLACEHOLDER" 
-                },
-                Quantity = bp.Quantity,
-            })
-            .ToList();
-        
-        BasketResponse basketResponse = new()
-        {
-            BasketID = currentBasket.BasketID,
-            BasketDateAdded = currentBasket.BasketDateAdded,
-            BasketItems = basketItemResponses
-        };
 
         return new CustomerDetailsResponse
         {
@@ -55,7 +29,35 @@ public class CustomerMapper
             BirthDate = customer.BirthDate,
             PhoneNumber = customer.PhoneNumber,
             EmailAddress = customer.Email,
-            CurrentBasket = basketResponse
+            CurrentBasket = FromBasket(currentBasket)
+        };
+    }
+
+    private static BasketResponse FromBasket(Basket basket)
+    {
+        return new BasketResponse
+        {
+            BasketID = basket.BasketID,
+            BasketDateAdded = basket.BasketDateAdded,
+            BasketItems = FromBasketProducts(basket.BasketProducts)
+        };
+    }
+
+    private static BasketItem[] FromBasketProducts(IEnumerable<BasketProduct> basketProducts)
+    {
+        return basketProducts
+            .Select(FromBasketProduct)
+            .ToArray();
+    }
+
+    private static BasketItem FromBasketProduct(BasketProduct basketProduct)
+    {
+        return new BasketItem
+        {
+            ProductID = basketProduct.Product.ProductID,
+            ProductName = basketProduct.Product.ProductName,
+            ProductPrice = basketProduct.Product.ProductPrice,
+            Quantity = basketProduct.Quantity,
         };
     }
 }

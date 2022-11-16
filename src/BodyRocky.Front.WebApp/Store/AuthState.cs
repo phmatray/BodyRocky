@@ -13,8 +13,8 @@ namespace BodyRocky.Front.WebApp.Store;
 
 public record AuthState(
     bool IsLoading,
-    UserInfo? UserInfo,
-    string? ErrorMessage)
+    string? ErrorMessage,
+    UserInfo? UserInfo)
 {
     public bool IsAuthenticated
         => UserInfo?.IsAuthenticated ?? false;
@@ -144,17 +144,20 @@ public class AuthEffects
     private readonly IToastService _toastService;
     private readonly ILogger<AuthEffects> _logger;
     private readonly IdentityAuthenticationStateProvider _authStateProvider;
+    private readonly BasketDispatcher _basketDispatcher;
 
     public AuthEffects(
         NavigationManager navigationManager,
         IToastService toastService,
         ILogger<AuthEffects> logger,
-        IdentityAuthenticationStateProvider authStateProvider)
+        IdentityAuthenticationStateProvider authStateProvider,
+        BasketDispatcher basketDispatcher)
     {
         _navigationManager = navigationManager;
         _toastService = toastService;
         _logger = logger;
         _authStateProvider = authStateProvider;
+        _basketDispatcher = basketDispatcher;
     }
 
     [EffectMethod]
@@ -201,6 +204,13 @@ public class AuthEffects
         }
     }
     
+    [EffectMethod]
+    public async Task HandleLoginSuccessAction(LoginSuccessAction action, IDispatcher dispatcher)
+    {
+        // we need to dispatch a new action (from the BasketState) to load the user's basket
+        _basketDispatcher.LoadBasket();
+    }
+
     [EffectMethod]
     public async Task HandleRegisterAction(RegisterAction action, IDispatcher dispatcher)
     {

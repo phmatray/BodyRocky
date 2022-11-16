@@ -2,5 +2,5 @@
 
 public class GetBasketRequest
 {
-    public Guid BasketID { get; init; } 
+    public Guid CustomerID { get; init; } 
 }

@@ -1,5 +1,4 @@
 ﻿using BodyRocky.Back.Server.DataAccess;
-using BodyRocky.Back.Server.DataAccess.Entities;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Identity;

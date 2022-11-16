@@ -11,34 +11,57 @@ namespace BodyRocky.Front.WebApp.Store;
 
 #region State
 
-public record ProductQuantity(
-    ProductResponse Product,
-    int Quantity);
-
-[FeatureState(Name = "Basket")]
 public record BasketState(
-    List<ProductQuantity> ProductQuantities)
+    bool IsLoading,
+    string? ErrorMessage,
+    Guid BasketID,
+    DateTime BasketDateAdded,
+    BasketItem[] BasketItems)
 {
-    private BasketState()
-        : this(new List<ProductQuantity>())
-    {
-        
-    }
+    public string TotalPrice
+        => BasketItems
+            .Sum(x => x.ProductPrice * x.Quantity)
+            .ToString("F2", CultureInfo.InvariantCulture)
+            .Replace(".", ",");
+
+    public int TotalQuantity
+        => BasketItems
+            .Sum(x => x.Quantity);
     
-    public string TotalPrice => ProductQuantities
-        .Sum(x => x.Product.ProductPrice * x.Quantity)
-        .ToString("F2", CultureInfo.InvariantCulture)
-        .Replace(".", ",");
+    public bool IsEmpty
+        => TotalQuantity == 0;
     
-    public int TotalQuantity => ProductQuantities.Sum(x => x.Quantity);
+    public bool IsNotEmpty
+        => !IsEmpty;
+    
+    public bool HasError
+        => ErrorMessage is not null;
+}
+
+public class BasketFeature : Feature<BasketState>
+{
+    public override string GetName()
+        => "Basket";
+
+    protected override BasketState GetInitialState()
+        => new BasketState(
+            false,
+            null,
+            Guid.Empty,
+            DateTime.UtcNow,
+            Array.Empty<BasketItem>());
 }
 
 #endregion
 
 #region Actions
 
-public record AddToBasketAction(ProductResponse Product, int Quantity);
-public record RemoveFromBasketAction(Guid ProductId, int Quantity);
+public record LoadBasketAction;
+public record LoadBasketSuccessAction(Guid BasketID, DateTime BasketDateAdded, BasketItem[] BasketItems);
+public record LoadBasketFailureAction(string ErrorMessage);
+
+public record AddToBasketAction(BasketItem BasketProduct);
+public record RemoveFromBasketAction(Guid ProductID, int Quantity);
 public record ClearBasketAction;
 public record PlaceOrderAction;
 
@@ -49,67 +72,132 @@ public record PlaceOrderAction;
 public static class BasketReducers
 {
     [ReducerMethod]
+    public static BasketState ReduceLoadBasketAction(
+        BasketState state,
+        LoadBasketAction action)
+        => state with
+        {
+            IsLoading = true,
+            ErrorMessage = null,
+            BasketItems = Array.Empty<BasketItem>()
+        };
+    
+    [ReducerMethod]
+    public static BasketState ReduceLoadBasketSuccessAction(
+        BasketState state,
+        LoadBasketSuccessAction action)
+        => state with
+        {
+            IsLoading = false,
+            ErrorMessage = null,
+            BasketID = action.BasketID,
+            BasketDateAdded = action.BasketDateAdded,
+            BasketItems = action.BasketItems
+        };
+    
+    [ReducerMethod]
+    public static BasketState ReduceLoadBasketFailureAction(
+        BasketState state,
+        LoadBasketFailureAction action)
+        => state with
+        {
+            IsLoading = false,
+            ErrorMessage = action.ErrorMessage,
+            BasketItems = state.BasketItems
+        };
+    
+    [ReducerMethod]
     public static BasketState ReduceAddToBasketAction(BasketState state, AddToBasketAction action)
     {
-        bool isAlreadyInBasket = state
-            .ProductQuantities
-            .Any(x => x.Product.ProductID == action.Product.ProductID);
+        // check if the product is already in the basket
+        bool isAlreadyInBasket = state.BasketItems
+            .Any(x => x.ProductID == action.BasketProduct.ProductID);
 
-        List<ProductQuantity> productQuantities;
+        // create new basket items list
+        BasketItem[] basketItems;
         if (isAlreadyInBasket)
         {
-            productQuantities = state.ProductQuantities
-                .Select(x => x.Product.ProductID == action.Product.ProductID
-                    ? x with { Quantity = x.Quantity + action.Quantity }
+            // if the product is already in the basket, we create a new basket item list
+            // where we update the quantity of the product that is already in the basket
+            // and leave the other products as they are.
+            basketItems = state.BasketItems
+                .Select(x => x.ProductID == action.BasketProduct.ProductID
+                    ? new BasketItem
+                    {
+                        ProductID = x.ProductID,
+                        ProductName = x.ProductName,
+                        ProductPrice = x.ProductPrice,
+                        Quantity = x.Quantity + action.BasketProduct.Quantity
+                    }
                     : x)
-                .ToList();
+                .ToArray();
         }
         else
         {
-            productQuantities = state.ProductQuantities
-                .Append(new(action.Product, action.Quantity))
-                .ToList();
+            // if the product is not already in the basket, we create a new basket item list
+            // where we add the new product to the basket.
+            basketItems = state.BasketItems
+                .Append(action.BasketProduct)
+                .ToArray();
         }
 
-        return new(productQuantities);
+        // return the new state
+        return state with
+        {
+            BasketID = state.BasketID,
+            BasketDateAdded = state.BasketDateAdded,
+            BasketItems = basketItems
+        };
     }
-    
+
     [ReducerMethod]
     public static BasketState ReduceRemoveFromBasketAction(BasketState state, RemoveFromBasketAction action)
     {
-        ProductQuantity productQuantity = state
-            .ProductQuantities
-            .Single(x => x.Product.ProductID == action.ProductId);
+        // check if the product is already in the basket
+        bool isAlreadyInBasket = state.BasketItems
+            .Any(x => x.ProductID == action.ProductID);
 
-        List<ProductQuantity> productQuantities;
-        if (productQuantity.Quantity - action.Quantity > 0)
-        {
-            productQuantities = state.ProductQuantities
-                .Select(x => x.Product.ProductID == action.ProductId
-                    ? x with { Quantity = x.Quantity - action.Quantity }
-                    : x)
-                .ToList();
-        }
-        else
-        {
-            productQuantities = state.ProductQuantities
-                .Where(x => x.Product.ProductID != action.ProductId)
-                .ToList();
-        }
+        // if the product is not in the basket, just return the state (no changes)  
+        if (!isAlreadyInBasket)
+            return state;
 
-        return new(productQuantities);
+        // create new basket items list
+        BasketItem[] basketItems = state.BasketItems
+            .Select(x => x.ProductID == action.ProductID
+                ? new BasketItem
+                {
+                    ProductID = x.ProductID,
+                    ProductName = x.ProductName,
+                    ProductPrice = x.ProductPrice,
+                    Quantity = x.Quantity - action.Quantity
+                }
+                : x)
+            .Where(x => x.Quantity > 0)
+            .ToArray();
+
+        return state with
+        {
+            BasketID = state.BasketID,
+            BasketDateAdded = state.BasketDateAdded,
+            BasketItems = basketItems
+        };
     }
-    
+
     [ReducerMethod]
     public static BasketState ReduceClearBasketAction(BasketState state, ClearBasketAction action)
     {
-        return state with { ProductQuantities = new() };
+        return state with
+        {
+            BasketID = state.BasketID,
+            BasketDateAdded = state.BasketDateAdded,
+            BasketItems = Array.Empty<BasketItem>()
+        };
     }
-    
+
     [ReducerMethod]
     public static BasketState ReducePlaceOrderAction(BasketState state, PlaceOrderAction action)
     {
-        return state with { ProductQuantities = new() };
+        return state;
     }
 }
 
@@ -122,30 +210,33 @@ public class BasketEffects
     private readonly IBodyRockyApi _bodyRockyClient;
     private readonly IToastService _toastService;
     private readonly IState<AuthState> _authState;
-    
+    private readonly ILogger<BasketEffects> _logger;
+
     public BasketEffects(
         IBodyRockyApi bodyRockyClient,
         IToastService toastService,
-        IState<AuthState> authState)
+        IState<AuthState> authState,
+        ILogger<BasketEffects> logger)
     {
         _bodyRockyClient = bodyRockyClient;
         _toastService = toastService;
         _authState = authState;
+        _logger = logger;
     }
     
     [EffectMethod]
     public async Task HandleAddToBasketAction(AddToBasketAction action, IDispatcher dispatcher)
     {
         // 1. send the request
-        var customerId = _authState.Value.UserInfo?.UserId;
+        var customerID = _authState.Value.UserInfo?.UserId;
         
-        if (customerId is not null)
+        if (customerID is not null)
         {
             var addProductToBasketRequest = new AddProductToBasketRequest
             {
-                CustomerId = customerId.Value,
-                ProductId = action.Product.ProductID,
-                Quantity = action.Quantity
+                CustomerId = customerID.Value,
+                ProductId = action.BasketProduct.ProductID,
+                Quantity = action.BasketProduct.Quantity
             };
         
             await _bodyRockyClient.AddProductToBasketAsync(addProductToBasketRequest);
@@ -153,8 +244,10 @@ public class BasketEffects
         
         // 2. show the toast   
         ToastParameters parameters = new();
-        parameters.Add(nameof(AddedToBasketToast.Product), action.Product);
-        parameters.Add(nameof(AddedToBasketToast.Quantity), action.Quantity);
+        parameters.Add(nameof(AddedToBasketToast.ProductID), action.BasketProduct.ProductID);
+        parameters.Add(nameof(AddedToBasketToast.ProductName), action.BasketProduct.ProductName);
+        parameters.Add(nameof(AddedToBasketToast.ProductPrice), action.BasketProduct.ProductPrice);
+        parameters.Add(nameof(AddedToBasketToast.Quantity), action.BasketProduct.Quantity);
         
         ToastInstanceSettings settings = new(5, true);
         
@@ -170,6 +263,41 @@ public class BasketEffects
         _toastService.ShowToast<PaiementSuccessToast>(settings);
         
         return Task.CompletedTask;
+    }
+    
+    [EffectMethod]
+    public async Task HandleLoadBasketAction(LoadBasketAction action, IDispatcher dispatcher)
+    {
+        // 1. send the request
+        var customerID = _authState.Value.UserInfo?.UserId;
+        
+        _logger.LogWarning("Loading basket for customer {CustomerID}", customerID);
+        
+        if (customerID is not null)
+        {
+            GetBasketRequest request = new() { CustomerID = customerID.Value };
+            GetOneBasketResponse? response = await _bodyRockyClient.GetBasketAsync(request);
+            
+            // log basket properties
+            _logger.LogWarning("Basket ID: {BasketID}", response?.BasketID);
+            _logger.LogWarning("Basket Date Added: {BasketDateAdded}", response?.BasketDateAdded);
+            _logger.LogWarning("Basket Items: {BasketItems}", response?.Products);
+            _logger.LogWarning("Basket Count: {BasketTotal}", response?.Products.Count);
+            
+            // 2a. dispatch the success action
+            var successAction = new LoadBasketSuccessAction(
+                response.BasketID,
+                response.BasketDateAdded,
+                response.Products.ToArray());
+            
+            dispatcher.Dispatch(successAction);
+        }
+        else
+        {
+            // 2b. dispatch the failure action
+            var failureAction = new LoadBasketFailureAction("You are not logged in.");
+            dispatcher.Dispatch(failureAction);
+        }
     }
 }
 
@@ -188,7 +316,15 @@ public class BasketDispatcher
     
     public void AddToBasket(ProductResponse product, int quantity = 1)
     {
-        _dispatcher.Dispatch(new AddToBasketAction(product, quantity));
+        BasketItem basketItem = new()
+        {
+            ProductID = product.ProductID,
+            ProductName = product.ProductName,
+            ProductPrice = product.ProductPrice,
+            Quantity = quantity
+        };
+        
+        _dispatcher.Dispatch(new AddToBasketAction(basketItem));
     }
     
     public void RemoveFromBasket(Guid productId, int quantity = 1)
@@ -204,6 +340,11 @@ public class BasketDispatcher
     public void PlaceOrder()
     {
         _dispatcher.Dispatch(new PlaceOrderAction());
+    }
+    
+    public void LoadBasket()
+    {
+        _dispatcher.Dispatch(new LoadBasketAction());
     }
 }
 

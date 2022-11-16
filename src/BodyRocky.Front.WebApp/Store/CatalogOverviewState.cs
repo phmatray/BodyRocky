@@ -9,9 +9,9 @@ namespace BodyRocky.Front.WebApp.Store;
 public record CatalogOverviewState(
     bool IsLoading,
     string? ErrorMessage,
-    IEnumerable<CategoryResponse> FeaturedCategories,
-    IEnumerable<ProductResponse> FeaturedProducts,
-    IEnumerable<ProductResponse> RecommendedProducts)
+    CategoryResponse[] FeaturedCategories,
+    ProductResponse[] FeaturedProducts,
+    ProductResponse[] RecommendedProducts)
 {
     public bool HasError
         => ErrorMessage is not null;
@@ -39,9 +39,9 @@ public record LoadCatalogOverviewAction;
 
 
 public record LoadCatalogOverviewSuccessAction(
-    List<CategoryResponse> FeaturedCategories,
-    List<ProductResponse> FeaturedProducts,
-    List<ProductResponse> RecommendedProducts);
+    CategoryResponse[] FeaturedCategories,
+    ProductResponse[] FeaturedProducts,
+    ProductResponse[] RecommendedProducts);
 
 public record LoadCatalogOverviewFailureAction(string ErrorMessage);
 
@@ -108,9 +108,9 @@ public class CatalogOverviewEffects
             GetCatalogOverviewResponse catalogOverview = await _bodyRockyClient.GetCatalogOverviewAsync();
 
             var successAction = new LoadCatalogOverviewSuccessAction(
-                catalogOverview.FeaturedCategories,
-                catalogOverview.FeaturedProducts,
-                catalogOverview.RecommendedProducts);
+                catalogOverview.FeaturedCategories.ToArray(),
+                catalogOverview.FeaturedProducts.ToArray(),
+                catalogOverview.RecommendedProducts.ToArray());
             
             dispatcher.Dispatch(successAction);
         }

@@ -1,4 +1,3 @@
-using BodyRocky.Back.Server.DataAccess.Entities;
 using Bogus;
 
 namespace BodyRocky.Back.Server.DataAccess.DataFakers;

@@ -1,4 +1,3 @@
-using BodyRocky.Back.Server.DataAccess.Entities;
 using BodyRocky.Back.Server.DataAccess.Repositories;
 using BodyRocky.Back.Server.Endpoints.Catalog.GetFull;
 using BodyRocky.Back.Server.Endpoints.Catalog.GetOverview;

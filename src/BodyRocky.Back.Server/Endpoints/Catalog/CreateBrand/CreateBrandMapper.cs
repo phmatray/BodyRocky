@@ -1,6 +1,4 @@
-﻿using BodyRocky.Back.Server.DataAccess.Entities;
-using BodyRocky.Shared.Contracts.Requests;
-using BodyRocky.Shared.Contracts.Responses;
+﻿using BodyRocky.Shared.Contracts.Requests;
 using FastEndpoints;
 
 namespace BodyRocky.Back.Server.Endpoints.Catalog.CreateBrand;

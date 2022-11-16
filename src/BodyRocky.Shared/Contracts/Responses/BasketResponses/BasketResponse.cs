@@ -2,7 +2,7 @@
 
 public class BasketResponse
 {
-    public Guid BasketID { get; init; } = default!;
-    public DateTime BasketDateAdded { get; init; } = default!;
-    public List<BasketItemResponse> BasketItems { get; set; } = new();
+    public Guid BasketID { get; set; } = default!;
+    public DateTime BasketDateAdded { get; set; } = default!;
+    public BasketItem[] BasketItems { get; set; } 
 }

@@ -1,6 +1,5 @@
 ﻿using BodyRocky.Back.Server.DataAccess.Repositories;
 using BodyRocky.Shared.Contracts.Requests;
-using BodyRocky.Shared.Contracts.Responses;
 using FastEndpoints;
 
 namespace BodyRocky.Back.Server.Endpoints.CrudCustomers.GetCustomer;

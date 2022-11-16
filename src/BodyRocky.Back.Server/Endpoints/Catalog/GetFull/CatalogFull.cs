@@ -1,5 +1,3 @@
-using BodyRocky.Back.Server.DataAccess.Entities;
-
 namespace BodyRocky.Back.Server.Endpoints.Catalog.GetFull;
 
 public class CatalogFull

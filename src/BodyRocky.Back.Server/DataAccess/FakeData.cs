@@ -1,5 +1,4 @@
 ﻿using BodyRocky.Back.Server.DataAccess.DataFakers;
-using BodyRocky.Back.Server.DataAccess.Entities;
 
 namespace BodyRocky.Back.Server.DataAccess;
 

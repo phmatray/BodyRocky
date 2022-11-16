@@ -1,6 +1,7 @@
 @page "/checkout"
 @inherits FluxorComponent
 @inject IState<BasketState> BasketState
+@inject IState<CatalogFullState> CatalogState
 @inject BasketDispatcher BasketDispatcher
 
 <!-- breadcrumb -->
@@ -76,14 +77,17 @@
       Récapitulatif de la commande
     </h4>
     <div class="space-y-2">
-      @foreach ((ProductResponse? product, int quantity) in BasketState.Value.ProductQuantities)
+      @foreach (var basketItem in BasketState.Value.BasketItems)
       {
+        var product = CatalogState.Value.Products
+          .FirstOrDefault(p => p.ProductID == basketItem.ProductID);
+        
         <div class="flex justify-between">
           <div>
             <h5 class="text-gray-800 font-medium">
               @product.ProductName
               <span class="text-gray-600 font-normal">
-                x @quantity
+                x @basketItem.Quantity
               </span>
             </h5>
             @* <p class="text-sm text-gray-600">Size: M</p> *@
@@ -92,7 +96,7 @@
           @*   x @quantity *@
           @* </p> *@
           <p class="text-gray-800 font-medium">
-            @GetSubtotalForProduct(product, quantity)
+            @GetSubtotalForProduct(product, basketItem.Quantity)
           </p>
         </div>
       }
@@ -121,7 +125,7 @@
       </label>
     </div>
     
-    @if(BasketState.Value.ProductQuantities.Any())
+    @if(BasketState.Value.IsNotEmpty)
     {
       <button
         class="block w-full py-3 px-4 text-center text-white bg-primary border border-primary rounded-md hover:bg-transparent hover:text-primary transition font-medium"
@@ -131,7 +135,9 @@
     }
     else
     {
-      <button class="block w-full py-3 px-4 text-center text-white bg-gray-400 border border-gray-400 rounded-md hover:bg-gray-500 transition font-medium" disabled>
+      <button
+        class="block w-full py-3 px-4 text-center text-white bg-gray-400 border border-gray-400 rounded-md hover:bg-gray-500 transition font-medium"
+        disabled>
         Passer commande
       </button>
     }

@@ -1,7 +1,4 @@
-﻿using BodyRocky.Back.Server.DataAccess.Entities;
-using BodyRocky.Back.Server.Services;
-using BodyRocky.Shared.Contracts.Responses;
-using FastEndpoints;
+﻿using FastEndpoints;
 
 namespace BodyRocky.Back.Server.Endpoints.Catalog.GetAllProducts;
 

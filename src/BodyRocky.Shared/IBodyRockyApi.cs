@@ -11,6 +11,9 @@ public interface IBodyRockyApi
     [Post("/baskets/products")]
     Task AddProductToBasketAsync([Body] AddProductToBasketRequest request);
     
+    [Get("/baskets/customer/{request.CustomerID}")]
+    Task<GetOneBasketResponse> GetBasketAsync(GetBasketRequest request);
+    
     #endregion
     
     #region Catalog (with fastendpoints)

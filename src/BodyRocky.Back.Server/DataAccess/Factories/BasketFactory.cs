@@ -1,4 +1,3 @@
-using BodyRocky.Back.Server.DataAccess.Entities;
 using BodyRocky.Back.Server.DataAccess.Enumerations;
 
 namespace BodyRocky.Back.Server.DataAccess.Factories;
