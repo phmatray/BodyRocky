@@ -6,6 +6,7 @@ using BodyRocky.Shared;
 using BodyRocky.Shared.Contracts.Requests;
 using BodyRocky.Shared.Contracts.Responses;
 using Fluxor;
+using Refit;
 
 namespace BodyRocky.Front.WebApp.Store;
 
@@ -63,7 +64,7 @@ public record LoadBasketFailureAction(string ErrorMessage);
 public record AddToBasketAction(BasketItem BasketProduct);
 public record RemoveFromBasketAction(Guid ProductID, int Quantity);
 public record ClearBasketAction;
-public record PlaceOrderAction;
+public record ExecuteOrderAction;
 
 #endregion
 
@@ -195,7 +196,7 @@ public static class BasketReducers
     }
 
     [ReducerMethod]
-    public static BasketState ReducePlaceOrderAction(BasketState state, PlaceOrderAction action)
+    public static BasketState ReducePlaceOrderAction(BasketState state, ExecuteOrderAction action)
     {
         return state;
     }
@@ -209,17 +210,20 @@ public class BasketEffects
 {
     private readonly IBodyRockyApi _bodyRockyClient;
     private readonly IToastService _toastService;
+    private readonly IState<BasketState> _basketState;
     private readonly IState<AuthState> _authState;
     private readonly ILogger<BasketEffects> _logger;
 
     public BasketEffects(
         IBodyRockyApi bodyRockyClient,
         IToastService toastService,
+        IState<BasketState> basketState,
         IState<AuthState> authState,
         ILogger<BasketEffects> logger)
     {
         _bodyRockyClient = bodyRockyClient;
         _toastService = toastService;
+        _basketState = basketState;
         _authState = authState;
         _logger = logger;
     }
@@ -256,16 +260,6 @@ public class BasketEffects
     }
     
     [EffectMethod]
-    public Task HandlePlaceOrderAction(PlaceOrderAction action, IDispatcher dispatcher)
-    {
-        ToastInstanceSettings settings = new(5, true);
-        
-        _toastService.ShowToast<PaiementSuccessToast>(settings);
-        
-        return Task.CompletedTask;
-    }
-    
-    [EffectMethod]
     public async Task HandleLoadBasketAction(LoadBasketAction action, IDispatcher dispatcher)
     {
         // 1. send the request
@@ -298,6 +292,30 @@ public class BasketEffects
             var failureAction = new LoadBasketFailureAction("You are not logged in.");
             dispatcher.Dispatch(failureAction);
         }
+    }
+    
+    [EffectMethod]
+    public async Task HandleExecuteOrderAction(ExecuteOrderAction action, IDispatcher dispatcher)
+    {
+        // 1. send the request
+        var request = new ExecuteOrderRequest
+        {
+            BasketID = _basketState.Value.BasketID
+        };
+
+        try
+        {
+            await _bodyRockyClient.ExecuteOrderAsync(request);
+        }
+        catch (ApiException e)
+        {
+            string errorMessage = e.InnerException?.Message ?? e.Message;
+            _logger.LogCritical(e, errorMessage);
+        }
+        
+        // 2. display the toast
+        ToastInstanceSettings settings = new(5, true);
+        _toastService.ShowToast<PaiementSuccessToast>(settings);
     }
 }
 
@@ -339,7 +357,7 @@ public class BasketDispatcher
 
     public void PlaceOrder()
     {
-        _dispatcher.Dispatch(new PlaceOrderAction());
+        _dispatcher.Dispatch(new ExecuteOrderAction());
     }
     
     public void LoadBasket()

@@ -56,4 +56,11 @@ public interface IBodyRockyApi
     Task DeleteCustomerAsync(DeleteCustomerRequest request);
     
     #endregion
+    
+    #region Orders
+    
+    [Post("/orders/execute")]
+    Task<ExecuteOrderResponse> ExecuteOrderAsync([Body] ExecuteOrderRequest request);
+    
+    #endregion
 }

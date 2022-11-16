@@ -8,6 +8,7 @@ public static class PersistenceExtensions
     public static void AddFactories(this IServiceCollection services)
     {
         services.AddSingleton<BasketFactory>();
+        services.AddSingleton<OrderFactory>();
     }
     
     public static void AddCrudRepositories(this IServiceCollection services)

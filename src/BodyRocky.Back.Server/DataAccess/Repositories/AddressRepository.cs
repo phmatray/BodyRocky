@@ -26,6 +26,17 @@ public sealed class AddressRepository : IDisposable
         return await _context.Addresses
             .SingleOrDefaultAsync(address => address.AddressID == addressID);
     }
+    
+    public async Task<Address> GetRandomAsync()
+    {
+        var count = await CountAsync();
+        var random = new Random();
+        var randomIndex = random.Next(0, count);
+        return await _context.Addresses
+            .Skip(randomIndex)
+            .Take(1)
+            .SingleAsync();
+    }
 
     public async Task InsertAsync(Address address)
     {

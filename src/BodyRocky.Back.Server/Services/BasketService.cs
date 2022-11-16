@@ -27,10 +27,14 @@ public class BasketService
     
     public async Task<Basket> GetBasketAsync(Guid customerId)
     {
-        Basket current =
-            await _basketRepository.GetCurrentAsync(customerId)
-            ?? await CreateEmptyBasketAsync(customerId);
-        
+        Basket? current = await _basketRepository.GetCurrentAsync(customerId);
+
+        if (current is null)
+        {
+            current = await CreateEmptyBasketAsync(customerId);
+            await _basketRepository.InsertAsync(current);
+        }
+
         return current;
     }
 

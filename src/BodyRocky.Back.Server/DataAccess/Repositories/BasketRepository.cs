@@ -53,6 +53,12 @@ public sealed class BasketRepository : IDisposable
         await _context.Baskets.AddAsync(basket);
         await _context.SaveChangesAsync();
     }
+    
+    public async Task UpdateAsync(Basket basket)
+    {
+        _context.Baskets.Update(basket);
+        await _context.SaveChangesAsync();
+    }
 
     public async Task AddProductAsync(Guid basketID, Guid productID, int quantity)
     {
