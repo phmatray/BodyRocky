@@ -1,5 +1,6 @@
 @page "/checkout"
 @inherits FluxorComponent
+@inject IState<AuthState> AuthState
 @inject IState<BasketState> BasketState
 @inject IState<CatalogFullState> CatalogState
 @inject BasketDispatcher BasketDispatcher
@@ -10,66 +11,88 @@
 
 <!-- wrapper -->
 <div class="container grid grid-cols-12 items-start pb-16 pt-4 gap-6">
-
   <div class="col-span-8 border border-gray-200 p-4 rounded">
     <h3 class="text-lg font-medium capitalize mb-4">
       Passer commande
     </h3>
-    <div class="space-y-4">
-      <div class="grid grid-cols-2 gap-4">
+    <EditForm Model="_checkoutParameters" OnValidSubmit="OnSubmit" autocomplet="off">
+      <DataAnnotationsValidator/>
+            
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-gray-600" for="first-name">
+              Prénom
+              <span class="text-primary">*</span>
+            </label>
+            <InputText class="input-box"
+                       id="first-name"
+                       name="first-name"
+                       type="text"
+                       @bind-Value="_checkoutParameters.FirstName"/>
+            <ValidationMessage For="@(() => _checkoutParameters.FirstName)" />
+          </div>
+          <div>
+            <label class="text-gray-600" for="last-name">
+              Nom
+              <span class="text-primary">*</span>
+            </label>
+            <InputText class="input-box"
+                       id="last-name"
+                       name="last-name"
+                       type="text"
+                       @bind-Value="_checkoutParameters.LastName"/>
+            <ValidationMessage For="@(() => _checkoutParameters.LastName)" />
+          </div>
+        </div>
+        @* <div> *@
+        @*   <label class="text-gray-600" for="company"> *@
+        @*     Société *@
+        @*   </label> *@
+        @*   <input class="input-box" id="company" name="company" type="text"> *@
+        @* </div> *@
         <div>
-          <label class="text-gray-600" for="first-name">
-            Prénom
-            <span class="text-primary">*</span>
+          <label class="text-gray-600" for="region">
+            Pays / Région
           </label>
-          <input class="input-box" id="first-name" name="first-name" type="text">
+          <input class="input-box" id="region" name="region" type="text">
         </div>
         <div>
-          <label class="text-gray-600" for="last-name">
-            Nom
-            <span class="text-primary">*</span>
+          <label class="text-gray-600" for="address">
+            Adresse
           </label>
-          <input class="input-box" id="last-name" name="last-name" type="text">
+          <input class="input-box" id="address" name="address" type="text">
+        </div>
+        <div>
+          <label class="text-gray-600" for="city">
+            Ville
+          </label>
+          <input class="input-box" id="city" name="city" type="text">
+        </div>
+        <div>
+          <label class="text-gray-600" for="phone">
+            Numéro de téléphone
+          </label>
+          <InputText class="input-box"
+                     id="phone"
+                     name="phone"
+                     type="text"
+                     @bind-Value="_checkoutParameters.PhoneNumber"/>
+          <ValidationMessage For="@(() => _checkoutParameters.PhoneNumber)" />
+        </div>
+        <div>
+          <label class="text-gray-600" for="email">
+            Adresse email
+          </label>
+          <InputText class="input-box"
+                     id="email"
+                     name="email"
+                     type="email"
+                     @bind-Value="_checkoutParameters.EmailAddress"/>
+          <ValidationMessage For="@(() => _checkoutParameters.EmailAddress)" />
         </div>
       </div>
-      <div>
-        <label class="text-gray-600" for="company">
-          Société
-        </label>
-        <input class="input-box" id="company" name="company" type="text">
-      </div>
-      <div>
-        <label class="text-gray-600" for="region">
-          Pays / Région
-        </label>
-        <input class="input-box" id="region" name="region" type="text">
-      </div>
-      <div>
-        <label class="text-gray-600" for="address">
-          Adresse
-        </label>
-        <input class="input-box" id="address" name="address" type="text">
-      </div>
-      <div>
-        <label class="text-gray-600" for="city">
-          Ville
-        </label>
-        <input class="input-box" id="city" name="city" type="text">
-      </div>
-      <div>
-        <label class="text-gray-600" for="phone">
-          Numéro de téléphone
-        </label>
-        <input class="input-box" id="phone" name="phone" type="text">
-      </div>
-      <div>
-        <label class="text-gray-600" for="email">
-          Adresse email
-        </label>
-        <input class="input-box" id="email" name="email" type="email">
-      </div>
-    </div>
-
+    </EditForm>
   </div>
 
   <div class="col-span-4 border border-gray-200 p-4 rounded">
@@ -152,10 +175,21 @@
 <!-- ./wrapper -->
 
 @code {
+  
+  private readonly CheckoutParameters _checkoutParameters = new();
 
   private readonly UiBreadcrumb.BreadcrumbSegment[] _segments = {
     new("Passer commande", Routes.CHECKOUT_ROUTE)
   };
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    _checkoutParameters.FirstName = AuthState.Value.CustomerDetails?.FirstName ?? "";
+    _checkoutParameters.LastName = AuthState.Value.CustomerDetails?.LastName ?? "";
+    _checkoutParameters.PhoneNumber = AuthState.Value.CustomerDetails?.PhoneNumber ?? "";
+    _checkoutParameters.EmailAddress = AuthState.Value.CustomerDetails?.EmailAddress ?? "";
+  }
 
   private string GetSubtotalForProduct(ProductResponse? product, int quantity)
   {
@@ -169,6 +203,10 @@
     return subtotal
       .ToString("C")
       .Replace(".", ",");
+  }
+
+  private void OnSubmit(EditContext context)
+  {
   }
 
 }

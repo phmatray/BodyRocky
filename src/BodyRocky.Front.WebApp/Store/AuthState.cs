@@ -3,6 +3,9 @@ using Blazored.Toast.Services;
 using BodyRocky.Front.WebApp.Shared;
 using BodyRocky.Front.WebApp.Shared.Services;
 using BodyRocky.Front.WebApp.Store.Models;
+using BodyRocky.Shared;
+using BodyRocky.Shared.Contracts.Requests;
+using BodyRocky.Shared.Contracts.Responses;
 using BodyRocky.Shared.Forms;
 using Fluxor;
 using Microsoft.AspNetCore.Components;
@@ -14,7 +17,8 @@ namespace BodyRocky.Front.WebApp.Store;
 public record AuthState(
     bool IsLoading,
     string? ErrorMessage,
-    UserInfo? UserInfo)
+    UserInfo? UserInfo,
+    CustomerDetailsResponse? CustomerDetails)
 {
     public bool IsAuthenticated
         => UserInfo?.IsAuthenticated ?? false;
@@ -29,10 +33,7 @@ public class AuthFeature : Feature<AuthState>
         => "Auth";
 
     protected override AuthState GetInitialState() =>
-        new AuthState(
-            false,
-            null,
-            null);
+        new AuthState(false, null, null, null);
 }
 
 #endregion
@@ -40,7 +41,7 @@ public class AuthFeature : Feature<AuthState>
 #region Actions
 
 public record LoginAction(LoginParameters? LoginParameters);
-public record LoginSuccessAction(UserInfo UserInfo);
+public record LoginSuccessAction(UserInfo UserInfo, CustomerDetailsResponse CustomerDetailsResponse);
 public record LoginFailureAction(string Error);
 
 public record RegisterAction(RegisterParameters RegisterParameters);
@@ -71,7 +72,8 @@ public static class AuthReducer
         {
             IsLoading = false,
             ErrorMessage = null,
-            UserInfo = action.UserInfo
+            UserInfo = action.UserInfo,
+            CustomerDetails = action.CustomerDetailsResponse
         };
     
     [ReducerMethod]
@@ -80,7 +82,8 @@ public static class AuthReducer
         {
             IsLoading = false,
             ErrorMessage = action.Error,
-            UserInfo = null
+            UserInfo = null,
+            CustomerDetails = null
         };
     
     [ReducerMethod]
@@ -113,7 +116,8 @@ public static class AuthReducer
         {
             IsLoading = false,
             ErrorMessage = null,
-            UserInfo = null
+            UserInfo = null,
+            CustomerDetails = null
         };
     
     [ReducerMethod]
@@ -122,7 +126,8 @@ public static class AuthReducer
         {
             IsLoading = false,
             ErrorMessage = null,
-            UserInfo = null
+            UserInfo = null,
+            CustomerDetails = null
         };
     
     [ReducerMethod]
@@ -143,6 +148,7 @@ public class AuthEffects
     private readonly NavigationManager _navigationManager;
     private readonly IToastService _toastService;
     private readonly ILogger<AuthEffects> _logger;
+    private readonly IBodyRockyApi _bodyRockyApi;
     private readonly IdentityAuthenticationStateProvider _authStateProvider;
     private readonly BasketDispatcher _basketDispatcher;
 
@@ -150,12 +156,14 @@ public class AuthEffects
         NavigationManager navigationManager,
         IToastService toastService,
         ILogger<AuthEffects> logger,
+        IBodyRockyApi bodyRockyApi,
         IdentityAuthenticationStateProvider authStateProvider,
         BasketDispatcher basketDispatcher)
     {
         _navigationManager = navigationManager;
         _toastService = toastService;
         _logger = logger;
+        _bodyRockyApi = bodyRockyApi;
         _authStateProvider = authStateProvider;
         _basketDispatcher = basketDispatcher;
     }
@@ -180,19 +188,28 @@ public class AuthEffects
                 // select guid id from claim
                 var userId = Guid.Parse(auth.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
                 
+                // get user info from auth.User.Identity           
                 var userInfo = new UserInfo(
                     auth.User.Identity?.Name ?? string.Empty,
                     auth.User.Identity?.AuthenticationType ?? string.Empty,
                     auth.User.Identity?.IsAuthenticated ?? false,
                     userId);
                 
-                dispatcher.Dispatch(new LoginSuccessAction(userInfo));
+                // call the web api to get the complete customer info
+                var getCustomerRequest = new GetCustomerRequest { CustomerID = userId.ToString() };
+                var customerDetailsResponse = await _bodyRockyApi.GetCustomerAsync(getCustomerRequest);
+
+                dispatcher.Dispatch(new LoginSuccessAction(userInfo, customerDetailsResponse));
+                
+                // display a toast
                 _toastService.ShowSuccess("Vous êtes maintenant connecté.", $"Bienvenue {userInfo.Name}");
+                
+                // and redirect to the home page
                 _navigationManager.NavigateTo(Routes.HOME_ROUTE);
             }
             else
             {
-                dispatcher.Dispatch(new LoginSuccessAction(null));
+                dispatcher.Dispatch(new LoginSuccessAction(null, null));
             }
         }
         catch (Exception e)
