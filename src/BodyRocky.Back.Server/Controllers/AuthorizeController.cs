@@ -83,16 +83,16 @@ namespace BodyRocky.Back.Server.Controllers
         public async Task<UserInfoResponse> UserInfo()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            return BuildUserInfo(user.Id);
+            return BuildUserInfo(user?.Id);
         }
 
 
-        private UserInfoResponse BuildUserInfo(Guid userId)
+        private UserInfoResponse BuildUserInfo(Guid? userId)
         {
             return new UserInfoResponse
             {
-                IsAuthenticated = User.Identity.IsAuthenticated,
-                UserId = userId,
+                IsAuthenticated = User.Identity?.IsAuthenticated ?? false,
+                UserId = userId ?? Guid.Empty,
                 UserName = User.Identity.Name,
                 ExposedClaims = User.Claims
                     //Optionally: filter the claims you want to expose to the client
