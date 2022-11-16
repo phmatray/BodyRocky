@@ -298,13 +298,13 @@ public class BasketEffects
     public async Task HandleExecuteOrderAction(ExecuteOrderAction action, IDispatcher dispatcher)
     {
         // 1. send the request
-        var request = new ExecuteOrderRequest
-        {
-            BasketID = _basketState.Value.BasketID
-        };
-
         try
         {
+            var request = new ExecuteOrderRequest
+            {
+                BasketID = _basketState.Value.BasketID
+            };
+            
             await _bodyRockyClient.ExecuteOrderAsync(request);
         }
         catch (ApiException e)
@@ -316,6 +316,9 @@ public class BasketEffects
         // 2. display the toast
         ToastInstanceSettings settings = new(5, true);
         _toastService.ShowToast<PaiementSuccessToast>(settings);
+        
+        // 3. clear the basket
+        dispatcher.Dispatch(new ClearBasketAction());
     }
 }
 
