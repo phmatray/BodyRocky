@@ -205,7 +205,7 @@ public class AuthEffects
                 dispatcher.Dispatch(new LoginSuccessAction(userInfo, customerDetailsResponse));
                 
                 // display a toast
-                _toastService.ShowSuccess("Vous êtes maintenant connecté.", $"Bienvenue {userInfo.Name}");
+                _toastService.ShowSuccess($"Vous êtes maintenant connecté. Bienvenue {userInfo.Name}");
                 
                 // and redirect to the home page
                 _navigationManager.NavigateTo(Routes.HOME_ROUTE);
@@ -239,7 +239,7 @@ public class AuthEffects
             await _authStateProvider.Register(action.RegisterParameters);
             dispatcher.Dispatch(new RegisterSuccessAction());
             _navigationManager.NavigateTo(Routes.LOGIN_ROUTE);
-            _toastService.ShowSuccess("La création de votre compte a été effectuée avec succès. Vous pouvez maintenant vous connecter.", "Création de compte");
+            _toastService.ShowSuccess("La création de votre compte a été effectuée avec succès. Vous pouvez maintenant vous connecter.");
         }
         catch (Exception e)
         {
@@ -257,7 +257,7 @@ public class AuthEffects
             await _authStateProvider.Logout();
             dispatcher.Dispatch(new LogoutSuccessAction());
             _navigationManager.NavigateTo(Routes.LOGIN_ROUTE);
-            _toastService.ShowSuccess("Vous êtes maintenant déconnecté.", "Déconnexion");
+            _toastService.ShowSuccess("Vous êtes maintenant déconnecté.");
         }
         catch (Exception e)
         {

@@ -8,17 +8,17 @@
 
   <ItemGroup>
 	<PackageReference Include="Bogus" Version="34.0.2" />
-	<PackageReference Include="FastEndpoints" Version="5.4.0" />
-	<PackageReference Include="FastEndpoints.Attributes" Version="5.4.0" />
-	<PackageReference Include="FastEndpoints.Security" Version="5.4.0" />
-	<PackageReference Include="FastEndpoints.Swagger" Version="5.4.0" />
-	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+	<PackageReference Include="FastEndpoints" Version="5.17.1.1" />
+	<PackageReference Include="FastEndpoints.Attributes" Version="5.17.1.1" />
+	<PackageReference Include="FastEndpoints.Security" Version="5.17.1.1" />
+	<PackageReference Include="FastEndpoints.Swagger" Version="5.17.1.1" />
+	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cp $(OutDir)runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll $(OutDir)" />
+    <Exec Command="cp $(OutDir)runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll $(OutDir)" />
   </Target>
 
 </Project>

@@ -253,9 +253,11 @@ public class BasketEffects
         parameters.Add(nameof(AddedToBasketToast.ProductPrice), action.BasketProduct.ProductPrice);
         parameters.Add(nameof(AddedToBasketToast.Quantity), action.BasketProduct.Quantity);
         
-        ToastInstanceSettings settings = new(5, true);
-        
-        _toastService.ShowToast<AddedToBasketToast>(parameters, settings);
+        _toastService.ShowToast<AddedToBasketToast>(parameters, toastSettings =>
+        {
+            toastSettings.Timeout = 5;
+            toastSettings.ShowProgressBar = true;
+        });
 
     }
     
@@ -313,8 +315,11 @@ public class BasketEffects
         }
         
         // 2. display the toast
-        ToastInstanceSettings settings = new(5, true);
-        _toastService.ShowToast<PaiementSuccessToast>(settings);
+        _toastService.ShowToast<PaiementSuccessToast>(toastSettings =>
+        {
+            toastSettings.Timeout = 5;
+            toastSettings.ShowProgressBar = true;
+        });
         
         // 3. clear the basket
         dispatcher.Dispatch(new ClearBasketAction());
