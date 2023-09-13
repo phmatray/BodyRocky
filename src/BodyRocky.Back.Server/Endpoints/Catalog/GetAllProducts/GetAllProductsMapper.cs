@@ -16,11 +16,11 @@ public class GetAllProductsMapper
                 ProductPrice = product.ProductPrice,
                 ProductURL = product.ProductURL,
                 IsFeatured = product.IsFeatured,
-                Stock = product.Stock,
+                Stock = product.Stock
             })
             .ToList();
 
-        return new GetAllProductsResponse()
+        return new GetAllProductsResponse
         {
             Products = productResponses
         };

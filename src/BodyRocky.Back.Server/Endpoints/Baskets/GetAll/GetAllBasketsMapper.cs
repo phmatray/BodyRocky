@@ -15,7 +15,7 @@ public class GetAllBasketsMapper
             })
             .ToList();
 
-        return new GetAllBasketsResponse()
+        return new GetAllBasketsResponse
         {
             Baskets = basketResponses
         };

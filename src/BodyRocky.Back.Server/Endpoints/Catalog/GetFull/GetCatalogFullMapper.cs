@@ -31,7 +31,7 @@ public class GetCatalogFullMapper
                 ProductURL = p.ProductURL,
                 IsFeatured = p.IsFeatured,
                 Stock = p.Stock,
-                ProductCategory = p.ProductCategories.FirstOrDefault()?.Category.CategoryName ?? string.Empty,
+                ProductCategory = p.ProductCategories.FirstOrDefault()?.Category.CategoryName ?? string.Empty
             })
             .ToList();
         

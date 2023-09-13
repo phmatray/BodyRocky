@@ -10,7 +10,7 @@ public class OrderFactory
         Guid billingAddressID,
         Guid deliveryAddressID)
     {
-        string billingName = $"{customer.FirstName} {customer.LastName}";
+        var billingName = $"{customer.FirstName} {customer.LastName}";
         
         OrderedProduct[] orderedProducts = basket.BasketProducts
             .Select(bp => new OrderedProduct

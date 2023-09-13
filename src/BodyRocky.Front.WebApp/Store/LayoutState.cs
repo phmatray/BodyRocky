@@ -24,7 +24,7 @@ public class LayoutFeature : Feature<LayoutState>
         => "Layout";
     
     protected override LayoutState GetInitialState()
-        => new(ViewMode.Grid, String.Empty);
+        => new(ViewMode.Grid, string.Empty);
 }
 
 #endregion

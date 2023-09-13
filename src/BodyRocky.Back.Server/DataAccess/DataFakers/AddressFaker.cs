@@ -12,7 +12,7 @@ public sealed class AddressFaker
         List<Guid> zipCodeIds)
     {
         // we need a local copy of the ids to avoid the same id being used twice
-        List<Guid> localCustomerIds = customerIds.ToList();
+        var localCustomerIds = customerIds.ToList();
 
         _faker = new Faker<Address>("fr")
             .StrictMode(false)
@@ -32,7 +32,7 @@ public sealed class AddressFaker
 
     public List<Address> Generate(int count)
     {
-        List<Address> addresses = _faker.Generate(count);
+        var addresses = _faker.Generate(count);
         _ids.AddRange(addresses.Select(m => m.AddressID));
         return addresses;
     }

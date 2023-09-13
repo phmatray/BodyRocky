@@ -45,7 +45,7 @@ public class MainPresenter
 
     public async Task DeleteProduct(Guid productId)
     {
-        DeleteProductRequest request = new DeleteProductRequest
+        var request = new DeleteProductRequest
         {
             ProductID = productId
         };

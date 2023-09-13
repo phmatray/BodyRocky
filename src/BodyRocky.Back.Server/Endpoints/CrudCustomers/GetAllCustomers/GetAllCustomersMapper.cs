@@ -19,7 +19,7 @@ public class GetAllCustomersMapper
             })
             .ToList();
 
-        return new GetAllCustomersResponse()
+        return new GetAllCustomersResponse
         {
             Customers = customerResponses
         };

@@ -14,7 +14,7 @@ public enum PageType
     Shop,
     Wishlist,
     Faq,
-    Orders,
+    Orders
 }
 
 public class Routes

@@ -72,7 +72,7 @@
 
   private void OnTextChange(ChangeEventArgs obj)
   {
-    string newSearchTerm = obj.Value?.ToString() ?? String.Empty;
+    string newSearchTerm = obj.Value?.ToString() ?? string.Empty;
     LayoutDispatcher.SetSearchTerm(newSearchTerm);
   }
 

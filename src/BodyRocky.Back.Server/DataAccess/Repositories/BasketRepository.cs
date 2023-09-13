@@ -65,7 +65,7 @@ public sealed class BasketRepository : IDisposable
         Basket basket = await _context.Baskets.FindOrThrowAsync(basketID);
         Product product = await _context.Products.FindOrThrowAsync(productID);
 
-        BasketProduct basketProduct = new BasketProduct
+        var basketProduct = new BasketProduct
         {
             Quantity = quantity,
             Basket = basket,

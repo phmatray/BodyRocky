@@ -59,7 +59,7 @@ public class IdentityAuthenticationStateProvider : AuthenticationStateProvider
             {
                 var claims = new[]
                     {
-                        new Claim(ClaimTypes.Name, userInfo.UserName),
+                        new Claim(ClaimTypes.Name, userInfo.UserName)
                     }
                     .Concat(userInfo.ExposedClaims.Select(c => new Claim(c.Key, c.Value)));
                 

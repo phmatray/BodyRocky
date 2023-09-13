@@ -19,7 +19,7 @@ public class GetAllCategoriesMapper
             })
             .ToList();
 
-        return new GetAllCategoriesResponse()
+        return new GetAllCategoriesResponse
         {
             Categories = categoryResponses
         };

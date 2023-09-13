@@ -12,22 +12,22 @@ public static class FakeData
 
     public static void Init()
     {
-        List<int> basketStatusCodes = ReferentialData
+        var basketStatusCodes = ReferentialData
             .GetPredefinedBasketStatuses()
             .Select(x => x.Code)
             .ToList();
 
-        List<int> orderStatusCodes = ReferentialData
+        var orderStatusCodes = ReferentialData
             .GetPredefinedOrderStatuses()
             .Select(x => x.Code)
             .ToList();
 
-        List<Guid> zipCodeIds = ReferentialData
+        var zipCodeIds = ReferentialData
             .GetPredefinedZipCodes()
             .Select(x => x.ZipCodeID)
             .ToList();
         
-        List<Guid> categoryIds = ReferentialData
+        var categoryIds = ReferentialData
             .GetPredefinedCategories()
             .Select(c => c.CategoryID)
             .ToList();
@@ -36,25 +36,25 @@ public static class FakeData
         const int numBrands = 10;
         BrandFaker brandFaker = new();
         Brands = brandFaker.Generate(numBrands);
-        List<Guid> brandIds = brandFaker.GetCopyOfIds();
+        var brandIds = brandFaker.GetCopyOfIds();
 
         // customer
         const int numCustomers = 20;
         CustomerFaker customerFaker = new();    
         Customers = customerFaker.Generate(numCustomers);
-        List<Guid> customerIds = customerFaker.GetCopyOfIds();
+        var customerIds = customerFaker.GetCopyOfIds();
         
         // address
         const int numAddresses = 20;
         AddressFaker addressFaker = new(customerIds, zipCodeIds);
         Addresses = addressFaker.Generate(numAddresses);
-        List<Guid> addressIds = addressFaker.GetCopyOfIds();
+        var addressIds = addressFaker.GetCopyOfIds();
         
         // product
         const int numProducts = 100;
         ProductFaker productFaker = new(brandIds);
         Products = productFaker.Generate(numProducts);
-        List<Guid> productIds = productFaker.GetCopyOfIds();
+        var productIds = productFaker.GetCopyOfIds();
         
         // product category
         const int numProductCategories = 100;

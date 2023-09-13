@@ -57,7 +57,7 @@ public class CustomerMapper
             ProductID = basketProduct.Product.ProductID,
             ProductName = basketProduct.Product.ProductName,
             ProductPrice = basketProduct.Product.ProductPrice,
-            Quantity = basketProduct.Quantity,
+            Quantity = basketProduct.Quantity
         };
     }
 }
