@@ -18,8 +18,8 @@ public sealed class AddressFaker
             .StrictMode(false)
             .UseSeed(1111)
             .RuleFor(m => m.AddressID, f => f.Random.Guid())
-            .RuleFor(m => m.AddressFromDate, f => f.Date.Past(1))
-            .RuleFor(m => m.AddressToDate, f => f.Date.Future(1))
+            .RuleFor(m => m.AddressFromDate, f => f.Date.Past())
+            .RuleFor(m => m.AddressToDate, f => f.Date.Future())
             .RuleFor(m => m.Street, f => f.Address.StreetAddress())
             .RuleFor(m => m.CustomerID, f =>
             {

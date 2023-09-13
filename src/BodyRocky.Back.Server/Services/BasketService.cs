@@ -46,7 +46,7 @@ public class BasketService
         var basket = await GetBasketAsync(customerId);
         
         // check if product is already in basket...
-        var basketItem = basket.BasketProducts?
+        var basketItem = basket.BasketProducts
             .FirstOrDefault(bi => bi.ProductID == productId);
         
         if (basketItem != null)

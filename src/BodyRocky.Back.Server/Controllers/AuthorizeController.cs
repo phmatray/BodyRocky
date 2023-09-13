@@ -30,14 +30,14 @@ namespace BodyRocky.Back.Server.Controllers
             var user = await _userManager.FindByEmailAsync(parameters.Email);
             if (user == null)
             {
-                _logger.LogWarning("Login failed for {0}", parameters.Email);
+                _logger.LogWarning("Login failed for {Email}", parameters.Email);
                 return BadRequest("User does not exist");
             }
             
             var signInResult = await _signInManager.CheckPasswordSignInAsync(user, parameters.Password, false);
             if (!signInResult.Succeeded)
             {
-                _logger.LogWarning("Login failed for {0}", parameters.Email);
+                _logger.LogWarning("Login failed for {Email}", parameters.Email);
                 return BadRequest("Invalid password");
             }
 

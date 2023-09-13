@@ -270,13 +270,12 @@ public class BasketEffects
         if (customerID is not null)
         {
             GetBasketRequest request = new() { CustomerID = customerID.Value };
-            GetOneBasketResponse? response = await _bodyRockyClient.GetBasketAsync(request);
+            GetOneBasketResponse response = await _bodyRockyClient.GetBasketAsync(request);
             
             // log basket properties
-            _logger.LogWarning("Basket ID: {BasketID}", response?.BasketID);
-            _logger.LogWarning("Basket Date Added: {BasketDateAdded}", response?.BasketDateAdded);
-            _logger.LogWarning("Basket Items: {BasketItems}", response?.Products);
-            _logger.LogWarning("Basket Count: {BasketTotal}", response?.Products.Count);
+            _logger.LogWarning("Basket ID: {BasketID}", response.BasketID);
+            _logger.LogWarning("Basket Date Added: {BasketDateAdded}", response.BasketDateAdded);
+            _logger.LogWarning("Basket Count: {BasketTotal}", response.Products.Count);
             
             // 2a. dispatch the success action
             var successAction = new LoadBasketSuccessAction(
